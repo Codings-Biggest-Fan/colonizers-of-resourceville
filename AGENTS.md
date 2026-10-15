@@ -32,24 +32,40 @@ Statuses are Planned, In progress, Verifying, Complete, and Blocked. Blocked mea
 
 ## Milestone 0 and GitHub delivery
 
-Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–20 without renumbering them. Native Rust scaffolding stays M01. Original setup reports now belong to milestone-00 and retain their historical wording.
+Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–20 without renumbering them. Native Rust scaffolding stays M01.
 
-Use a dedicated milestone-NN/short-description branch and one milestone PR targeting stable. Never implement directly on stable or advance while approval is pending.
+### Channel meanings — user clarification
 
-- nightly points to the latest pushed active-milestone commit, including unfinished work.
-- beta points to the current unapproved milestone PR head for user testing. Push milestone/nightly/beta refs together when that PR changes. Before a PR exists, beta retains its last testing revision.
-- stable points to the latest explicitly approved and merged milestone PR and is the default branch. Until the first approval it contains the published pre-workflow baseline, not a completed milestone.
-- main mirrors the latest approved stable commit for compatibility. Update it by fast-forward after approved stable changes. Do not force-push, rewrite history, or move shared refs backward; inspect divergence and resolve through the PR workflow.
+- **nightly** is the current development commit, including unapproved and unfinished changes. Update it with the latest pushed work from the active milestone or polish branch.
+- **beta** is the latest user-approved PR before polish. It is an approved implementation baseline, not the unapproved PR/testing branch. Never move beta merely because a development commit or new PR exists.
+- **stable** contains user-approved, polished PRs. Both approval of the implementation and approval of its polish are required before promotion to stable. It is the default branch.
+- **main** mirrors approved, polished stable for compatibility; advance it only when stable is promoted or for an explicitly authorized rules-only update.
+- Dedicated milestone-NN/description and polish branches hold work under review. They may match nightly; they must not automatically update beta or stable.
 
-Open and attach the milestone PR when reviewable work and verification are ready. Include changes, actual test/build results, manual testing steps, limitations, intended release, beta commit, and wiki/evidence links. The user tests and approves each milestone. STOP with the PR open: never merge, advance stable, publish its release, or begin the next milestone without explicit user approval. Finishing implementation, opening a PR, or passing checks is not approval. Apply testing corrections to the same PR; post-release polish uses its own branch/PR.
+These meanings supersede older text elsewhere that calls beta an unapproved PR head or requires milestone/nightly/beta to move together. Update older supporting documents when they are next in scope. A rules-only documentation commit does not approve or promote the implementation already on a branch.
 
-After approval and successful gates, merge the approved head into stable and publish a GitHub Release from the resulting stable commit. M00 targets v0.0.0; M01–M20 keep existing versions. Mark pre-v1.0.0 releases as prereleases. Include PR/commit, changes, actual checks, manual testing, wiki/build/game guides, evidence, artifacts/checksums when produced, migration notes, and limitations. Never tag unfinished work, publish untested binaries, or overwrite published tags/releases. Update roadmap/progress with approval and release links.
+### Approval and promotion
+
+1. Implement on the dedicated milestone branch and push current work to nightly. Open/attach the implementation PR targeting beta when it is ready for user testing; include the exact commit, changes, actual checks, manual steps, limitations, wiki, and evidence.
+2. Stop for explicit user approval. Only after approval merge the tested implementation into beta; beta is then the approved, unpolished baseline.
+3. Perform requested polish on the milestone or a dedicated polish branch, updating nightly with each pushed revision. Keep beta at its approved baseline while polish is unapproved.
+4. Open/attach the polished PR targeting stable. Stop for the user's explicit approval of that polished revision. Approval of the implementation alone is not polish approval.
+5. Only after polished approval and applicable gates merge into stable, fast-forward main to stable, and publish the milestone GitHub Release from that stable commit. A request to create a PR, finish work, or update nightly is not approval.
+6. Existing PRs remain unmerged unless the user approves them; this channel clarification does not authorize merging, retargeting, closing, or releasing them automatically.
+
+Do not force-push, rewrite published history, move refs backward, or promote unrelated work. Inspect divergence and preserve branch-specific changes. In the normal workflow, unapproved corrections stay on the development/polish branch and nightly. Stop after the milestone and its approved release; do not begin the next milestone without the next request.
+
+### Releases and rules-only exception
+
+M00 targets source/docs-only v0.0.0; M01–M20 retain roadmap versions. Mark pre-v1.0.0 releases as prereleases. Release only approved, polished stable commits. Include PRs/commit, changes, actual validation, manual testing, wiki/build/game instructions, evidence, verified artifacts/checksums when produced, migrations, and limitations. Never tag unfinished work or overwrite published tags/releases.
+
+The user explicitly authorized this channel-policy correction to AGENTS.md directly in every existing source branch without a PR. Apply the same updated file while preserving each branch's other content and history. This is a one-time exception for this rules change, not standing permission to bypass implementation or polish approval.
 
 ## Wiki and building/game instructions
 
 The GitHub Wiki hosts public documentation. Keep reviewed sources in docs/, milestones/, photos/, ROADMAP.md, and AGENTS.md; wiki repositories lack normal source PR review. Link the wiki, Building, and Game Instructions from README.md. Generate pages with scripts/wiki.ps1 and verify published navigation.
 
-Unapproved-branch wiki pages must prominently say TESTING PREVIEW, identify source branch/commit and PR when available, and never look like approved release docs. After approval republish from stable. Maintain source-to-wiki link mappings and pinned source/evidence links.
+Development and approved-but-unpolished beta wiki previews must prominently say TESTING PREVIEW, identify their channel/source commit and PR when available, and never look like approved, polished release docs. Publish approved release documentation only from polished stable after explicit approval. Maintain source-to-wiki link mappings and pinned source/evidence links.
 
 Maintain docs/building.md: prerequisites, clone/channel selection, commands that work now, guarded future build/run/package instructions, troubleshooting, and clean-checkout verification. Current setup has no Cargo workspace: say so. Maintain docs/game-instructions/ as the player-guide source folder, published as a grouped Game Instructions wiki section. Cover setup, turns/trading, bots, saves/reconnect, variants, and troubleshooting as implemented; distinguish plans from available controls.
 
