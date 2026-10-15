@@ -1,6 +1,6 @@
 # Milestone 01 — Foundation
 
-Target release: **v0.0.1**. Status: In progress. This is an initial plan; refine against actual code and dependencies before implementation.
+Target release: **v0.0.1**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
 
 [Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Screenshots](../../photos/milestone-01/index.md)
 
@@ -8,14 +8,14 @@ Target release: **v0.0.1**. Status: In progress. This is an initial plan; refine
 
 Establish a reproducible native Rust workspace and the permanent planning, evidence, and release structure.
 
-No prior milestone is required. The latest user request is to establish structure/plans first; do not treat the rest of foundation as completed.
+Requires M00 user approval and merge/release. M00 already establishes the documentation/GitHub structure; M01 implements the native foundation.
 
 ## Scope and implementation tasks
 
 - [ ] Create the five-crate Cargo workspace: rules, protocol, bots, desktop, server; pin the toolchain and commit Cargo.lock once generated.
 - [ ] Launch an original native egui/eframe window using wgpu; do not present future game controls as playable.
 - [ ] Add Windows CI and script entry points for development, checks, tests, captures, packaging, and milestone validation.
-- [ ] Establish all 20 initial plans, progress records, report folders, photo indexes, architecture documentation, and current roadmap.
+- [ ] Reuse the M00 records and refine/update them against the actual native implementation.
 - [ ] Verify Windows prerequisites without silently installing tools or provisioning services.
 
 ## Interfaces, state, persistence, and UI
@@ -44,3 +44,6 @@ There are no existing games or saves. Keep the Windows target explicit and do no
 Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived.
 
 Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
+## Branch, user testing, and GitHub release
+
+Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).

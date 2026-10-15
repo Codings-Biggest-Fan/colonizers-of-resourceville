@@ -1,4 +1,4 @@
-# Milestone 15 photos — Traders & Barbarians
+# Milestone 15 photos — Caravans & Raiders
 
 [Plan](../../milestones/milestone-15/plan.md) · [Progress](../../milestones/milestone-15/progress.md) · [Reports](../../milestones/milestone-15/reports/)
 

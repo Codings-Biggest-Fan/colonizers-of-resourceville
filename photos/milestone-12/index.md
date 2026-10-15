@@ -1,4 +1,4 @@
-# Milestone 12 photos — Seafarers
+# Milestone 12 photos — Open Seas
 
 [Plan](../../milestones/milestone-12/plan.md) · [Progress](../../milestones/milestone-12/progress.md) · [Reports](../../milestones/milestone-12/reports/)
 

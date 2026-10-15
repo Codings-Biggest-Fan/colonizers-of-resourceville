@@ -1,4 +1,4 @@
-# Milestone 12 progress — Seafarers
+# Milestone 12 progress — Open Seas
 
 Status: Planned  
 Target release: v0.6.0  

@@ -1,7 +1,7 @@
 [CmdletBinding(DefaultParameterSetName = 'All')]
 param(
     [Parameter(ParameterSetName = 'Single', Mandatory = $true)]
-    [ValidateRange(1, 20)]
+    [ValidateRange(0, 20)]
     [int] $Number,
     [Parameter(ParameterSetName = 'All')]
     [switch] $All,
@@ -28,13 +28,14 @@ try {
         'AGENTS.md', 'README.md', 'ROADMAP.md', 'CHANGELOG.md',
         'docs/implementation-plan.md', 'docs/architecture.md', 'docs/rules.md',
         'docs/pregame-options.md', 'docs/compatibility.md', 'docs/development.md',
-        'docs/deployment.md', 'milestones/README.md', 'photos/README.md',
-        'scripts/README.md', 'scripts/bootstrap.ps1', 'scripts/milestone.ps1',
+        'docs/deployment.md', 'docs/building.md', 'docs/github-workflow.md',
+        'docs/game-instructions/README.md', 'milestones/README.md', 'photos/README.md',
+        'scripts/README.md', 'scripts/bootstrap.ps1', 'scripts/milestone.ps1', 'scripts/wiki.ps1',
         'assets/ATTRIBUTION.md', 'supabase/migrations/README.md'
     )
     foreach ($record in $requiredRecords) { Assert-Record $record }
 
-    $selectedNumbers = if ($PSCmdlet.ParameterSetName -eq 'Single') { @($Number) } else { @(1..20) }
+    $selectedNumbers = if ($PSCmdlet.ParameterSetName -eq 'Single') { @($Number) } else { @(0..20) }
     foreach ($milestoneNumber in $selectedNumbers) {
         $slug = 'milestone-{0:D2}' -f $milestoneNumber
         foreach ($record in @("milestones/$slug/plan.md", "milestones/$slug/progress.md", "milestones/$slug/reports/README.md", "photos/$slug/index.md")) {

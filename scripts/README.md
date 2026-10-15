@@ -5,11 +5,12 @@ All helpers resolve the repository from PSScriptRoot, work from outside the repo
 ## Available now
 
 - bootstrap.ps1 — read-only prerequisite check; reports missing Rust/MSVC prerequisites without installing anything.
-- milestone.ps1 — required-document, milestone-folder, and local Markdown link validation. Use -All or -Number 1. Add -RequireComplete to require Complete status; this does not certify evidence truth.
+- wiki.ps1 — generates wiki pages under ignored .local without committing/pushing; accepts -OutputPath, -PullRequestUrl, and -Approved (stable-only after approval).
+- milestone.ps1 — required-document, milestone-folder, and local Markdown link validation. Use -All (M00–M20) or -Number 0. Add -RequireComplete to require Complete status; this does not certify evidence truth.
 
 ```powershell
-& 'C:\Users\asharma\Documents\colonist\scripts\milestone.ps1' -All
-& 'C:\Users\asharma\Documents\colonist\scripts\milestone.ps1' -Number 1 -RequireComplete
+& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
+& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -Number 1 -RequireComplete
 ```
 
 ## Remaining milestone-01 helpers
@@ -25,3 +26,12 @@ All helpers resolve the repository from PSScriptRoot, work from outside the repo
 These five helpers do not exist yet because no Cargo application or container build exists. They must be implemented and exercised before milestone 01 is Complete; there are no success-reporting stubs.
 
 Secrets stay outside scripts and tracked files. Logs/screenshots belong in their documented destinations only after real verification.
+
+## Wiki generation
+
+```powershell
+pwsh -NoProfile -File ./scripts/wiki.ps1
+pwsh -NoProfile -File ./scripts/wiki.ps1 -OutputPath '.local/wiki' -PullRequestUrl 'https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1'
+```
+
+The output is generated public Markdown with pinned source links, an explicit unapproved preview banner, and grouped Game Instructions navigation. Publishing requires a separate explicit git commit/push to the initialized wiki repository. No credentials are embedded. Use -Approved only from clean stable after user approval; it does not itself approve or merge anything.

@@ -5,7 +5,7 @@
 ## Planned boundaries
 
 - M01 creates native/build/package foundations; do not claim runtime packaging until exercised.
-- M07 creates/connects a new Supabase organization and a separate colonist-remake project after actual organization-specific cost confirmation.
+- M07 creates/connects a new Supabase organization and a separate colonizers-of-resourceville-remake project after actual organization-specific cost confirmation.
 - Supabase provides Auth/Postgres. The persistent Rust Axum/Tokio service is hosted separately.
 - M19 deploys the Docker server with TLS, health/metrics, structured privacy-safe logs, backup/restore rehearsal, rollback, and load verification.
 - M20 proves clean-install Windows offline and deployed-online behavior.

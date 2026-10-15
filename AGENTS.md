@@ -1,12 +1,20 @@
-# AGENTS.md — Native Rust Colonist Remake
+# AGENTS.md — The Colonizers of Resourceville
 
 Read this file first, then README.md, ROADMAP.md, and the active milestone's plan and progress. Follow more specific nested instructions when present.
 
 ## Product and scope
 
-Build an independently implemented Windows-first native Rust hex-board strategy game inspired by Colonist. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A public product name and license have not been selected.
+### Branding and active polish
 
-The agreed scope is offline solo with bots, private online rooms, later public casual/ranked play, and 2–4 seats growing to 2–8. Include base rules, Cities & Knights, Seafarers, supported combinations, Traders & Barbarians, and Explorers & Pirates with their pinned core scenarios. Standalone games, promotional scenarios, historical editions, and arbitrary expansion mixtures are outside this roadmap. All gameplay modes are available without an in-game purchase system.
+Product name: **The Colonizers of Resourceville**. Machine/repository name: **colonizers-of-resourceville**. Use original visuals, labels, copy, and marks everywhere: app/window titles, README/wiki, screenshots, package names, release notes, repository metadata, and social previews. Do not reuse prior working names or competitor product/expansion branding. Expansion names are Citadels & Sentinels, Open Seas, Caravans & Raiders, and Voyagers & Corsairs. Preserve gameplay scope while using original presentation. This is a working project identity, not a claim of trademark clearance.
+
+The user selected this exact title during branding polish. Preserve it in future work; do not substitute a newly invented product name without a user request.
+
+Polish mode is active for the user's branding correction. Fix and verify that scope in the current M00 PR without advancing milestones. Resume roadmap work only when requested. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
+
+Build an independently implemented Windows-first native Rust hex-board strategy game called The Colonizers of Resourceville. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
+
+The agreed scope is offline solo with bots, private online rooms, later public casual/ranked play, and 2–4 seats growing to 2–8. Include base rules, Citadels & Sentinels, Open Seas, supported combinations, Caravans & Raiders, and Voyagers & Corsairs with their pinned core scenarios. Standalone games, promotional scenarios, historical editions, and arbitrary expansion mixtures are outside this roadmap. All gameplay modes are available without an in-game purchase system.
 
 The stack is native Rust with egui/eframe and wgpu; a separate Rust Axum/Tokio server; shared Rust protocol types; Supabase Auth/Postgres accessed by the server through SQLx. No browser UI, webview shell, JavaScript/TypeScript application, or Tauri/Electron packaging. The current folder may contain planning structure before the Cargo workspace exists: inspect actual files and never invent runnable commands.
 
@@ -22,9 +30,32 @@ The stack is native Rust with egui/eframe and wgpu; a separate Rust Axum/Tokio s
 
 Statuses are Planned, In progress, Verifying, Complete, and Blocked. Blocked means a real dependency prevents progress. Do not use estimated percentages or describe planned features as delivered. Keep dates in the user's America/Los_Angeles time context.
 
+## Milestone 0 and GitHub delivery
+
+Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–20 without renumbering them. Native Rust scaffolding stays M01. Original setup reports now belong to milestone-00 and retain their historical wording.
+
+Use a dedicated milestone-NN/short-description branch and one milestone PR targeting stable. Never implement directly on stable or advance while approval is pending.
+
+- nightly points to the latest pushed active-milestone commit, including unfinished work.
+- beta points to the current unapproved milestone PR head for user testing. Push milestone/nightly/beta refs together when that PR changes. Before a PR exists, beta retains its last testing revision.
+- stable points to the latest explicitly approved and merged milestone PR and is the default branch. Until the first approval it contains the published pre-workflow baseline, not a completed milestone.
+- main is retained as the legacy publication baseline. Do not force-push, rewrite history, or move shared refs backward; inspect divergence and resolve through the PR workflow.
+
+Open and attach the milestone PR when reviewable work and verification are ready. Include changes, actual test/build results, manual testing steps, limitations, intended release, beta commit, and wiki/evidence links. The user tests and approves each milestone. STOP with the PR open: never merge, advance stable, publish its release, or begin the next milestone without explicit user approval. Finishing implementation, opening a PR, or passing checks is not approval. Apply testing corrections to the same PR; post-release polish uses its own branch/PR.
+
+After approval and successful gates, merge the approved head into stable and publish a GitHub Release from the resulting stable commit. M00 targets v0.0.0; M01–M20 keep existing versions. Mark pre-v1.0.0 releases as prereleases. Include PR/commit, changes, actual checks, manual testing, wiki/build/game guides, evidence, artifacts/checksums when produced, migration notes, and limitations. Never tag unfinished work, publish untested binaries, or overwrite published tags/releases. Update roadmap/progress with approval and release links.
+
+## Wiki and building/game instructions
+
+The GitHub Wiki hosts public documentation. Keep reviewed sources in docs/, milestones/, photos/, ROADMAP.md, and AGENTS.md; wiki repositories lack normal source PR review. Link the wiki, Building, and Game Instructions from README.md. Generate pages with scripts/wiki.ps1 and verify published navigation.
+
+Unapproved-branch wiki pages must prominently say TESTING PREVIEW, identify source branch/commit and PR when available, and never look like approved release docs. After approval republish from stable. Maintain source-to-wiki link mappings and pinned source/evidence links.
+
+Maintain docs/building.md: prerequisites, clone/channel selection, commands that work now, guarded future build/run/package instructions, troubleshooting, and clean-checkout verification. Current setup has no Cargo workspace: say so. Maintain docs/game-instructions/ as the player-guide source folder, published as a grouped Game Instructions wiki section. Cover setup, turns/trading, bots, saves/reconnect, variants, and troubleshooting as implemented; distinguish plans from available controls.
+
 ## Permanent project records
 
-- ROADMAP.md includes current release, active milestone, last update, dependencies, all 20 releases, status, acceptance summary, and links to plans, progress, reports, and photos.
+- ROADMAP.md includes current release, active milestone, last update, dependencies, M00 plus all 20 implementation releases, status, acceptance summary, plans, progress, reports, photos, PRs, and published releases.
 - Every milestone has plan.md, progress.md, reports/, and a matching photos/milestone-NN/index.md.
 - Plans record goal, release, dependencies, scope, tasks, interface/data changes, tests, screenshots, compatibility, and migration considerations.
 - Progress records distinguish landed work, pending checks, remaining work, blockers, and evidence.

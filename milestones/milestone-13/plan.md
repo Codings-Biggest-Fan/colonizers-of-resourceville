@@ -6,7 +6,7 @@ Target release: **v0.7.0**. Status: Planned. This is an initial plan; refine aga
 
 ## Goal and dependencies
 
-Support documented Seafarers plus Cities & Knights combinations.
+Support documented Open Seas plus Citadels & Sentinels combinations.
 
 Requires milestone 12 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 
@@ -43,3 +43,6 @@ Only documented combinations are supported. Match the pinned rulebook combinatio
 Supported combinations finish correctly; incompatible settings are clearly rejected.
 
 Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
+## Branch, user testing, and GitHub release
+
+Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).

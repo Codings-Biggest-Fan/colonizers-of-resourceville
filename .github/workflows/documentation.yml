@@ -1,0 +1,31 @@
+name: Documentation checks
+
+on:
+  pull_request:
+    branches: [stable]
+  push:
+    branches: [stable, nightly, beta, 'milestone-*/**']
+
+permissions:
+  contents: read
+
+jobs:
+  documentation:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate records and links
+        shell: pwsh
+        run: ./scripts/milestone.ps1 -All
+      - name: Parse helper scripts
+        shell: pwsh
+        run: |
+          foreach ($file in Get-ChildItem ./scripts -Filter *.ps1) {
+            $tokens = $null
+            $parseErrors = $null
+            $null = [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$tokens, [ref]$parseErrors)
+            if ($parseErrors.Count -gt 0) { throw ($parseErrors | Out-String) }
+          }
+      - name: Generate preview wiki
+        shell: pwsh
+        run: ./scripts/wiki.ps1

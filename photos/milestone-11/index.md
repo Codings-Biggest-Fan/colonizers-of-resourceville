@@ -1,4 +1,4 @@
-# Milestone 11 photos — Cities & Knights
+# Milestone 11 photos — Citadels & Sentinels
 
 [Plan](../../milestones/milestone-11/plan.md) · [Progress](../../milestones/milestone-11/progress.md) · [Reports](../../milestones/milestone-11/reports/)
 

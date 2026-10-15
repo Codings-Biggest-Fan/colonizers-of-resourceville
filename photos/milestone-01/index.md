@@ -4,7 +4,7 @@
 
 ## Current evidence
 
-No screenshots captured. The requested structure work has no native application UI; the foundation native-window acceptance screenshot is still pending.
+No screenshots captured. Native foundation has not started; M00 documentation screenshots are separate. The real native-window acceptance screenshot remains pending.
 
 ## Required captures
 
