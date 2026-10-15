@@ -3,10 +3,10 @@
 Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
-- **Source repository:** [Codings-Biggest-Fan/colonist](https://github.com/Codings-Biggest-Fan/colonist), public; planning structure published on main.
+- **Source repository:** [Codings-Biggest-Fan/hearthline](https://github.com/Codings-Biggest-Fan/hearthline), public; planning structure published on main.
 - **Active milestone:** [00 — Initial setup](milestones/milestone-00/plan.md), Verifying; user testing and approval pending.
 - **Current phase:** setup documentation/GitHub workflow ready for review; native implementation remains M01.
-- **Execution mode:** milestone work; Polish mode is available on request through [AGENTS.md](AGENTS.md#polish-mode).
+- **Execution mode:** Polish mode active for original Hearthline branding; roadmap advancement paused. [Rules](AGENTS.md#polish-mode).
 - **Next task:** user tests M00's PR/beta. Wait for explicit approval before merge, release, or M01.
 - **Verification:** planning structure/link checks passed; both helper scripts parse and the pending-completion gate correctly rejects M01. [Actual results](milestones/milestone-00/reports/002-structure-validation.md). No application build, runtime inspection, multiplayer verification, or cloud provisioning has occurred.
 
@@ -29,12 +29,12 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | 08 | v0.2.0 — Private online lobby | Planned | M07 | [Plan](milestones/milestone-08/plan.md) · [Progress](milestones/milestone-08/progress.md) · [Reports](milestones/milestone-08/reports/) · [Photos](photos/milestone-08/index.md) | Separate clients create/join the same room and consistently observe membership and configuration. |
 | 09 | v0.3.0 — Reliable online games | Planned | M08 | [Plan](milestones/milestone-09/plan.md) · [Progress](milestones/milestone-09/progress.md) · [Reports](milestones/milestone-09/reports/) · [Photos](photos/milestone-09/index.md) | Online matches complete with consistent state and demonstrated retry/restart/failure recovery. |
 | 10 | v0.4.0 — Base pregame completeness | Planned | M09 | [Plan](milestones/milestone-10/plan.md) · [Progress](milestones/milestone-10/progress.md) · [Reports](milestones/milestone-10/reports/) · [Photos](photos/milestone-10/index.md) | Every selectable base option affects gameplay correctly and persists across reload/reconnect. |
-| 11 | v0.5.0 — Cities & Knights | Planned | M10 | [Plan](milestones/milestone-11/plan.md) · [Progress](milestones/milestone-11/progress.md) · [Reports](milestones/milestone-11/reports/) · [Photos](photos/milestone-11/index.md) | Card/interaction inventory passes and complete offline/online matches are verified. |
-| 12 | v0.6.0 — Seafarers | Planned | M11 | [Plan](milestones/milestone-12/plan.md) · [Progress](milestones/milestone-12/progress.md) · [Reports](milestones/milestone-12/reports/) · [Photos](photos/milestone-12/index.md) | Every shipped core scenario completes with correct setup, objectives, and scoring. |
+| 11 | v0.5.0 — Citadels & Sentinels | Planned | M10 | [Plan](milestones/milestone-11/plan.md) · [Progress](milestones/milestone-11/progress.md) · [Reports](milestones/milestone-11/reports/) · [Photos](photos/milestone-11/index.md) | Card/interaction inventory passes and complete offline/online matches are verified. |
+| 12 | v0.6.0 — Open Seas | Planned | M11 | [Plan](milestones/milestone-12/plan.md) · [Progress](milestones/milestone-12/progress.md) · [Reports](milestones/milestone-12/reports/) · [Photos](photos/milestone-12/index.md) | Every shipped core scenario completes with correct setup, objectives, and scoring. |
 | 13 | v0.7.0 — Combined expansions | Planned | M12 | [Plan](milestones/milestone-13/plan.md) · [Progress](milestones/milestone-13/progress.md) · [Reports](milestones/milestone-13/reports/) · [Photos](photos/milestone-13/index.md) | Supported combinations finish correctly; incompatible settings are clearly rejected. |
 | 14 | v0.8.0 — Five to eight players | Planned | M13 | [Plan](milestones/milestone-14/plan.md) · [Progress](milestones/milestone-14/progress.md) · [Reports](milestones/milestone-14/reports/) · [Photos](photos/milestone-14/index.md) | Large games finish with correct permissions, privacy, recovery, and measured acceptable responsiveness. |
-| 15 | v0.9.0 — Traders & Barbarians | Planned | M14 | [Plan](milestones/milestone-15/plan.md) · [Progress](milestones/milestone-15/progress.md) · [Reports](milestones/milestone-15/reports/) · [Photos](photos/milestone-15/index.md) | Each inventory entry has rules tests, bot support, inspected UI evidence, and completed games. |
-| 16 | v0.10.0 — Explorers & Pirates | Planned | M15 | [Plan](milestones/milestone-16/plan.md) · [Progress](milestones/milestone-16/progress.md) · [Reports](milestones/milestone-16/reports/) · [Photos](photos/milestone-16/index.md) | Mission/cargo transitions pass and every shipped scenario completes correctly. |
+| 15 | v0.9.0 — Caravans & Raiders | Planned | M14 | [Plan](milestones/milestone-15/plan.md) · [Progress](milestones/milestone-15/progress.md) · [Reports](milestones/milestone-15/reports/) · [Photos](photos/milestone-15/index.md) | Each inventory entry has rules tests, bot support, inspected UI evidence, and completed games. |
+| 16 | v0.10.0 — Voyagers & Corsairs | Planned | M15 | [Plan](milestones/milestone-16/plan.md) · [Progress](milestones/milestone-16/progress.md) · [Reports](milestones/milestone-16/reports/) · [Photos](photos/milestone-16/index.md) | Mission/cargo transitions pass and every shipped scenario completes correctly. |
 | 17 | v0.11.0 — Maps and configuration completion | Planned | M16 | [Plan](milestones/milestone-17/plan.md) · [Progress](milestones/milestone-17/progress.md) · [Reports](milestones/milestone-17/reports/) · [Photos](photos/milestone-17/index.md) | All shipped maps validate and every pregame catalogue item has an explicit verified disposition. |
 | 18 | v0.12.0 — Public casual platform | Planned | M17 | [Plan](milestones/milestone-18/plan.md) · [Progress](milestones/milestone-18/progress.md) · [Reports](milestones/milestone-18/reports/) · [Photos](photos/milestone-18/index.md) | Public/social flows work and visibility, identity, moderation, and spectator boundaries pass. |
 | 19 | v1.0.0-rc.1 — Ranked and operations | Planned | M18 | [Plan](milestones/milestone-19/plan.md) · [Progress](milestones/milestone-19/progress.md) · [Reports](milestones/milestone-19/reports/) · [Photos](photos/milestone-19/index.md) | Ranked results apply once; restrictions, deployment, recovery, rollback, and load checks pass. |
@@ -57,6 +57,6 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 
 ## GitHub delivery channels
 
-[Wiki](https://github.com/Codings-Biggest-Fan/colonist/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
+[Wiki](https://github.com/Codings-Biggest-Fan/hearthline/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
 Each milestone uses its own branch and PR against stable. nightly is the latest pushed milestone commit; beta matches the active unapproved PR head; stable is the latest approved/merged PR (initial baseline until the first approval). main remains legacy history. No milestone release exists. The user tests and approves before any merge or release. M00 adds initial setup without renumbering M01–M20.

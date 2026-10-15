@@ -33,4 +33,8 @@ Finish review publication/verification, then wait for user testing and approval.
 
 ## Polish checklist
 
-No active Polish mode or reported flaws. Corrections from user testing stay in the same M00 PR; do not advance to M01 automatically.
+Polish mode is active for the user's branding correction. Corrections stay in the same M00 PR; do not advance to M01 automatically.
+
+- [x] Adopt Hearthline and original expansion labels; remove legacy product branding from current source text.
+- [x] Rename the repository and update source/wiki remotes, PR identity, documentation links, and contributor rules.
+- [ ] Republish and visually verify the new preview/wiki; archive the after-image and final report.

@@ -6,7 +6,7 @@ Target release: **v0.7.0**. Status: Planned. This is an initial plan; refine aga
 
 ## Goal and dependencies
 
-Support documented Seafarers plus Cities & Knights combinations.
+Support documented Open Seas plus Citadels & Sentinels combinations.
 
 Requires milestone 12 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 

@@ -1,4 +1,4 @@
-# Milestone 16 progress — Explorers & Pirates
+# Milestone 16 progress — Voyagers & Corsairs
 
 Status: Planned  
 Target release: v0.10.0  

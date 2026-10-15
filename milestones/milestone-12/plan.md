@@ -1,4 +1,4 @@
-# Milestone 12 — Seafarers
+# Milestone 12 — Open Seas
 
 Target release: **v0.6.0**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
 
@@ -6,7 +6,7 @@ Target release: **v0.6.0**. Status: Planned. This is an initial plan; refine aga
 
 ## Goal and dependencies
 
-Deliver the pinned Seafarers core scenarios with bots and correct nautical rules.
+Deliver the pinned Open Seas core scenarios with bots and correct nautical rules.
 
 Requires milestone 11 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 
@@ -36,7 +36,7 @@ Record actual captures and metadata in the linked photo index. Explain nonvisual
 
 ## Compatibility and migration
 
-Enable only supported scenario/player-count combinations; combination with Cities & Knights remains gated by milestone 13.
+Enable only supported scenario/player-count combinations; combination with Citadels & Sentinels remains gated by milestone 13.
 
 ## Release gate and handoff
 

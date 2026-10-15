@@ -22,6 +22,8 @@ Before the first approval, stable contains the initial baseline, not a released 
 
 Corrections during testing belong to the same PR. Post-release polish uses its own branch/PR. Do not rewrite published history or overwrite releases.
 
+After explicit approval use a merge commit that preserves the milestone commits, so later milestone branches created from stable remain descendants of the current nightly/beta refs and can advance them without force.
+
 ## Release notes
 
 M00 targets v0.0.0, a source/documentation-only setup prerelease after approval. M01–M20 use [roadmap versions](../ROADMAP.md). All pre-v1.0.0 releases are prereleases. No release currently exists.

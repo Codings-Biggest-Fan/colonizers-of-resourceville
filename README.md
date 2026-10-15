@@ -1,8 +1,8 @@
-# Native Rust Colonist Remake
+# Hearthline
 
 An independently implemented Windows-first hex-board strategy game project.
 
-[Public GitHub repository](https://github.com/Codings-Biggest-Fan/colonist) · [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonist/wiki) · [Building](https://github.com/Codings-Biggest-Fan/colonist/wiki/Building) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonist/wiki/Game-Instructions)
+[Public GitHub repository](https://github.com/Codings-Biggest-Fan/hearthline) · [Documentation wiki](https://github.com/Codings-Biggest-Fan/hearthline/wiki) · [Building](https://github.com/Codings-Biggest-Fan/hearthline/wiki/Building) · [Game Instructions](https://github.com/Codings-Biggest-Fan/hearthline/wiki/Game-Instructions)
 
 **Current state:** planning structure established; no Cargo workspace or playable application yet. Milestone 00 — Initial setup is ready for testing on its PR; Milestone 01 native foundation is planned. No release has shipped, no application screenshot exists, and no cloud resources have been created.
 
@@ -21,17 +21,17 @@ An independently implemented Windows-first hex-board strategy game project.
 
 Rust rules/protocol/bots, native egui/eframe + wgpu desktop, and a separate Axum/Tokio server backed by a new Supabase Auth/Postgres project. Offline solo comes before online play. Hosts choose human/bot seats; the initial 2–4-seat support expands to 2–8.
 
-The roadmap includes base rules, Cities & Knights, Seafarers, their supported combinations, Traders & Barbarians, Explorers & Pirates, public casual games, and ranked base queues. All are planned, not currently implemented.
+The roadmap includes base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, Voyagers & Corsairs, public casual games, and ranked base queues. All are planned, not currently implemented.
 
 ## Check the planning structure
 
 From PowerShell, including outside this directory:
 
 ```powershell
-& 'C:\path\to\colonist\scripts\milestone.ps1' -All
-& 'C:\path\to\colonist\scripts\bootstrap.ps1'
+& 'C:\path\to\hearthline\scripts\milestone.ps1' -All
+& 'C:\path\to\hearthline\scripts\bootstrap.ps1'
 ```
 
 The bootstrap helper checks prerequisites without installing anything. Cargo build/run commands will be documented when the workspace is implemented; none are claimed to work yet.
 
-No public product name or project license is selected. Use original code and assets; see [attribution](assets/ATTRIBUTION.md).
+The working product name is **Hearthline**; no project license is selected. Use original code and assets; see [branding](docs/branding.md) and [attribution](assets/ATTRIBUTION.md).

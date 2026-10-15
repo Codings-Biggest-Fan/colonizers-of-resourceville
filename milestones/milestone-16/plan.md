@@ -1,4 +1,4 @@
-# Milestone 16 — Explorers & Pirates
+# Milestone 16 — Voyagers & Corsairs
 
 Target release: **v0.10.0**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
 
@@ -6,7 +6,7 @@ Target release: **v0.10.0**. Status: Planned. This is an initial plan; refine ag
 
 ## Goal and dependencies
 
-Implement Explorers & Pirates as its own rules family with every pinned core scenario.
+Implement Voyagers & Corsairs as its own rules family with every pinned core scenario.
 
 Requires milestone 15 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 
@@ -20,7 +20,7 @@ Requires milestone 15 to pass its release gate. Reuse the existing rules/protoco
 
 ## Interfaces, state, persistence, and UI
 
-Do not reuse Seafarers ship rules by assumption. Explicit rules-family capabilities identify replacement mechanics and scenario-specific state.
+Do not reuse Open Seas ship rules by assumption. Explicit rules-family capabilities identify replacement mechanics and scenario-specific state.
 
 ## Tests and acceptance checks
 

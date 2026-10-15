@@ -1,4 +1,4 @@
-# Milestone 15 — Traders & Barbarians
+# Milestone 15 — Caravans & Raiders
 
 Target release: **v0.9.0**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
 
@@ -6,7 +6,7 @@ Target release: **v0.9.0**. Status: Planned. This is an initial plan; refine aga
 
 ## Goal and dependencies
 
-Implement the pinned core Traders & Barbarians variants and scenarios.
+Implement the pinned core Caravans & Raiders variants and scenarios.
 
 Requires milestone 14 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 

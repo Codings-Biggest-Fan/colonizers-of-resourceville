@@ -1,12 +1,18 @@
-# AGENTS.md — Native Rust Colonist Remake
+# AGENTS.md — Hearthline
 
 Read this file first, then README.md, ROADMAP.md, and the active milestone's plan and progress. Follow more specific nested instructions when present.
 
 ## Product and scope
 
-Build an independently implemented Windows-first native Rust hex-board strategy game inspired by Colonist. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A public product name and license have not been selected.
+### Branding and active polish
 
-The agreed scope is offline solo with bots, private online rooms, later public casual/ranked play, and 2–4 seats growing to 2–8. Include base rules, Cities & Knights, Seafarers, supported combinations, Traders & Barbarians, and Explorers & Pirates with their pinned core scenarios. Standalone games, promotional scenarios, historical editions, and arbitrary expansion mixtures are outside this roadmap. All gameplay modes are available without an in-game purchase system.
+Product name: **Hearthline**. Machine/repository name: **hearthline**. Use original visuals, labels, copy, and marks everywhere: app/window titles, README/wiki, screenshots, package names, release notes, repository metadata, and social previews. Do not reuse prior working names or competitor product/expansion branding. Expansion names are Citadels & Sentinels, Open Seas, Caravans & Raiders, and Voyagers & Corsairs. Preserve gameplay scope while using original presentation. This is a working project identity, not a claim of trademark clearance.
+
+Polish mode is active for the user's branding correction. Fix and verify that scope in the current M00 PR without advancing milestones. Resume roadmap work only when requested. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
+
+Build an independently implemented Windows-first native Rust hex-board strategy game called Hearthline. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
+
+The agreed scope is offline solo with bots, private online rooms, later public casual/ranked play, and 2–4 seats growing to 2–8. Include base rules, Citadels & Sentinels, Open Seas, supported combinations, Caravans & Raiders, and Voyagers & Corsairs with their pinned core scenarios. Standalone games, promotional scenarios, historical editions, and arbitrary expansion mixtures are outside this roadmap. All gameplay modes are available without an in-game purchase system.
 
 The stack is native Rust with egui/eframe and wgpu; a separate Rust Axum/Tokio server; shared Rust protocol types; Supabase Auth/Postgres accessed by the server through SQLx. No browser UI, webview shell, JavaScript/TypeScript application, or Tauri/Electron packaging. The current folder may contain planning structure before the Cargo workspace exists: inspect actual files and never invent runnable commands.
 

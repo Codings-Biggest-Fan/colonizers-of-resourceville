@@ -1,4 +1,4 @@
-# Milestone 15 progress — Traders & Barbarians
+# Milestone 15 progress — Caravans & Raiders
 
 Status: Planned  
 Target release: v0.9.0  

@@ -4,7 +4,7 @@ Established: 2026-10-15. This document preserves the agreed direction. [ROADMAP.
 
 ## Goal and architecture
 
-Build a Windows-first native Rust Colonist-inspired strategy game with offline solo/bots, private guest rooms, later public casual/ranked play, and original assets. Start with 2–4 seats and expand to 2–8. Hosts select human/bot/open seats before starting.
+Build a Windows-first native Rust original strategy game with offline solo/bots, private guest rooms, later public casual/ranked play, and original assets. Start with 2–4 seats and expand to 2–8. Hosts select human/bot/open seats before starting.
 
 Use pure Rust rules, shared serializable protocol types, restricted-observation bots, egui/eframe + wgpu desktop, and a separate Axum/Tokio server. Supabase Auth/Postgres with SQLx provides online identity/storage in a new organization and project independent of Scout App. Keep guest refresh credentials in Windows credential storage and all server/database secrets out of desktop builds.
 
@@ -12,7 +12,7 @@ Offline saves use explicit versions and atomic replacement. Online commands are 
 
 ## Gameplay and pregame contract
 
-Cover base rules, Cities & Knights, Seafarers, their supported combinations, Traders & Barbarians, and Explorers & Pirates with pinned core scenarios and officially documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional material, historical editions, browser builds, and non-Windows release packages are excluded.
+Cover base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, and Voyagers & Corsairs with pinned core scenarios and officially documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional material, historical editions, browser builds, and non-Windows release packages are excluded.
 
 One versioned GameConfig drives pregame controls, server validation, presets, and saves. Gameplay changes clear readiness; starting freezes configuration. Include room/seat settings, rules/scenarios/maps, generation and preview, victory/dice/robber/discard/trade policy, timing/turn order, expansion settings, audience/recovery policy, and saved/shared presets. See [pregame catalogue](pregame-options.md).
 
@@ -36,12 +36,12 @@ Every milestone uses a dedicated branch and PR against stable. nightly is latest
 8. **v0.2.0 — Private online lobby:** Let friends create and join a consistent native online lobby. [Implementation plan](../milestones/milestone-08/plan.md).
 9. **v0.3.0 — Reliable online games:** Make base-game multiplayer authoritative, durable, and recoverable. [Implementation plan](../milestones/milestone-09/plan.md).
 10. **v0.4.0 — Base pregame completeness:** Make all planned base-game configuration controls functional and verifiable. [Implementation plan](../milestones/milestone-10/plan.md).
-11. **v0.5.0 — Cities & Knights:** Deliver complete Cities & Knights games including all core cards and bot choices. [Implementation plan](../milestones/milestone-11/plan.md).
-12. **v0.6.0 — Seafarers:** Deliver the pinned Seafarers core scenarios with bots and correct nautical rules. [Implementation plan](../milestones/milestone-12/plan.md).
-13. **v0.7.0 — Combined expansions:** Support documented Seafarers plus Cities & Knights combinations. [Implementation plan](../milestones/milestone-13/plan.md).
+11. **v0.5.0 — Citadels & Sentinels:** Deliver complete Citadels & Sentinels games including all core cards and bot choices. [Implementation plan](../milestones/milestone-11/plan.md).
+12. **v0.6.0 — Open Seas:** Deliver the pinned Open Seas core scenarios with bots and correct nautical rules. [Implementation plan](../milestones/milestone-12/plan.md).
+13. **v0.7.0 — Combined expansions:** Support documented Open Seas plus Citadels & Sentinels combinations. [Implementation plan](../milestones/milestone-13/plan.md).
 14. **v0.8.0 — Five to eight players:** Scale the implemented game families to supported larger player counts. [Implementation plan](../milestones/milestone-14/plan.md).
-15. **v0.9.0 — Traders & Barbarians:** Implement the pinned core Traders & Barbarians variants and scenarios. [Implementation plan](../milestones/milestone-15/plan.md).
-16. **v0.10.0 — Explorers & Pirates:** Implement Explorers & Pirates as its own rules family with every pinned core scenario. [Implementation plan](../milestones/milestone-16/plan.md).
+15. **v0.9.0 — Caravans & Raiders:** Implement the pinned core Caravans & Raiders variants and scenarios. [Implementation plan](../milestones/milestone-15/plan.md).
+16. **v0.10.0 — Voyagers & Corsairs:** Implement Voyagers & Corsairs as its own rules family with every pinned core scenario. [Implementation plan](../milestones/milestone-16/plan.md).
 17. **v0.11.0 — Maps and configuration completion:** Reconcile the full settings catalogue and finish map/preset authoring and supported combinations. [Implementation plan](../milestones/milestone-17/plan.md).
 18. **v0.12.0 — Public casual platform:** Add public discovery and social features without weakening private-room boundaries. [Implementation plan](../milestones/milestone-18/plan.md).
 19. **v1.0.0-rc.1 — Ranked and operations:** Prepare competitive play and demonstrate production operation and recovery. [Implementation plan](../milestones/milestone-19/plan.md).

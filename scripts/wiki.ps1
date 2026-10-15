@@ -15,8 +15,8 @@ try {
     $changes = @(git -C $repoRoot status --porcelain --untracked-files=normal)
     if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect source status.' }
     if ($Approved -and $changes.Count -gt 0) { throw 'Commit approved sources before generating approved docs.' }
-    if ($PullRequestUrl -and $PullRequestUrl -notmatch '^https://github\.com/Codings-Biggest-Fan/colonist/pull/\d+$') { throw 'Supply a project PR URL.' }
-    $site = 'https://github.com/Codings-Biggest-Fan/colonist'
+    if ($PullRequestUrl -and $PullRequestUrl -notmatch '^https://github\.com/Codings-Biggest-Fan/hearthline/pull/\d+$') { throw 'Supply a project PR URL.' }
+    $site = 'https://github.com/Codings-Biggest-Fan/hearthline'
     $wiki = "$site/wiki"
     $nl = [Environment]::NewLine
     $files = [Collections.Generic.List[IO.FileInfo]]::new()
@@ -62,7 +62,7 @@ try {
                 $relative = [IO.Path]::GetRelativePath($repoRoot,$resolved).Replace('\','/')
                 if ($relative.StartsWith('../')) { throw "Source link escapes repository: $target" }
                 $encoded = (($relative -split '/') | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/'
-                $destination = if ($match.Groups['prefix'].Value.StartsWith('!')) { "https://raw.githubusercontent.com/Codings-Biggest-Fan/colonist/$sourceCommit/$encoded" } else { "$site/blob/$sourceCommit/$encoded$anchor" }
+                $destination = if ($match.Groups['prefix'].Value.StartsWith('!')) { "https://raw.githubusercontent.com/Codings-Biggest-Fan/hearthline/$sourceCommit/$encoded" } else { "$site/blob/$sourceCommit/$encoded$anchor" }
             }
             return $match.Groups['prefix'].Value + $destination + ')'
         })
@@ -71,7 +71,7 @@ try {
         [IO.File]::WriteAllText((Join-Path $outputFull "$($map[$file.FullName]).md"), $page, [Text.UTF8Encoding]::new($false))
     }
     $wikiHomePage = @"
-# Native Rust Colonist Remake
+# Hearthline
 
 $banner
 

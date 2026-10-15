@@ -9,8 +9,8 @@ All helpers resolve the repository from PSScriptRoot, work from outside the repo
 - milestone.ps1 — required-document, milestone-folder, and local Markdown link validation. Use -All (M00–M20) or -Number 0. Add -RequireComplete to require Complete status; this does not certify evidence truth.
 
 ```powershell
-& 'C:\path\to\colonist\scripts\milestone.ps1' -All
-& 'C:\path\to\colonist\scripts\milestone.ps1' -Number 1 -RequireComplete
+& 'C:\path\to\hearthline\scripts\milestone.ps1' -All
+& 'C:\path\to\hearthline\scripts\milestone.ps1' -Number 1 -RequireComplete
 ```
 
 ## Remaining milestone-01 helpers
@@ -31,7 +31,7 @@ Secrets stay outside scripts and tracked files. Logs/screenshots belong in their
 
 ```powershell
 pwsh -NoProfile -File ./scripts/wiki.ps1
-pwsh -NoProfile -File ./scripts/wiki.ps1 -OutputPath '.local/wiki' -PullRequestUrl 'https://github.com/Codings-Biggest-Fan/colonist/pull/1'
+pwsh -NoProfile -File ./scripts/wiki.ps1 -OutputPath '.local/wiki' -PullRequestUrl 'https://github.com/Codings-Biggest-Fan/hearthline/pull/1'
 ```
 
 The output is generated public Markdown with pinned source links, an explicit unapproved preview banner, and grouped Game Instructions navigation. Publishing requires a separate explicit git commit/push to the initialized wiki repository. No credentials are embedded. Use -Approved only from clean stable after user approval; it does not itself approve or merge anything.

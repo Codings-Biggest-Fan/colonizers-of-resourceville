@@ -1,4 +1,4 @@
-# Milestone 11 — Cities & Knights
+# Milestone 11 — Citadels & Sentinels
 
 Target release: **v0.5.0**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
 
@@ -6,7 +6,7 @@ Target release: **v0.5.0**. Status: Planned. This is an initial plan; refine aga
 
 ## Goal and dependencies
 
-Deliver complete Cities & Knights games including all core cards and bot choices.
+Deliver complete Citadels & Sentinels games including all core cards and bot choices.
 
 Requires milestone 10 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
 
@@ -36,7 +36,7 @@ Record actual captures and metadata in the linked photo index. Explain nonvisual
 
 ## Compatibility and migration
 
-Use the milestone-02 pinned rules edition and document interpretation differences. Seafarers combination is not enabled before milestone 13.
+Use the milestone-02 pinned rules edition and document interpretation differences. Open Seas combination is not enabled before milestone 13.
 
 ## Release gate and handoff
 

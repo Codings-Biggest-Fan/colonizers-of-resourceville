@@ -1,4 +1,4 @@
-# Milestone 11 progress — Cities & Knights
+# Milestone 11 progress — Citadels & Sentinels
 
 Status: Planned  
 Target release: v0.5.0  

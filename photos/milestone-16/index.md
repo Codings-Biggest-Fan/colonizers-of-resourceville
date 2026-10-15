@@ -1,4 +1,4 @@
-# Milestone 16 photos — Explorers & Pirates
+# Milestone 16 photos — Voyagers & Corsairs
 
 [Plan](../../milestones/milestone-16/plan.md) · [Progress](../../milestones/milestone-16/progress.md) · [Reports](../../milestones/milestone-16/reports/)
 
