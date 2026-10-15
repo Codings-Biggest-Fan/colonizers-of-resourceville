@@ -22,9 +22,32 @@ The stack is native Rust with egui/eframe and wgpu; a separate Rust Axum/Tokio s
 
 Statuses are Planned, In progress, Verifying, Complete, and Blocked. Blocked means a real dependency prevents progress. Do not use estimated percentages or describe planned features as delivered. Keep dates in the user's America/Los_Angeles time context.
 
+## Milestone 0 and GitHub delivery
+
+Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–20 without renumbering them. Native Rust scaffolding stays M01. Original setup reports now belong to milestone-00 and retain their historical wording.
+
+Use a dedicated milestone-NN/short-description branch and one milestone PR targeting stable. Never implement directly on stable or advance while approval is pending.
+
+- nightly points to the latest pushed active-milestone commit, including unfinished work.
+- beta points to the current unapproved milestone PR head for user testing. Push milestone/nightly/beta refs together when that PR changes. Before a PR exists, beta retains its last testing revision.
+- stable points to the latest explicitly approved and merged milestone PR and is the default branch. Until the first approval it contains the published pre-workflow baseline, not a completed milestone.
+- main is retained as the legacy publication baseline. Do not force-push, rewrite history, or move shared refs backward; inspect divergence and resolve through the PR workflow.
+
+Open and attach the milestone PR when reviewable work and verification are ready. Include changes, actual test/build results, manual testing steps, limitations, intended release, beta commit, and wiki/evidence links. The user tests and approves each milestone. STOP with the PR open: never merge, advance stable, publish its release, or begin the next milestone without explicit user approval. Finishing implementation, opening a PR, or passing checks is not approval. Apply testing corrections to the same PR; post-release polish uses its own branch/PR.
+
+After approval and successful gates, merge the approved head into stable and publish a GitHub Release from the resulting stable commit. M00 targets v0.0.0; M01–M20 keep existing versions. Mark pre-v1.0.0 releases as prereleases. Include PR/commit, changes, actual checks, manual testing, wiki/build/game guides, evidence, artifacts/checksums when produced, migration notes, and limitations. Never tag unfinished work, publish untested binaries, or overwrite published tags/releases. Update roadmap/progress with approval and release links.
+
+## Wiki and building/game instructions
+
+The GitHub Wiki hosts public documentation. Keep reviewed sources in docs/, milestones/, photos/, ROADMAP.md, and AGENTS.md; wiki repositories lack normal source PR review. Link the wiki, Building, and Game Instructions from README.md. Generate pages with scripts/wiki.ps1 and verify published navigation.
+
+Unapproved-branch wiki pages must prominently say TESTING PREVIEW, identify source branch/commit and PR when available, and never look like approved release docs. After approval republish from stable. Maintain source-to-wiki link mappings and pinned source/evidence links.
+
+Maintain docs/building.md: prerequisites, clone/channel selection, commands that work now, guarded future build/run/package instructions, troubleshooting, and clean-checkout verification. Current setup has no Cargo workspace: say so. Maintain docs/game-instructions/ as the player-guide source folder, published as a grouped Game Instructions wiki section. Cover setup, turns/trading, bots, saves/reconnect, variants, and troubleshooting as implemented; distinguish plans from available controls.
+
 ## Permanent project records
 
-- ROADMAP.md includes current release, active milestone, last update, dependencies, all 20 releases, status, acceptance summary, and links to plans, progress, reports, and photos.
+- ROADMAP.md includes current release, active milestone, last update, dependencies, M00 plus all 20 implementation releases, status, acceptance summary, plans, progress, reports, photos, PRs, and published releases.
 - Every milestone has plan.md, progress.md, reports/, and a matching photos/milestone-NN/index.md.
 - Plans record goal, release, dependencies, scope, tasks, interface/data changes, tests, screenshots, compatibility, and migration considerations.
 - Progress records distinguish landed work, pending checks, remaining work, blockers, and evidence.

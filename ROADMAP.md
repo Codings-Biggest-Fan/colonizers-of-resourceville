@@ -4,11 +4,11 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonist](https://github.com/Codings-Biggest-Fan/colonist), public; planning structure published on main.
-- **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), In progress.
-- **Current phase:** structure and planning records established at the user's request; native implementation is pending.
+- **Active milestone:** [00 — Initial setup](milestones/milestone-00/plan.md), Verifying; user testing and approval pending.
+- **Current phase:** setup documentation/GitHub workflow ready for review; native implementation remains M01.
 - **Execution mode:** milestone work; Polish mode is available on request through [AGENTS.md](AGENTS.md#polish-mode).
-- **Next task:** verify/install Rust/MSVC prerequisites explicitly, then scaffold the Cargo workspace and native window.
-- **Verification:** planning structure/link checks passed; both helper scripts parse and the pending-completion gate correctly rejects M01. [Actual results](milestones/milestone-01/reports/002-structure-validation.md). No application build, runtime inspection, multiplayer verification, or cloud provisioning has occurred.
+- **Next task:** user tests M00's PR/beta. Wait for explicit approval before merge, release, or M01.
+- **Verification:** planning structure/link checks passed; both helper scripts parse and the pending-completion gate correctly rejects M01. [Actual results](milestones/milestone-00/reports/002-structure-validation.md). No application build, runtime inspection, multiplayer verification, or cloud provisioning has occurred.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
 
@@ -18,7 +18,8 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 
 | Milestone | Target release | Status | Depends on | Records | Acceptance gate |
 | --- | --- | --- | --- | --- | --- |
-| 01 | v0.0.1 — Foundation | In progress | None | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
+| 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI validated; PR tested and explicitly approved before merge and setup-only release. |
+| 01 | v0.0.1 — Foundation | Planned | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
 | 02 | v0.0.2 — Rules and configuration contract | Planned | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
 | 03 | v0.0.3 — Board and preview | Planned | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
 | 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
@@ -41,7 +42,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 
 ## Verified capabilities and current limitations
 
-- The repository contains the roadmap, all 20 initial plans/progress/photo indexes, report folders, and contributor instructions.
+- The repository contains the roadmap, M00 records plus all 20 implementation plans/progress/photo indexes, report folders, and contributor instructions.
 - Read-only prerequisite and record-validation helpers are provided; executed results are recorded in the report.
 - No Cargo manifests, Rust application, CI workflow, native window, game rules, server container, or PNG evidence exists yet.
 - The read-only prerequisite check reported rustc, cargo, rustup, and MSVC build tools missing/unverified. No installation was performed; native build prerequisites need to be established next.
@@ -53,3 +54,9 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 Windows-first native Rust; original assets/branding; offline plus online human/bot games; all four core expansion families and their documented compatible combinations. Initial 2–4 seats expand to 2–8. Public/ranked play is later scope. No in-game purchases, browser application, unverified parity claims, or silent infrastructure provisioning.
 
 Status vocabulary: Planned → In progress → Verifying → Complete. Use Blocked only for a real dependency. Keep screenshots and reports linked; preserve history. Completion requires manual evidence review as well as automated checks.
+
+## GitHub delivery channels
+
+[Wiki](https://github.com/Codings-Biggest-Fan/colonist/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
+
+Each milestone uses its own branch and PR against stable. nightly is the latest pushed milestone commit; beta matches the active unapproved PR head; stable is the latest approved/merged PR (initial baseline until the first approval). main remains legacy history. No milestone release exists. The user tests and approves before any merge or release. M00 adds initial setup without renumbering M01–M20.

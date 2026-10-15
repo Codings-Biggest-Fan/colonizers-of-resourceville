@@ -1,6 +1,6 @@
 # Milestone 01 progress — Foundation
 
-Status: In progress  
+Status: Planned  
 Target release: v0.0.1  
 Last updated: 2026-10-15
 
@@ -8,19 +8,15 @@ Last updated: 2026-10-15
 
 ## Landed work
 
-- Project structure, all 20 initial plans/progress/photo indexes, roadmap, contributor rules including Polish mode, and planning documents.
-- Read-only prerequisite checking and milestone structure/link validation helpers. Actual checks are recorded in the foundation report.
-- Planning structure published to the public GitHub repository; see [publication report](reports/003-github-publication.md). No milestone release is implied.
+No native implementation has started. Repository/documentation setup and its historical reports now belong to [M00](../milestone-00/progress.md).
 
 ## Implementation checklist
 
 - [ ] Create the five-crate Cargo workspace: rules, protocol, bots, desktop, server; pin the toolchain and commit Cargo.lock once generated.
 - [ ] Launch an original native egui/eframe window using wgpu; do not present future game controls as playable.
 - [ ] Add Windows CI and script entry points for development, checks, tests, captures, packaging, and milestone validation.
-- [ ] Establish all 20 initial plans, progress records, report folders, photo indexes, architecture documentation, and current roadmap.
+- [ ] Reuse and refine the records established in M00 against the actual native implementation.
 - [ ] Verify Windows prerequisites without silently installing tools or provisioning services.
-
-The documentation portion of the records task is established. The broad task stays unchecked until native scaffolding/CI/helpers and the remaining foundation requirements are delivered.
 
 ## Verification
 
@@ -37,7 +33,7 @@ Finish the active milestone's actual Rust workspace, native window, CI, remainin
 
 ## Blockers
 
-No blocker to the requested documentation structure. Toolchain readiness remains unverified for subsequent native implementation.
+Await M00 testing/approval and a request to begin M01. Toolchain readiness remains unverified.
 
 ## Polish checklist
 
@@ -45,4 +41,4 @@ No active Polish mode request or reported flaw checklist. See [Polish mode](../.
 
 ## Evidence and next step
 
-See [001 — planning structure](reports/001-planning-structure.md) and [002 — actual validation results](reports/002-structure-validation.md). The structure check passed for all 20 milestone sets and 443 local links; both helper scripts parsed successfully. The pending-completion gate rejected M01 as expected. Prerequisite checking reported missing/unverified Rust and MSVC tools without installing anything. Next: continue foundation with prerequisite verification and Cargo/native scaffolding when requested.
+No native builds, screenshots, or release artifacts yet. See [M00 historical setup reports](../milestone-00/reports/). Begin only after M00 approval and the next user request.

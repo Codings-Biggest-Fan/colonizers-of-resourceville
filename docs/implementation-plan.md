@@ -18,6 +18,12 @@ One versioned GameConfig drives pregame controls, server validation, presets, an
 
 Selectable controls must change real behavior. Reject invalid combinations with reasons. Board seeds never expose future hidden draws. Casual two-seat play, official two-player rules, official 5–6 rules, and custom 7–8 rules are distinct.
 
+## Milestone 00 — Initial setup
+
+M00 separates repository/plans/docs/wiki/helpers and GitHub workflow from the original 20 implementation milestones. It targets source/docs-only v0.0.0 after user PR testing/approval. M01 remains native Rust foundation. [M00 plan](../milestones/milestone-00/plan.md).
+
+Every milestone uses a dedicated branch and PR against stable. nightly is latest work, beta is the active unapproved PR head, and stable is the most recent approved/merged PR. Wait for explicit user approval before merging, publishing its GitHub Release, or advancing. [Workflow](github-workflow.md).
+
 ## Release sequence
 
 1. **v0.0.1 — Foundation:** Establish a reproducible native Rust workspace and the permanent planning, evidence, and release structure. [Implementation plan](../milestones/milestone-01/plan.md).
@@ -56,3 +62,7 @@ Each release gate combines meaningful subsystem tests, formatting/Clippy/builds 
 Implement one milestone at a time. After its gate passes, summarize evidence/limitations and stop for the next request. When explicitly asked for Polish mode, pause advancement and fix reported flaws until asked to resume. See [agent instructions](../AGENTS.md#polish-mode).
 
 No release dates are promised. Confirm actual organization/hosting costs before provisioning. Current scaffolding work does not imply a shipped v0.0.1.
+
+## Public documentation
+
+Publish PR-reviewed source to the GitHub Wiki with clearly labeled unapproved previews, then republish approved docs from stable after approval. Include [Building](building.md) and the [Game Instructions folder](game-instructions/README.md), linked from README. Keep source records and photo evidence versioned.
