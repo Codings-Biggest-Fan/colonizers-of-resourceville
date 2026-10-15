@@ -1,0 +1,11 @@
+/target/
+/dist/
+/.env
+/.env.*
+!/.env.example
+*.log
+*.tmp
+*.dmp
+/coverage/
+/.local/
+# Keep milestone reports and photos tracked. They are durable project evidence.
