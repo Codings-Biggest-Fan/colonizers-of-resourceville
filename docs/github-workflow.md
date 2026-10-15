@@ -6,9 +6,11 @@
 | nightly | Latest pushed active-milestone commit, possibly unfinished |
 | beta | Current unapproved milestone PR head for user testing |
 | stable | Latest explicitly approved, merged PR; default branch |
-| main | Retained initial publication baseline |
+| main | Compatibility mirror of the latest approved stable commit |
 
 Before the first approval, stable contains the initial baseline, not a released milestone. M00 is Initial setup; M01–M20 keep their existing scope/versions.
+
+Current review history: initial setup merged through [PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1) at 624223e. Later README/polish changes are reviewed separately in [PR #2](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/2); this new PR does not authorize its own merge.
 
 ## Workflow
 

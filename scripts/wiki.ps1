@@ -70,12 +70,13 @@ try {
         $page = $banner + $nl + $nl + "[Reviewed source]($site/blob/$sourceCommit/$relative)" + $nl + $nl + $body
         [IO.File]::WriteAllText((Join-Path $outputFull "$($map[$file.FullName]).md"), $page, [Text.UTF8Encoding]::new($false))
     }
+    $currentStatus = Get-Content -LiteralPath (Join-Path $repoRoot 'README.md') | Where-Object { $_.StartsWith('**Current status:**') } | Select-Object -First 1
     $wikiHomePage = @"
 # The Colonizers of Resourceville
 
 $banner
 
-Windows-first native Rust strategy game. Initial setup only: no playable game, native build, or milestone release exists yet. M00 awaits user testing/approval; M01 begins native scaffolding afterward.
+$currentStatus
 
 - [Current roadmap]($wiki/Roadmap)
 - [Building on Windows]($wiki/Building)

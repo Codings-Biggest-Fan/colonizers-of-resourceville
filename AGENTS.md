@@ -39,7 +39,7 @@ Use a dedicated milestone-NN/short-description branch and one milestone PR targe
 - nightly points to the latest pushed active-milestone commit, including unfinished work.
 - beta points to the current unapproved milestone PR head for user testing. Push milestone/nightly/beta refs together when that PR changes. Before a PR exists, beta retains its last testing revision.
 - stable points to the latest explicitly approved and merged milestone PR and is the default branch. Until the first approval it contains the published pre-workflow baseline, not a completed milestone.
-- main is retained as the legacy publication baseline. Do not force-push, rewrite history, or move shared refs backward; inspect divergence and resolve through the PR workflow.
+- main mirrors the latest approved stable commit for compatibility. Update it by fast-forward after approved stable changes. Do not force-push, rewrite history, or move shared refs backward; inspect divergence and resolve through the PR workflow.
 
 Open and attach the milestone PR when reviewable work and verification are ready. Include changes, actual test/build results, manual testing steps, limitations, intended release, beta commit, and wiki/evidence links. The user tests and approves each milestone. STOP with the PR open: never merge, advance stable, publish its release, or begin the next milestone without explicit user approval. Finishing implementation, opening a PR, or passing checks is not approval. Apply testing corrections to the same PR; post-release polish uses its own branch/PR.
 

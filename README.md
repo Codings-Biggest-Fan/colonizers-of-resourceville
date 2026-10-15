@@ -6,7 +6,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** Milestone 0 covers repository setup, documentation, and review workflow. It is [open for testing in PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1). There is no playable game, Cargo workspace, or native download yet.
+**Current status:** Milestone 0 initial setup was merged through [PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1). The expanded README and documentation polish are [open for testing in PR #2](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/2). There is no playable game, Cargo workspace, or native download yet.
 
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
@@ -50,8 +50,9 @@ Native builds begin in Milestone 1. They will require Rust through rustup, rustf
 
 ### Development channels
 
-- **stable:** the latest approved and merged PR; currently the pre-workflow baseline.
+- **stable:** the latest approved and merged PR; currently Milestone 0 initial setup.
 - **beta:** the current unapproved milestone PR, ready for testing.
 - **nightly:** the latest pushed milestone work, which may be unfinished.
+- **main:** a compatibility mirror of approved stable.
 
 See the [contribution and release workflow](docs/github-workflow.md) and [agent instructions](AGENTS.md) before making changes. The project license has not been selected; asset sources are recorded in [attribution](assets/ATTRIBUTION.md).

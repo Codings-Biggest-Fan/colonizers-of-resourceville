@@ -40,4 +40,4 @@ Polish mode is active for the user's branding correction. Corrections stay in th
 - [x] Republish and visually verify the new preview/wiki; archive the after-image and final report.
 - [x] Expand the public game description and README with roadmap, linked documentation images, and honest build/setup instructions; validate and publish through the same PR.
 
-[Review handoff](reports/007-review-handoff.md) · [Open PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1) · [Prepared release notes](release-notes.md). Hosted CI has no run yet and is not claimed passed. Polish mode remains active; await user testing/approval before merging, releasing, or advancing.
+[Review handoff](reports/007-review-handoff.md) · [Open follow-up PR #2](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/2) · [Prepared release notes](release-notes.md). Initial setup PR #1 merged at 624223e; its approval does not cover later README/polish changes. Polish mode remains active; await testing/approval of PR #2 before a new merge or release.
