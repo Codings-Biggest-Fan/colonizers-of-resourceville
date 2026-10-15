@@ -12,6 +12,7 @@ This milestone has no native game UI. Any captures here show actual GitHub docum
 | [004 — requested title](004-resourceville-wiki.jpg) | 2026-10-15 | bb321a4 | 503×846 viewport; OS scaling not measured | Live wiki after naming polish | Exact requested title wraps cleanly; preview/PR/build/game links visible |
 | [005 — current building guide](005-resourceville-building.jpg) | 2026-10-15 | bb321a4 | 503×846 viewport; OS scaling not measured | Building page | Current repository path, preview, prerequisites, no-Cargo notice inspected |
 | [006 — current game guides](006-resourceville-game-instructions.jpg) | 2026-10-15 | bb321a4 | 503×846 viewport; OS scaling not measured | Game Instructions hub | Current repository, links, and honest availability inspected |
+| [007 — expanded README](007-readme-overview.jpg) | 2026-10-15 | dc22888 | 503×846 viewport; OS scaling not measured | beta README description polish | Game overview readable; roadmap/build sections and loaded image verified in the browser |
 
 Add actual captures only after inspecting them. Do not imply documentation screenshots establish game behavior.
 
