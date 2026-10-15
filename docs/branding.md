@@ -1,10 +1,10 @@
-# Hearthline branding
+# The Colonizers of Resourceville branding
 
-Working product identity: **Hearthline**. Machine/repository/package prefix: **hearthline**. This is a project naming decision, not a trademark-clearance claim.
+Working product identity: **The Colonizers of Resourceville**. Machine/repository/package prefix: **colonizers-of-resourceville**. This is a project naming decision, not a trademark-clearance claim.
 
 Use original names, artwork, icons, sounds, typography, and copy in application/window titles, README/wiki, screenshots, repository metadata, installers, release notes, and packages. Do not reuse legacy working titles or competitor branding.
 
-| Family | Hearthline name | Target |
+| Family | The Colonizers of Resourceville name | Target |
 | --- | --- | --- |
 | City development and defense | Citadels & Sentinels | M11 |
 | Sailing and discovery | Open Seas | M12 |

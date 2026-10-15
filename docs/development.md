@@ -11,8 +11,8 @@ No build, test, application, or Docker command is advertised as runnable until i
 ## Available structure checks
 
 ```powershell
-& 'C:\path\to\hearthline\scripts\milestone.ps1' -All
-& 'C:\path\to\hearthline\scripts\milestone.ps1' -Number 1
+& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
+& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -Number 1
 ```
 
 The checker validates record structure/local Markdown links and optional Complete status. It cannot prove test outcomes, screenshot contents, or runtime correctness.

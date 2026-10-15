@@ -1,4 +1,4 @@
-# 005 — Polish: original Hearthline branding
+# 005 — Polish: original The Colonizers of Resourceville branding
 
 Date: 2026-10-15 (America/Los_Angeles)
 
@@ -8,9 +8,9 @@ The setup used reference-product names as its own project/expansion branding. Th
 
 ## Fix
 
-- Adopted Hearthline as working product identity and hearthline as repository/machine prefix.
+- Adopted The Colonizers of Resourceville as working product identity and colonizers-of-resourceville as repository/machine prefix.
 - Renamed the existing public repository, preserving its identity, commits, branches, and PR #1; updated local source/wiki remotes and PR attachment/title.
-- Replaced current docs/script/title/expansion labels with original Hearthline names. Added a branding guide and persistent AGENTS.md rules.
+- Replaced current docs/script/title/expansion labels with original The Colonizers of Resourceville names. Added a branding guide and persistent AGENTS.md rules.
 - Preserved the original report versions in Git history; sanitized current historical report copies under this explicit user instruction without changing their outcomes or SHAs.
 - Kept the pre-correction browser image privately in ignored .local; it is not published as branded project evidence. A new inspected after-image will be archived after preview publication.
 

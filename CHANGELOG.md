@@ -9,7 +9,7 @@
 - Architecture, rules, pregame configuration, compatibility, development, and deployment documents.
 - Rust/native workflow, recordkeeping requirements, and user-directed Polish mode in AGENTS.md.
 - Read-only prerequisite checking and milestone structure/link validation helpers.
-- Published the planning structure to the public GitHub repository Codings-Biggest-Fan/hearthline on main.
+- Published the planning structure to the public GitHub repository Codings-Biggest-Fan/colonizers-of-resourceville on main.
 
 Added M00, nightly/beta/stable branch policy, per-milestone PR approval and GitHub Releases, wiki publication, building guide, and a Game Instructions source folder. Original setup reports moved to M00 with historical content preserved.
 

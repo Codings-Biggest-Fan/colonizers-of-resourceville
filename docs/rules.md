@@ -6,7 +6,7 @@
 
 Use public specifications, rulebooks, and ordinary gameplay observation. Record title, edition/date, source URL, access date, and applicable interpretation before implementing a family. Do not copy proprietary assets or code.
 
-Primary-source research is not yet pinned. M02 must record factual sources by title, edition, URL, and access date; research citations are not product branding. Do not market another game or expansion under its original name in Hearthline materials.
+Primary-source research is not yet pinned. M02 must record factual sources by title, edition, URL, and access date; research citations are not product branding. Do not market another game or expansion under its original name in The Colonizers of Resourceville materials.
 
 M02 must enumerate all base development cards, expansion progress cards, core scenarios, objective variants, supported player counts, and documented combination rules. Record uncertainties rather than guessing.
 

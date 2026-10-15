@@ -1,8 +1,8 @@
-# Hearthline
+# The Colonizers of Resourceville
 
 An independently implemented Windows-first hex-board strategy game project.
 
-[Public GitHub repository](https://github.com/Codings-Biggest-Fan/hearthline) · [Documentation wiki](https://github.com/Codings-Biggest-Fan/hearthline/wiki) · [Building](https://github.com/Codings-Biggest-Fan/hearthline/wiki/Building) · [Game Instructions](https://github.com/Codings-Biggest-Fan/hearthline/wiki/Game-Instructions)
+[Public GitHub repository](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville) · [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Building) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions)
 
 **Current state:** planning structure established; no Cargo workspace or playable application yet. Milestone 00 — Initial setup is ready for testing on its PR; Milestone 01 native foundation is planned. No release has shipped, no application screenshot exists, and no cloud resources have been created.
 
@@ -28,10 +28,10 @@ The roadmap includes base rules, Citadels & Sentinels, Open Seas, their supporte
 From PowerShell, including outside this directory:
 
 ```powershell
-& 'C:\path\to\hearthline\scripts\milestone.ps1' -All
-& 'C:\path\to\hearthline\scripts\bootstrap.ps1'
+& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
+& 'C:\path\to\colonizers-of-resourceville\scripts\bootstrap.ps1'
 ```
 
 The bootstrap helper checks prerequisites without installing anything. Cargo build/run commands will be documented when the workspace is implemented; none are claimed to work yet.
 
-The working product name is **Hearthline**; no project license is selected. Use original code and assets; see [branding](docs/branding.md) and [attribution](assets/ATTRIBUTION.md).
+The working product name is **The Colonizers of Resourceville**; no project license is selected. Use original code and assets; see [branding](docs/branding.md) and [attribution](assets/ATTRIBUTION.md).

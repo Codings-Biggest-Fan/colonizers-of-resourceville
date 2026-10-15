@@ -3,10 +3,11 @@
 Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
-- **Source repository:** [Codings-Biggest-Fan/hearthline](https://github.com/Codings-Biggest-Fan/hearthline), public; planning structure published on main.
+- **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; planning structure published on main.
 - **Active milestone:** [00 — Initial setup](milestones/milestone-00/plan.md), Verifying; user testing and approval pending.
+- **Review PR:** [#1 — Resourceville initial setup](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1); [prepared release notes](milestones/milestone-00/release-notes.md). No merge/release before explicit approval.
 - **Current phase:** setup documentation/GitHub workflow ready for review; native implementation remains M01.
-- **Execution mode:** Polish mode active for original Hearthline branding; roadmap advancement paused. [Rules](AGENTS.md#polish-mode).
+- **Execution mode:** Polish mode active for original The Colonizers of Resourceville branding; roadmap advancement paused. [Rules](AGENTS.md#polish-mode).
 - **Next task:** user tests M00's PR/beta. Wait for explicit approval before merge, release, or M01.
 - **Verification:** planning structure/link checks passed; both helper scripts parse and the pending-completion gate correctly rejects M01. [Actual results](milestones/milestone-00/reports/002-structure-validation.md). No application build, runtime inspection, multiplayer verification, or cloud provisioning has occurred.
 
@@ -57,6 +58,6 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 
 ## GitHub delivery channels
 
-[Wiki](https://github.com/Codings-Biggest-Fan/hearthline/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
+[Wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
 Each milestone uses its own branch and PR against stable. nightly is the latest pushed milestone commit; beta matches the active unapproved PR head; stable is the latest approved/merged PR (initial baseline until the first approval). main remains legacy history. No milestone release exists. The user tests and approves before any merge or release. M00 adds initial setup without renumbering M01–M20.

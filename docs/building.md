@@ -16,8 +16,8 @@ Install explicitly through the official [Rust instructions](https://rust-lang.or
 ## Clone and choose a channel
 
 ```powershell
-git clone https://github.com/Codings-Biggest-Fan/hearthline.git
-Set-Location hearthline
+git clone https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville.git
+Set-Location colonizers-of-resourceville
 git switch stable
 ```
 

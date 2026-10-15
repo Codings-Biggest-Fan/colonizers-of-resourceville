@@ -9,5 +9,6 @@ The original setup reports were moved from M01 to M00 when the user separated In
 - [003 — Public GitHub publication](003-github-publication.md)
 - [004 — M00 workflow and wiki validation](004-github-workflow-and-wiki.md)
 - [005 — Original branding polish](005-polish-original-branding.md)
+- [006 — User-selected title](006-polish-selected-title.md)
 
 Append actual sessions as NNN-description.md and polish sessions as NNN-polish-description.md. Include changes, checks/results, decisions, screenshot links, limitations, and exact next steps. Correct historical evidence through a subsequent report.

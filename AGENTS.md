@@ -1,4 +1,4 @@
-# AGENTS.md — Hearthline
+# AGENTS.md — The Colonizers of Resourceville
 
 Read this file first, then README.md, ROADMAP.md, and the active milestone's plan and progress. Follow more specific nested instructions when present.
 
@@ -6,11 +6,13 @@ Read this file first, then README.md, ROADMAP.md, and the active milestone's pla
 
 ### Branding and active polish
 
-Product name: **Hearthline**. Machine/repository name: **hearthline**. Use original visuals, labels, copy, and marks everywhere: app/window titles, README/wiki, screenshots, package names, release notes, repository metadata, and social previews. Do not reuse prior working names or competitor product/expansion branding. Expansion names are Citadels & Sentinels, Open Seas, Caravans & Raiders, and Voyagers & Corsairs. Preserve gameplay scope while using original presentation. This is a working project identity, not a claim of trademark clearance.
+Product name: **The Colonizers of Resourceville**. Machine/repository name: **colonizers-of-resourceville**. Use original visuals, labels, copy, and marks everywhere: app/window titles, README/wiki, screenshots, package names, release notes, repository metadata, and social previews. Do not reuse prior working names or competitor product/expansion branding. Expansion names are Citadels & Sentinels, Open Seas, Caravans & Raiders, and Voyagers & Corsairs. Preserve gameplay scope while using original presentation. This is a working project identity, not a claim of trademark clearance.
+
+The user selected this exact title during branding polish. Preserve it in future work; do not substitute a newly invented product name without a user request.
 
 Polish mode is active for the user's branding correction. Fix and verify that scope in the current M00 PR without advancing milestones. Resume roadmap work only when requested. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
 
-Build an independently implemented Windows-first native Rust hex-board strategy game called Hearthline. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
+Build an independently implemented Windows-first native Rust hex-board strategy game called The Colonizers of Resourceville. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
 
 The agreed scope is offline solo with bots, private online rooms, later public casual/ranked play, and 2–4 seats growing to 2–8. Include base rules, Citadels & Sentinels, Open Seas, supported combinations, Caravans & Raiders, and Voyagers & Corsairs with their pinned core scenarios. Standalone games, promotional scenarios, historical editions, and arbitrary expansion mixtures are outside this roadmap. All gameplay modes are available without an in-game purchase system.
 

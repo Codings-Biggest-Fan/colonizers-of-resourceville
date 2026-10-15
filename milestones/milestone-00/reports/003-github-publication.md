@@ -5,7 +5,7 @@ Milestone: 01 — Foundation, In progress
 
 ## Changes
 
-Published the existing planning structure to [Codings-Biggest-Fan/hearthline](https://github.com/Codings-Biggest-Fan/hearthline) as a public repository, as explicitly requested. Initialized local Git with main, configured a repository-local GitHub no-reply author identity, and set origin to the new repository.
+Published the existing planning structure to [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville) as a public repository, as explicitly requested. Initialized local Git with main, configured a repository-local GitHub no-reply author identity, and set origin to the new repository.
 
 ## Actual verification
 
