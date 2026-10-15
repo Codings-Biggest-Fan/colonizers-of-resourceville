@@ -1,37 +1,57 @@
 # The Colonizers of Resourceville
 
-An independently implemented Windows-first hex-board strategy game project.
+Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
-[Public GitHub repository](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville) · [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Building) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions)
+The planned experience starts with gathering resources, negotiating trades, building roads and settlements, and competing for victory points. Later releases expand into seafaring, city development, defense, caravans, exploration, and scenario objectives. Hosts will be able to choose maps, rules, player counts, and human/bot seats before each game.
 
-**Current state:** planning structure established; no Cargo workspace or playable application yet. Milestone 00 — Initial setup is ready for testing on its PR; Milestone 01 native foundation is planned. No release has shipped, no application screenshot exists, and no cloud resources have been created.
+Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-## Start here
+**Current status:** Milestone 0 covers repository setup, documentation, and review workflow. It is [open for testing in PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1). There is no playable game, Cargo workspace, or native download yet.
 
-- [Current roadmap](ROADMAP.md)
-- [Accepted implementation plan](docs/implementation-plan.md)
-- [Milestone 00 setup plan](milestones/milestone-00/plan.md) and [current progress](milestones/milestone-00/progress.md)
-- [Branches, approval, and releases](docs/github-workflow.md) — nightly is latest work, beta is the unapproved PR, stable is the last approved/merged PR
-- [Local Building guide](docs/building.md) and [Game Instructions folder](docs/game-instructions/README.md)
-- [Agent and contributor rules, including Polish mode](AGENTS.md)
-- [Development guide](docs/development.md) and [helper scripts](scripts/README.md)
-- [Screenshot evidence](photos/README.md) and [milestone record conventions](milestones/README.md)
+[Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
-## Planned architecture
+## Roadmap
 
-Rust rules/protocol/bots, native egui/eframe + wgpu desktop, and a separate Axum/Tokio server backed by a new Supabase Auth/Postgres project. Offline solo comes before online play. Hosts choose human/bot seats; the initial 2–4-seat support expands to 2–8.
+| Milestones | What they deliver | Status |
+| --- | --- | --- |
+| 0 | Project setup, plans, wiki, and approval workflow | Ready for user review |
+| 1–3 | Native Rust foundation, rules/configuration contracts, and board preview | Planned |
+| 4–6 | Complete base rules, bots, and offline save/resume | Planned |
+| 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |
+| 11–14 | Citadels & Sentinels, Open Seas, combined scenarios, and up to eight players | Planned |
+| 15–17 | Caravans & Raiders, Voyagers & Corsairs, map tools, and supported combinations | Planned |
+| 18–20 | Public casual games, ranked play, and release verification | Planned |
 
-The roadmap includes base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, Voyagers & Corsairs, public casual games, and ranked base queues. All are planned, not currently implemented.
+Follow the [current roadmap](ROADMAP.md) for individual releases, acceptance gates, and progress. Each milestone has a plan, reports, and screenshot evidence. Each ships through its own PR and GitHub Release after user testing and approval.
 
-## Check the planning structure
+## Screenshots
 
-From PowerShell, including outside this directory:
+These are real **documentation previews**, not gameplay screenshots. Native game images will be added when the application exists.
+
+![Project wiki preview](photos/milestone-00/004-resourceville-wiki.jpg)
+
+[View full wiki screenshot](photos/milestone-00/004-resourceville-wiki.jpg) · [Building guide screenshot](photos/milestone-00/005-resourceville-building.jpg) · [Game Instructions screenshot](photos/milestone-00/006-resourceville-game-instructions.jpg) · [Capture details and archive](photos/milestone-00/index.md)
+
+## Building and checking the project
+
+For the current setup revision, install Git and PowerShell 7, then clone and check the review branch:
 
 ```powershell
-& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
-& 'C:\path\to\colonizers-of-resourceville\scripts\bootstrap.ps1'
+git clone https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville.git
+Set-Location colonizers-of-resourceville
+git switch beta
+pwsh -NoProfile -File ./scripts/milestone.ps1 -All
+pwsh -NoProfile -File ./scripts/bootstrap.ps1
 ```
 
-The bootstrap helper checks prerequisites without installing anything. Cargo build/run commands will be documented when the workspace is implemented; none are claimed to work yet.
+The first helper checks project records and local documentation links. The second checks prerequisites without installing anything; missing Rust/MSVC tools are reported as errors.
 
-The working product name is **The Colonizers of Resourceville**; no project license is selected. Use original code and assets; see [branding](docs/branding.md) and [attribution](assets/ATTRIBUTION.md).
+Native builds begin in Milestone 1. They will require Rust through rustup, rustfmt, Clippy, and the Microsoft C++ Build Tools/Windows SDK. **Cargo build/run commands do not work on this setup-only revision.** The [Building guide](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Building) covers prerequisites, future build commands, and troubleshooting.
+
+### Development channels
+
+- **stable:** the latest approved and merged PR; currently the pre-workflow baseline.
+- **beta:** the current unapproved milestone PR, ready for testing.
+- **nightly:** the latest pushed milestone work, which may be unfinished.
+
+See the [contribution and release workflow](docs/github-workflow.md) and [agent instructions](AGENTS.md) before making changes. The project license has not been selected; asset sources are recorded in [attribution](assets/ATTRIBUTION.md).

@@ -38,5 +38,6 @@ Polish mode is active for the user's branding correction. Corrections stay in th
 - [x] Adopt The Colonizers of Resourceville and original expansion labels; remove legacy product branding from current source text.
 - [x] Rename the repository and update source/wiki remotes, PR identity, documentation links, and contributor rules.
 - [x] Republish and visually verify the new preview/wiki; archive the after-image and final report.
+- [x] Expand the public game description and README with roadmap, linked documentation images, and honest build/setup instructions; validate and publish through the same PR.
 
 [Review handoff](reports/007-review-handoff.md) · [Open PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1) · [Prepared release notes](release-notes.md). Hosted CI has no run yet and is not claimed passed. Polish mode remains active; await user testing/approval before merging, releasing, or advancing.
