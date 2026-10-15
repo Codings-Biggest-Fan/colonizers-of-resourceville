@@ -2,6 +2,8 @@
 
 An independently implemented Windows-first hex-board strategy game project.
 
+[Public GitHub repository](https://github.com/Codings-Biggest-Fan/colonist)
+
 **Current state:** planning structure established; no Cargo workspace or playable application yet. Milestone 01 is In progress. No release has shipped, no application screenshot exists, and no cloud resources have been created.
 
 ## Start here

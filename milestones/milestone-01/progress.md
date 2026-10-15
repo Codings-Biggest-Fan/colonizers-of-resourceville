@@ -10,6 +10,7 @@ Last updated: 2026-10-15
 
 - Project structure, all 20 initial plans/progress/photo indexes, roadmap, contributor rules including Polish mode, and planning documents.
 - Read-only prerequisite checking and milestone structure/link validation helpers. Actual checks are recorded in the foundation report.
+- Planning structure published to the public GitHub repository; see [publication report](reports/003-github-publication.md). No milestone release is implied.
 
 ## Implementation checklist
 

@@ -3,6 +3,7 @@
 Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
+- **Source repository:** [Codings-Biggest-Fan/colonist](https://github.com/Codings-Biggest-Fan/colonist), public; planning structure published on main.
 - **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), In progress.
 - **Current phase:** structure and planning records established at the user's request; native implementation is pending.
 - **Execution mode:** milestone work; Polish mode is available on request through [AGENTS.md](AGENTS.md#polish-mode).

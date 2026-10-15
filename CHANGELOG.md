@@ -9,5 +9,6 @@
 - Architecture, rules, pregame configuration, compatibility, development, and deployment documents.
 - Rust/native workflow, recordkeeping requirements, and user-directed Polish mode in AGENTS.md.
 - Read-only prerequisite checking and milestone structure/link validation helpers.
+- Published the planning structure to the public GitHub repository Codings-Biggest-Fan/colonist on main.
 
 No v0.0.1 release has shipped. Rust implementation, CI, runtime screenshots, and release verification are pending.
