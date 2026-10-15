@@ -20,7 +20,7 @@ Last updated: 2026-10-15
 - [x] Source records/local Markdown link targets pass.
 - [x] PowerShell helpers parse and wiki generation passes.
 - [x] Invalid output/approval attempts fail safely.
-- [ ] Public wiki preview and channel/PR identity verified.
+- [x] Public wiki preview and channel/PR identity verified.
 - [ ] Documentation CI passes.
 - [ ] User tests and explicitly approves the current PR revision.
 - [ ] Approved PR merged into stable; setup v0.0.0 prerelease published.
@@ -37,4 +37,6 @@ Polish mode is active for the user's branding correction. Corrections stay in th
 
 - [x] Adopt The Colonizers of Resourceville and original expansion labels; remove legacy product branding from current source text.
 - [x] Rename the repository and update source/wiki remotes, PR identity, documentation links, and contributor rules.
-- [ ] Republish and visually verify the new preview/wiki; archive the after-image and final report.
+- [x] Republish and visually verify the new preview/wiki; archive the after-image and final report.
+
+[Review handoff](reports/007-review-handoff.md) · [Open PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1) · [Prepared release notes](release-notes.md). Hosted CI has no run yet and is not claimed passed. Polish mode remains active; await user testing/approval before merging, releasing, or advancing.
