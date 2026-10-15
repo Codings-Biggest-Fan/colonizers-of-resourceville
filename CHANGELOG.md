@@ -4,6 +4,8 @@
 
 ### Added — 2026-10-15
 
+- Expanded the game description and README with a milestone roadmap, linked documentation screenshots, build/setup instructions, and channel guidance; refreshed wiki preview and repository About metadata.
+
 - Current 20-milestone roadmap and accepted implementation plan.
 - Per-milestone plans, progress records, report folders, and screenshot indexes.
 - Architecture, rules, pregame configuration, compatibility, development, and deployment documents.
