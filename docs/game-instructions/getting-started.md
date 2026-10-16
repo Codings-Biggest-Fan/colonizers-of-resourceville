@@ -1,9 +1,9 @@
 # Getting started
 
-**Planned; not playable yet.** Offline games arrive at M06, private lobbies at M08, reliable online matches at M09.
+M01 provides a native foundation preview. Follow [Building](../building.md), then run scripts/dev.ps1. Check the title/icon, resize the window, and use Close preview or the native window Close control. There are no game setup controls yet.
 
-Offline: choose total seats and human/bot seats, inspect map/rules, then start. Solo uses one local human plus bots. Start with 2–4 total seats; larger supported games arrive at M14.
+## Planned gameplay
 
-Online: enter a guest name, create/join by room code, inspect settings, choose seats/colors, and mark ready. Gameplay edits clear readiness. The host starts after validation; started-game settings freeze.
+Offline games arrive at M06, private lobbies at M08, and reliable online matches at M09. Planned offline setup chooses total seats, human/bot seats, map, and rules. Solo uses one local human plus bots. Initial games support 2–4 seats, with larger supported games planned at M14.
 
-Add download, install, exact controls, and screenshots after a tested native bundle exists. See [Building](../building.md) for current source setup.
+Planned private-room setup includes a guest name, room code, settings, seats/colors, and readiness. Gameplay edits clear readiness; starting freezes the validated configuration. These are plans, not controls in M01.

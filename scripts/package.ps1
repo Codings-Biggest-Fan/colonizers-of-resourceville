@@ -48,6 +48,15 @@ try {
         Get-ChildItem -LiteralPath $bundle -File -Recurse | Get-FileHash -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLowerInvariant())  $([IO.Path]::GetRelativePath($bundle, $_.Path).Replace('\','/'))" } | Set-Content (Join-Path $bundle 'SHA256SUMS.txt')
         $archive = "$bundle.zip"
         Compress-Archive -LiteralPath $bundle -DestinationPath $archive
+        if (-not $IsWindows) {
+            # Compress-Archive strips executable bits. Preserve launchable Unix binaries.
+            $zip = [IO.Compression.ZipFile]::Open($archive, [IO.Compression.ZipArchiveMode]::Update)
+            try {
+                foreach ($entry in $zip.Entries | Where-Object Name -in @('resourceville-desktop', 'resourceville-server')) {
+                    $entry.ExternalAttributes = (0x81ED -shl 16) -bor ($entry.ExternalAttributes -band 0xFFFF)
+                }
+            } finally { $zip.Dispose() }
+        }
         Get-FileHash -LiteralPath $archive -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLowerInvariant())  $([IO.Path]::GetFileName($_.Path))" } | Set-Content "$archive.sha256"
         Write-Host "Packaged $archive"
     } finally { Pop-Location }

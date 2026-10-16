@@ -2,4 +2,4 @@
 
 Separate Axum/Tokio Rust service for authoritative online games, authentication, private projections, and durable SQLx persistence.
 
-**Status:** reserved crate directory; no Cargo manifest or Rust implementation yet. Workspace scaffolding remains in [milestone 01](../../milestones/milestone-01/plan.md).
+**Status:** M01 implements Axum/Tokio process liveness at /health, bound to loopback by default. No authentication, rooms, game state, SQLx, or cloud integration exists yet. See [M01 progress](../../milestones/milestone-01/progress.md).

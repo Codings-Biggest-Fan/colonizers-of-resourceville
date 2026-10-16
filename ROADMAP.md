@@ -44,7 +44,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 ## Verified capabilities and current limitations
 
 - M00 permanent records and documentation remain intact.
-- M01 workspace/debug build and prerequisites pass locally; further verification is tracked in its progress record.
+- M01 clean Windows formatting, Clippy, tests, optimized build/package checks, and native launch/icon/resize/close inspection passed; final GitHub matrix/archive validation is tracked in its progress record.
 - Native preview and process-liveness server exist; gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
 - No Supabase organization/project has been created. New-organization access and actual cost confirmation are prerequisites at M07.
 - No milestone release has been published. CI builds are distinct from tested interactive platform support.

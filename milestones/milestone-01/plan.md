@@ -27,7 +27,7 @@ Define crate responsibilities and dependency direction only. Gameplay configurat
 
 - [x] Validate all required documentation paths, milestone folders, and local Markdown links.
 - [x] From a clean checkout, restore dependencies and pass formatting, Clippy, workspace tests, and release build.
-- [ ] Launch the real native window; verify close, resize, and Windows scaling behavior.
+- [x] Launch the real native window; verify close, resize, and Windows scaling behavior.
 - [x] Exercise helper scripts from outside the repository and verify actionable failures for missing prerequisites.
 
 ## Screenshot evidence

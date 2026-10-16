@@ -21,8 +21,8 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 - [x] Prerequisite check after installation.
 - [x] Debug workspace build after SDK installation.
 - [x] Formatting/Clippy (including capture features), workspace tests (one substantive server test), and release build.
-- [x] Clean-checkout checks/tests/release build at 066b440; final clean native launch/icon inspection remains pending after Escape stop.
-- [x] Native rendered-frame inspection, resize, Close preview, native close, and Windows 150% scaling; final icon/window pass pending.
+- [x] Clean-checkout checks/tests/release build at 066b440; clean optimized native launch/icon/resize/keyboard-close inspection also passed with renewed user authorization.
+- [x] Native rendered-frame inspection, resize, Close preview, native close, and Windows 150% scaling; final clean-release icon/window pass completed.
 - [x] Helpers exercised from outside repository; missing Cargo, duplicate capture, and invalid suite failures verified. Clean package passed, including archive and 649 extracted file checksums.
 - [ ] GitHub six-target build/package jobs and Linux container checks.
 - [x] Draft PR #3 and labeled TESTING PREVIEW wiki published; Home/Building/Game Instructions HTTP and source identity verified.
@@ -43,4 +43,4 @@ M00 polish was resumed into roadmap work by the user's M01 request. No new polis
 
 ## Evidence
 
-[Implementation and local verification](reports/001-native-foundation.md) records actual passes, failures, and corrections. [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) is a draft against beta. [Clean package verification](reports/002-clean-package-and-review-gates.md) passed. Final-head six-target CI, clean native launch/icon inspection, remain pending. [Draft PR and wiki publication](reports/003-draft-pr-and-wiki-preview.md) is complete.
+[Implementation and local verification](reports/001-native-foundation.md) records actual passes, failures, and corrections. [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) is a draft against beta. [Clean package verification](reports/002-clean-package-and-review-gates.md) passed. [Final native acceptance](reports/004-native-acceptance-and-unix-packages.md) passed. Final-head six-target CI and actual Unix archive executable-bit verification remain pending. [Draft PR and wiki publication](reports/003-draft-pr-and-wiki-preview.md) is complete.
