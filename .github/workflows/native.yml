@@ -1,9 +1,7 @@
 name: Native builds
 on:
-  pull_request:
-    branches: [beta, stable]
   push:
-    branches: [nightly, 'milestone-*/**', stable]
+    branches: [nightly, stable]
   workflow_dispatch:
 permissions:
   contents: read

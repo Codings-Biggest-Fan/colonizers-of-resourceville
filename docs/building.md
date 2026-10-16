@@ -38,7 +38,7 @@ The server container can be built with Docker (not installed by helpers): `docke
 
 ## GitHub builds and clean checkout
 
-[Native CI](../.github/workflows/native.yml) builds and packages on GitHub for Windows, Linux, and macOS on both x86-64 and ARM64. Each runner verifies its host architecture, formatting, Clippy, tests, and optimized workspace build. Linux jobs also build the server container. Artifacts are named by target and commit; SHA256 sidecars accompany ZIPs. These are nonlocal checks and do not prove interactive runtime behavior. Releases must use GitHub-built artifacts from the approved polished stable revision; no workflow automatically releases or promotes a branch.
+[Native CI](../.github/workflows/native.yml) builds and packages on GitHub for Windows, Linux, and macOS on both x86-64 and ARM64. Development runs from nightly and release-candidate builds from stable, using each exact pushed commit; the same commit's checks appear on its PR. Manual dispatch is also available. Each runner verifies its host architecture, formatting, Clippy, tests, and optimized workspace build. Linux jobs also build and export the server container. Artifacts are named by target and commit; SHA256 sidecars accompany ZIPs and container archives. These are nonlocal checks and do not prove interactive runtime behavior. Releases must use GitHub-built artifacts from the approved polished stable revision; no workflow automatically releases or promotes a branch.
 
 For clean-checkout verification, clone the review branch into a fresh folder and run the checks above. A shared Cargo dependency cache is acceptable; source and target build directories must be fresh. Actual results and limitations are tracked in [M01 progress](../milestones/milestone-01/progress.md).
 
