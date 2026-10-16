@@ -4,6 +4,8 @@
 
 ### Added — 2026-10-15
 
+- M02 passed local and six-target build/package gates; user merged PR #7 into beta at 3f32f09. Final evidence is recorded in M02 report 002. Stable/main unchanged; no release due before M06.
+
 - Versioned, strictly serialized configuration, family/scenario/seat modes, deterministic validation, derived custom markers, and non-playable capability reporting.
 - Readiness invalidation, immutable acceptance, atomic rejected edits, wire/save envelopes and bounded decoding, stable topology IDs, recipient privacy contracts and tests.
 - Public guest pregame audit with observed defaults, locked options, explicit uncertainties, dispositions and milestone assignments.

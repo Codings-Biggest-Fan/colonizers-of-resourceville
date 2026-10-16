@@ -8,7 +8,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** M01 foundation is merged. M02 adds [versioned configuration/privacy contracts](docs/configuration-contract.md), a [public pregame audit](docs/pregame-options.md), and [source-backed card/scenario inventories](docs/rules.md) on milestone-02/rules-contract. Verification and review status are in [M02 progress](milestones/milestone-02/progress.md). The native preview is unchanged; the image above remains inspected M01 evidence. There is no playable game or published release yet.
+**Current status:** M01 foundation is merged. M02 adds [versioned configuration/privacy contracts](docs/configuration-contract.md), a [public pregame audit](docs/pregame-options.md), and [source-backed card/scenario inventories](docs/rules.md) on milestone-02/rules-contract. M02 passed its checks and the user merged [PR #7](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/7) into beta; see [progress/evidence](milestones/milestone-02/progress.md). The native preview is unchanged; the image above remains inspected M01 evidence. There is no playable game or published release yet.
 
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
@@ -18,7 +18,7 @@ Offline solo play and private online rooms come first. The roadmap then grows fr
 | --- | --- | --- |
 | 0 | Project setup, plans, wiki, and approval workflow | Merged; no release recorded |
 | 1 | Native Rust foundation | Complete |
-| 2 | Rules/configuration contracts | Verifying |
+| 2 | Rules/configuration contracts | Complete |
 | 3 | Board and preview | Planned |
 | 4–6 | Complete base rules, bots, and offline save/resume | Planned |
 | 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |
