@@ -18,6 +18,28 @@ The agreed scope is offline solo with bots, private online rooms, later public c
 
 The stack is native Rust with egui/eframe and wgpu; a separate Rust Axum/Tokio server; shared Rust protocol types; Supabase Auth/Postgres accessed by the server through SQLx. No browser UI, webview shell, JavaScript/TypeScript application, or Tauri/Electron packaging. The current folder may contain planning structure before the Cargo workspace exists: inspect actual files and never invent runnable commands.
 
+### Product experience and design rules
+
+The main user job is to play this game with friends with almost zero setup. Prioritize a short, understandable create/join/invite flow, useful defaults, and clear recovery over technical configuration or promotional content. Implement these flows in their owning milestones; never add pretend playable controls to an earlier foundation release.
+
+The first viewport must immediately communicate a familiar hex-board resource-trading and settlement-building game through original board, road, settlement, and resource visuals. It should impress through visual craft and a clear path to the user's task. Do not use competitor names, logos, extracted assets, or copied presentation in the product. Keep implemented capability and planned capability distinguishable.
+
+- **Theme:** use Catppuccin color schemes with a user-selectable accent color. Support Latte, Frappé, Macchiato, and Mocha when appearance settings are implemented. Use shared semantic tokens for backgrounds, text, surfaces, focus, selection, and feedback; preserve readability across every flavor/accent combination. Follow the [official Catppuccin palette/style guidance](https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md). Color alone must not carry meaning.
+- **Settings:** use a native settings layout informed by VS Code: searchable settings, a category sidebar, clear section headings, and labeled setting rows with concise explanations, appropriate controls, and reset/default behavior. Adapt it to native Rust; do not embed or copy VS Code. Every exposed setting must work and persist appropriately. Keep application appearance preferences separate from authoritative gameplay configuration.
+- **States:** design applicable default, hover, keyboard focus, pressed, selected, disabled, loading, empty, error, recovery, and success states. Keep feedback close to the affected action, explain actionable failures, and preserve the user's input. Do not fabricate loading or success for absent features.
+- **No decorative tags:** do not add ornamental badges, pills, eyebrow tags, repetitive status chips, or developer/framework labels as interface decoration. Required game/room/error state belongs in clear, useful text or controls; it is not an excuse for tag clutter.
+- **Copy:** functional game, lobby, and settings screens must use concise task-focused language. Ban exaggerated advertising and repeated feature pitches there. The main screen may contain a restrained, factual feature list, while keeping play with friends as the priority. Avoid making even the main screen overly promotional.
+- **Privacy in the same room:** account for opponents looking at nearby screens. Keep hands, private points, pending secret choices, and other hidden information out of public views, notifications, logs, screenshots, and shared-screen presentations. Evaluate intentional reveal, a quick privacy cover, and hiding private content during loss of focus or handoff where appropriate. Test privacy with multiple people/screens and synthetic identities; server-side payload privacy alone does not prevent shoulder surfing. Do not invent an unsupported shared-device game mode.
+- **Impeccable:** apply the relevant [official Impeccable guidance](https://github.com/pbakaus/impeccable/blob/main/.agent/skills/impeccable/SKILL.md) to design work: inspect real product context first, choose a clear hierarchy, use consistent native controls and spacing, remove generic template clutter, and verify contrast, keyboard access, resizing, and actual rendered output. Treat game/settings surfaces as tasks, documentation as reading, and the download page as a modest promotional surface. Respect the user's pinned Catppuccin direction. Inspect in bounded batches, fix observed issues together, and avoid open-ended cosmetic loops. Do not install its runtime silently or change the native stack to satisfy web-oriented tooling.
+
+These are standing design requirements, not a claim that themes, settings, gameplay, friend rooms, or privacy controls already exist. The user explicitly requested these rules for AGENTS.md on 2026-10-15; this request alone does not expand M01 into implementing those later features.
+
+### Download page and README presentation
+
+Keep download-page work on a separate dedicated branch, such as codex/download-page, rather than mixing its website implementation into a native milestone branch. A standalone download page may be somewhat promotional and show original product imagery and factual features. Preserve truthful availability, platform/architecture choices, verified artifact links/checksums, and the distinction between testing previews and approved releases. Do not invent download URLs, claim unfinished gameplay is playable, or turn the native game into a website/webview. Creating the branch or page does not authorize deployment or release publication.
+
+In README.md, place the current milestone's inspected main native screenshot directly below the product title and above the description. The Screenshots section should show about five real, inspected images in a compact grid, with links to capture metadata and the full evidence archive. Keep the milestone/build identity honest; never manufacture screenshots to fill the grid. The user authorized this README presentation change through direct commits without a separate PR; that documentation permission does not approve M01 implementation, polish, merges, or releases.
+
 ## One milestone at a time
 
 1. ROADMAP.md is the current source of truth; docs/implementation-plan.md preserves the accepted overall plan.
@@ -140,6 +162,8 @@ Keep local saves/maps/presets/protocols explicitly versioned, validate untrusted
 ## Working practices
 
 Preserve unrelated edits. Re-read shared files before editing. Use focused changes and existing conventions. Do not delegate unless the user or applicable instructions explicitly authorize it. Never claim a build, test, screenshot inspection, network flow, or release succeeded without evidence.
+
+Ask the user before accessing or interacting with their computer/window UI, including native visual testing. Keep permission scoped to the described check. A physical Escape stop ends UI input immediately; ask again before a later access session. Non-UI source inspection, shell builds/tests, and GitHub checks can continue independently.
 
 Current work may be documentation-only at the user's request. Finish that scope first; do not install tools or begin native implementation merely to make planning records look complete.
 
