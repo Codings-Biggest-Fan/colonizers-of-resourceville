@@ -1,37 +1,25 @@
 # PowerShell helpers
 
-All helpers resolve the repository from PSScriptRoot, work from outside the repository, and return nonzero exit codes on failure. Do not silently install tools, provision infrastructure, delete files, or capture unrelated windows.
+All entry points resolve the repository from PSScriptRoot and work from another directory. Failures return a nonzero exit code. No helper silently installs tools or provisions resources.
 
-## Available now
-
-- bootstrap.ps1 — read-only prerequisite check; reports missing Rust/MSVC prerequisites without installing anything.
-- wiki.ps1 — generates wiki pages under ignored .local without committing/pushing; accepts -OutputPath, -PullRequestUrl, and -Approved (stable-only after approval).
-- milestone.ps1 — required-document, milestone-folder, and local Markdown link validation. Use -All (M00–M20) or -Number 0. Add -RequireComplete to require Complete status; this does not certify evidence truth.
-
-```powershell
-& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
-& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -Number 1 -RequireComplete
-```
-
-## Remaining milestone-01 helpers
-
-| File | Contract |
+| Helper | Arguments and behavior |
 | --- | --- |
-| dev.ps1 | Start desktop, server, or both with explicit arguments. |
-| check.ps1 | Formatting check, Clippy, workspace checks; never rewrite files silently. |
-| test.ps1 | Rules, bots, integration, or full suites with failures propagated. |
-| capture.ps1 | Capture the selected game window to the selected milestone; record actual metadata. |
-| package.ps1 | Windows bundle and server container artifacts. |
+| bootstrap.ps1 | Read-only Rust/Git/MSVC detection; no build claim. |
+| check.ps1 | Formatting and Clippy; -Release additionally builds the optimized workspace. |
+| test.ps1 | -Suite All (default), Rules, Bots, or Server. Rules/bots have no gameplay tests yet. |
+| dev.ps1 | -App Desktop (default) or Server; optional -Release. Use two terminals for both. |
+| capture.ps1 | Required -Name NNN-description.png, -Milestone 1; optional -Width 1000 -Height 680 -Zoom 1. Captures only a fresh game frame and exits; never overwrites evidence. |
+| package.ps1 | Build/package host binaries, dependency notices, and checksums under dist/. -SkipBuild is for CI after a successful release build. -ServerContainer builds/exports the Linux server Docker image with a SHA256 sidecar. Existing bundles cause an error. |
+| milestone.ps1 | -All or -Number 1; optional -RequireComplete checks records/status only, not evidence truth. |
+| wiki.ps1 | Generate TESTING PREVIEW pages under .local. -PullRequestUrl identifies review. -Approved requires clean stable and prior explicit approval. |
 
-These five helpers do not exist yet because no Cargo application or container build exists. They must be implemented and exercised before milestone 01 is Complete; there are no success-reporting stubs.
+common.ps1 is a shared definition file, not a standalone check. See [Building](../docs/building.md) for runnable commands, prerequisites, container instructions, and GitHub's six-target matrix. Native screenshot dimensions and inspection results belong in the [photo index](../photos/milestone-01/index.md).
 
-Secrets stay outside scripts and tracked files. Logs/screenshots belong in their documented destinations only after real verification.
-
-## Wiki generation
+Examples from outside the repository:
 
 ```powershell
-pwsh -NoProfile -File ./scripts/wiki.ps1
-pwsh -NoProfile -File ./scripts/wiki.ps1 -OutputPath '.local/wiki' -PullRequestUrl 'https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1'
+& 'C:\path\to\colonizers-of-resourceville\scripts\check.ps1' -Release
+& 'C:\path\to\colonizers-of-resourceville\scripts\test.ps1' -Suite Server
 ```
 
-The output is generated public Markdown with pinned source links, an explicit unapproved preview banner, and grouped Game Instructions navigation. Publishing requires a separate explicit git commit/push to the initialized wiki repository. No credentials are embedded. Use -Approved only from clean stable after user approval; it does not itself approve or merge anything.
+Wiki generation writes files only. Publication uses its separate Git repository; publish development/beta docs as labeled previews. Releases use GitHub-built artifacts only after implementation and polish approval. Helpers never automatically publish, promote, or install.

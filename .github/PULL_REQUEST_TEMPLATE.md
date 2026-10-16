@@ -2,7 +2,7 @@
 
 Milestone: MNN — title  
 Target: vX.Y.Z  
-Base: stable
+Base: beta for implementation; stable for separately approved polish
 
 ## Changes
 
@@ -10,7 +10,7 @@ Describe delivered behavior/documentation and limits.
 
 ## Actual validation and testing steps
 
-Include commands/results, tested commit, beta/nightly refs, wiki preview, evidence, and reproducible user steps. Separate passed checks from pending work.
+Include commands/results, tested commit, nightly ref, unchanged approved beta baseline, wiki preview, evidence, and reproducible user steps. Separate passed checks from pending work. Include GitHub build/package results for Windows/Linux/macOS x86-64 and ARM64, distinguishing builds from interactive runtime tests.
 
 ## Approval and release
 
@@ -19,4 +19,4 @@ Include commands/results, tested commit, beta/nightly refs, wiki preview, eviden
 - [ ] Wiki, building, and game guides current and preview status explicit.
 - [ ] User tested and explicitly approved this revision — pending until the user says so.
 
-Leave open until user approval. Do not advance stable or publish the milestone release before approval.
+Leave the implementation PR open until explicit implementation approval permits beta. Separately obtain explicit polish approval before stable/main promotion and a release using GitHub-built artifacts. Creating a PR or finishing work does not grant either approval.

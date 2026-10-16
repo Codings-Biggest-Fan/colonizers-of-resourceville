@@ -2,4 +2,4 @@
 
 Agents consuming only permitted observations and legal choices. No access to opponents' hidden state or future randomness.
 
-**Status:** reserved crate directory; no Cargo manifest or Rust implementation yet. Workspace scaffolding remains in [milestone 01](../../milestones/milestone-01/plan.md).
+**Status:** M01 library boundary depends only on protocol. No strategy or gameplay decisions exist yet; permitted-observation contracts precede bot implementation. See [M01 progress](../../milestones/milestone-01/progress.md).

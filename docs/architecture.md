@@ -1,6 +1,6 @@
 # Architecture
 
-**Status:** target architecture, no implementation yet. [Overall plan](implementation-plan.md) · [M01](../milestones/milestone-01/plan.md).
+**Status:** M01 crate boundaries exist; desktop foundation preview and server liveness are implemented. Rules/gameplay, bots, protocol contracts, identity, and persistence remain future work. [Overall plan](implementation-plan.md) · [M01](../milestones/milestone-01/plan.md).
 
 | Boundary | Responsibility | Restrictions |
 | --- | --- | --- |
@@ -14,4 +14,5 @@ Offline execution runs the same engine locally. Online execution runs it on the 
 
 Keep authoritative snapshots distinct from public and private player observations. Runtime random outcomes are controlled by the executor; tests inject deterministic fixtures. Board-only seeds do not reveal decks or dice.
 
-M02 finalizes shared schemas/versions. M07 introduces Supabase; M09 proves online durability/recovery. No speculative code or dependencies are claimed to exist.
+M02 finalizes shared schemas/versions. M07 introduces Supabase; M09 proves online durability/recovery. The rules crate has no dependencies; protocol exposes product identity only; bots depends on protocol only; desktop uses protocol and eframe/wgpu; server uses protocol and Axum/Tokio. SQLx/Supabase are not dependencies yet.
+

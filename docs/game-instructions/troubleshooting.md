@@ -1,9 +1,7 @@
 # Troubleshooting
 
-No game executable or online room service exists in M00. Missing Play/download controls are expected before implementation.
+M01 includes a native foundation preview and a server process-liveness endpoint. Play controls, online rooms, accounts, bots, saves, and reconnect are not implemented yet.
 
-Follow [Building](../building.md) for source setup. For beta testing, report the PR/commit, reproduction steps, expected/actual behavior, and relevant game-window screenshots. Exclude secrets and unrelated windows.
+Follow [Building](../building.md) for prerequisites, graphics/linker errors, launch, checks, and packaging. For testing, report the PR/commit, reproduction steps, expected/actual behavior, and relevant game-window screenshots. Exclude secrets and unrelated windows.
 
-Document actual move, preset, save, session, reconnect, scaling, and graphics failures as those systems land; do not invent troubleshooting for unavailable features.
-
-Request Polish mode to pause milestone advancement and fix identified flaws with verification.
+Document actual gameplay, preset, save, session, and reconnect failures as those systems land. Request Polish mode to pause milestone advancement and fix identified flaws with verification.

@@ -1,0 +1,513 @@
+{
+  "run_id": 38829638371,
+  "source_commit": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+  "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 116745581078,
+      "name": "build (macos-15, aarch64-apple-darwin)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581078",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 116745581269,
+      "name": "build (windows-latest, x86_64-pc-windows-msvc)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581269",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 116745581291,
+      "name": "build (macos-15-intel, x86_64-apple-darwin)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581291",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 116745581367,
+      "name": "build (ubuntu-24.04-arm, aarch64-unknown-linux-gnu)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581367",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 116745581390,
+      "name": "build (windows-11-arm, aarch64-pc-windows-msvc)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581390",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 116745581392,
+      "name": "build (ubuntu-24.04, x86_64-unknown-linux-gnu)",
+      "url": "https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38829638371/job/116745581392",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Linux native dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Rust",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify runner architecture",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Records and links",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Formatting, Clippy, release build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Workspace tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Package current runner binaries",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build and package server container",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run Swatinem/rust-cache@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}
