@@ -10,7 +10,7 @@ Product name: **The Colonizers of Resourceville**. Machine/repository name: **co
 
 The user selected this exact title during branding polish. Preserve it in future work; do not substitute a newly invented product name without a user request.
 
-The user approved M02 polish/stable promotion and requested completion of M03 on 2026-10-15. M02 is merged through PR #8. M00/M01/M02 evidence remains historical. Implement only M03 on milestone-03/board-preview; do not begin M04 without the next request. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
+The user approved M02 polish/stable promotion and requested completion of M03 on 2026-10-15. M02 is merged through PR #8. M00/M01/M02 evidence remains historical. The user requested M04 on 2026-10-15 after M03 was approved and merged through PR #10. Implement only M04 on milestone-04/base-turn-engine; do not begin M05 without the next request. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
 
 Build an independently implemented Windows-first native Rust hex-board strategy game called The Colonizers of Resourceville. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
 

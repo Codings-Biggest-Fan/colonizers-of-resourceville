@@ -1,10 +1,17 @@
 # Changelog
 
-## M03 development — 2026-10-15
+## M04 testing preview — 2026-10-15
+
+- Deterministic base setup/ordinary-turn engine, controlled dice, finite bank, atomic validation, legal actions and building restrictions/piece limits.
+- Native synthetic-seat turn test (F4/context menu), real pieces/targets, current phase/player and local errors, with no private hands displayed.
+- Flat cargo ships, generic question marks and contrasting road/house outlines; light sea and camera retained. Native frames archived; tests and release gates tracked in M04 progress.
+- M03 merged into stable through PR #10. M04 remains unapproved and Verifying; seven resolution and complete rules arrive at M05, offline games at M06. No release/tag due.
+
+## M03 approved — 2026-10-15
 
 - M02 polish approved and merged into stable through PR #8; main mirrors 861b8c6. No release due.
-- M03 adds stable board topology, seeded base layouts and interactive native board inspection/camera controls. Original cartoon terrain, graphic harbors, simple surrounding sea and compact HUD are being verified.
-- No playable turns, bots, saves or rooms; M03 remains unapproved. See [progress](milestones/milestone-03/progress.md).
+- M03 adds stable board topology, seeded base layouts and interactive native board inspection/camera controls. Original cartoon terrain, graphic harbors, simple surrounding sea and compact HUD passed acceptance with six-platform build/package validation.
+- No playable turns, bots, saves or rooms; M03 implementation and polish approved for beta/stable through PRs #9/#10. See [progress](milestones/milestone-03/progress.md).
 
 
 ## Unreleased — Milestone 02 rules and configuration contract

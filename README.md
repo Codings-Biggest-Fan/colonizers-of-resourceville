@@ -1,6 +1,6 @@
 # The Colonizers of Resourceville
 
-![M03 native board preview in development](photos/milestone-03/017-wheel-right-pan.png)
+![M04 native turn-engine testing preview](photos/milestone-04/019-reduced-production-controls.png)
 
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
@@ -8,8 +8,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** M02 is approved and merged through [PR #8](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/8). M03 is in development: [seeded board generation and native preview](docs/board-preview.md), original cartoon terrain/harbors, wheel zoom and right-drag pan. The image above is an inspected native development frame. M03 still needs its remaining delivery gates and approval; there is no playable game or published release.
-
+**Current status:** M03 is approved and merged through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10). M04 ([draft PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11)) is an unapproved testing preview with deterministic setup, production and ordinary building turns, plus flat port graphics and contrasting pieces. Press F4 or use the board context menu to open the [turn-engine test](docs/base-turn-engine.md). Dice outcomes are supplied for testing; complete games, bots and saves arrive later. No release has been published.
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
 ## Roadmap
@@ -19,8 +18,8 @@ Offline solo play and private online rooms come first. The roadmap then grows fr
 | 0 | Project setup, plans, wiki, and approval workflow | Merged; no release recorded |
 | 1 | Native Rust foundation | Complete |
 | 2 | Rules/configuration contracts | Complete |
-| 3 | Board and preview | In progress |
-| 4–6 | Complete base rules, bots, and offline save/resume | Planned |
+| 3 | Board and preview | Complete |
+| 4–6 | Base turns, complete rules, bots, and offline save/resume | M04 Verifying; M05–M06 Planned |
 | 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |
 | 11–14 | Citadels & Sentinels, Open Seas, combined scenarios, and up to eight players | Planned |
 | 15–17 | Caravans & Raiders, Voyagers & Corsairs, map tools, and supported combinations | Planned |
@@ -31,15 +30,15 @@ Follow the [current roadmap](ROADMAP.md) for individual releases, acceptance gat
 
 ## Screenshots
 
-These are real M03 native wgpu frames, with current and earlier comparison captures explicitly distinguished. No playable game is shown.
+These are real M04 native wgpu frames from synthetic engine test scenarios; the contrast fixture is explicitly a renderer test, not a legal game. Earlier screenshots retain their own milestone identity.
 
-| Current default | Current compact |
+| Turn-engine test | Compact test |
 | :---: | :---: |
-| ![Current board](photos/milestone-03/017-wheel-right-pan.png) | ![Current compact board](photos/milestone-03/018-wheel-compact.png) |
-| Earlier scaling stress, before control removal<br>![Earlier scale check](photos/milestone-03/016-open-sea-scaling.png) | Earlier cartoon/HUD iteration<br>![Before chrome removal](photos/milestone-03/010-cartoon-graphic-ports.png) |
-| Before terrain artwork<br>![Initial diagram preview](photos/milestone-03/001-default-board.png) | [Capture metadata and full M03 archive](photos/milestone-03/index.md) |
+| ![Current production test](photos/milestone-04/019-reduced-production-controls.png) | ![Compact controls](photos/milestone-04/018-reduced-compact-controls.png) |
+| Setup targets<br>![Setup rings](photos/milestone-04/002-setup-targets.png) | Contrast fixture<br>![Piece contrast test](photos/milestone-04/014-compact-contrast.png) |
+| Scaling stress<br>![Scaled native controls](photos/milestone-04/020-reduced-scaled-controls.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
 
-[M01 evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
+[M03 archive and before evidence](photos/milestone-03/index.md) · [M01 evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
 
 ## Building and checking the project
 

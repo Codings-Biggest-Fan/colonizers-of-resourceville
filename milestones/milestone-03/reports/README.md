@@ -4,4 +4,6 @@
 
 - [001 — Board implementation and visual corrections](001-board-and-visual-corrections.md)
 
-Milestone remains In progress. Reports distinguish actual checks from remaining gates.
+- [002 — Acceptance gates and approved promotion](002-acceptance-and-approved-promotion.md)
+
+Milestone acceptance is Complete. Reports distinguish actual checks from remaining gates.

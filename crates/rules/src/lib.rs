@@ -1,4 +1,4 @@
-//! Pure deterministic configuration contracts. No gameplay engine is implemented.
+//! Pure deterministic configuration, board and base turn transitions.
 #![forbid(unsafe_code)]
 
 mod board;
@@ -7,3 +7,6 @@ mod lobby;
 pub use board::*;
 pub use config::*;
 pub use lobby::*;
+
+mod engine;
+pub use engine::*;

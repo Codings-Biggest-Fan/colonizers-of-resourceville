@@ -1,9 +1,5 @@
 # Turns and trading
 
-**Planned; no controls implemented.** Base turns arrive at M04; complete base rules at M05.
+M04 provides setup, production and building in a native **Turn engine test**. Follow the [testing instructions](../base-turn-engine.md) for placement, supplied dice outcomes, costs and ending a turn. Illegal actions preserve state and show an explanation. A seven waits for M05 robber resolution.
 
-The game will guide legal initial placements, production, building, trading, robber/discard choices, development cards, and ending the turn. Highlight legal targets and explain rejected actions without spending resources.
-
-Bank/port trades follow the preset. Player offers need acceptance and valid resources/turn state. Public history cannot disclose opponents' private cards or theft outcomes.
-
-Exact controls, timing examples, scoring, and inspected screenshots will be documented after implementation. Expansion rules can replace base mechanisms.
+Trading, development cards, awards, scoring and victory remain M05 work. Bot games and save/resume arrive at M06. No complete game is claimed. Player offers, bank/port exchange and private choice controls are not available yet.

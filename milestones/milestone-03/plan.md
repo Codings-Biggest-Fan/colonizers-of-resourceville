@@ -1,6 +1,6 @@
 # Milestone 03 — Board and preview
 
-Target version: v0.0.3 (planning identifier; no release before M06). Status: In progress.
+Target version: v0.0.3 (planning identifier; no release before M06). Status: Complete.
 
 [Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Screenshots](../../photos/milestone-03/index.md)
 
@@ -27,8 +27,12 @@ Topology reciprocity, shared intersections, coast/ports, graph connectivity, inv
 
 ## Delivery
 
-One branch milestone-03/board-preview; nightly follows development. PR targets beta and remains unmerged for explicit user approval. Keep beta/stable/main at their approved baselines while M03 is unapproved. No release/tag, M04, website or cloud work. Keep progress/reports current; only mark Complete after all gates and approval.
+One branch milestone-03/board-preview; nightly follows development. User approved implementation and polish on 2026-10-15. PR #9 targets beta; PR #10 targets stable. Promote after gates and mirror stable to main. No release/tag, M04, website or cloud work. Keep progress/reports current; only mark Complete after all gates and approval.
 
 ## User visual corrections
 
 Use simplified cartoon terrain and cargo-boat ports without on-board text. Sea is plain and light. Remove top/bottom bars, permanent Board label and zoom slider. Mouse wheel zooms; right-drag pans; left-click inspects. Keep setup and Fit in a right-click context menu. Sample settlements must show shaded roof and side walls. These direct corrections supersede the earlier permanent HUD direction.
+
+## Acceptance reconciliation
+
+User approved implementation and polish; [acceptance report](reports/002-acceptance-and-approved-promotion.md) records all six build/package/artifact gates, local checks, inspected geometry and native-input limitations. Completion does not claim a human native interaction session or nonlocal runtime testing. M04 remains Planned.

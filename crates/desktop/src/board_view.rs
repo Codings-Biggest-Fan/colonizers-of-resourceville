@@ -1,5 +1,8 @@
+use crate::pieces;
 use eframe::egui::{self, Align2, Color32, FontId, Pos2, Rect, Stroke, Vec2};
-use resourceville_rules::{Board, Terrain, VertexId};
+use resourceville_rules::{
+    Action, Board, Building, EdgeId, Game, GameConfig, Outcome, Phase, PlayerId, Terrain, VertexId,
+};
 
 pub const BASE: Color32 = Color32::from_rgb(30, 30, 46);
 const TEXT: Color32 = Color32::from_rgb(205, 214, 244);
@@ -146,92 +149,86 @@ fn textured_hex(
     }
     painter.add(egui::Shape::mesh(mesh));
 }
-/// Original miniature house geometry: front gable, receding side and two roof planes.
-fn settlement(painter: &egui::Painter, anchor: Pos2, s: f32) {
-    let p = |x: f32, y: f32| anchor + egui::vec2(x * s, y * s);
-    let face = |points: Vec<Pos2>, color: Color32| {
-        painter.add(egui::Shape::convex_polygon(
-            points,
-            color,
-            Stroke::new((s * 0.07).max(0.7), Color32::from_rgb(40, 63, 104)),
-        ));
-    };
-    painter.add(egui::Shape::ellipse_filled(
-        p(0.35, 0.75),
-        egui::vec2(s * 1.55, s * 0.45),
-        Color32::from_rgba_unmultiplied(28, 43, 60, 65),
-    ));
-    // Depth points recede up and right from the grounded front facade.
-    face(
-        vec![p(0.65, 0.7), p(1.45, 0.22), p(1.45, -0.75), p(0.65, -0.27)],
-        Color32::from_rgb(74, 113, 176),
-    );
-    face(
-        vec![
-            p(-0.85, 0.7),
-            p(0.65, 0.7),
-            p(0.65, -0.27),
-            p(-0.10, -1.07),
-            p(-0.85, -0.27),
-        ],
-        Color32::from_rgb(137, 180, 250),
-    );
-    face(
-        vec![
-            p(-0.98, -0.28),
-            p(-0.10, -1.22),
-            p(0.70, -1.70),
-            p(-0.18, -0.76),
-        ],
-        Color32::from_rgb(180, 207, 255),
-    );
-    face(
-        vec![
-            p(-0.10, -1.22),
-            p(0.80, -0.28),
-            p(1.60, -0.76),
-            p(0.70, -1.70),
-        ],
-        Color32::from_rgb(86, 137, 211),
-    );
-    // Small recessed door keeps the piece readable without extra decoration.
-    painter.rect_filled(
-        Rect::from_min_max(p(-0.26, 0.14), p(0.10, 0.7)),
-        1.,
-        Color32::from_rgb(43, 71, 119),
-    );
-}
 pub struct Preview {
     texture: Option<egui::TextureHandle>,
-    ports_texture: Option<egui::TextureHandle>,
+    game: Option<Game>,
+    test_open: bool,
+    dice: [u8; 2],
     pub board: Board,
     pub camera: Camera,
     pub selected: Option<Target>,
     seed_text: String,
     error: Option<String>,
     samples: bool,
+    #[cfg(feature = "capture")]
+    capture_art: bool,
 }
 impl Default for Preview {
     fn default() -> Self {
         Self {
             texture: None,
-            ports_texture: None,
+            game: None,
+            test_open: false,
+            dice: [1, 1],
             board: Board::base(42),
             camera: Camera::default(),
             selected: None,
             seed_text: "42".into(),
             error: None,
             samples: true,
+            #[cfg(feature = "capture")]
+            capture_art: false,
         }
     }
 }
 impl Preview {
+    #[cfg(feature = "capture")]
+    pub fn capture_scenario(&mut self, scenario: &str) {
+        if scenario == "contrast" {
+            self.capture_art = true;
+            return;
+        }
+        if scenario == "zoomed-out" {
+            self.camera.zoom = 0.7;
+        }
+        if scenario == "layout" {
+            return;
+        }
+        self.test_open = true;
+        self.game = Some(
+            Game::new(
+                GameConfig {
+                    board_seed: self.board.seed,
+                    ..Default::default()
+                },
+                (0..4).map(PlayerId).collect(),
+            )
+            .expect("capture config"),
+        );
+        if scenario == "setup" {
+            return;
+        }
+        while matches!(
+            self.game.as_ref().unwrap().view().phase,
+            Phase::SetupSettlement { .. } | Phase::SetupRoad { .. }
+        ) {
+            let g = self.game.as_ref().unwrap();
+            let action = g.legal_actions(g.view().active)[0];
+            self.submit(action, Outcome::None);
+        }
+        self.submit(Action::Roll, Outcome::Dice([3, 3]));
+        if scenario == "rejection" {
+            self.selected = Some(Target::Vertex(0));
+            self.submit(Action::Settlement(VertexId(0)), Outcome::None);
+        }
+    }
     fn regenerate(&mut self) {
         match self.seed_text.trim().parse::<u64>() {
             Ok(seed) => {
                 self.board = Board::base(seed);
                 self.error = None;
                 self.selected = None;
+                self.game = None;
             }
             Err(_) => {
                 self.error = Some("Enter a whole seed from 0 to 18446744073709551615.".into())
@@ -239,6 +236,27 @@ impl Preview {
         }
     }
     fn description(&self, t: Target) -> String {
+        if let Some(game) = &self.game {
+            let view = game.view();
+            match t {
+                Target::Vertex(i) => {
+                    if let Some((owner, kind)) = view.buildings.get(&VertexId(i as u32)) {
+                        return format!(
+                            "Player {} · {:?} · Intersection {}",
+                            owner.0 + 1,
+                            kind,
+                            i + 1
+                        );
+                    }
+                }
+                Target::Edge(i) => {
+                    if let Some(owner) = view.roads.get(&EdgeId(i as u32)) {
+                        return format!("Player {} · Road · Edge {}", owner.0 + 1, i + 1);
+                    }
+                }
+                _ => (),
+            }
+        }
         match t {
             Target::Tile(i) => {
                 let t = &self.board.tiles[i];
@@ -284,19 +302,6 @@ impl Preview {
                 egui::TextureOptions::LINEAR,
             ));
         }
-        if self.ports_texture.is_none() {
-            let im = image::load_from_memory(include_bytes!("../../../assets/art/ports-v1.png"))
-                .expect("embedded port sprites")
-                .to_rgba8();
-            self.ports_texture = Some(ctx.load_texture(
-                "ports-v1",
-                egui::ColorImage::from_rgba_unmultiplied(
-                    [im.width() as usize, im.height() as usize],
-                    im.as_raw(),
-                ),
-                egui::TextureOptions::LINEAR,
-            ));
-        }
         egui::CentralPanel::default().frame(egui::Frame::new().fill(BASE).inner_margin(0.)).show(ctx,|ui|{
             let(rect,response)=ui.allocate_exact_size(ui.available_size(),egui::Sense::click_and_drag());
             response.widget_info(||egui::WidgetInfo::labeled(egui::WidgetType::Button,true,"Island board. Enter selects; Ctrl+Right cycles tiles, edges and intersections."));
@@ -312,6 +317,7 @@ impl Preview {
                 if i.key_pressed(egui::Key::ArrowRight)&&i.modifiers.ctrl{let next=match self.selected{Some(Target::Tile(i))=>i+1,Some(Target::Edge(i))=>20+i,Some(Target::Vertex(i))=>92+i,Some(Target::Port(i))=>(146+i)%154,None=>0};self.selected=Some(if next<19{Target::Tile(next)}else if next<91{Target::Edge(next-19)}else if next<145{Target::Vertex(next-91)}else{Target::Port(next-145)});}
                 if i.key_pressed(egui::Key::Escape){self.selected=None;}
             });self.camera.bound(rect);}
+            if ctx.input(|i|i.key_pressed(egui::Key::F4)){self.test_open=true;}
             response.context_menu(|ui| {
                 ui.set_max_width(270.);
                 ui.label("Base island · Layout preview");
@@ -320,19 +326,82 @@ impl Preview {
                 let edit=ui.add(egui::TextEdit::singleline(&mut self.seed_text).desired_width(180.).char_limit(20));
                 if ui.button("Generate island").clicked() || (edit.lost_focus() && ui.input(|i|i.key_pressed(egui::Key::Enter))){self.regenerate();}
                 if let Some(error)=&self.error{ui.colored_label(Color32::from_rgb(243,139,168),error);}
-                ui.checkbox(&mut self.samples,"Show sample pieces");
+                if self.game.is_none() {ui.checkbox(&mut self.samples,"Show sample pieces");}
+                if ui.button("Turn engine test").clicked(){self.test_open=true;ui.close();}
                 if ui.button("Fit board").clicked(){self.camera=Camera::default();ui.close();}
                 ui.separator();
                 ui.label(egui::RichText::new("Wheel to zoom · Right-drag to pan").small().color(SUBTEXT));
-                ui.label(egui::RichText::new("Sample pieces only. Games arrive later.").small().color(SUBTEXT));
+                ui.label(egui::RichText::new("Complete offline games arrive in M06.").small().color(SUBTEXT));
             });
             let hover=response.hover_pos().and_then(|p|hit(&self.board,self.camera,rect,p));
             if let Some(t)=hover{response.clone().on_hover_text(self.description(t));}
             self.paint(ui,rect,hover);
             if response.has_focus(){ui.painter().rect_stroke(rect.shrink(2.),0.,Stroke::new(2.,ACCENT),egui::StrokeKind::Inside);}
         });
+        self.turn_controls(ctx);
     }
 
+    fn submit(&mut self, action: Action, outcome: Outcome) {
+        if let Some(game) = &mut self.game {
+            let actor = game.view().active;
+            self.error = game
+                .apply(actor, action, outcome)
+                .err()
+                .map(|e| e.to_string());
+        }
+    }
+    fn turn_controls(&mut self, ctx: &egui::Context) {
+        if !self.test_open {
+            return;
+        }
+        let mut open = true;
+        egui::Window::new("Turn engine test").open(&mut open).default_pos(egui::pos2(12.,12.)).default_width(250.).resizable(true).show(ctx,|ui| {
+            ui.set_max_width(300.);
+            egui::ScrollArea::vertical().max_height((ctx.screen_rect().height()-100.).max(150.)).show(ui,|ui|{
+            if self.game.is_none() {
+                ui.label("Test setup and ordinary building turns. Complete games arrive in M06.");
+                if ui.button("Start four-seat test").clicked() {
+                    let config=GameConfig {board_seed:self.board.seed,..Default::default()};
+                    match Game::new(config,(0..4).map(PlayerId).collect()) {Ok(game)=>{self.game=Some(game);self.selected=None;self.error=None;},Err(e)=>self.error=Some(e.to_string())}
+                }
+            } else {
+                let view=self.game.as_ref().expect("test game").view();
+                ui.heading(format!("Player {}",view.active.0+1));
+                ui.label(match view.phase {
+                    Phase::SetupSettlement {..}=>"Setup: place a settlement",
+                    Phase::SetupRoad {..}=>"Setup: place an adjoining road",
+                    Phase::AwaitRoll=>"Supply a test dice outcome",
+                    Phase::Build=>"Build or end the turn",
+                    Phase::AwaitRobber=>"Seven: robber resolution awaits M05",
+                });
+                if let Some(d)=view.last_dice {ui.label(format!("Dice {} + {} = {}",d[0],d[1],d[0]+d[1]));}
+                if view.phase==Phase::AwaitRoll {
+                    ui.horizontal(|ui| {
+                        for (i,die) in self.dice.iter_mut().enumerate() {ui.add(egui::DragValue::new(die).range(1..=6).prefix(format!("Die {}: ",i+1)));}
+                    });
+                    if ui.button("Apply dice").clicked() {self.submit(Action::Roll,Outcome::Dice(self.dice));}
+                }
+                if let Some(target)=self.selected {
+                    ui.separator();ui.label(self.description(target));
+                    match target {
+                        Target::Vertex(i)=> {
+                            if ui.button("Place settlement").clicked(){self.submit(Action::Settlement(VertexId(i as u32)),Outcome::None);}
+                            if view.phase==Phase::Build && ui.button("Upgrade to city").clicked(){self.submit(Action::City(VertexId(i as u32)),Outcome::None);}
+                        }
+                        Target::Edge(i)=>{if ui.button("Place road").clicked(){self.submit(Action::Road(EdgeId(i as u32)),Outcome::None);}},
+                        _=>(),
+                    }
+                }
+                if view.phase==Phase::Build && ui.button("End turn").clicked() {self.submit(Action::EndTurn,Outcome::None);}
+                ui.separator();
+                ui.collapsing("Resource counts",|ui| {for (i,count) in view.resource_counts.iter().enumerate(){ui.label(format!("Player {}: {} resources",i+1,count));}});
+                if ui.button("Reset test").clicked(){self.game=None;self.error=None;}
+            }
+            if let Some(error)=&self.error {ui.colored_label(Color32::from_rgb(243,139,168),error);}
+            });
+        });
+        self.test_open = open;
+    }
     fn paint(&self, ui: &egui::Ui, rect: Rect, hover: Option<Target>) {
         let painter = ui.painter_at(rect);
         let camera = self.camera;
@@ -453,39 +522,70 @@ impl Preview {
                 [mid, label],
                 Stroke::new((scale * 0.08).max(2.), Color32::from_rgb(210, 163, 103)),
             );
-            let cell = port.resource.map(atlas_cell).unwrap_or(5);
-            let col = (cell % 3) as f32;
-            let row = (cell / 3) as f32;
-            let uv = Rect::from_min_max(
-                egui::pos2(col / 3., row / 2.),
-                egui::pos2((col + 1.) / 3., (row + 1.) / 2.),
-            );
-            let bounds = Rect::from_center_size(label, Vec2::splat(scale * 1.25));
-            painter.image(
-                self.ports_texture.as_ref().expect("ports loaded").id(),
-                bounds,
-                uv,
-                Color32::WHITE,
-            );
+            pieces::ship(&painter, label, scale * 0.95, port.resource);
             if self.selected == Some(Target::Port(i)) || hover == Some(Target::Port(i)) {
                 painter.circle_stroke(label, scale * 0.43, Stroke::new(2., TEXT));
             }
         }
-        if self.samples {
+        if let Some(game) = &self.game {
+            let view = game.view();
+            for (&edge, owner) in &view.roads {
+                pieces::road(
+                    &painter,
+                    self.board.edges[edge.0 as usize].vertices.map(point),
+                    scale,
+                    pieces::player(owner.0),
+                );
+            }
+            for (&v, &(owner, kind)) in &view.buildings {
+                pieces::house(
+                    &painter,
+                    point(v),
+                    (scale * 0.19).max(5.),
+                    pieces::player(owner.0),
+                    kind == Building::City,
+                );
+                pieces::seat_number(&painter, point(v) - egui::vec2(0., scale * 0.10), owner.0);
+            }
+            if self.test_open {
+                for action in game.legal_actions(view.active) {
+                    match action {
+                        Action::Settlement(v) => {
+                            painter.circle_stroke(point(v), 6., Stroke::new(2., INK));
+                            painter.circle_stroke(point(v), 4., Stroke::new(2., CREAM));
+                        }
+                        Action::Road(e) => {
+                            let [a, b] = self.board.edges[e.0 as usize].vertices.map(point);
+                            let mid = a + (b - a) * 0.5;
+                            painter.circle_filled(mid, 4., INK);
+                            painter.circle_filled(mid, 2., CREAM);
+                        }
+                        _ => (),
+                    }
+                }
+            }
+        } else if self.samples {
             let [a, b] = self.board.edges[30].vertices.map(point);
-            let s = (scale * 0.19).max(5.);
-            painter.line_segment(
-                [a + egui::vec2(0., 2.), b + egui::vec2(0., 2.)],
-                Stroke::new(9., INK),
-            );
-            painter.line_segment([a, b], Stroke::new(6., Color32::from_rgb(74, 112, 180)));
-            painter.line_segment(
-                [a - egui::vec2(0., 1.5), b - egui::vec2(0., 1.5)],
-                Stroke::new(2., ACCENT),
-            );
-            settlement(&painter, a, s);
+            pieces::road(&painter, [a, b], scale, ACCENT);
+            pieces::house(&painter, a, (scale * 0.19).max(5.), ACCENT, false);
         }
-
+        #[cfg(feature = "capture")]
+        if self.capture_art {
+            for tile in &self.board.tiles {
+                let ends = self.board.edges[tile.edges[0].0 as usize]
+                    .vertices
+                    .map(point);
+                let color = pieces::player((tile.id.0 % 4) as u8);
+                pieces::road(&painter, ends, scale, color);
+                pieces::house(
+                    &painter,
+                    ends[0],
+                    (scale * 0.19).max(5.),
+                    color,
+                    tile.id.0 % 2 == 0,
+                );
+            }
+        }
         for (target, color) in [(self.selected, TEXT), (hover, ACCENT)] {
             match target {
                 Some(Target::Vertex(i)) => {
@@ -509,6 +609,37 @@ impl Preview {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn native_action_bridge_preserves_errors_and_reset_clears_game() {
+        let mut p = Preview {
+            test_open: true,
+            game: Some(Game::new(GameConfig::default(), (0..4).map(PlayerId).collect()).unwrap()),
+            ..Default::default()
+        };
+        let before = p.game.as_ref().unwrap().view();
+        p.submit(Action::Road(EdgeId(0)), Outcome::None);
+        assert!(p.error.is_some());
+        assert_eq!(p.game.as_ref().unwrap().view(), before);
+        let action = p.game.as_ref().unwrap().legal_actions(PlayerId(0))[0];
+        p.submit(action, Outcome::None);
+        assert!(p.error.is_none());
+        assert!(matches!(
+            p.game.as_ref().unwrap().view().phase,
+            Phase::SetupRoad { .. }
+        ));
+        let ctx = egui::Context::default();
+        let _ = ctx.run(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, egui::vec2(480., 420.))),
+                ..Default::default()
+            },
+            |ctx| p.show(ctx),
+        );
+        p.seed_text = "99".into();
+        p.regenerate();
+        assert!(p.game.is_none());
+        assert_eq!(p.board.seed, 99);
+    }
     #[test]
     fn right_drag_pans_and_wheel_zooms_without_visible_controls() {
         let ctx = egui::Context::default();

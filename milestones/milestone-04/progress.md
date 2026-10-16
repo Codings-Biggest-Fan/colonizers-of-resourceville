@@ -1,43 +1,43 @@
 # Milestone 04 progress — Base turn engine
 
-Status: Planned  
-Target release: v0.0.4  
-Last updated: 2026-10-15
+Status: Verifying  
+Target release: v0.0.4 (no release due)  
+Last updated: 2026-10-15 (America/Los_Angeles)
 
 [Plan](plan.md) · [Reports](reports/) · [Photos](../../photos/milestone-04/index.md) · [Roadmap](../../ROADMAP.md)
 
-## Landed work
+## Implemented
 
-No implementation work has started. This initial record establishes scope only.
-
-## Implementation checklist
-
-- [ ] Implement explicit setup and turn phases with snake placement order and starting resource allocation.
-- [ ] Implement dice production and finite-bank shortage behavior.
-- [ ] Implement road, settlement, and city costs, connectivity, distance checks, and piece limits.
-- [ ] Expose legal actions and validate complete transitions before changing state.
-- [ ] Drive the native board from engine state with active-player and phase cues.
+- Deterministic setup, snake order, second-settlement starting resources and explicit roll/build/pending-robber phases.
+- Supplied dice outcomes, finite-bank shortages, resource conservation, building costs, distance/connectivity, opponent blocking and all piece limits.
+- Seat-specific legal choices and clone-and-commit rejected-action atomicity. Authoritative hands have no Debug/Serialize; public projection contains counts only.
+- Native test harness drives board pieces, legal targets, active player, phase, supplied dice and errors. F4/context menu opens the closable panel; seed regeneration resets the test.
+- Flat port ships, generic question marks and strong outlined player pieces. Light sea, wheel zoom and right-drag pan preserved.
 
 ## Verification
 
-- [ ] Exercise full setup order and placement restrictions.
-- [ ] Verify production, shortages, spending, resource conservation, and piece counts.
-- [ ] Prove rejected actions do not mutate game state and scripted turns replay deterministically.
+- 28 workspace tests passed, including 96 seeded setup/replay cases, 120 ordinary replay turns, shortages, costs, piece limits, blocking, invalid outcomes, atomicity, native bridge and existing camera/input/contract tests.
+- Final scripts/check.ps1 -Release passed formatting, all-feature Clippy and optimized workspace build. scripts/test.ps1 passed 28 tests; record/link checks passed. See report 002.
+- Native wgpu frames captured with permission; metadata and inspection are in the photo index. Synthetic scenarios are replayed through the rules engine; contrast fixtures are not legal games.
+- M03 PR #10 is merged into stable (7a0f859), confirmed from fetched Git history. This branch merges that accepted baseline without losing later planning records.
 
-Unchecked items are pending, not failed or passed by inference. Structure-check results do not imply application build/runtime verification.
+## Remaining checks
 
-## Remaining work and dependencies
+- Six-target GitHub build/package review remains pending. Local Windows package CRC/sidecar/all 649 hashes passed; [draft beta PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11) is open and attached. See [handoff report](reports/003-testing-handoff.md).
+- Full human/native input walkthrough, including panel drag/collapse at compact size and keyboard-only placement, remains unverified. Existing headless camera input and native bridge tests do not establish human usability.
+- Multiple-people/screens privacy and non-Windows interactive runtime remain unverified. No online functionality or complete-game claim.
 
-Await completion of milestone 03 and refinement of this plan against the then-current implementation.
+## Limits
 
-## Blockers
+Seven waits for M05; no trading, cards, awards, victory, bots, saves, rooms or cloud. Explicit test dice and synthetic seats are a developer harness, not a supported shared-device mode. Unsupported runtime options are rejected. No protocol/save shape changes. Compact/scaled panels cover part of the board; move/collapse/close them to access covered targets.
 
-No implementation blocker investigated yet; predecessor work remains planned.
+## Blockers and next step
 
-## Polish checklist
+No source implementation blocker. Finish evidence/CI review, hand off the unmerged beta PR for user testing and explicit approval. Do not advance beta/stable/main or begin M05. No release/tag is due.
 
-No active Polish mode request or reported flaw checklist. See [Polish mode](../../AGENTS.md#polish-mode).
+## Reports
 
-## Evidence and next step
+[001 — Requested visual work](reports/001-visual-follow-up-requirements.md) · [002 — Engine implementation and checks](reports/002-engine-implementation.md)
 
-No builds, tests, screenshots, reports, or release artifacts exist for this milestone. Next: begin only after the predecessor gate and user request.
+
+[003 — Testing handoff](reports/003-testing-handoff.md).

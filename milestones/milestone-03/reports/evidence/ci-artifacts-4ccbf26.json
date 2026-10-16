@@ -1,0 +1,54 @@
+[
+  {
+    "name": "resourceville-aarch64-apple-darwin-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12027900342,
+    "artifact_sha256": "63512cf6f3f82e11c3b879e0c2d7a1158c7f408e4b71cd13aa098bace6de0262",
+    "bundle_sha256": "9c33ae993a0d7b2f66db3e83cca349518c62159df02119c57c2cdf2f902e875f",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-x86_64-unknown-linux-gnu-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12027775832,
+    "artifact_sha256": "436eee752973a61c114408cec33c2ac2712baf29ab2f6d03149ec25ed9024d0d",
+    "bundle_sha256": "5741ea6d455a8ceabb723b5ae148890a84ba17b6c4b43e2bd5dbc8d3f965fcac",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass",
+    "container_sha256": "729fcdeb672dc8d88858c0901ab7e1070b357414648ecd0addf69c332107e981",
+    "container_architecture": "amd64"
+  },
+  {
+    "name": "resourceville-aarch64-unknown-linux-gnu-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12027547030,
+    "artifact_sha256": "e9eaf9f6eb1749d62aa6cd5d8b620a924c8ef0a45c66354e41f3b7db641977a4",
+    "bundle_sha256": "5c186884b663cd022601e9075b09c50cb1052b081b27f72642364827e2394e63",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass",
+    "container_sha256": "f8ad6c578be209532884b56050e957be237a327b042f6667af66bc1ab3481386",
+    "container_architecture": "arm64"
+  },
+  {
+    "name": "resourceville-x86_64-pc-windows-msvc-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12027427653,
+    "artifact_sha256": "46fc55395d7791abe1b39d3ba0de6a0a65affafe1d1b724d268ce8b75fd87fe9",
+    "bundle_sha256": "922a36067e4fec2ad9dad767613d07995642c3ef828fbc586c7865a7e4fa820f",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-x86_64-apple-darwin-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12027114972,
+    "artifact_sha256": "a8cbd470731884f7623be30374983dcde8fe4ce9583a85e8dd010268d165aa8f",
+    "bundle_sha256": "ae4256d4d750cb7c54582563266e3ad11216af316ab948773f94219b698f5f33",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-aarch64-pc-windows-msvc-4ccbf26212a20081e096c5f11ca689b6f1c43f4a",
+    "artifact_id": 12026733931,
+    "artifact_sha256": "2ee43c233fa6a1ca7a958d7380a95fcad18efb1580f42d6566e6d4f943a8a3e0",
+    "bundle_sha256": "e1fb56adbc82e59a3992aa8aba412a34a7e23ca8b0079b65031aaa793632dfcd",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  }
+]
