@@ -1,6 +1,6 @@
 # Milestone 01 progress — Foundation
 
-Status: Verifying  
+Status: Complete  
 Target release: v0.0.1  
 Last updated: 2026-10-15 (America/Los_Angeles)
 
@@ -26,12 +26,12 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 - [x] Helpers exercised from outside repository; missing Cargo, duplicate capture, and invalid suite failures verified. Clean package passed, including archive and 649 extracted file checksums.
 - [x] GitHub six-target build/package jobs and both Linux image exports passed at c2459eb; actual ZIP hashes/files, architecture headers, Unix executable bits, and container configuration independently verified.
 - [x] Draft PR #3 and labeled TESTING PREVIEW wiki published; Home/Building/Game Instructions HTTP and source identity verified.
-- [ ] Explicit implementation approval, then requested polish and explicit polish approval.
-- [ ] Approved stable release using GitHub-built artifacts.
+- [x] User handoff confirms implementation and polish PRs #3/#4 merged.
+- [x] Publication gate corrected: no releases/tags before M06; not required for M01.
 
 ## Remaining work and dependencies
 
-Implementation verification and evidence are complete at c2459eb. Validate the final documentation refresh, then obtain explicit implementation approval of PR #3; separate polish approval is required before stable/main and release. Keep beta/stable/main unchanged during unapproved M01 work. No games, bots, saves, identity, multiplayer, or database exist in this foundation. M02 remains planned.
+M01 acceptance passed and user merges are complete; no release is due before M06. [Reconciliation](reports/007-m02-handoff-reconciliation.md) supersedes stale pending-review prose below while preserving historical evidence. The user requested M02; no gameplay exists yet.
 
 ## Blockers
 

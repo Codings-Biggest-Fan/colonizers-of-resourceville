@@ -120,7 +120,7 @@ Wiki pages are generated from PR-reviewed source. Preview status is not mileston
 ## Milestones
 
 "@
-    foreach ($n in 0..20) {
+    foreach ($n in 0..21) {
         $nn = '{0:D2}' -f $n
         $sidebar += "- [M$nn plan]($wiki/milestones-milestone-$nn-plan) · [progress]($wiki/milestones-milestone-$nn-progress)" + $nl
     }

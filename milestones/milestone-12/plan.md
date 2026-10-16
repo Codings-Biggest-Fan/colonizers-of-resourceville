@@ -17,6 +17,7 @@ Requires milestone 11 to pass its release gate. Reuse the existing rules/protoco
 - [ ] Implement each pinned core scenario's setup, objectives, special rules, and scoring.
 - [ ] Extend board rendering, scenario preview, choice dialogs, and bots.
 - [ ] Persist hidden exploration data without sending it to unauthorized players.
+- [ ] Implement Mistbound fog maps: initially hidden tiles reveal when roads or settlements are built nearby, as requested on 2026-10-15. Verify exact adjacency, ship triggers, discovery rewards and public/private visibility against the pinned rules before coding; see the [fog knowledge note](../../docs/rules.md#fog-maps--user-observation-2026-10-15).
 
 ## Interfaces, state, persistence, and UI
 
@@ -27,6 +28,7 @@ Scenario definitions declare topology, resources, objectives, legal setup, and s
 - [ ] Cover ship movement, pirate blocking, mixed routes, gold choices, and discovery.
 - [ ] Validate every core scenario setup and objective calculation.
 - [ ] Complete each supported scenario offline/online and resume mid-exploration.
+- [ ] Test fog reveal boundaries, repeated discovery, unrevealed-tile privacy, road/settlement and verified ship triggers, deterministic replay, and save/reconnect before and after reveal. Capture inspected hidden/revealed board states without exposing unrevealed terrain.
 
 ## Screenshot evidence
 
