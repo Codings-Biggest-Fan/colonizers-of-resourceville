@@ -1,5 +1,7 @@
 # The Colonizers of Resourceville
 
+![Milestone 01 native window](photos/milestone-01/009-clean-native-window.jpg)
+
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
 The planned experience starts with gathering resources, negotiating trades, building roads and settlements, and competing for victory points. Later releases expand into seafaring, city development, defense, caravans, exploration, and scenario objectives. Hosts will be able to choose maps, rules, player counts, and human/bot seats before each game.
@@ -29,9 +31,13 @@ Follow the [current roadmap](ROADMAP.md) for individual releases, acceptance gat
 
 These are actual native wgpu frames from the M01 foundation preview. Gameplay arrives in later milestones.
 
-![Native foundation preview](photos/milestone-01/004-native-foundation-contrast.png)
+| Native window | Maximized window |
+| :---: | :---: |
+| ![Native window with original icon](photos/milestone-01/009-clean-native-window.jpg) | ![Maximized native window](photos/milestone-01/010-clean-native-maximized.jpg) |
+| Rendered preview<br>![Rendered foundation preview](photos/milestone-01/004-native-foundation-contrast.png) | Compact layout<br>![Compact native layout](photos/milestone-01/007-native-compact-responsive.png) |
+| High zoom<br>![Native layout at increased zoom](photos/milestone-01/008-native-zoom-responsive.png) | [Capture metadata, before/after images, and full archive](photos/milestone-01/index.md) |
 
-[Compact layout](photos/milestone-01/007-native-compact-responsive.png) · [High zoom layout](photos/milestone-01/008-native-zoom-responsive.png) · [Capture metadata and before/after evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
+[M00 documentation previews](photos/milestone-00/index.md)
 
 ## Building and checking the project
 
