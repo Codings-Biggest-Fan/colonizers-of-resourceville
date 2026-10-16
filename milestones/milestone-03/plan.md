@@ -1,48 +1,34 @@
 # Milestone 03 — Board and preview
 
-Target release: **v0.0.3**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
+Target version: v0.0.3 (planning identifier; no release before M06). Status: In progress.
 
 [Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Screenshots](../../photos/milestone-03/index.md)
 
 ## Goal and dependencies
 
-Deliver a geometrically correct, interactive native board and a truthful local pregame preview.
+M02 gates passed and the user approved polish and starting M03 on 2026-10-15. PR #8 promotes M02 to stable at 861b8c6; main mirrors it. Build only a deterministic base board and interactive local preview. No turn engine, playable setup, bots, saves or rooms.
 
-Requires milestone 02 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
+## Refined scope against actual code
 
-## Scope and implementation tasks
+- Move the existing protocol topology ID types to rules and re-export them without changing their wire representation.
+- Integer lattice topology: radius-two island, 19 tiles, 54 vertices, 72 edges, reciprocal adjacency, 30 coast edges.
+- Generator version 1 and u64 board-only seed; 4 forest/pasture/fields, 3 hills/mountains, one desert. Standard 18 number tokens, no adjacent 6/8; nine coastal ports with distinct endpoints. Stable sorted IDs independent of seed and rendering. No game randomness generated or exposed.
+- Native Catppuccin Mocha controls and light-blue sea surface, original terrain marks, numbered tokens, port connectors, optional clearly labelled sample pieces.
+- Seed validation with preserved input and unchanged board on error; regenerate, inspect tiles/edges/vertices, hover/select, bounded cursor-anchored zoom, pan, fit, resize and keyboard access.
+- Only implemented board controls; no selectable expansion/seat/rules controls that suggest gameplay works. Appearance settings remain later scope.
 
-- [ ] Implement stable tile, vertex, and edge identifiers with topology-derived adjacency.
-- [ ] Generate valid base boards with reproducible board-only seeds.
-- [ ] Render original terrain, number tokens, ports, and sample pieces with a shared visual theme.
-- [ ] Implement hit testing, hover/selection, zoom, pan, resize, and display-scaling support.
-- [ ] Add a local preview showing only implemented board/configuration controls.
+## Interfaces and compatibility
 
-## Interfaces, state, persistence, and UI
+Rules owns pure topology/generation; desktop owns projection, hit testing, camera and transient selection. Protocol re-exports existing tuple IDs with unchanged serialization. Board is generated, not deserialized from untrusted data. Future generator layout changes require a new generator version. No existing save/map format migrated or playable capability enabled.
 
-Rules owns board topology and generation; desktop owns transforms, hit testing, visual tokens, and transient selection. A board seed must not determine future secret draws.
+## Tests and acceptance
 
-## Tests and acceptance checks
+Topology reciprocity, shared intersections, coast/ports, graph connectivity, inventories and number constraints across seeded fixtures; deterministic golden output and extreme seeds. Desktop projection/inverse and hit targets across aspect ratios, scales and pan/zoom; meaningful egui input simulation for controls when feasible. Formatting, Clippy, workspace tests, release build/package, records/wiki, clean checkout and all six CI targets. Native evidence: default, compact, wide, zoom/pan and scaling stress. Permission required for UI checks under AGENTS.md; no invented screenshots or runtime claims.
 
-- [ ] Verify adjacent tiles share exactly the same vertices and edges.
-- [ ] Check generated board inventories and constraints across seeded fixtures.
-- [ ] Check transformed hit targets, resize behavior, and non-distorted rendering.
+## Delivery
 
-## Screenshot evidence
+One branch milestone-03/board-preview; nightly follows development. PR targets beta and remains unmerged for explicit user approval. Keep beta/stable/main at their approved baselines while M03 is unapproved. No release/tag, M04, website or cloud work. Keep progress/reports current; only mark Complete after all gates and approval.
 
-Capture default preview, resized viewport, zoom/pan, and representative Windows scaling. Record geometry and overlay inspection.
+## User visual corrections
 
-Record actual captures and metadata in the linked photo index. Explain nonvisual work and absent captures truthfully.
-
-## Compatibility and migration
-
-Keep board identifiers serializable and independent of viewport dimensions; version future generator changes that alter seeded layouts.
-
-## Release gate and handoff
-
-Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets.
-
-Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
-## Branch, user testing, and GitHub release
-
-Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).
+Use simplified cartoon terrain and cargo-boat ports without on-board text. Sea is plain and light. Remove top/bottom bars, permanent Board label and zoom slider. Mouse wheel zooms; right-drag pans; left-click inspects. Keep setup and Fit in a right-click context menu. Sample settlements must show shaded roof and side walls. These direct corrections supersede the earlier permanent HUD direction.

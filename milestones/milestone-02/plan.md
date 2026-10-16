@@ -1,6 +1,6 @@
 # Milestone 02 — Rules and configuration contract
 
-Target version: v0.0.2 (planning identifier, no published release). Status: Verifying.
+Target version: v0.0.2 (planning identifier, no published release). Status: Complete. The user merged tested PR #7 into beta on 2026-10-15; no stable/polish promotion inferred.
 
 [Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Photos](../../photos/milestone-02/index.md)
 
@@ -28,4 +28,4 @@ Round-trip all current contract seat modes and default fixture; verify scenario-
 
 ## Delivery and handoff
 
-Use milestone-02/rules-contract for implementation and later polish; push nightly. Implementation PR targets beta and remains open for explicit approval. Do not advance beta/stable/main, tag, publish a release, or begin M03 automatically. M02 stays Verifying until gates and required review complete. No release publication is due before M06. Broader gameplay, card effects, event-card distribution, expansion layouts and combination execution are assigned later work, not delivered features.
+Use milestone-02/rules-contract for implementation and later polish; push nightly. Implementation PR targets beta and remains open for explicit approval. Do not advance beta/stable/main, tag, publish a release, or begin M03 automatically. Gates and implementation review passed; PR #7 was merged by the user. M02 is Complete and M03 awaits the next request. No release publication is due before M06. Broader gameplay, card effects, event-card distribution, expansion layouts and combination execution are assigned later work, not delivered features.

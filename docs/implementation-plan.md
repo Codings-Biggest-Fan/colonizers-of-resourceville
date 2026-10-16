@@ -12,7 +12,7 @@ Offline saves use explicit versions and atomic replacement. Online commands are 
 
 ## Gameplay and pregame contract
 
-Cover base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, and Voyagers & Corsairs with pinned core scenarios and officially documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional material, historical editions, browser builds, and nonlocal package builds now cover Windows/Linux/macOS x86-64 and ARM64 by user request on 2026-10-15; local runtime testing remains Windows-first.
+Cover base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, and Voyagers & Corsairs with pinned core scenarios and documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional scenarios, historical editions and browser gameplay builds are excluded. Nonlocal native package builds cover Windows/Linux/macOS x86-64 and ARM64; local runtime testing remains Windows-first. M21's separate website does not change the native game stack.
 
 One versioned GameConfig drives pregame controls, server validation, presets, and saves. Gameplay changes clear readiness; starting freezes configuration. Include room/seat settings, rules/scenarios/maps, generation and preview, victory/dice/robber/discard/trade policy, timing/turn order, expansion settings, audience/recovery policy, and saved/shared presets. See [pregame catalogue](pregame-options.md).
 

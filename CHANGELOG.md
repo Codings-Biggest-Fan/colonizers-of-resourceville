@@ -1,8 +1,17 @@
 # Changelog
 
+## M03 development — 2026-10-15
+
+- M02 polish approved and merged into stable through PR #8; main mirrors 861b8c6. No release due.
+- M03 adds stable board topology, seeded base layouts and interactive native board inspection/camera controls. Original cartoon terrain, graphic harbors, simple surrounding sea and compact HUD are being verified.
+- No playable turns, bots, saves or rooms; M03 remains unapproved. See [progress](milestones/milestone-03/progress.md).
+
+
 ## Unreleased — Milestone 02 rules and configuration contract
 
 ### Added — 2026-10-15
+
+- M02 passed local and six-target build/package gates; user merged PR #7 into beta at 3f32f09. Final evidence is recorded in M02 report 002. Stable/main unchanged; no release due before M06.
 
 - Versioned, strictly serialized configuration, family/scenario/seat modes, deterministic validation, derived custom markers, and non-playable capability reporting.
 - Readiness invalidation, immutable acceptance, atomic rejected edits, wire/save envelopes and bounded decoding, stable topology IDs, recipient privacy contracts and tests.
