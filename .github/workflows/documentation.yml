@@ -2,7 +2,7 @@ name: Documentation checks
 
 on:
   pull_request:
-    branches: [stable]
+    branches: [beta, stable]
   push:
     branches: [stable, nightly, beta, 'milestone-*/**']
 
@@ -29,3 +29,4 @@ jobs:
       - name: Generate preview wiki
         shell: pwsh
         run: ./scripts/wiki.ps1
+

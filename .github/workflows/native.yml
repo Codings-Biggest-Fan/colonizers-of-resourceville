@@ -1,0 +1,66 @@
+name: Native builds
+on:
+  pull_request:
+    branches: [beta, stable]
+  push:
+    branches: [nightly, 'milestone-*/**', stable]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+          - runner: windows-11-arm
+            target: aarch64-pc-windows-msvc
+          - runner: ubuntu-24.04
+            target: x86_64-unknown-linux-gnu
+          - runner: ubuntu-24.04-arm
+            target: aarch64-unknown-linux-gnu
+          - runner: macos-15-intel
+            target: x86_64-apple-darwin
+          - runner: macos-15
+            target: aarch64-apple-darwin
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Linux native dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libxkbcommon-dev libwayland-dev libx11-dev libxi-dev libxcursor-dev libxrandr-dev libegl1-mesa-dev
+      - name: Install pinned Rust
+        shell: pwsh
+        run: rustup toolchain install 1.90.0 --profile minimal --component rustfmt,clippy
+      - name: Verify runner architecture
+        shell: pwsh
+        run: |
+          $hostLine = rustc -vV | Select-String '^host:'
+          if ($hostLine.ToString() -ne 'host: ${{ matrix.target }}') { throw "Unexpected host: $hostLine" }
+      - uses: Swatinem/rust-cache@v2
+      - name: Records and links
+        shell: pwsh
+        run: ./scripts/milestone.ps1 -All
+      - name: Formatting, Clippy, release build
+        shell: pwsh
+        run: ./scripts/check.ps1 -Release
+      - name: Workspace tests
+        shell: pwsh
+        run: ./scripts/test.ps1
+      - name: Package current runner binaries
+        shell: pwsh
+        run: ./scripts/package.ps1 -SkipBuild
+      - name: Build server container
+        if: runner.os == 'Linux'
+        run: docker build -f crates/server/Dockerfile -t resourceville-server:testing .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: resourceville-${{ matrix.target }}-${{ github.sha }}
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          if-no-files-found: error
+      # Artifacts are testing previews. No automatic tags, promotions, or releases.

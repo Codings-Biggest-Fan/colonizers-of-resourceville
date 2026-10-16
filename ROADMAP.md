@@ -4,12 +4,12 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; planning structure published on main.
-- **Active milestone:** [00 — Initial setup](milestones/milestone-00/plan.md), Verifying; user testing and approval pending.
-- **Review PR:** [#2 — README and documentation polish](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/2). [Initial setup PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1) merged at 624223e before the later README updates. [Prepared release notes](milestones/milestone-00/release-notes.md); no new merge/release before approval.
-- **Current phase:** setup documentation/GitHub workflow ready for review; native implementation remains M01.
-- **Execution mode:** Polish mode active for original The Colonizers of Resourceville branding; roadmap advancement paused. [Rules](AGENTS.md#polish-mode).
-- **Next task:** user tests M00's PR/beta. Wait for explicit approval before merge, release, or M01.
-- **Verification:** planning structure/link checks passed; both helper scripts parse and the pending-completion gate correctly rejects M01. [Actual results](milestones/milestone-00/reports/002-structure-validation.md). No application build, runtime inspection, multiplayer verification, or cloud provisioning has occurred.
+- **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), In progress by explicit user request on 2026-10-15.
+- **M00 history:** initial setup and polish merged through PRs #1/#2; stable was fetched at 49bd2c0. No release publication is inferred.
+- **Current phase:** native Rust foundation implementation and verification; M02 remains planned.
+- **Execution mode:** roadmap resumed by user request. Preserve original branding.
+- **Next task:** complete M01 checks/evidence, push milestone-01/foundation and nightly, open an implementation PR targeting beta; stop for explicit approval before promotion.
+- **Verification:** see [M01 progress](milestones/milestone-01/progress.md) for executed and pending checks. GitHub builds cover six OS/architecture targets; actual runtime evidence is recorded separately.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
 
@@ -20,7 +20,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | Milestone | Target release | Status | Depends on | Records | Acceptance gate |
 | --- | --- | --- | --- | --- | --- |
 | 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI validated; PR tested and explicitly approved before merge and setup-only release. |
-| 01 | v0.0.1 — Foundation | Planned | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
+| 01 | v0.0.1 — Foundation | In progress | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
 | 02 | v0.0.2 — Rules and configuration contract | Planned | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
 | 03 | v0.0.3 — Board and preview | Planned | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
 | 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
@@ -43,12 +43,11 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 
 ## Verified capabilities and current limitations
 
-- The repository contains the roadmap, M00 records plus all 20 implementation plans/progress/photo indexes, report folders, and contributor instructions.
-- Read-only prerequisite and record-validation helpers are provided; executed results are recorded in the report.
-- No Cargo manifests, Rust application, CI workflow, native window, game rules, server container, or PNG evidence exists yet.
-- The read-only prerequisite check reported rustc, cargo, rustup, and MSVC build tools missing/unverified. No installation was performed; native build prerequisites need to be established next.
+- M00 permanent records and documentation remain intact.
+- M01 workspace/debug build and prerequisites pass locally; further verification is tracked in its progress record.
+- Native preview and process-liveness server exist; gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
 - No Supabase organization/project has been created. New-organization access and actual cost confirmation are prerequisites at M07.
-- Separate Rust hosting is required for online play; production deployment belongs to M19.
+- No milestone release has been published. CI builds are distinct from tested interactive platform support.
 
 ## Scope and operating rules
 
@@ -60,4 +59,4 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 
 [Wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
-Each milestone uses its own branch and PR against stable. nightly is the latest pushed milestone commit; beta matches the active unapproved PR head; stable is the latest approved/merged PR. main mirrors approved stable. Initial setup was merged through PR #1; subsequent polish is in PR #2. No milestone release exists. The user tests and approves before any new merge or release. M00 adds initial setup without renumbering M01–M20.
+Implementation PRs target beta; only explicit approval advances its implementation baseline. Polish PRs target stable and require separate explicit approval. nightly follows current pushed development; main mirrors polished stable. Releases use GitHub-built artifacts from the approved polished stable revision. See AGENTS.md and the workflow for the full policy.

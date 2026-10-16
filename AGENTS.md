@@ -10,7 +10,7 @@ Product name: **The Colonizers of Resourceville**. Machine/repository name: **co
 
 The user selected this exact title during branding polish. Preserve it in future work; do not substitute a newly invented product name without a user request.
 
-Polish mode is active for the user's branding correction. Fix and verify that scope in the current M00 PR without advancing milestones. Resume roadmap work only when requested. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
+The user resumed roadmap work by explicitly requesting completion of M01 on 2026-10-15. M00 branding polish remains historical; preserve its identity and evidence. Implement only M01 until the next request. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
 
 Build an independently implemented Windows-first native Rust hex-board strategy game called The Colonizers of Resourceville. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
 
@@ -67,7 +67,7 @@ The GitHub Wiki hosts public documentation. Keep reviewed sources in docs/, mile
 
 Development and approved-but-unpolished beta wiki previews must prominently say TESTING PREVIEW, identify their channel/source commit and PR when available, and never look like approved, polished release docs. Publish approved release documentation only from polished stable after explicit approval. Maintain source-to-wiki link mappings and pinned source/evidence links.
 
-Maintain docs/building.md: prerequisites, clone/channel selection, commands that work now, guarded future build/run/package instructions, troubleshooting, and clean-checkout verification. Current setup has no Cargo workspace: say so. Maintain docs/game-instructions/ as the player-guide source folder, published as a grouped Game Instructions wiki section. Cover setup, turns/trading, bots, saves/reconnect, variants, and troubleshooting as implemented; distinguish plans from available controls.
+Maintain docs/building.md: prerequisites, clone/channel selection, commands that work now, guarded future build/run/package instructions, troubleshooting, and clean-checkout verification. Describe the actual workspace availability for the documented revision. Maintain docs/game-instructions/ as the player-guide source folder, published as a grouped Game Instructions wiki section. Cover setup, turns/trading, bots, saves/reconnect, variants, and troubleshooting as implemented; distinguish plans from available controls.
 
 ## Permanent project records
 
@@ -131,6 +131,8 @@ scripts/ contains PowerShell helpers with documented arguments, repository-relat
 
 Never silently install tools, provision services, delete files, or capture unrelated windows. Never put credentials in scripts or tracked files. Do not create success-reporting stubs for unimplemented commands.
 
+Release builds must run on GitHub Actions for Windows, Linux, and macOS, covering x86-64 and ARM64 on each OS. Include Windows on ARM64 as well as x86-64. These are nonlocal build/package checks; local testing remains Windows-first. Distinguish successful builds from actual runtime verification on each platform, and record unsupported targets or unavailable runners honestly. Publish release artifacts only after the existing implementation and polish approvals. Do not reduce the release matrix to the local machine architecture.
+
 Use the actual workspace's formatting, Clippy, tests, and release commands once Cargo exists. Match tests to the change. Complete release gates before marking Complete; a link/file checker verifies record structure, not the truth of test or screenshot claims.
 
 Keep local saves/maps/presets/protocols explicitly versioned, validate untrusted input, bound work and allocations, return useful errors, and preserve supported formats with tested migrations or clear incompatibility errors. Attribute third-party assets and dependencies accurately.
@@ -140,3 +142,5 @@ Keep local saves/maps/presets/protocols explicitly versioned, validate untrusted
 Preserve unrelated edits. Re-read shared files before editing. Use focused changes and existing conventions. Do not delegate unless the user or applicable instructions explicitly authorize it. Never claim a build, test, screenshot inspection, network flow, or release succeeded without evidence.
 
 Current work may be documentation-only at the user's request. Finish that scope first; do not install tools or begin native implementation merely to make planning records look complete.
+
+
