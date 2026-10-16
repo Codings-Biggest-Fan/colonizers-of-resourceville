@@ -16,11 +16,11 @@ try {
         $destination = Join-Path $RepoRoot ('photos/milestone-{0:D2}/{1}' -f $Milestone, $Name)
         if (Test-Path -LiteralPath $destination) { throw 'Capture exists; preserve prior evidence and choose a new sequence.' }
         Invoke-Cargo @('build', '--locked', '-p', 'resourceville-desktop', '--features', 'capture')
-        $names = @('EFRAME_SCREENSHOT_TO','RESOURCEVILLE_CAPTURE_WIDTH','RESOURCEVILLE_CAPTURE_HEIGHT','RESOURCEVILLE_CAPTURE_SCALE')
+        $names = @('RESOURCEVILLE_CAPTURE_TO','RESOURCEVILLE_CAPTURE_WIDTH','RESOURCEVILLE_CAPTURE_HEIGHT','RESOURCEVILLE_CAPTURE_SCALE')
         $previous = @{}
         foreach ($key in $names) { $previous[$key] = [Environment]::GetEnvironmentVariable($key) }
         try {
-            $env:EFRAME_SCREENSHOT_TO = $destination
+            $env:RESOURCEVILLE_CAPTURE_TO = $destination
             $env:RESOURCEVILLE_CAPTURE_WIDTH = "$Width"
             $env:RESOURCEVILLE_CAPTURE_HEIGHT = "$Height"
             $env:RESOURCEVILLE_CAPTURE_SCALE = $Zoom.ToString([Globalization.CultureInfo]::InvariantCulture)

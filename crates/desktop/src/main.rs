@@ -28,7 +28,7 @@ fn main() -> eframe::Result {
                     cc.egui_ctx.native_pixels_per_point()
                 );
             }
-            Ok(Box::new(Foundation))
+            Ok(Box::new(Foundation::default()))
         }),
     )
 }
@@ -45,10 +45,57 @@ fn capture_dimension(name: &str, default: f32) -> f32 {
     }
 }
 
-struct Foundation;
+#[derive(Default)]
+struct Foundation {
+    #[cfg(feature = "capture")]
+    capture_frames: u32,
+}
 
 impl eframe::App for Foundation {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+        #[cfg(feature = "capture")]
+        if let Ok(path) = std::env::var("RESOURCEVILLE_CAPTURE_TO") {
+            self.capture_frames += 1;
+            let captured = ctx.input(|input| {
+                input.events.iter().find_map(|event| {
+                    if let egui::Event::Screenshot { image, .. } = event {
+                        Some(image.clone())
+                    } else {
+                        None
+                    }
+                })
+            });
+            if let Some(image) = captured {
+                let rgba: Vec<u8> = image
+                    .pixels
+                    .iter()
+                    .flat_map(|pixel| pixel.to_array())
+                    .collect();
+                image::save_buffer(
+                    &path,
+                    &rgba,
+                    image.width() as u32,
+                    image.height() as u32,
+                    image::ColorType::Rgba8,
+                )
+                .expect("Cannot write native rendered-frame evidence");
+                eprintln!(
+                    "Captured {}x{}; native pixels/point {:?}; effective pixels/point {}",
+                    image.width(),
+                    image.height(),
+                    ctx.native_pixels_per_point(),
+                    ctx.pixels_per_point()
+                );
+                ctx.send_viewport_cmd(egui::ViewportCommand::Close);
+            } else if self.capture_frames == 3 {
+                ctx.send_viewport_cmd(egui::ViewportCommand::Screenshot(Default::default()));
+            }
+            assert!(
+                self.capture_frames < 600,
+                "Timed out waiting for native screenshot"
+            );
+            ctx.request_repaint_after(std::time::Duration::from_millis(20));
+        }
         egui::CentralPanel::default()
             .frame(egui::Frame::new().fill(egui::Color32::from_rgb(18, 32, 37)).inner_margin(28.0))
             .show(ctx, |ui| {
