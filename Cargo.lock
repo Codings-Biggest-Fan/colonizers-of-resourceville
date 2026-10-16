@@ -2601,6 +2601,7 @@ dependencies = [
  "eframe",
  "image",
  "resourceville-protocol",
+ "resourceville-rules",
  "wgpu",
 ]
 
