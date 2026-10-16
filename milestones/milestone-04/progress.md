@@ -23,7 +23,7 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 
 ## Remaining checks
 
-- Six-target GitHub build/package review remains pending. Local Windows package CRC/sidecar/all 649 hashes passed; [draft beta PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11) is open and attached. See [handoff report](reports/003-testing-handoff.md).
+- Six-target GitHub build/package review remains pending. Local Windows package CRC/sidecar/all 649 hashes passed; [PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11) was user-approved and merged into beta at f5548fd. See [handoff report](reports/003-testing-handoff.md).
 - Full human/native input walkthrough, including panel drag/collapse at compact size and keyboard-only placement, remains unverified. Existing headless camera input and native bridge tests do not establish human usability.
 - Multiple-people/screens privacy and non-Windows interactive runtime remain unverified. No online functionality or complete-game claim.
 
@@ -33,7 +33,7 @@ Seven waits for M05; no trading, cards, awards, victory, bots, saves, rooms or c
 
 ## Blockers and next step
 
-No source implementation blocker. Finish evidence/CI review, hand off the unmerged beta PR for user testing and explicit approval. Do not advance beta/stable/main or begin M05. No release/tag is due.
+No source implementation blocker. User approved the current implementation baseline for beta; refinement is deferred. Finish evidence/CI review and remaining native acceptance when work resumes. Do not promote stable/main or begin M05. No release/tag is due.
 
 ## Reports
 
@@ -41,3 +41,5 @@ No source implementation blocker. Finish evidence/CI review, hand off the unmerg
 
 
 [003 — Testing handoff](reports/003-testing-handoff.md).
+
+[004 — Approved beta promotion](reports/004-approved-beta-promotion.md).

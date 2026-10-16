@@ -5,7 +5,7 @@
 - Deterministic base setup/ordinary-turn engine, controlled dice, finite bank, atomic validation, legal actions and building restrictions/piece limits.
 - Native synthetic-seat turn test (F4/context menu), real pieces/targets, current phase/player and local errors, with no private hands displayed.
 - Flat cargo ships, generic question marks and contrasting road/house outlines; light sea and camera retained. Native frames archived; tests and release gates tracked in M04 progress.
-- M03 merged into stable through PR #10. M04 remains unapproved and Verifying; seven resolution and complete rules arrive at M05, offline games at M06. No release/tag due.
+- M03 merged into stable through PR #10. M04 was approved for beta and merged through PR #11 at f5548fd; it remains Verifying pending acceptance and refinement; seven resolution and complete rules arrive at M05, offline games at M06. No release/tag due.
 
 ## M03 approved — 2026-10-15
 
