@@ -7,7 +7,7 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 - **Active milestone:** [03 — Board and preview](milestones/milestone-03/plan.md), Complete; user approved implementation and polish on 2026-10-15.
 - **Current phase:** implementation 4ccbf26 passed local formatting, Clippy, 20 tests, optimized build/package and all six GitHub target builds. All six artifacts and 3,894 package file hashes verified; acceptance evidence archived.
 - **Promotion:** [beta PR #9](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/9) and [stable PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), from the same milestone branch. M02 was promoted through PR #8.
-- **Next milestone:** M04 Base turn engine remains Planned; wait for the next user request.
+- **Next milestone:** M04 Base turn engine remains Planned; its [plan](milestones/milestone-04/plan.md#board-visual-requirements--requested-2026-10-15) includes flat 2D port ships, question-mark graphics for generic 3:1 ports, and stronger house/road contrast. Wait for the next implementation request.
 - **Release cadence:** no releases/tags for M00–M05; first release due M06 after acceptance and approved stable promotion.
 - **Verification:** [M03 progress](milestones/milestone-03/progress.md), [native evidence](photos/milestone-03/index.md), and [CI](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38856644491). Windows rendered frames and egui input regressions passed; nonlocal interactive runtime is unverified.
 

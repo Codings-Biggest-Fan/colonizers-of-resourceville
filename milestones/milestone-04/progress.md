@@ -8,7 +8,7 @@ Last updated: 2026-10-15
 
 ## Landed work
 
-No implementation work has started. This initial record establishes scope only.
+No implementation work has started. Recorded the user’s M04 visual follow-up requirements on 2026-10-15; see [planning report](reports/001-visual-follow-up-requirements.md).
 
 ## Implementation checklist
 
@@ -17,6 +17,13 @@ No implementation work has started. This initial record establishes scope only.
 - [ ] Implement road, settlement, and city costs, connectivity, distance checks, and piece limits.
 - [ ] Expose legal actions and validate complete transitions before changing state.
 - [ ] Drive the native board from engine state with active-player and phase cues.
+
+## Requested visual work
+
+- [ ] Flat 2D ship graphics for all ports; resource cargo identifies specific ports.
+- [ ] Question-mark graphic for generic 3:1 ports; no permanent port text labels.
+- [ ] Much stronger settlement/road contrast across all terrain, zoom and scaling cases.
+- [ ] Preserve light sea, uncluttered board, wheel zoom and right-drag pan.
 
 ## Verification
 
@@ -28,16 +35,16 @@ Unchecked items are pending, not failed or passed by inference. Structure-check 
 
 ## Remaining work and dependencies
 
-Await completion of milestone 03 and refinement of this plan against the then-current implementation.
+M03 is Complete and approved through PRs #9/#10. M04 remains Planned; refine the engine plan against that accepted code and begin only after a new implementation request.
 
 ## Blockers
 
-No implementation blocker investigated yet; predecessor work remains planned.
+No known planning blocker; implementation dependencies have not been investigated in this documentation-only session.
 
 ## Polish checklist
 
-No active Polish mode request or reported flaw checklist. See [Polish mode](../../AGENTS.md#polish-mode).
+No active Polish mode request. The requested visual follow-ups are recorded above for M04. See [Polish mode](../../AGENTS.md#polish-mode).
 
 ## Evidence and next step
 
-No builds, tests, screenshots, reports, or release artifacts exist for this milestone. Next: begin only after the predecessor gate and user request.
+No builds, tests, screenshots, reports, or release artifacts exist for this milestone. The planning report records requirements only; begin implementation only after the next user request.
