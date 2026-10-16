@@ -1,4 +1,4 @@
-use eframe::egui::{self, Align2, Color32, FontId, Pos2, Rect, Stroke};
+use eframe::egui::{self, Color32, Pos2, Rect, Stroke};
 use resourceville_rules::Terrain;
 const INK: Color32 = Color32::from_rgb(30, 30, 46);
 const LIGHT: Color32 = Color32::from_rgb(255, 248, 224);
@@ -168,14 +168,4 @@ pub fn ship(p: &egui::Painter, a: Pos2, s: f32, cargo: Option<Terrain>) {
             ));
         }
     }
-}
-pub fn seat_number(p: &egui::Painter, a: Pos2, seat: u8) {
-    p.circle_filled(a, 5.5, LIGHT);
-    p.text(
-        a,
-        Align2::CENTER_CENTER,
-        (seat + 1).to_string(),
-        FontId::proportional(10.),
-        INK,
-    );
 }

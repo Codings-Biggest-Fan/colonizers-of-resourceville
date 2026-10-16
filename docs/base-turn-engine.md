@@ -15,3 +15,7 @@ The panel is a development harness controlling synthetic seats, not a supported 
 `GameConfig` v1 and existing protocol/save envelope versions are unchanged. In-memory engine v1 accepts a validated seat permutation and explicit controlled outcomes separately from the board seed. Authoritative state implements neither Debug nor Serialize; public views exclude individual resource types, and hands require a separately resolved seat. This is an API boundary, not authentication or online privacy evidence. No engine save payload or gameplay transport is introduced.
 
 [Progress](../milestones/milestone-04/progress.md) · [Native evidence](../photos/milestone-04/index.md)
+
+## Current graphic HUD (2026-10-16)
+
+The sidebar and bottom dock now appear by default. Hover an icon for its name/cost; keyboard focus and accessible names identify icon buttons. The play triangle starts the real turn test. Select a target on the board, then use the road, house or paired-house icon to place a road/settlement or upgrade a city. The finish arrow ends a build turn. Dice input remains explicit supplied test values; the dice button applies them. Fit/reset live below the player portraits. Active player has an outlined portrait. Production tokens remain numbered; extra player/piece counters and house numerals are hidden. Card stack and trade arrows are disabled, with tooltips explaining M05 availability. This replaces the older floating-panel steps above; no complete-game claim.

@@ -168,7 +168,7 @@ impl Default for Preview {
         Self {
             texture: None,
             game: None,
-            test_open: false,
+            test_open: true,
             dice: [1, 1],
             board: Board::base(42),
             camera: Camera::default(),
@@ -302,6 +302,7 @@ impl Preview {
                 egui::TextureOptions::LINEAR,
             ));
         }
+        self.turn_controls(ctx);
         egui::CentralPanel::default().frame(egui::Frame::new().fill(BASE).inner_margin(0.)).show(ctx,|ui|{
             let(rect,response)=ui.allocate_exact_size(ui.available_size(),egui::Sense::click_and_drag());
             response.widget_info(||egui::WidgetInfo::labeled(egui::WidgetType::Button,true,"Island board. Enter selects; Ctrl+Right cycles tiles, edges and intersections."));
@@ -338,7 +339,6 @@ impl Preview {
             self.paint(ui,rect,hover);
             if response.has_focus(){ui.painter().rect_stroke(rect.shrink(2.),0.,Stroke::new(2.,ACCENT),egui::StrokeKind::Inside);}
         });
-        self.turn_controls(ctx);
     }
 
     fn submit(&mut self, action: Action, outcome: Outcome) {
@@ -350,57 +350,398 @@ impl Preview {
                 .map(|e| e.to_string());
         }
     }
+    fn start_test(&mut self) {
+        let config = GameConfig {
+            board_seed: self.board.seed,
+            ..Default::default()
+        };
+        match Game::new(config, (0..4).map(PlayerId).collect()) {
+            Ok(game) => {
+                self.game = Some(game);
+                self.selected = None;
+                self.error = None;
+            }
+            Err(e) => self.error = Some(e.to_string()),
+        }
+    }
+
     fn turn_controls(&mut self, ctx: &egui::Context) {
         if !self.test_open {
             return;
         }
-        let mut open = true;
-        egui::Window::new("Turn engine test").open(&mut open).default_pos(egui::pos2(12.,12.)).default_width(250.).resizable(true).show(ctx,|ui| {
-            ui.set_max_width(300.);
-            egui::ScrollArea::vertical().max_height((ctx.screen_rect().height()-100.).max(150.)).show(ui,|ui|{
-            if self.game.is_none() {
-                ui.label("Test setup and ordinary building turns. Complete games arrive in M06.");
-                if ui.button("Start four-seat test").clicked() {
-                    let config=GameConfig {board_seed:self.board.seed,..Default::default()};
-                    match Game::new(config,(0..4).map(PlayerId).collect()) {Ok(game)=>{self.game=Some(game);self.selected=None;self.error=None;},Err(e)=>self.error=Some(e.to_string())}
-                }
+        let compact = ctx.screen_rect().width() < 700.;
+        let view = self.game.as_ref().map(Game::view);
+        egui::TopBottomPanel::bottom("turn_actions")
+            .resizable(false)
+            .exact_height(if self.error.is_some() {
+                118.
+            } else if compact {
+                94.
             } else {
-                let view=self.game.as_ref().expect("test game").view();
-                ui.heading(format!("Player {}",view.active.0+1));
-                ui.label(match view.phase {
-                    Phase::SetupSettlement {..}=>"Setup: place a settlement",
-                    Phase::SetupRoad {..}=>"Setup: place an adjoining road",
-                    Phase::AwaitRoll=>"Supply a test dice outcome",
-                    Phase::Build=>"Build or end the turn",
-                    Phase::AwaitRobber=>"Seven: robber resolution awaits M05",
-                });
-                if let Some(d)=view.last_dice {ui.label(format!("Dice {} + {} = {}",d[0],d[1],d[0]+d[1]));}
-                if view.phase==Phase::AwaitRoll {
-                    ui.horizontal(|ui| {
-                        for (i,die) in self.dice.iter_mut().enumerate() {ui.add(egui::DragValue::new(die).range(1..=6).prefix(format!("Die {}: ",i+1)));}
-                    });
-                    if ui.button("Apply dice").clicked() {self.submit(Action::Roll,Outcome::Dice(self.dice));}
-                }
-                if let Some(target)=self.selected {
-                    ui.separator();ui.label(self.description(target));
-                    match target {
-                        Target::Vertex(i)=> {
-                            if ui.button("Place settlement").clicked(){self.submit(Action::Settlement(VertexId(i as u32)),Outcome::None);}
-                            if view.phase==Phase::Build && ui.button("Upgrade to city").clicked(){self.submit(Action::City(VertexId(i as u32)),Outcome::None);}
-                        }
-                        Target::Edge(i)=>{if ui.button("Place road").clicked(){self.submit(Action::Road(EdgeId(i as u32)),Outcome::None);}},
-                        _=>(),
+                98.
+            })
+            .frame(
+                egui::Frame::new()
+                    .fill(BASE)
+                    .inner_margin(egui::Margin::symmetric(12, 8)),
+            )
+            .show(ctx, |ui| {
+                let color = view
+                    .as_ref()
+                    .map(|v| pieces::player(v.active.0))
+                    .unwrap_or(ACCENT);
+                let phase = view.as_ref().map(|v| v.phase);
+                let vertex = if let Some(Target::Vertex(i)) = self.selected {
+                    Some(VertexId(i as u32))
+                } else {
+                    None
+                };
+                let edge = if let Some(Target::Edge(i)) = self.selected {
+                    Some(EdgeId(i as u32))
+                } else {
+                    None
+                };
+                let size = if compact { 48. } else { 58. };
+                let count = if view.is_some() { 6. } else { 7. };
+                ui.horizontal(|ui| {
+                    ui.spacing_mut().item_spacing.x = 6.;
+                    ui.add_space(((ui.available_width() - count * (size + 6.)) / 2.).max(0.));
+                    if view.is_none()
+                        && Self::hud_button(ui, "Start turn test", true, 6, color, size).clicked()
+                    {
+                        self.start_test();
                     }
+                    if Self::hud_button(
+                        ui,
+                        "Build road: timber and clay",
+                        edge.is_some()
+                            && matches!(phase, Some(Phase::Build | Phase::SetupRoad { .. })),
+                        0,
+                        color,
+                        size,
+                    )
+                    .clicked()
+                    {
+                        self.submit(Action::Road(edge.unwrap()), Outcome::None);
+                    }
+                    if Self::hud_button(
+                        ui,
+                        "Build settlement: timber, wool, grain and clay",
+                        vertex.is_some()
+                            && matches!(phase, Some(Phase::Build | Phase::SetupSettlement { .. })),
+                        1,
+                        color,
+                        size,
+                    )
+                    .clicked()
+                    {
+                        self.submit(Action::Settlement(vertex.unwrap()), Outcome::None);
+                    }
+                    if Self::hud_button(
+                        ui,
+                        "Upgrade city: two grain and three ore",
+                        vertex.is_some() && phase == Some(Phase::Build),
+                        2,
+                        color,
+                        size,
+                    )
+                    .clicked()
+                    {
+                        self.submit(Action::City(vertex.unwrap()), Outcome::None);
+                    }
+                    Self::hud_button(ui, "Development cards arrive in M05", false, 3, color, size);
+                    Self::hud_button(ui, "Trading arrives in M05", false, 4, color, size);
+                    if view.is_some() {
+                        if phase == Some(Phase::AwaitRoll) {
+                            if Self::hud_button(
+                                ui,
+                                "Apply supplied test dice",
+                                true,
+                                9,
+                                color,
+                                size,
+                            )
+                            .clicked()
+                            {
+                                self.submit(Action::Roll, Outcome::Dice(self.dice));
+                            }
+                        } else if Self::hud_button(
+                            ui,
+                            "End turn",
+                            phase == Some(Phase::Build),
+                            5,
+                            color,
+                            size,
+                        )
+                        .clicked()
+                        {
+                            self.submit(Action::EndTurn, Outcome::None);
+                        }
+                    }
+                });
+                ui.horizontal(|ui| {
+                    ui.add_space(6.);
+                    ui.label(
+                        egui::RichText::new(match phase {
+                            None => "Board preview",
+                            Some(Phase::SetupSettlement { .. }) => "Place a settlement",
+                            Some(Phase::SetupRoad { .. }) => "Place a road",
+                            Some(Phase::AwaitRoll) => "Test dice",
+                            Some(Phase::Build) => "Build or finish",
+                            Some(Phase::AwaitRobber) => "Robber pending · M05",
+                        })
+                        .size(12.)
+                        .color(SUBTEXT),
+                    );
+                    if phase == Some(Phase::AwaitRoll) {
+                        for die in &mut self.dice {
+                            ui.add(egui::DragValue::new(die).range(1..=6));
+                        }
+                    }
+                });
+                if let Some(error) = &self.error {
+                    ui.colored_label(Color32::from_rgb(243, 139, 168), error);
                 }
-                if view.phase==Phase::Build && ui.button("End turn").clicked() {self.submit(Action::EndTurn,Outcome::None);}
-                ui.separator();
-                ui.collapsing("Resource counts",|ui| {for (i,count) in view.resource_counts.iter().enumerate(){ui.label(format!("Player {}: {} resources",i+1,count));}});
-                if ui.button("Reset test").clicked(){self.game=None;self.error=None;}
-            }
-            if let Some(error)=&self.error {ui.colored_label(Color32::from_rgb(243,139,168),error);}
             });
-        });
-        self.test_open = open;
+        egui::SidePanel::right("turn_sidebar")
+            .resizable(false)
+            .exact_width(if compact { 76. } else { 88. })
+            .frame(
+                egui::Frame::new()
+                    .fill(Color32::from_rgb(24, 24, 37))
+                    .inner_margin(8),
+            )
+            .show(ctx, |ui| {
+                ui.spacing_mut().item_spacing.y = 5.;
+                egui::ScrollArea::vertical()
+                    .id_salt("hud_rail")
+                    .show(ui, |ui| {
+                        if let Some(view) = &view {
+                            ui.label(egui::RichText::new("Turn test").size(11.).color(SUBTEXT));
+                            if let Some(dice) = view.last_dice {
+                                ui.horizontal(|ui| {
+                                    ui.spacing_mut().item_spacing.x = 2.;
+                                    for die in dice {
+                                        Self::die(ui, die);
+                                    }
+                                });
+                            }
+                            for seat in 0..view.resource_counts.len() {
+                                let (rect, response) = ui.allocate_exact_size(
+                                    egui::vec2(
+                                        ui.available_width(),
+                                        if compact { 48. } else { 60. },
+                                    ),
+                                    egui::Sense::hover(),
+                                );
+                                let p = ui.painter();
+                                let color = pieces::player(seat as u8);
+                                if seat == view.active.0 as usize {
+                                    p.rect_filled(
+                                        rect,
+                                        10.,
+                                        Color32::from_rgba_unmultiplied(
+                                            color.r(),
+                                            color.g(),
+                                            color.b(),
+                                            30,
+                                        ),
+                                    );
+                                    p.rect_stroke(
+                                        rect.shrink(1.),
+                                        10.,
+                                        Stroke::new(2., color),
+                                        egui::StrokeKind::Inside,
+                                    );
+                                }
+                                pieces::house(
+                                    p,
+                                    rect.center() + egui::vec2(0., 5.),
+                                    if compact { 13. } else { 17. },
+                                    color,
+                                    false,
+                                );
+                                let name = Self::player_name(seat as u8);
+                                response.widget_info(|| {
+                                    egui::WidgetInfo::labeled(egui::WidgetType::Label, true, name)
+                                });
+                                response.on_hover_text(if seat == view.active.0 as usize {
+                                    format!("{name}'s turn")
+                                } else {
+                                    name.into()
+                                });
+                            }
+                        } else {
+                            let (r, response) = ui.allocate_exact_size(
+                                egui::vec2(ui.available_width(), 64.),
+                                egui::Sense::hover(),
+                            );
+                            pieces::house(
+                                ui.painter(),
+                                r.center() + egui::vec2(0., 6.),
+                                20.,
+                                ACCENT,
+                                false,
+                            );
+                            response
+                                .on_hover_text("The Colonizers of Resourceville · Board preview");
+                        }
+                        ui.add_space(6.);
+                        ui.horizontal(|ui| {
+                            ui.spacing_mut().item_spacing.x = 4.;
+                            if Self::hud_button(ui, "Fit island", true, 7, ACCENT, 26.).clicked() {
+                                self.camera = Camera::default();
+                            }
+                            if self.game.is_some()
+                                && Self::hud_button(ui, "Reset test", true, 8, ACCENT, 26.)
+                                    .clicked()
+                            {
+                                self.game = None;
+                                self.selected = None;
+                                self.error = None;
+                            }
+                        });
+                    });
+            });
+    }
+
+    fn player_name(seat: u8) -> &'static str {
+        ["Blue", "Peach", "Mint", "Lilac"][seat as usize % 4]
+    }
+
+    fn hud_button(
+        ui: &mut egui::Ui,
+        label: &str,
+        enabled: bool,
+        kind: u8,
+        color: Color32,
+        size: f32,
+    ) -> egui::Response {
+        let response = ui.add_enabled(
+            enabled,
+            egui::Button::new("")
+                .corner_radius(10)
+                .min_size(egui::vec2(size, size)),
+        );
+        response
+            .widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, enabled, label));
+        let p = ui.painter();
+        let r = response.rect;
+        let c = r.center();
+        let s = size / 58.;
+        let color = if enabled {
+            color
+        } else {
+            Color32::from_rgb(88, 91, 112)
+        };
+        let ink = if enabled {
+            CREAM
+        } else {
+            Color32::from_rgb(108, 112, 134)
+        };
+        let xy = |x: f32, y: f32| c + egui::vec2(x * s, y * s);
+        match kind {
+            0 => pieces::road(p, [xy(-15., 6.), xy(15., -6.)], size * 0.8, color),
+            1 | 2 => pieces::house(p, xy(0., 5.), size * 0.22, color, kind == 2),
+            3 => {
+                p.rect_filled(
+                    Rect::from_center_size(xy(-5., -3.), egui::vec2(24., 32.) * s),
+                    4.,
+                    ink,
+                );
+                let front = Rect::from_center_size(xy(5., 3.), egui::vec2(24., 32.) * s);
+                p.rect_filled(front, 4., color);
+                p.rect_stroke(front, 4., Stroke::new(2., ink), egui::StrokeKind::Inside);
+                p.circle_stroke(xy(5., 3.), 6. * s, Stroke::new(2., ink));
+            }
+            4 => {
+                for (y, sign) in [(-7., 1.), (7., -1.)] {
+                    p.line_segment(
+                        [xy(-15. * sign, y), xy(15. * sign, y)],
+                        Stroke::new(3. * s, ink),
+                    );
+                    p.add(egui::Shape::line(
+                        vec![
+                            xy(7. * sign, y - 7.),
+                            xy(15. * sign, y),
+                            xy(7. * sign, y + 7.),
+                        ],
+                        Stroke::new(3. * s, ink),
+                    ));
+                }
+            }
+            5 => {
+                p.line_segment([xy(-15., 0.), xy(15., 0.)], Stroke::new(4. * s, ink));
+                p.add(egui::Shape::line(
+                    vec![xy(4., -11.), xy(15., 0.), xy(4., 11.)],
+                    Stroke::new(4. * s, ink),
+                ));
+            }
+            6 => {
+                p.add(egui::Shape::convex_polygon(
+                    vec![xy(-9., -15.), xy(15., 0.), xy(-9., 15.)],
+                    ink,
+                    Stroke::NONE,
+                ));
+            }
+            7 => {
+                for (x, y) in [(-1., -1.), (1., -1.), (1., 1.), (-1., 1.)] {
+                    p.add(egui::Shape::line(
+                        vec![
+                            xy(x * 7., y * 17.),
+                            xy(x * 17., y * 17.),
+                            xy(x * 17., y * 7.),
+                        ],
+                        Stroke::new(3. * s, ink),
+                    ));
+                }
+            }
+            8 => {
+                let points = (0..=20)
+                    .map(|i| {
+                        let t = 0.5 + i as f32 * 5.1 / 20.;
+                        xy(t.cos() * 15., t.sin() * 15.)
+                    })
+                    .collect();
+                p.add(egui::Shape::line(points, Stroke::new(3. * s, ink)));
+                p.add(egui::Shape::line(
+                    vec![xy(-1., -15.), xy(12., -15.), xy(12., -3.)],
+                    Stroke::new(3. * s, ink),
+                ));
+            }
+            _ => {
+                p.rect_filled(Rect::from_center_size(c, egui::vec2(30., 30.) * s), 6., ink);
+                for (x, y) in [(-8., -8.), (0., 0.), (8., 8.)] {
+                    p.circle_filled(xy(x, y), 3. * s, BASE);
+                }
+            }
+        }
+        response.on_hover_text(label).on_disabled_hover_text(label)
+    }
+
+    fn die(ui: &mut egui::Ui, value: u8) {
+        let (r, response) = ui.allocate_exact_size(egui::vec2(28., 28.), egui::Sense::hover());
+        let p = ui.painter();
+        p.rect_filled(r.shrink(1.), 6., CREAM);
+        let offsets: &[(f32, f32)] = match value {
+            1 => &[(0., 0.)],
+            2 => &[(-1., -1.), (1., 1.)],
+            3 => &[(-1., -1.), (0., 0.), (1., 1.)],
+            4 => &[(-1., -1.), (-1., 1.), (1., -1.), (1., 1.)],
+            5 => &[(-1., -1.), (-1., 1.), (0., 0.), (1., -1.), (1., 1.)],
+            _ => &[
+                (-1., -1.),
+                (-1., 0.),
+                (-1., 1.),
+                (1., -1.),
+                (1., 0.),
+                (1., 1.),
+            ],
+        };
+        for &(x, y) in offsets {
+            p.circle_filled(r.center() + egui::vec2(x * 7., y * 7.), 2., INK);
+        }
+        response.on_hover_text(format!("Die: {value}"));
     }
     fn paint(&self, ui: &egui::Ui, rect: Rect, hover: Option<Target>) {
         let painter = ui.painter_at(rect);
@@ -545,7 +886,6 @@ impl Preview {
                     pieces::player(owner.0),
                     kind == Building::City,
                 );
-                pieces::seat_number(&painter, point(v) - egui::vec2(0., scale * 0.10), owner.0);
             }
             if self.test_open {
                 for action in game.legal_actions(view.active) {
@@ -609,6 +949,35 @@ impl Preview {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn docked_hud_reserves_board_space_at_compact_and_normal_sizes() {
+        for size in [
+            egui::vec2(480., 420.),
+            egui::vec2(1000., 680.),
+            egui::vec2(666., 453.),
+        ] {
+            let ctx = egui::Context::default();
+            let mut preview = Preview::default();
+            preview.start_test();
+            assert!(matches!(
+                preview.game.as_ref().unwrap().view().phase,
+                Phase::SetupSettlement { step: 0 }
+            ));
+            let mut board = Rect::NOTHING;
+            let _ = ctx.run(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, size)),
+                    ..Default::default()
+                },
+                |ctx| {
+                    preview.show(ctx);
+                    board = ctx.available_rect();
+                },
+            );
+            assert!(board.width() >= 250. && board.width() < size.x);
+            assert!(board.height() >= 250. && board.height() < size.y);
+        }
+    }
     #[test]
     fn native_action_bridge_preserves_errors_and_reset_clears_game() {
         let mut p = Preview {

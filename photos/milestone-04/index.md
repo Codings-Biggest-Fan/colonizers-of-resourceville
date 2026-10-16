@@ -42,3 +42,32 @@ Source: M04 working tree after 6319c2f, committed together with these captures. 
 | [024 scaled production](024-soft-scaled-production.png) | 2026-10-16 | 1000×680 / 1500×1020 | Native 1.5; egui 1.5; effective 2.25 | Real engine replay; ownership markings, outlines and existing controls preserved. Movable panel still covers some board area. |
 
 No claim of changing Windows display settings, manual input walkthrough or multiplayer/privacy acceptance.
+
+## 2026-10-16 graphic HUD
+
+Source: M04 working tree after 67e7026, committed together with these frames. User granted frame-only permission for the sidebar/bottom-bar check. The final direction follows their graphic-first correction; intermediate drafts remain archived. All captures are native eframe/wgpu, not mockups. Native scale 1.5. Scaled captures use egui zoom 1.5 (effective 2.25); all others use zoom 1. No OS DPI-change claim. Final acceptance images are 043–046; before is 024. None proves a complete human input session or multiplayer privacy.
+
+| Image | Date | Viewport / image | Scenario / inspection |
+| --- | --- | --- | --- |
+| [025-sidebar-preview.png](025-sidebar-preview.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [026-sidebar-turn.png](026-sidebar-turn.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [027-sidebar-compact.png](027-sidebar-compact.png) | 2026-10-16 | 480×420 / 720×630 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [028-sidebar-scaled.png](028-sidebar-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. EgUI zoom 1.5. |
+| [029-sidebar-rejection.png](029-sidebar-rejection.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [030-piece-roster-hud.png](030-piece-roster-hud.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [031-piece-roster-compact.png](031-piece-roster-compact.png) | 2026-10-16 | 480×420 / 720×630 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [032-piece-roster-scaled.png](032-piece-roster-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. EgUI zoom 1.5. |
+| [033-action-dock-error.png](033-action-dock-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate comparison capture; not inspected for final acceptance. |
+| [034-game-hud-preview.png](034-game-hud-preview.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate comparison capture; not inspected for final acceptance. |
+| [035-compact-game-hud.png](035-compact-game-hud.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [036-compact-game-hud-small.png](036-compact-game-hud-small.png) | 2026-10-16 | 480×420 / 720×630 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [037-compact-game-hud-scaled.png](037-compact-game-hud-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. EgUI zoom 1.5. |
+| [038-compact-game-hud-error.png](038-compact-game-hud-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [039-compact-game-preview.png](039-compact-game-preview.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate HUD iteration; superseded by 043–046 after user feedback. |
+| [040-final-action-dock.png](040-final-action-dock.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate comparison capture; not inspected for final acceptance. |
+| [041-final-dock-error.png](041-final-dock-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate comparison capture; not inspected for final acceptance. |
+| [042-final-compact-build.png](042-final-compact-build.png) | 2026-10-16 | 480×420 / 720×630 | Intermediate comparison capture; not inspected for final acceptance. |
+| [043-graphic-hud.png](043-graphic-hud.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final graphic rail/dock: original action icons; only short phase text; production and player selection clear. |
+| [044-graphic-hud-compact.png](044-graphic-hud-compact.png) | 2026-10-16 | 480×420 / 720×630 | Final compact setup: all portraits and controls fit; board targets remain outside HUD. |
+| [045-graphic-hud-scaled.png](045-graphic-hud-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final egui zoom 1.5: graphic controls/portraits readable, no panel overlap. |
+| [046-graphic-hud-error.png](046-graphic-hud-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final rejected action: error visibly fits beneath graphic actions; no state change. |

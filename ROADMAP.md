@@ -63,3 +63,5 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 Implementation PRs target beta; only explicit approval advances its implementation baseline. Polish PRs target stable and require separate explicit approval. nightly follows current pushed development; main mirrors polished stable. Releases use GitHub-built artifacts from the approved polished stable revision. See AGENTS.md and the workflow for the full policy.
 
 M04 scoped refinement on 2026-10-16: simplifying tile artwork and rounding house silhouettes in response to user feedback. Approval of beta PR #11 does not approve these visual changes for beta/stable; see M04 progress for validation.
+
+M04 HUD refinement (2026-10-16): graphic-first right rail and bottom action dock, six desktop regressions and local lint checks passed, final native frames 043–046 inspected. Card/trade controls are disabled until M05. See [report 006](milestones/milestone-04/reports/006-polish-graphic-hud.md).

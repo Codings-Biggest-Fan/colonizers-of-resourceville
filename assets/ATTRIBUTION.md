@@ -21,3 +21,5 @@ M04 flat ships, cargo icons, question marks, outlined roads and houses are origi
 
 
 M04 visual correction (2026-10-16): rounded settlement silhouettes and paired toy-house cities are original procedural geometry in pieces.rs. Terrain v4 reduces oversized shaded objects, leaves quieter number-token centers, and preserves six distinct terrain families. Historical assets are retained as evidence of prior iterations.
+
+M04 graphic HUD pictograms (2026-10-16) in board_view.rs are original procedural road/house/city/card/trade/dice/play/end/fit/reset geometry. No competitor image, screenshot, logo or extracted asset is shipped. Reference screenshots were consulted for interface density only; source link is in report 006.

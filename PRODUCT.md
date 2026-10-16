@@ -9,3 +9,5 @@ M03 serves local board inspection, not a playable match. The user wants an invit
 Native desktop Rust, Windows-first; CI builds Windows/Linux/macOS x86-64 and ARM64. No installed web runtime or webview. Native keyboard focus, resizing and actual game-window captures are required evidence. Ask before UI access; Escape ends that session.
 
 M04 adds a native synthetic-seat turn-engine test through F4/context menu. It performs actual setup, production and building transitions with supplied dice, public hand counts and hidden hands. Complete offline games, bots, saves, friends and rooms remain later work. Keep this harness truthful and separate from a supported shared-device game mode.
+
+Current M04 HUD direction (2026-10-16 user request): graphic-first right sidebar and bottom action dock, replacing historical chrome-free/floating-window guidance. Show only functional implemented actions; development-card/trade controls are visibly disabled future affordances. No private hands, fake scores or chat.

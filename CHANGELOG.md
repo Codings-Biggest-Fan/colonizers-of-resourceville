@@ -1,5 +1,11 @@
 # Changelog
 
+## M04 graphic HUD — 2026-10-16
+
+- Replaced the floating window with an icon-first player sidebar and bottom action dock, reserving board space.
+- Removed extra counters/house numerals; retained production tokens, actionable errors and tooltip/accessibility names. Included original city/card/trade graphics; card/trade rules remain M05 and controls disabled.
+- Current branch/nightly refinement only; beta/stable/main unchanged. See M04 report 006.
+
 ## M04 visual refinement — 2026-10-16
 
 - Simpler flat cartoon terrain replaces crowded shaded tile objects; rounded house silhouettes and paired-house cities soften the game pieces.

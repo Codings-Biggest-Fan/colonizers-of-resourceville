@@ -29,7 +29,7 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 
 ## Limits
 
-Seven waits for M05; no trading, cards, awards, victory, bots, saves, rooms or cloud. Explicit test dice and synthetic seats are a developer harness, not a supported shared-device mode. Unsupported runtime options are rejected. No protocol/save shape changes. Compact/scaled panels cover part of the board; move/collapse/close them to access covered targets.
+Seven waits for M05; no trading, cards, awards, victory, bots, saves, rooms or cloud. Explicit test dice and synthetic seats are a developer harness, not a supported shared-device mode. Unsupported runtime options are rejected. No protocol/save shape changes. The current native sidebar and bottom dock reserve board space, replacing the older overlay. Development-card/trade icons are disabled until M05.
 
 ## Blockers and next step
 
@@ -53,3 +53,12 @@ No source implementation blocker. User approved the current implementation basel
 This is the user's scoped visual correction, not an indefinite Polish mode or approval to change beta/stable/main. Native frame-only capture was explicitly permitted for this check. Gameplay rules, board topology and controls remain outside the correction.
 
 [005 — Softer terrain and rounded houses](reports/005-polish-terrain-and-houses.md). Native frames 021–024 inspected; formatting/Clippy passed. All five desktop regression tests passed.
+
+## Scoped HUD correction — 2026-10-16
+
+- [x] Replace the old floating window with a native sidebar and bottom dock.
+- [x] Apply user feedback: graphic-first controls, minimal visible text and no extra public counters/house numerals.
+- [x] Include road/settlement/city/card/trade/dice/end-turn graphics; unavailable M05 controls stay disabled with truthful tooltips.
+- [x] Inspect default, compact, scaled and rejected-action frames; pass formatting, Clippy and six desktop regressions.
+
+[006 — Graphic HUD](reports/006-polish-graphic-hud.md). Current evidence: frames 043–046. This request supersedes earlier no-bars design guidance within M04, without approving promotion or starting M05.
