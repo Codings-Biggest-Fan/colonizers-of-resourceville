@@ -48,7 +48,7 @@ In README.md, place the current milestone's inspected main native screenshot dir
 4. Keep progress.md current and append a numbered report under that milestone's reports/ after each implementation session.
 5. Update ROADMAP.md and CHANGELOG.md when capabilities, blockers, or release status change.
 6. Run the release gate and archive evidence before marking a milestone Complete.
-7. After a milestone passes, provide its release summary, evidence, limitations, and next milestone; stop for the next request.
+7. After a milestone passes, provide its completion summary, evidence, limitations, and next milestone; stop for the next request. Release publication follows the cadence below and is not required for milestones 00–05.
 
 Statuses are Planned, In progress, Verifying, Complete, and Blocked. Blocked means a real dependency prevents progress. Do not use estimated percentages or describe planned features as delivered. Keep dates in the user's America/Los_Angeles time context.
 
@@ -72,14 +72,18 @@ These meanings supersede older text elsewhere that calls beta an unapproved PR h
 2. Stop for explicit user approval. Only after approval merge the tested implementation into beta; beta is then the approved, unpolished baseline.
 3. Perform requested polish on the milestone or a dedicated polish branch, updating nightly with each pushed revision. Keep beta at its approved baseline while polish is unapproved.
 4. Open/attach the polished PR targeting stable. Stop for the user's explicit approval of that polished revision. Approval of the implementation alone is not polish approval.
-5. Only after polished approval and applicable gates merge into stable, fast-forward main to stable, and publish the milestone GitHub Release from that stable commit. A request to create a PR, finish work, or update nightly is not approval.
+5. Only after polished approval and applicable gates merge into stable, fast-forward main to stable, and publish a GitHub Release from that stable commit when due under the release cadence below. Respect any user-reserved manual promotion. A request to create a PR, finish work, or update nightly is not approval.
 6. Existing PRs remain unmerged unless the user approves them; this channel clarification does not authorize merging, retargeting, closing, or releasing them automatically.
 
-Do not force-push, rewrite published history, move refs backward, or promote unrelated work. Inspect divergence and preserve branch-specific changes. In the normal workflow, unapproved corrections stay on the development/polish branch and nightly. Stop after the milestone and its approved release; do not begin the next milestone without the next request.
+**Current M01 handoff — user clarification on 2026-10-15:** the user merged implementation PR #3 into beta and authorized this AGENTS.md update to be merged into beta. Finish that rules-only update and stop. The user will merge beta into stable themselves; do not merge into stable, advance main, or require an additional assistant-managed polish PR for this handoff. This scoped direction supersedes the normal promotion steps above for the current handoff and does not authorize starting M02.
+
+Do not force-push, rewrite published history, move refs backward, or promote unrelated work. Inspect divergence and preserve branch-specific changes. In the normal workflow, unapproved corrections stay on the development/polish branch and nightly. Stop after the milestone and any release due under the cadence below; do not begin the next milestone without the next request.
 
 ### Releases and rules-only exception
 
-M00 targets source/docs-only v0.0.0; M01–M20 retain roadmap versions. Mark pre-v1.0.0 releases as prereleases. Release only approved, polished stable commits. Include PRs/commit, changes, actual validation, manual testing, wiki/build/game instructions, evidence, verified artifacts/checksums when produced, migrations, and limitations. Never tag unfinished work or overwrite published tags/releases.
+**Release cadence — user clarification on 2026-10-15:** do not publish GitHub Releases or release tags for milestones 00–05. The first release is due at Milestone 06 (offline playable, planned v0.1.0), after its acceptance gates and approved stable promotion. Thereafter publish a release for each major feature update; do not automatically publish for every intermediate milestone, documentation edit, or small fix. Here, “major update” means a substantial product capability, not only a semantic-version major-number change. Preserve roadmap version labels as planning identifiers; they do not require a published release. Missing releases before M06 do not block milestone completion. This cadence supersedes older instructions requiring a release after every milestone, including supporting documents until they are next updated.
+
+Mark pre-v1.0.0 releases as prereleases. Release only approved, polished stable commits when a release is due. Include PRs/commit, changes, actual validation, manual testing, wiki/build/game instructions, evidence, verified artifacts/checksums when produced, migrations, and limitations. Never tag unfinished work or overwrite published tags/releases. Continue GitHub build/package validation independently of release publication.
 
 The user explicitly authorized this channel-policy correction to AGENTS.md directly in every existing source branch without a PR. Apply the same updated file while preserving each branch's other content and history. This is a one-time exception for this rules change, not standing permission to bypass implementation or polish approval.
 
