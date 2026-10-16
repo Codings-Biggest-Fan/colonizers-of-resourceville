@@ -17,26 +17,36 @@ pub fn road(p: &egui::Painter, ends: [Pos2; 2], scale: f32, color: Color32) {
     p.line_segment(ends, Stroke::new(w, color));
 }
 pub fn house(p: &egui::Painter, a: Pos2, s: f32, color: Color32, city: bool) {
-    let xy = |x: f32, y: f32| a + egui::vec2(x * s, y * s);
-    let points = if city {
-        vec![
-            xy(-1., 0.7),
-            xy(1., 0.7),
-            xy(1., -0.7),
-            xy(0.5, -1.3),
-            xy(0., -0.7),
-            xy(-0.5, -1.6),
-            xy(-1., -0.7),
-        ]
+    // A city is two soft toy houses, rather than a detailed building facade.
+    if city {
+        soft_house(p, a + egui::vec2(-0.42 * s, -0.28 * s), s * 0.85, color);
+        soft_house(p, a + egui::vec2(0.35 * s, 0.12 * s), s * 0.9, color);
     } else {
-        vec![
-            xy(-0.9, 0.7),
-            xy(0.9, 0.7),
-            xy(0.9, -0.4),
-            xy(0., -1.4),
-            xy(-0.9, -0.4),
-        ]
-    };
+        soft_house(p, a, s, color);
+    }
+}
+
+fn soft_house(p: &egui::Painter, a: Pos2, s: f32, color: Color32) {
+    let xy = |x: f32, y: f32| a + egui::vec2(x * s, y * s);
+    let corners = [
+        xy(-0.9, 0.7),
+        xy(0.9, 0.7),
+        xy(0.9, -0.35),
+        xy(0., -1.3),
+        xy(-0.9, -0.35),
+    ];
+    let mut points = Vec::with_capacity(35);
+    // Quadratic arcs soften every corner, including the roof peak. The contour
+    // remains convex, so egui's convex fill has no self-crossing roof geometry.
+    for i in 0..corners.len() {
+        let corner = corners[i];
+        let start = corner.lerp(corners[(i + 4) % 5], 0.20);
+        let end = corner.lerp(corners[(i + 1) % 5], 0.20);
+        for step in 0..=6 {
+            let t = step as f32 / 6.;
+            points.push(start.lerp(corner, t).lerp(corner.lerp(end, t), t));
+        }
+    }
     p.add(egui::Shape::convex_polygon(
         points.clone(),
         color,
@@ -47,10 +57,11 @@ pub fn house(p: &egui::Painter, a: Pos2, s: f32, color: Color32, city: bool) {
         color,
         Stroke::new(2., INK),
     ));
-    p.rect_filled(Rect::from_min_max(xy(-0.22, 0.), xy(0.22, 0.7)), 0., INK);
-    if city {
-        p.rect_filled(Rect::from_min_max(xy(0.45, -0.5), xy(0.7, -0.1)), 0., LIGHT);
-    }
+    p.rect_filled(
+        Rect::from_min_max(xy(-0.20, 0.10), xy(0.20, 0.62)),
+        s * 0.16,
+        INK,
+    );
 }
 /// Original flat side-view ship; cargo icons and a drawn question mark carry meaning.
 pub fn ship(p: &egui::Painter, a: Pos2, s: f32, cargo: Option<Terrain>) {

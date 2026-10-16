@@ -1,6 +1,6 @@
 # Current roadmap
 
-Last updated: 2026-10-15 (America/Los_Angeles).
+Last updated: 2026-10-16 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; active development on the dedicated milestone branch and nightly.
@@ -61,3 +61,5 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 [Wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
 Implementation PRs target beta; only explicit approval advances its implementation baseline. Polish PRs target stable and require separate explicit approval. nightly follows current pushed development; main mirrors polished stable. Releases use GitHub-built artifacts from the approved polished stable revision. See AGENTS.md and the workflow for the full policy.
+
+M04 scoped refinement on 2026-10-16: simplifying tile artwork and rounding house silhouettes in response to user feedback. Approval of beta PR #11 does not approve these visual changes for beta/stable; see M04 progress for validation.

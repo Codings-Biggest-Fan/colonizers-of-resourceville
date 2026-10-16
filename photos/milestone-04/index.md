@@ -29,3 +29,16 @@ Setup, production and rejection scenarios replay actual engine actions with synt
 | [019-reduced-production-controls.png](019-reduced-production-controls.png) | 1000×680 / 1500×1020 | Final production: numbered ownership, compact native control window. |
 | [020-reduced-scaled-controls.png](020-reduced-scaled-controls.png) | 1000×680 / 1500×1020 | Final egui zoom 1.5: controls/text fit; movable panel covers some targets. |
 Before/after: compare M03 [017](../milestone-03/017-wheel-right-pan.png) / [018](../milestone-03/018-wheel-compact.png) with M04 010/014 for ships and outline geometry. Compare M04 012/013 with 018/020 for reduced panel overlap. A movable overlay still covers targets at compact/scaled sizes; drag/collapse/close it to reach them. Human drag/keyboard-only placement and multi-screen privacy remain unverified.
+
+## 2026-10-16 visual correction
+
+Source: M04 working tree after 6319c2f, committed together with these captures. Permission explicitly granted for game-rendered-frame-only captures. No unrelated windows or private hands captured. Before evidence: [010 layout](010-final-layout.png), [014 contrast](014-compact-contrast.png), [020 scaled test](020-reduced-scaled-controls.png). Terrain v4 and rounded silhouette geometry replace the earlier graphics; no rules/control/topology change.
+
+| Image | Capture date | Viewport / image | Scaling | Scenario and inspection |
+| --- | --- | --- | --- | --- |
+| [021 terrain/houses](021-soft-terrain-houses.png) | 2026-10-16 | 1000×680 / 1500×1020 | Native 1.5; egui 1 | Smaller, flatter terrain motifs leave clear token centers; house has visibly rounded peak/corners and retains outline contrast. |
+| [022 compact](022-soft-compact.png) | 2026-10-16 | 480×420 / 720×630 | Native 1.5; egui 1 | Compact layout; terrain families, numbers, ports and rounded sample piece distinguishable. |
+| [023 contrast fixture](023-soft-contrast.png) | 2026-10-16 | 1000×680 / 1500×1020 | Native 1.5; egui 1 | Renderer fixture, not legal gameplay; rounded houses and paired-house cities over all terrain. |
+| [024 scaled production](024-soft-scaled-production.png) | 2026-10-16 | 1000×680 / 1500×1020 | Native 1.5; egui 1.5; effective 2.25 | Real engine replay; ownership markings, outlines and existing controls preserved. Movable panel still covers some board area. |
+
+No claim of changing Windows display settings, manual input walkthrough or multiplayer/privacy acceptance.

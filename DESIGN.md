@@ -16,7 +16,7 @@ Catppuccin Mocha background #1e1e2e, surface #313244, input #181825, text #cdd6f
 
 Original generated atlas textures are embedded in the binary and mapped into actual topology hexes; no generated mockup is used as runtime evidence. Harbors use cargo boats; ratios are disclosed by hover/selection. Asset provenance is in assets/ATTRIBUTION.md. Zoom is uniform; no stretching by viewport aspect ratio. Visible focus border and keyboard target cycling complement pointer inspection. Invalid seeds preserve typed input and the previous board. No animation is needed for frequent camera or inspection actions.
 
-Sample settlements use original miniature geometry with a front gable, receding side wall, two shaded roof planes, recessed door and ground shadow. They are preview pieces, not placed by a playable game engine.
+Current settlements use flat, softly rounded house silhouettes with a small rounded door; cities pair two rounded houses. Cream separation, dark contours and player marks retain readability. The earlier M03 shaded miniature house is historical.
 
 ## Verification
 
@@ -25,3 +25,5 @@ Inspect default, compact, wide, scaling stress and zoom/pan captures. Earlier fl
 ## M04 native expansion
 
 The board remains the dominant surface. A closable, draggable native Turn engine test window owns actual phase/actions and public resource counts; no permanent top/bottom bars. F4/context menu opens it. Selected-target actions validate through the rules engine; errors stay in the panel and input is preserved. Explicit supplied dice identify this as a test harness. Private hands never render. Flat side-view port ships use geometric cargo icons; generic ports use a drawn question mark. Roads/houses use cream outer separation, dark outlines and player color. Ownership is also available in text inspection and numbered settlements. Appearance preferences remain future scope.
+
+M04 scoped visual correction, 2026-10-16: terrain-v4 uses softer, flatter cartoon scenery with smaller motifs and quieter centers around number tokens. Avoid block-like clay mesas, oversized pyramidal mountains and large grain bundles. Preserve the six resource identities, stable geometry, light sea, flat ships and existing camera/interaction.

@@ -1,5 +1,10 @@
 # Changelog
 
+## M04 visual refinement — 2026-10-16
+
+- Simpler flat cartoon terrain replaces crowded shaded tile objects; rounded house silhouettes and paired-house cities soften the game pieces.
+- Scoped presentation correction on the M04 branch/nightly; approved beta and stable/main remain unchanged. Visual validation is tracked in the M04 records.
+
 ## M04 testing preview — 2026-10-15
 
 - Deterministic base setup/ordinary-turn engine, controlled dice, finite bank, atomic validation, legal actions and building restrictions/piece limits.

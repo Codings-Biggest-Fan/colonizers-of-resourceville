@@ -43,3 +43,13 @@ No source implementation blocker. User approved the current implementation basel
 [003 — Testing handoff](reports/003-testing-handoff.md).
 
 [004 — Approved beta promotion](reports/004-approved-beta-promotion.md).
+
+## Scoped visual correction — 2026-10-16
+
+- [x] Replace crowded, shaded tile motifs with simpler flat cartoon terrain and safe edge margins.
+- [x] Round settlement/city silhouettes and simplify architectural detail while retaining ownership/contrast.
+- [x] Inspect native default/compact/contrast/scaling frames and run affected Rust checks.
+
+This is the user's scoped visual correction, not an indefinite Polish mode or approval to change beta/stable/main. Native frame-only capture was explicitly permitted for this check. Gameplay rules, board topology and controls remain outside the correction.
+
+[005 — Softer terrain and rounded houses](reports/005-polish-terrain-and-houses.md). Native frames 021–024 inspected; formatting/Clippy passed. All five desktop regression tests passed.

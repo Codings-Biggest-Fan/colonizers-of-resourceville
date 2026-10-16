@@ -290,11 +290,11 @@ impl Preview {
     }
     pub fn show(&mut self, ctx: &egui::Context) {
         if self.texture.is_none() {
-            let im = image::load_from_memory(include_bytes!("../../../assets/art/terrain-v3.png"))
+            let im = image::load_from_memory(include_bytes!("../../../assets/art/terrain-v4.png"))
                 .expect("embedded original atlas")
                 .to_rgba8();
             self.texture = Some(ctx.load_texture(
-                "terrain-v1",
+                "terrain-v4",
                 egui::ColorImage::from_rgba_unmultiplied(
                     [im.width() as usize, im.height() as usize],
                     im.as_raw(),

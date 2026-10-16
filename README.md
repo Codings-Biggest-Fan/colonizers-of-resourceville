@@ -1,6 +1,6 @@
 # The Colonizers of Resourceville
 
-![M04 native turn-engine testing preview](photos/milestone-04/019-reduced-production-controls.png)
+![M04 native board with simplified terrain and rounded houses](photos/milestone-04/021-soft-terrain-houses.png)
 
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
@@ -8,7 +8,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** M03 is approved and merged through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10). M04 ([merged PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11)) is a user-approved beta testing baseline awaiting refinement with deterministic setup, production and ordinary building turns, plus flat port graphics and contrasting pieces. Press F4 or use the board context menu to open the [turn-engine test](docs/base-turn-engine.md). Dice outcomes are supplied for testing; complete games, bots and saves arrive later. No release has been published.
+**Current status:** M03 is approved and merged through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10). M04 ([merged PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11)) is a user-approved beta testing baseline awaiting refinement with deterministic setup, production and ordinary building turns, plus flat port graphics and contrasting pieces. Press F4 or use the board context menu to open the [turn-engine test](docs/base-turn-engine.md). Dice outcomes are supplied for testing; complete games, bots and saves arrive later. The M04 branch/nightly also contains the requested 2026-10-16 visual refinement; beta retains its approved earlier graphics. No release has been published.
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
 ## Roadmap
@@ -34,9 +34,9 @@ These are real M04 native wgpu frames from synthetic engine test scenarios; the 
 
 | Turn-engine test | Compact test |
 | :---: | :---: |
-| ![Current production test](photos/milestone-04/019-reduced-production-controls.png) | ![Compact controls](photos/milestone-04/018-reduced-compact-controls.png) |
-| Setup targets<br>![Setup rings](photos/milestone-04/002-setup-targets.png) | Contrast fixture<br>![Piece contrast test](photos/milestone-04/014-compact-contrast.png) |
-| Scaling stress<br>![Scaled native controls](photos/milestone-04/020-reduced-scaled-controls.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
+| ![Current terrain and houses](photos/milestone-04/021-soft-terrain-houses.png) | ![Compact terrain](photos/milestone-04/022-soft-compact.png) |
+| Earlier setup targets, before terrain refinement<br>![Setup rings](photos/milestone-04/002-setup-targets.png) | Contrast fixture<br>![Piece contrast test](photos/milestone-04/023-soft-contrast.png) |
+| Scaling stress<br>![Scaled native controls](photos/milestone-04/024-soft-scaled-production.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
 
 [M03 archive and before evidence](photos/milestone-03/index.md) · [M01 evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
 
