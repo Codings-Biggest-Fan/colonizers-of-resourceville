@@ -1,0 +1,40 @@
+[
+  {
+    "page": "Home",
+    "http": 200,
+    "checks": [
+      "TESTING PREVIEW",
+      "fd6c236",
+      "pull/7",
+      "Building",
+      "Game-Instructions"
+    ]
+  },
+  {
+    "page": "Building",
+    "http": 200,
+    "checks": [
+      "TESTING PREVIEW",
+      "fd6c236",
+      "milestone-02/rules-contract"
+    ]
+  },
+  {
+    "page": "Game-Instructions",
+    "http": 200,
+    "checks": [
+      "TESTING PREVIEW",
+      "fd6c236",
+      "configuration-contract"
+    ]
+  },
+  {
+    "page": "milestones-milestone-21-plan",
+    "http": 200,
+    "checks": [
+      "Website and documentation completion",
+      "Status: Planned",
+      "M21"
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "name": "resourceville-x86_64-pc-windows-msvc-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12026541036,
+    "artifact_sha256": "cf7a64ed5e2a5ccd545a1624cce14b31afb074dd90508f6b637c12b99ca9334a",
+    "bundle_sha256": "1900b13129e89866ecf6b052603a3b65ac6242923ca1b6622e2468ce63b10c95",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-aarch64-unknown-linux-gnu-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12026486196,
+    "artifact_sha256": "128f561480b9b0e26680abb80edb5691687dad914ea35d54e7ebde67c4f6fe09",
+    "bundle_sha256": "9530a413f0551d2a7252eb34c351d5a103cc541bf42ad15c09179d20e67eea8c",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass",
+    "container_sha256": "06511eb2d85f8782a6b395fc02e81e9e3521c7829a26964e3670903c4b1e0d6b",
+    "container_architecture": "arm64"
+  },
+  {
+    "name": "resourceville-aarch64-pc-windows-msvc-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12026341803,
+    "artifact_sha256": "2eefd0169d102d5eb6c86836676da524eeeace64e68e7acef451a1925207b44f",
+    "bundle_sha256": "f452e9e5714c61d8a0a58e4ff857b147b6a4471babc3c505d52efca7e2b9831b",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-x86_64-apple-darwin-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12026287563,
+    "artifact_sha256": "ff36d7bd05e303c13cd5e8a684df072c53e526fe524ec3bc3d51e50484a5ac8a",
+    "bundle_sha256": "074226eae55992c7bf655764c85129208011744bd3de64c9d19ed2896ac3cc48",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-aarch64-apple-darwin-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12026137820,
+    "artifact_sha256": "42d4934d7d1bb734bef569123f02c595bf70bf7b14cc7ae154fbc1234af405c4",
+    "bundle_sha256": "eaacdd40a73c7e828792efa6ade19b5adfa41178ad2cdd80dea3155717b36b99",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass"
+  },
+  {
+    "name": "resourceville-x86_64-unknown-linux-gnu-fd6c23657fa6c8a54d3c8b42fb42f1fb91ec4d2a",
+    "artifact_id": 12025354958,
+    "artifact_sha256": "b5500fd55f9861417660e4f2bd5f63e078f00c8f4dcdfefe838813a9e9d86f17",
+    "bundle_sha256": "acccdb74ab391fe047a1ae81c19cf178b3402a802a413b94d417a30e27b145c2",
+    "checked_files": 649,
+    "binaries_and_permissions": "pass",
+    "container_sha256": "7d3344605296743acb10db99d9d01be51dc8b1c5c22dd92accce6fd445e23f5b",
+    "container_architecture": "amd64"
+  }
+]

@@ -41,3 +41,7 @@ No active Polish mode request or reported flaw checklist. See [Polish mode](../.
 ## Evidence and next step
 
 No builds, tests, screenshots, reports, or release artifacts exist for this milestone. Next: begin only after the predecessor gate and user request.
+
+## User planning addition — 2026-10-15
+
+Fog region map authoring/import/export and validation extend M12 discovery rules. No editor/fog implementation has started.

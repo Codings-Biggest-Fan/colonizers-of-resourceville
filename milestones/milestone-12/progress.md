@@ -41,3 +41,7 @@ No active Polish mode request or reported flaw checklist. See [Polish mode](../.
 ## Evidence and next step
 
 No builds, tests, screenshots, reports, or release artifacts exist for this milestone. Next: begin only after the predecessor gate and user request.
+
+## User planning addition — 2026-10-15
+
+Mistbound fog reveal on nearby road/settlement construction, source-verified exact adjacency/ship triggers, hidden-state privacy and before/after recovery tests are assigned in the plan. No fog gameplay has been implemented.
