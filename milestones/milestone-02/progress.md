@@ -1,43 +1,43 @@
 # Milestone 02 progress — Rules and configuration contract
 
-Status: Planned  
-Target release: v0.0.2  
-Last updated: 2026-10-15
+Status: Verifying
+
+Target version: v0.0.2 (no release due)
+
+Last updated: 2026-10-15 (America/Los_Angeles)
 
 [Plan](plan.md) · [Reports](reports/) · [Photos](../../photos/milestone-02/index.md) · [Roadmap](../../ROADMAP.md)
 
-## Landed work
+## Implemented
 
-No implementation work has started. This initial record establishes scope only.
-
-## Implementation checklist
-
-- [ ] Audit reference pregame controls through ordinary public UI and document observed values, defaults, unavailable options, source dates, and uncertainties.
-- [ ] Pin public core rulebooks and enumerate every development/progress card, core scenario, and supported combination.
-- [ ] Define GameConfig, ruleset/scenario identifiers, capabilities, command/event envelopes, recipient views, and save versioning.
-- [ ] Specify defaults, custom markers, readiness invalidation, immutable in-game configuration, and invalid-combination explanations.
-- [ ] Assign every catalogue item to a milestone and define deterministic fixtures and private-information boundaries.
+- Public guest setup audit, uncertainties/locks/defaults and disposition/delivery for every observed setting.
+- Source hashes, 38 development/progress effect rows, 21 core scenario contracts, four caravan variants and 13 event-effect categories; explicit supported/unsupported combinations.
+- Strict versioned GameConfig, validation/custom marker, readiness reset/immutable freeze, no-playable-capability guard.
+- Versioned command/event/save envelopes, bounded ingress, topology IDs and synthetic recipient projections.
+- Fog-map observation retained in rules knowledge, with exact reveal adjacency/ship behavior pending M12 verification.
 
 ## Verification
 
-- [ ] Round-trip shared configuration and reject invalid or incompatible configurations.
-- [ ] Confirm settings edits clear readiness and starting freezes the accepted configuration contract.
-- [ ] Check inventory completeness against pinned sources and give every observed setting a documented disposition.
+- [x] Initial focused contract/inventory/privacy tests passed (10 tests).
+- [x] Formatting, all-target/all-feature Clippy, optimized workspace build and all 13 workspace tests (12 new contract/inventory/privacy tests, one existing server test).
+- [ ] Clean committed-revision local package and checksum/archive verification.
+- [x] All 22 record sets and 614 local links validated; single M21 validation passed after fixing scalar-array handling. Final wiki/source review follows the commit.
+- [ ] All six GitHub target builds/packages.
+- [ ] Testing-preview wiki publication/navigation and implementation PR against beta.
+- [ ] Explicit user implementation approval; keep beta/stable/main unchanged.
 
-Unchecked items are pending, not failed or passed by inference. Structure-check results do not imply application build/runtime verification.
+## Remaining and limitations
 
-## Remaining work and dependencies
-
-Await completion of milestone 01 and refinement of this plan against the then-current implementation.
+Complete final checks and archive evidence; no gameplay, board generation, bots, saves, live lobby, online commands or native settings introduced. The known public guest audit is complete within its stated boundary; locked/authenticated behaviors remain uncertain and assigned. Future engine milestones implement per-card effects, event-face distribution and per-scenario tests. No native screen changed, so no new runtime screenshots are applicable.
 
 ## Blockers
 
-No implementation blocker investigated yet; predecessor work remains planned.
+None in implementation. Pending checks are not passes. User review follows the concrete tested PR. M03 remains planned.
 
-## Polish checklist
+## Polish
 
-No active Polish mode request or reported flaw checklist. See [Polish mode](../../AGENTS.md#polish-mode).
+No active Polish mode. Implementation and polish share this milestone branch.
 
-## Evidence and next step
+## Evidence
 
-No builds, tests, screenshots, reports, or release artifacts exist for this milestone. Next: begin only after the predecessor gate and user request.
+[Session report](reports/001-contract-and-source-inventory.md), [source manifest](../../docs/rules-sources.json), [contract](../../docs/configuration-contract.md), [public UI audit](../../docs/pregame-options.md). Report records executed checks and remaining gates.

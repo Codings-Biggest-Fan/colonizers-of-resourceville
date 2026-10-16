@@ -2607,10 +2607,19 @@ dependencies = [
 [[package]]
 name = "resourceville-protocol"
 version = "0.0.1"
+dependencies = [
+ "resourceville-rules",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "resourceville-rules"
 version = "0.0.1"
+dependencies = [
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "resourceville-server"

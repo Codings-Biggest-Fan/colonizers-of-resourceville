@@ -8,4 +8,4 @@ Capture only the selected game window or its own rendered frame. Use synthetic i
 
 Material visual corrections need before/after evidence when possible. Multiplayer changes need paired client views. Explain missing before evidence or why a nonvisual milestone has no screenshot.
 
-**Current state:** no native application has been built or captured. Every screenshot index explicitly states that no capture exists.
+**Current state:** [M01](milestone-01/index.md) contains inspected native foundation captures. M02 changes contracts and documentation only, so its index explains why no new capture applies. Later indexes remain planned. M21 will label website/wiki captures separately from native gameplay evidence.

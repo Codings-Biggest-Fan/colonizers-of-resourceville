@@ -22,7 +22,7 @@ Selectable controls must change real behavior. Reject invalid combinations with 
 
 M00 separates repository/plans/docs/wiki/helpers and GitHub workflow from the original 20 implementation milestones. It targets source/docs-only v0.0.0 after user PR testing/approval. M01 remains native Rust foundation. [M00 plan](../milestones/milestone-00/plan.md).
 
-Implementation PRs target beta, which advances only after explicit implementation approval. Polish PRs target stable, which advances only after explicit polish approval. nightly is latest pushed development work; main mirrors approved polished stable. Wait for explicit user approval before merging, publishing its GitHub Release, or advancing. [Workflow](github-workflow.md).
+Implementation PRs target beta, which advances only after explicit implementation approval. Polish PRs target stable, which advances only after explicit polish approval. nightly is latest pushed development work; main mirrors approved polished stable. Wait for explicit approval before merging or advancing. No releases/tags for M00–M05; first release at M06 after approved stable promotion, then substantial feature updates. [Workflow](github-workflow.md).
 
 ## Release sequence
 
@@ -47,9 +47,13 @@ Implementation PRs target beta, which advances only after explicit implementatio
 19. **v1.0.0-rc.1 — Ranked and operations:** Prepare competitive play and demonstrate production operation and recovery. [Implementation plan](../milestones/milestone-19/plan.md).
 20. **v1.0.0 — Release:** Ship a verified Windows release with complete scope and evidence accounting. [Implementation plan](../milestones/milestone-20/plan.md).
 
+21. **Website and documentation completion (game version unassigned):** Create the separate product website and finish wiki/build/player/operating docs against verified M20 releases. Preserve native Rust gameplay and require explicit deployment/publication approval. [Implementation plan](../milestones/milestone-21/plan.md).
+
+Fog-map requirement: M12 Mistbound hides terrain until road/settlement proximity triggers reveal, with exact adjacency/ship behavior verified from sources; M17 adds validated fog map authoring/import/export. See the [knowledge note](rules.md#fog-maps--user-observation-2026-10-15).
+
 ## Permanent records and helper scripts
 
-Maintain root README/ROADMAP/CHANGELOG/AGENTS, docs/, five reserved crate directories, all 20 milestone plans/progress/reports folders, matching photos/milestone-NN/index.md files, scripts/, supabase/migrations/, and assets/ATTRIBUTION.md.
+Maintain root README/ROADMAP/CHANGELOG/AGENTS, docs/, five reserved crate directories, M00–M21 plan/progress/reports folders, matching photos/milestone-NN/index.md files, scripts/, supabase/migrations/, and assets/ATTRIBUTION.md.
 
 Reports are append-only numbered implementation evidence; never fabricate completion. Photo indexes record actual native captures, capture date, build identity, dimensions, scaling, scenario, and inspection. Nonvisual work explains why no screenshot applies. Polish fixes need before/after evidence when possible.
 
@@ -66,4 +70,3 @@ No release dates are promised. Confirm actual organization/hosting costs before 
 ## Public documentation
 
 Publish PR-reviewed source to the GitHub Wiki with clearly labeled unapproved previews, then republish approved docs from stable after approval. Include [Building](building.md) and the [Game Instructions folder](game-instructions/README.md), linked from README. Keep source records and photo evidence versioned.
-

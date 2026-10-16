@@ -3,13 +3,13 @@
 Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
-- **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; planning structure published on main.
-- **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), Verifying by explicit user request on 2026-10-15.
-- **M00 history:** initial setup and polish merged through PRs #1/#2; stable was fetched at 49bd2c0. No release publication is inferred.
-- **Current phase:** M01 native implementation/package acceptance passed; documentation refresh and explicit user review/release approvals remain. M02 stays planned.
-- **Execution mode:** roadmap resumed by user request. Preserve original branding.
-- **Next task:** test and explicitly approve [implementation PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) after final documentation checks; beta promotion requires that approval. Stable/release additionally require separate polish approval.
-- **Verification:** see [M01 progress](milestones/milestone-01/progress.md) for executed and pending checks. GitHub builds cover six OS/architecture targets; actual runtime evidence is recorded separately.
+- **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; active development on the dedicated milestone branch and nightly.
+- **Active milestone:** [02 — Rules and configuration contract](milestones/milestone-02/plan.md), Verifying by user request on 2026-10-15.
+- **Predecessor:** M01 native acceptance and six-target evidence passed; implementation/polish merged by the user through PRs #3/#4, with completion recorded at 6ef83bb and current stable rules merge 25692ac.
+- **Current phase:** M02 contract implementation and research; see progress for actual local/CI checks and review status. No gameplay controls added.
+- **Next task:** finish M02 verification and open its implementation PR against beta; explicit approval required before merge. M03 remains planned.
+- **Release cadence:** no releases/tags for M00–M05; first release due M06 after acceptance and approved stable promotion.
+- **Verification:** [M02 progress](milestones/milestone-02/progress.md). Interactive native evidence remains M01 Windows; builds do not prove runtime behavior on other platforms.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
 
@@ -19,9 +19,9 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 
 | Milestone | Target release | Status | Depends on | Records | Acceptance gate |
 | --- | --- | --- | --- | --- | --- |
-| 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI validated; PR tested and explicitly approved before merge and setup-only release. |
-| 01 | v0.0.1 — Foundation | Verifying | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
-| 02 | v0.0.2 — Rules and configuration contract | Planned | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
+| 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI and approved merges recorded; no release required before M06. |
+| 01 | v0.0.1 — Foundation | Complete | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
+| 02 | v0.0.2 — Rules and configuration contract | Verifying | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
 | 03 | v0.0.3 — Board and preview | Planned | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
 | 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
 | 05 | v0.0.5 — Complete base rules | Planned | M04 | [Plan](milestones/milestone-05/plan.md) · [Progress](milestones/milestone-05/progress.md) · [Reports](milestones/milestone-05/reports/) · [Photos](photos/milestone-05/index.md) | Base games finish correctly; mechanic and private-information edge cases have regression coverage. |
@@ -40,11 +40,12 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | 18 | v0.12.0 — Public casual platform | Planned | M17 | [Plan](milestones/milestone-18/plan.md) · [Progress](milestones/milestone-18/progress.md) · [Reports](milestones/milestone-18/reports/) · [Photos](photos/milestone-18/index.md) | Public/social flows work and visibility, identity, moderation, and spectator boundaries pass. |
 | 19 | v1.0.0-rc.1 — Ranked and operations | Planned | M18 | [Plan](milestones/milestone-19/plan.md) · [Progress](milestones/milestone-19/progress.md) · [Reports](milestones/milestone-19/reports/) · [Photos](photos/milestone-19/index.md) | Ranked results apply once; restrictions, deployment, recovery, rollback, and load checks pass. |
 | 20 | v1.0.0 — Release | Planned | M19 | [Plan](milestones/milestone-20/plan.md) · [Progress](milestones/milestone-20/progress.md) · [Reports](milestones/milestone-20/reports/) · [Photos](photos/milestone-20/index.md) | Clean-install acceptance passes; all release evidence is linked and the final coverage/limitations report is published. |
+| 21 | Website and documentation completion — game version unassigned | Planned | M20 | [Plan](milestones/milestone-21/plan.md) · [Progress](milestones/milestone-21/progress.md) · [Reports](milestones/milestone-21/reports/) · [Photos](photos/milestone-21/index.md) | Original website with verified downloads and final wiki/docs; inspected rendering/navigation, factual coverage, and explicit publication approval. |
 
 ## Verified capabilities and current limitations
 
 - M00 permanent records and documentation remain intact.
-- M01 clean Windows formatting, Clippy, tests, optimized build/package checks, and native launch/icon/resize/close inspection passed; all six GitHub targets and actual archives passed at c2459eb. Final documentation checks and user approvals remain.
+- M01 local/native and all six GitHub target/artifact checks passed at c2459eb; user merged implementation and polish. M02 adds contract-only validation, research inventories and synthetic privacy fixtures; no gameplay is enabled.
 - Native preview and process-liveness server exist; gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
 - No Supabase organization/project has been created. New-organization access and actual cost confirmation are prerequisites at M07.
 - No milestone release has been published. CI builds are distinct from tested interactive platform support.

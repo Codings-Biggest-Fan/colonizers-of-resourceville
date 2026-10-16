@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — Milestone 02 rules and configuration contract
+
+### Added — 2026-10-15
+
+- Versioned, strictly serialized configuration, family/scenario/seat modes, deterministic validation, derived custom markers, and non-playable capability reporting.
+- Readiness invalidation, immutable acceptance, atomic rejected edits, wire/save envelopes and bounded decoding, stable topology IDs, recipient privacy contracts and tests.
+- Public guest pregame audit with observed defaults, locked options, explicit uncertainties, dispositions and milestone assignments.
+- Pinned 2025 official sources with hashes, complete core scenario and development/progress-card inventories, combination policy, future fixtures and migration/privacy boundaries.
+- User observation: fog tiles reveal when roads/settlements are built nearby; M12 implements reveal with verified adjacency/ship behavior, M17 adds fog map authoring.
+- Added final planned M21 for a separate website and completed wiki/docs; expanded record validation/wiki navigation through M21. No website implementation or deployment is authorized by this planning update.
+- Reconciled M01 merged status and current single-branch/release-cadence guidance. Native UI unchanged; no release/tag or playable game claimed.
+
 ## Unreleased — Milestone 01 foundation
 
 ### Added — 2026-10-15
@@ -16,7 +28,6 @@
 ### Added — 2026-10-15
 
 - Expanded the game description and README with a milestone roadmap, linked documentation screenshots, build/setup instructions, and channel guidance; refreshed wiki preview and repository About metadata.
-
 - Current 20-milestone roadmap and accepted implementation plan.
 - Per-milestone plans, progress records, report folders, and screenshot indexes.
 - Architecture, rules, pregame configuration, compatibility, development, and deployment documents.

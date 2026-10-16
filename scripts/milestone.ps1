@@ -1,7 +1,7 @@
 [CmdletBinding(DefaultParameterSetName = 'All')]
 param(
     [Parameter(ParameterSetName = 'Single', Mandatory = $true)]
-    [ValidateRange(0, 20)]
+    [ValidateRange(0, 21)]
     [int] $Number,
     [Parameter(ParameterSetName = 'All')]
     [switch] $All,
@@ -35,7 +35,7 @@ try {
     )
     foreach ($record in $requiredRecords) { Assert-Record $record }
 
-    $selectedNumbers = if ($PSCmdlet.ParameterSetName -eq 'Single') { @($Number) } else { @(0..20) }
+    $selectedNumbers = @(if ($PSCmdlet.ParameterSetName -eq 'Single') { $Number } else { 0..21 })
     foreach ($milestoneNumber in $selectedNumbers) {
         $slug = 'milestone-{0:D2}' -f $milestoneNumber
         foreach ($record in @("milestones/$slug/plan.md", "milestones/$slug/progress.md", "milestones/$slug/reports/README.md", "photos/$slug/index.md")) {

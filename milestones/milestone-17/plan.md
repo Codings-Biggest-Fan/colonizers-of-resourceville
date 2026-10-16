@@ -16,6 +16,7 @@ Requires milestone 16 to pass its release gate. Reuse the existing rules/protoco
 - [ ] Implement an independently defined accelerated/Rush-style preset.
 - [ ] Add a board editor with map import/export and strict topology/setup/objective validation.
 - [ ] Add saved/shared custom presets and original map equivalents.
+- [ ] Extend original map authoring/import/export with validated hidden fog regions and explicit reveal rules, building on M12 Mistbound. Keep secret terrain out of previews/exports to unauthorized recipients; test malformed fog definitions and round-trip recovery.
 - [ ] Reconcile every pregame catalogue row: implemented evidence or explicit exclusion reason.
 
 ## Interfaces, state, persistence, and UI

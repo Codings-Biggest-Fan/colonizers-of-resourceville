@@ -17,11 +17,11 @@ pwsh -NoProfile -File ./scripts/test.ps1
 pwsh -NoProfile -File ./scripts/dev.ps1
 ```
 
-The pinned toolchain must already be installed: rustup may otherwise download it. Commands stop on errors; check the exit status before continuing. Cargo restores dependencies from Cargo.lock. nightly is latest development work; beta is the approved implementation baseline; stable is approved and polished; main mirrors stable. The review branch is milestone-01/foundation. Record `git rev-parse HEAD` when reporting results.
+The pinned toolchain must already be installed: rustup may otherwise download it. Commands stop on errors; check the exit status before continuing. Cargo restores dependencies from Cargo.lock. nightly is latest development work; beta is the approved implementation baseline; stable is approved and polished; main mirrors stable. The M02 review branch is milestone-02/rules-contract. It adds rules/protocol contracts and tests without changing the native foundation screen. Record `git rev-parse HEAD` when reporting results.
 
 ## Native preview and server
 
-`./scripts/dev.ps1 -App Desktop` opens the real egui/eframe window with wgpu. Resize it, check the title and text at your display scaling, then use Close preview or the native close button. There are no game controls, rules, saves, rooms, bots, or account connections yet.
+`./scripts/dev.ps1 -App Desktop` opens the real egui/eframe window with wgpu. Resize it, check the title and text at your display scaling, then use Close preview or the native close button. There are no gameplay controls, engine, saves, rooms, bots, or account connections yet. M02 adds pure configuration contracts; test them with the workspace test helper.
 
 In a separate terminal, `./scripts/dev.ps1 -App Server` starts the Axum/Tokio process on 127.0.0.1:3000. `Invoke-WebRequest http://127.0.0.1:3000/health` returns `ok`. Ctrl+C shuts it down. Set RESOURCEVILLE_BIND to an explicit socket address to change the binding. /health proves process liveness only. The desktop does not connect to it. No database or Supabase resource is required.
 

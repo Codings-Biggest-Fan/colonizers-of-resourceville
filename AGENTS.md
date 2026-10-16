@@ -10,7 +10,7 @@ Product name: **The Colonizers of Resourceville**. Machine/repository name: **co
 
 The user selected this exact title during branding polish. Preserve it in future work; do not substitute a newly invented product name without a user request.
 
-The user resumed roadmap work by explicitly requesting completion of M01 on 2026-10-15. M00 branding polish remains historical; preserve its identity and evidence. Implement only M01 until the next request. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
+The user requested completion of M02 on 2026-10-15 after merging M01. M00/M01 branding and evidence remain historical. Implement only M02 on milestone-02/rules-contract; do not begin M03 without the next request. Earlier setup report copies were sanitized once under the user's explicit branding correction; original historical text remains in Git history and their actual results/commit IDs are unchanged.
 
 Build an independently implemented Windows-first native Rust hex-board strategy game called The Colonizers of Resourceville. Use original code, artwork, sounds, and branding. Do not copy proprietary source, extracted assets, private APIs, or claim affiliation. A project license has not been selected.
 
@@ -54,7 +54,7 @@ Statuses are Planned, In progress, Verifying, Complete, and Blocked. Blocked mea
 
 ## Milestone 0 and GitHub delivery
 
-Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–20 without renumbering them. Native Rust scaffolding stays M01.
+Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules, helpers, and GitHub workflow. It precedes implementation milestones 01–21 without renumbering them. M21, added by user request on 2026-10-15, finishes the separate website and wiki/docs after M20; it does not change the native gameplay stack. Native Rust scaffolding stays M01.
 
 ### Channel meanings — user clarification
 
@@ -97,7 +97,7 @@ Maintain docs/building.md: prerequisites, clone/channel selection, commands that
 
 ## Permanent project records
 
-- ROADMAP.md includes current release, active milestone, last update, dependencies, M00 plus all 20 implementation releases, status, acceptance summary, plans, progress, reports, photos, PRs, and published releases.
+- ROADMAP.md includes current release, active milestone, last update, dependencies, M00 plus M01–M21 (game releases and the final website/docs delivery), status, acceptance summary, plans, progress, reports, photos, PRs, and published releases.
 - Every milestone has plan.md, progress.md, reports/, and a matching photos/milestone-NN/index.md.
 - Plans record goal, release, dependencies, scope, tasks, interface/data changes, tests, screenshots, compatibility, and migration considerations.
 - Progress records distinguish landed work, pending checks, remaining work, blockers, and evidence.
@@ -170,5 +170,3 @@ Preserve unrelated edits. Re-read shared files before editing. Use focused chang
 Ask the user before accessing or interacting with their computer/window UI, including native visual testing. Keep permission scoped to the described check. A physical Escape stop ends UI input immediately; ask again before a later access session. Non-UI source inspection, shell builds/tests, and GitHub checks can continue independently.
 
 Current work may be documentation-only at the user's request. Finish that scope first; do not install tools or begin native implementation merely to make planning records look complete.
-
-

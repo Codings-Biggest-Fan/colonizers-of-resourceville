@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "rules_revision": 1,
+  "ruleset": "base",
+  "scenario": "heartland",
+  "seats": 4,
+  "seat_mode": "standard",
+  "board": "random",
+  "board_seed": 42,
+  "victory_target": null,
+  "dice": "independent",
+  "robber": "standard",
+  "discard_threshold": 7,
+  "player_trading": true,
+  "turn_seconds": null,
+  "turn_order": "random",
+  "caravans": { "friendly_robber": false, "event_deck": false, "harbor_master": false }
+}
