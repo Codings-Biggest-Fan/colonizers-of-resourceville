@@ -1,48 +1,31 @@
 # Milestone 02 — Rules and configuration contract
 
-Target release: **v0.0.2**. Status: Planned. This is an initial plan; refine against actual code and dependencies before implementation.
+Target version: v0.0.2 (planning identifier, no published release). Status: Complete. The user merged tested PR #7 into beta on 2026-10-15; no stable/polish promotion inferred.
 
-[Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Screenshots](../../photos/milestone-02/index.md)
+[Roadmap](../../ROADMAP.md) · [Progress](progress.md) · [Reports](reports/) · [Photos](../../photos/milestone-02/index.md)
 
 ## Goal and dependencies
 
-Turn the complete pregame and expansion scope into a source-backed, versioned implementation contract.
+Freeze source-backed scope and versioned pure Rust configuration/protocol boundaries before board/engine implementation. M01 acceptance and user merges are recorded in [M01 reconciliation](../milestone-01/reports/007-m02-handoff-reconciliation.md). User requested M02 on 2026-10-15.
 
-Requires milestone 01 to pass its release gate. Reuse the existing rules/protocol contracts and relevant previously released systems; do not bypass unresolved earlier gates.
+## Refined scope against code
 
-## Scope and implementation tasks
+The rules/protocol crates were empty boundaries. Add serde contracts to rules; protocol depends on/re-exports those types. Keep desktop, bots and liveness server unchanged. No settings UI, gameplay, room dispatch, cloud service or persistence engine.
 
-- [ ] Audit reference pregame controls through ordinary public UI and document observed values, defaults, unavailable options, source dates, and uncertainties.
-- [ ] Pin public core rulebooks and enumerate every development/progress card, core scenario, and supported combination.
-- [ ] Define GameConfig, ruleset/scenario identifiers, capabilities, command/event envelopes, recipient views, and save versioning.
-- [ ] Specify defaults, custom markers, readiness invalidation, immutable in-game configuration, and invalid-combination explanations.
-- [ ] Assign every catalogue item to a milestone and define deterministic fixtures and private-information boundaries.
+- [x] Audit ordinary public guest setup: choices/defaults/locks/date/uncertainties and disposition for every observed setting; do not claim authenticated or paid options were tested.
+- [x] Pin 2025 public core books; enumerate development/progress decks, scenarios, variants and combination candidates with original product labels.
+- [x] Add versioned GameConfig, family/scenario/seat modes, capabilities, command/event envelopes, recipient views, topology identifiers and save header.
+- [x] Specify defaults/custom status, strict validation, readiness invalidation, atomic failure and immutable acceptance.
+- [x] Assign catalogue items to milestones; define deterministic fixtures and private-information boundaries.
 
-## Interfaces, state, persistence, and UI
+## Interfaces and formats
 
-Shared Rust serialization types belong in protocol; pure rule definitions belong in rules. Keep observable state distinct from authoritative secrets. Unknown reference behavior remains explicitly unresolved, not a guessed parity claim.
+[Contract](../../docs/configuration-contract.md), [catalogue](../../docs/pregame-options.md), [inventory](../../docs/rules.md), [compatibility](../../docs/compatibility.md). Config/rules/protocol/save versions initially 1; reject unknown versions, fields and oversized data. No existing save migration. Map/preset schemas and advanced options extend the versioned model only with actual behavior in their owning milestones.
 
-## Tests and acceptance checks
+## Verification and evidence
 
-- [ ] Round-trip shared configuration and reject invalid or incompatible configurations.
-- [ ] Confirm settings edits clear readiness and starting freezes the accepted configuration contract.
-- [ ] Check inventory completeness against pinned sources and give every observed setting a documented disposition.
+Round-trip all current contract seat modes and default fixture; verify scenario-source registry and deck totals; reject invalid combinations/bounds; preserve state on rejection; reset ready on effective edits; freeze accepted config; separate two synthetic recipient hands. Run formatting, Clippy, workspace tests, optimized build/package, record/link/wiki checks and all six GitHub builds. Record actual results in progress/report; no native screenshot needed because no UI changes. M01 photos stay labelled M01.
 
-## Screenshot evidence
+## Delivery and handoff
 
-Archive any actual native configuration-contract UI introduced. If only types and documentation change, record that no application UI changed; reference research is not native implementation evidence.
-
-Record actual captures and metadata in the linked photo index. Explain nonvisual work and absent captures truthfully.
-
-## Compatibility and migration
-
-Introduce explicit initial schema/protocol versions. Document differences between casual two-seat play, official two-player rules, official 5–6-player rules, and custom 7–8-player rules.
-
-## Release gate and handoff
-
-Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked.
-
-Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
-## Branch, user testing, and GitHub release
-
-Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).
+Use milestone-02/rules-contract for implementation and later polish; push nightly. Implementation PR targets beta and remains open for explicit approval. Do not advance beta/stable/main, tag, publish a release, or begin M03 automatically. Gates and implementation review passed; PR #7 was merged by the user. M02 is Complete and M03 awaits the next request. No release publication is due before M06. Broader gameplay, card effects, event-card distribution, expansion layouts and combination execution are assigned later work, not delivered features.

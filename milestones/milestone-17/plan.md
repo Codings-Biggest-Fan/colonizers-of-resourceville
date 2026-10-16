@@ -16,6 +16,7 @@ Requires milestone 16 to pass its release gate. Reuse the existing rules/protoco
 - [ ] Implement an independently defined accelerated/Rush-style preset.
 - [ ] Add a board editor with map import/export and strict topology/setup/objective validation.
 - [ ] Add saved/shared custom presets and original map equivalents.
+- [ ] Extend original map authoring/import/export with validated hidden fog regions and explicit reveal rules, building on M12 Mistbound. Keep secret terrain out of previews/exports to unauthorized recipients; test malformed fog definitions and round-trip recovery.
 - [ ] Reconcile every pregame catalogue row: implemented evidence or explicit exclusion reason.
 
 ## Interfaces, state, persistence, and UI
@@ -45,4 +46,4 @@ All shipped maps validate and every pregame catalogue item has an explicit verif
 Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
 ## Branch, user testing, and GitHub release
 
-Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).
+Use one milestone branch for implementation and polish. Implementation PR targets beta, which changes only after explicit approval; nightly follows current development. Stable promotion requires separate polish approval. Leave the milestone Verifying for user review; do not merge, promote, release or begin the next milestone without the required direction. Publication follows the substantial-feature release cadence in [AGENTS.md](../../AGENTS.md) and [workflow](../../docs/github-workflow.md).

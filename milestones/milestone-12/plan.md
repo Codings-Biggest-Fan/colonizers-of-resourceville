@@ -17,6 +17,7 @@ Requires milestone 11 to pass its release gate. Reuse the existing rules/protoco
 - [ ] Implement each pinned core scenario's setup, objectives, special rules, and scoring.
 - [ ] Extend board rendering, scenario preview, choice dialogs, and bots.
 - [ ] Persist hidden exploration data without sending it to unauthorized players.
+- [ ] Implement Mistbound fog maps: initially hidden tiles reveal when roads or settlements are built nearby, as requested on 2026-10-15. Verify exact adjacency, ship triggers, discovery rewards and public/private visibility against the pinned rules before coding; see the [fog knowledge note](../../docs/rules.md#fog-maps--user-observation-2026-10-15).
 
 ## Interfaces, state, persistence, and UI
 
@@ -27,6 +28,7 @@ Scenario definitions declare topology, resources, objectives, legal setup, and s
 - [ ] Cover ship movement, pirate blocking, mixed routes, gold choices, and discovery.
 - [ ] Validate every core scenario setup and objective calculation.
 - [ ] Complete each supported scenario offline/online and resume mid-exploration.
+- [ ] Test fog reveal boundaries, repeated discovery, unrevealed-tile privacy, road/settlement and verified ship triggers, deterministic replay, and save/reconnect before and after reveal. Capture inspected hidden/revealed board states without exposing unrevealed terrain.
 
 ## Screenshot evidence
 
@@ -45,4 +47,4 @@ Every shipped core scenario completes with correct setup, objectives, and scorin
 Update progress, append actual implementation reports, index inspected photos, update ROADMAP.md/CHANGELOG.md, and complete evidence review before marking Complete. Then summarize the release and stop for the next request. User-requested Polish mode pauses advancement.
 ## Branch, user testing, and GitHub release
 
-Use a dedicated milestone-NN/description branch and PR against stable for this milestone. nightly follows latest pushed work; beta must match the active unapproved PR head. Leave the milestone Verifying and PR open for the user's testing/explicit approval. Do not merge, advance stable, publish the intended GitHub Release, or begin the next milestone before approval. After approval and passing gates, release the merged stable commit and link PR/release/wiki/evidence in the records. See [delivery workflow](../../docs/github-workflow.md).
+Use one milestone branch for implementation and polish. Implementation PR targets beta, which changes only after explicit approval; nightly follows current development. Stable promotion requires separate polish approval. Leave the milestone Verifying for user review; do not merge, promote, release or begin the next milestone without the required direction. Publication follows the substantial-feature release cadence in [AGENTS.md](../../AGENTS.md) and [workflow](../../docs/github-workflow.md).
