@@ -1,6 +1,6 @@
 # Milestone 01 progress — Foundation
 
-Status: In progress  
+Status: Verifying  
 Target release: v0.0.1  
 Last updated: 2026-10-15 (America/Los_Angeles)
 
@@ -20,10 +20,10 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 - [x] Initial documentation records/link check and helper parsing.
 - [x] Prerequisite check after installation.
 - [x] Debug workspace build after SDK installation.
-- [ ] Formatting/Clippy/workspace tests and release build.
-- [ ] Clean-checkout checks/build/launch.
-- [ ] Native rendered-frame inspection, close/resize/scaling checks.
-- [ ] Helpers exercised from outside repository; failures verified.
+- [x] Formatting/Clippy (including capture features), workspace tests (one substantive server test), and release build.
+- [x] Clean-checkout checks/tests/release build at 328c7ab; final icon revision and clean native launch pending.
+- [x] Native rendered-frame inspection, resize, Close preview, native close, and Windows 150% scaling; final icon/window pass pending.
+- [x] Helpers exercised from outside repository; missing Cargo, duplicate capture, and invalid suite failures verified. Final clean package pending.
 - [ ] GitHub six-target build/package jobs and Linux container checks.
 - [ ] Testing PR and wiki preview published.
 - [ ] Explicit implementation approval, then requested polish and explicit polish approval.
@@ -43,4 +43,4 @@ M00 polish was resumed into roadmap work by the user's M01 request. No new polis
 
 ## Evidence
 
-Commands are running; no pending outcome is claimed passed. Final executed results will be appended under reports/ and actual images indexed under photos/.
+[Implementation and local verification](reports/001-native-foundation.md) records actual passes, failures, and corrections. [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) is a draft against beta. Six-target CI and final native/package evidence are pending.

@@ -6,6 +6,9 @@ try {
     . "$PSScriptRoot/common.ps1"
     Push-Location $RepoRoot
     try {
+        $changes = @(git status --porcelain --untracked-files=normal)
+        if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect source status.' }
+        if ($changes.Count -gt 0) { throw 'Commit source and evidence changes before packaging so BUILD.txt identifies the actual source revision.' }
         $rustInfo = & (Get-Cargo) -vV
         if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect Cargo host.' }
         $hostTriple = ($rustInfo | Select-String '^host: (.+)$').Matches.Groups[1].Value
@@ -36,6 +39,8 @@ try {
                 $noticeTarget = Join-Path $licenseRoot "$($dependency.name)-$($dependency.version)/$relative"
                 $null = New-Item -ItemType Directory -Path (Split-Path -Parent $noticeTarget) -Force
                 Copy-Item -LiteralPath $notice.FullName -Destination $noticeTarget
+                # ZIP cannot represent the 1970 timestamps used by some registry archives.
+                (Get-Item -LiteralPath $noticeTarget).LastWriteTime = [datetime]'2000-01-01'
             }
         }
         $inventory | Set-Content (Join-Path $licenseRoot 'DEPENDENCIES.txt')

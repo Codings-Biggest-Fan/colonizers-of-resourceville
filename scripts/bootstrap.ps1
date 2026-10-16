@@ -43,6 +43,12 @@ try {
             $missing.Add('MSVC build tools')
             Write-Warning 'Microsoft C++ build tools were not detected. Verify the Desktop development with C++ workload and Windows SDK before a Rust MSVC build.'
         }
+        $sdkRoot = Join-Path $programFilesX86 'Windows Kits/10/Lib'
+        $sdkLibraries = @(Get-ChildItem -LiteralPath $sdkRoot -Filter dbghelp.lib -Recurse -File -ErrorAction SilentlyContinue | Where-Object FullName -Match '[\\/]um[\\/]x64[\\/]dbghelp\.lib$')
+        if ($sdkLibraries.Count -eq 0) {
+            $missing.Add('Windows SDK x64 libraries')
+            Write-Warning 'Windows SDK dbghelp.lib was not found. Install the Windows SDK explicitly and finish installation before building.'
+        }
     } else {
         $missing.Add('Windows release environment')
         Write-Warning 'Windows is the supported release target; this is not a Windows environment.'

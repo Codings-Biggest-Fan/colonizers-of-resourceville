@@ -27,11 +27,11 @@ Follow the [current roadmap](ROADMAP.md) for individual releases, acceptance gat
 
 ## Screenshots
 
-These are real **documentation previews**, not gameplay screenshots. Native game images will be added when the application exists.
+These are actual native wgpu frames from the M01 foundation preview. Gameplay arrives in later milestones.
 
-![Project wiki preview](photos/milestone-00/004-resourceville-wiki.jpg)
+![Native foundation preview](photos/milestone-01/004-native-foundation-contrast.png)
 
-[View full wiki screenshot](photos/milestone-00/004-resourceville-wiki.jpg) · [Building guide screenshot](photos/milestone-00/005-resourceville-building.jpg) · [Game Instructions screenshot](photos/milestone-00/006-resourceville-game-instructions.jpg) · [Capture details and archive](photos/milestone-00/index.md)
+[Compact layout](photos/milestone-01/007-native-compact-responsive.png) · [High zoom layout](photos/milestone-01/008-native-zoom-responsive.png) · [Capture metadata and before/after evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
 
 ## Building and checking the project
 
@@ -57,4 +57,3 @@ The [Building guide](docs/building.md) covers prerequisites, native launch, serv
 - **main:** compatibility mirror of polished stable.
 
 See the [contribution and release workflow](docs/github-workflow.md) and [agent instructions](AGENTS.md) before making changes. The project license has not been selected; asset sources are recorded in [attribution](assets/ATTRIBUTION.md).
-

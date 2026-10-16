@@ -11,6 +11,7 @@ fn main() -> eframe::Result {
         renderer: eframe::Renderer::Wgpu,
         viewport: egui::ViewportBuilder::default()
             .with_title(PRODUCT_NAME)
+            .with_icon(std::sync::Arc::new(window_icon()))
             .with_inner_size([width, height])
             .with_min_inner_size([480.0, 420.0]),
         ..Default::default()
@@ -31,6 +32,31 @@ fn main() -> eframe::Result {
             Ok(Box::new(Foundation::default()))
         }),
     )
+}
+
+fn window_icon() -> egui::IconData {
+    let mut rgba = Vec::with_capacity(64 * 64 * 4);
+    for y in 0..64 {
+        for x in 0..64 {
+            let nx = ((x as f32 + 0.5) - 32.0).abs() / 29.0;
+            let ny = ((y as f32 + 0.5) - 32.0).abs() / 29.0;
+            let inside =
+                |scale: f32| nx <= scale && ny <= 0.866 * scale && 1.732 * nx + ny <= 1.732 * scale;
+            let color = if inside(0.86) {
+                [60, 102, 88, 255]
+            } else if inside(1.0) {
+                [227, 183, 103, 255]
+            } else {
+                [0, 0, 0, 0]
+            };
+            rgba.extend_from_slice(&color);
+        }
+    }
+    egui::IconData {
+        rgba,
+        width: 64,
+        height: 64,
+    }
 }
 
 fn capture_dimension(name: &str, default: f32) -> f32 {

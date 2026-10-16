@@ -4,7 +4,7 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; planning structure published on main.
-- **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), In progress by explicit user request on 2026-10-15.
+- **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), Verifying by explicit user request on 2026-10-15.
 - **M00 history:** initial setup and polish merged through PRs #1/#2; stable was fetched at 49bd2c0. No release publication is inferred.
 - **Current phase:** native Rust foundation implementation and verification; M02 remains planned.
 - **Execution mode:** roadmap resumed by user request. Preserve original branding.
@@ -20,7 +20,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | Milestone | Target release | Status | Depends on | Records | Acceptance gate |
 | --- | --- | --- | --- | --- | --- |
 | 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI validated; PR tested and explicitly approved before merge and setup-only release. |
-| 01 | v0.0.1 — Foundation | In progress | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
+| 01 | v0.0.1 — Foundation | Verifying | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
 | 02 | v0.0.2 — Rules and configuration contract | Planned | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
 | 03 | v0.0.3 — Board and preview | Planned | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
 | 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
