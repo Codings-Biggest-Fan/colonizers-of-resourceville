@@ -6,7 +6,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** Milestone 01 native foundation is in development on milestone-01/foundation. The five-crate Rust workspace includes a native wgpu preview and a liveness-only server. There is no playable game or approved native release yet.
+**Current status:** Milestone 01 native foundation is under verification in [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) on milestone-01/foundation. The five-crate Rust workspace includes a native wgpu preview and a liveness-only server. There is no playable game or approved native release yet.
 
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
@@ -15,7 +15,7 @@ Offline solo play and private online rooms come first. The roadmap then grows fr
 | Milestones | What they deliver | Status |
 | --- | --- | --- |
 | 0 | Project setup, plans, wiki, and approval workflow | Merged; no release recorded |
-| 1 | Native Rust foundation | In progress |
+| 1 | Native Rust foundation | Verifying |
 | 2–3 | Rules/configuration contracts and board preview | Planned |
 | 4–6 | Complete base rules, bots, and offline save/resume | Planned |
 | 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |

@@ -1,0 +1,5 @@
+    Checking resourceville-desktop v0.0.1 (<clean-checkout>\crates\desktop)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.00s
+   Compiling resourceville-desktop v0.0.1 (<clean-checkout>\crates\desktop)
+    Finished `release` profile [optimized] target(s) in 14.63s
+
