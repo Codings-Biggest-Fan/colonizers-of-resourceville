@@ -65,3 +65,5 @@ Implementation PRs target beta; only explicit approval advances its implementati
 M04 scoped refinement on 2026-10-16: simplifying tile artwork and rounding house silhouettes in response to user feedback. Approval of beta PR #11 does not approve these visual changes for beta/stable; see M04 progress for validation.
 
 M04 HUD refinement (2026-10-16): graphic-first right rail and bottom action dock, six desktop regressions and local lint checks passed, final native frames 043–046 inspected. Card/trade controls are disabled until M05. See [report 006](milestones/milestone-04/reports/006-polish-graphic-hud.md).
+
+Requested HUD count follow-up: live public resource totals and remaining piece stock; dev-card count unavailable until M05. Seven desktop tests and local lint checks pass; [report 007](milestones/milestone-04/reports/007-polish-card-and-piece-counts.md).

@@ -407,73 +407,69 @@ impl Preview {
                     ui.spacing_mut().item_spacing.x = 6.;
                     ui.add_space(((ui.available_width() - count * (size + 6.)) / 2.).max(0.));
                     if view.is_none()
-                        && Self::hud_button(ui, "Start turn test", true, 6, color, size).clicked()
+                        && self
+                            .hud_button(ui, "Start turn test", true, 6, color, size)
+                            .clicked()
                     {
                         self.start_test();
                     }
-                    if Self::hud_button(
-                        ui,
-                        "Build road: timber and clay",
-                        edge.is_some()
-                            && matches!(phase, Some(Phase::Build | Phase::SetupRoad { .. })),
-                        0,
-                        color,
-                        size,
-                    )
-                    .clicked()
-                    {
-                        self.submit(Action::Road(edge.unwrap()), Outcome::None);
-                    }
-                    if Self::hud_button(
-                        ui,
-                        "Build settlement: timber, wool, grain and clay",
-                        vertex.is_some()
-                            && matches!(phase, Some(Phase::Build | Phase::SetupSettlement { .. })),
-                        1,
-                        color,
-                        size,
-                    )
-                    .clicked()
-                    {
-                        self.submit(Action::Settlement(vertex.unwrap()), Outcome::None);
-                    }
-                    if Self::hud_button(
-                        ui,
-                        "Upgrade city: two grain and three ore",
-                        vertex.is_some() && phase == Some(Phase::Build),
-                        2,
-                        color,
-                        size,
-                    )
-                    .clicked()
-                    {
-                        self.submit(Action::City(vertex.unwrap()), Outcome::None);
-                    }
-                    Self::hud_button(ui, "Development cards arrive in M05", false, 3, color, size);
-                    Self::hud_button(ui, "Trading arrives in M05", false, 4, color, size);
-                    if view.is_some() {
-                        if phase == Some(Phase::AwaitRoll) {
-                            if Self::hud_button(
-                                ui,
-                                "Apply supplied test dice",
-                                true,
-                                9,
-                                color,
-                                size,
-                            )
-                            .clicked()
-                            {
-                                self.submit(Action::Roll, Outcome::Dice(self.dice));
-                            }
-                        } else if Self::hud_button(
+                    if self
+                        .hud_button(
                             ui,
-                            "End turn",
-                            phase == Some(Phase::Build),
-                            5,
+                            "Build road: timber and clay",
+                            edge.is_some()
+                                && matches!(phase, Some(Phase::Build | Phase::SetupRoad { .. })),
+                            0,
                             color,
                             size,
                         )
                         .clicked()
+                    {
+                        self.submit(Action::Road(edge.unwrap()), Outcome::None);
+                    }
+                    if self
+                        .hud_button(
+                            ui,
+                            "Build settlement: timber, wool, grain and clay",
+                            vertex.is_some()
+                                && matches!(
+                                    phase,
+                                    Some(Phase::Build | Phase::SetupSettlement { .. })
+                                ),
+                            1,
+                            color,
+                            size,
+                        )
+                        .clicked()
+                    {
+                        self.submit(Action::Settlement(vertex.unwrap()), Outcome::None);
+                    }
+                    if self
+                        .hud_button(
+                            ui,
+                            "Upgrade city: two grain and three ore",
+                            vertex.is_some() && phase == Some(Phase::Build),
+                            2,
+                            color,
+                            size,
+                        )
+                        .clicked()
+                    {
+                        self.submit(Action::City(vertex.unwrap()), Outcome::None);
+                    }
+                    self.hud_button(ui, "Development cards arrive in M05", false, 3, color, size);
+                    self.hud_button(ui, "Trading arrives in M05", false, 4, color, size);
+                    if view.is_some() {
+                        if phase == Some(Phase::AwaitRoll) {
+                            if self
+                                .hud_button(ui, "Apply supplied test dice", true, 9, color, size)
+                                .clicked()
+                            {
+                                self.submit(Action::Roll, Outcome::Dice(self.dice));
+                            }
+                        } else if self
+                            .hud_button(ui, "End turn", phase == Some(Phase::Build), 5, color, size)
+                            .clicked()
                         {
                             self.submit(Action::EndTurn, Outcome::None);
                         }
@@ -505,7 +501,7 @@ impl Preview {
             });
         egui::SidePanel::right("turn_sidebar")
             .resizable(false)
-            .exact_width(if compact { 76. } else { 88. })
+            .exact_width(if compact { 100. } else { 112. })
             .frame(
                 egui::Frame::new()
                     .fill(Color32::from_rgb(24, 24, 37))
@@ -530,7 +526,7 @@ impl Preview {
                                 let (rect, response) = ui.allocate_exact_size(
                                     egui::vec2(
                                         ui.available_width(),
-                                        if compact { 48. } else { 60. },
+                                        if compact { 50. } else { 68. },
                                     ),
                                     egui::Sense::hover(),
                                 );
@@ -556,20 +552,19 @@ impl Preview {
                                 }
                                 pieces::house(
                                     p,
-                                    rect.center() + egui::vec2(0., 5.),
-                                    if compact { 13. } else { 17. },
+                                    egui::pos2(rect.center().x,rect.top()+if compact {17.}else{22.}),
+                                    if compact { 11. } else { 14. },
                                     color,
                                     false,
                                 );
-                                let name = Self::player_name(seat as u8);
-                                response.widget_info(|| {
-                                    egui::WidgetInfo::labeled(egui::WidgetType::Label, true, name)
-                                });
-                                response.on_hover_text(if seat == view.active.0 as usize {
-                                    format!("{name}'s turn")
-                                } else {
-                                    name.into()
-                                });
+                                let y=rect.bottom()-11.;let x=rect.center().x-30.;
+                                Self::card_counter(p,egui::pos2(x,y),Some(view.resource_counts[seat]),false);
+                                Self::card_counter(p,egui::pos2(x+37.,y),None,true);
+                                let name=Self::player_name(seat as u8);
+                                let description=format!("{name}: {} resource cards. Development-card count unavailable until M05.",view.resource_counts[seat]);
+                                response.widget_info(||egui::WidgetInfo::labeled(egui::WidgetType::Label,true,&description));
+                                response.on_hover_text(description);
+
                             }
                         } else {
                             let (r, response) = ui.allocate_exact_size(
@@ -589,11 +584,11 @@ impl Preview {
                         ui.add_space(6.);
                         ui.horizontal(|ui| {
                             ui.spacing_mut().item_spacing.x = 4.;
-                            if Self::hud_button(ui, "Fit island", true, 7, ACCENT, 26.).clicked() {
+                            if self.hud_button(ui, "Fit island", true, 7, ACCENT, 26.).clicked() {
                                 self.camera = Camera::default();
                             }
                             if self.game.is_some()
-                                && Self::hud_button(ui, "Reset test", true, 8, ACCENT, 26.)
+                                && self.hud_button(ui, "Reset test", true, 8, ACCENT, 26.)
                                     .clicked()
                             {
                                 self.game = None;
@@ -609,7 +604,64 @@ impl Preview {
         ["Blue", "Peach", "Mint", "Lilac"][seat as usize % 4]
     }
 
+    fn card_counter(p: &egui::Painter, at: Pos2, count: Option<u16>, development: bool) {
+        let rect = Rect::from_center_size(at, egui::vec2(10., 14.));
+        p.rect_filled(
+            rect.translate(egui::vec2(-2., -2.)),
+            2.,
+            Color32::from_rgb(88, 91, 112),
+        );
+        p.rect_filled(
+            rect,
+            2.,
+            if development {
+                Color32::from_rgb(180, 166, 220)
+            } else {
+                CREAM
+            },
+        );
+        if development {
+            p.circle_stroke(at, 2.5, Stroke::new(1., BASE));
+        } else {
+            p.line_segment(
+                [at - egui::vec2(2.5, 0.), at + egui::vec2(2.5, 0.)],
+                Stroke::new(2., Color32::from_rgb(70, 125, 80)),
+            );
+        }
+        p.text(
+            at + egui::vec2(9., 0.),
+            Align2::LEFT_CENTER,
+            count
+                .map(|v| v.to_string())
+                .unwrap_or_else(|| "\u{2014}".into()),
+            FontId::proportional(13.),
+            TEXT,
+        );
+    }
+
+    fn remaining_pieces(&self, kind: u8) -> Option<u16> {
+        let view = self.game.as_ref()?.view();
+        let active = view.active;
+        Some(match kind {
+            0 => 15u16.saturating_sub(view.roads.values().filter(|&&p| p == active).count() as u16),
+            1 => 5u16.saturating_sub(
+                view.buildings
+                    .values()
+                    .filter(|&&(p, k)| p == active && k == Building::Settlement)
+                    .count() as u16,
+            ),
+            2 => 4u16.saturating_sub(
+                view.buildings
+                    .values()
+                    .filter(|&&(p, k)| p == active && k == Building::City)
+                    .count() as u16,
+            ),
+            _ => return None,
+        })
+    }
+
     fn hud_button(
+        &self,
         ui: &mut egui::Ui,
         label: &str,
         enabled: bool,
@@ -716,7 +768,23 @@ impl Preview {
                 }
             }
         }
-        response.on_hover_text(label).on_disabled_hover_text(label)
+        let tooltip = if let Some(stock) = self.remaining_pieces(kind) {
+            let at = r.right_bottom() - egui::vec2(11., 10.);
+            p.rect_filled(Rect::from_center_size(at, egui::vec2(20., 16.)), 4., BASE);
+            p.text(
+                at,
+                Align2::CENTER_CENTER,
+                stock.to_string(),
+                FontId::proportional(12.),
+                TEXT,
+            );
+            format!("{label}; {stock} pieces remaining")
+        } else {
+            label.into()
+        };
+        response
+            .on_hover_text(&tooltip)
+            .on_disabled_hover_text(&tooltip)
     }
 
     fn die(ui: &mut egui::Ui, value: u8) {
@@ -949,6 +1017,41 @@ impl Preview {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn hud_piece_stock_tracks_real_setup_and_active_player() {
+        let mut p = Preview::default();
+        assert_eq!(p.remaining_pieces(0), None);
+        p.start_test();
+        assert_eq!(
+            [
+                p.remaining_pieces(0),
+                p.remaining_pieces(1),
+                p.remaining_pieces(2)
+            ],
+            [Some(15), Some(5), Some(4)]
+        );
+        let game = p.game.as_ref().unwrap();
+        let action = game.legal_actions(game.view().active)[0];
+        p.submit(action, Outcome::None);
+        assert_eq!(p.remaining_pieces(1), Some(4));
+        while matches!(
+            p.game.as_ref().unwrap().view().phase,
+            Phase::SetupSettlement { .. } | Phase::SetupRoad { .. }
+        ) {
+            let game = p.game.as_ref().unwrap();
+            let action = game.legal_actions(game.view().active)[0];
+            p.submit(action, Outcome::None);
+        }
+        assert_eq!(
+            [
+                p.remaining_pieces(0),
+                p.remaining_pieces(1),
+                p.remaining_pieces(2)
+            ],
+            [Some(13), Some(3), Some(4)]
+        );
+        assert_eq!(p.remaining_pieces(3), None);
+    }
     #[test]
     fn docked_hud_reserves_board_space_at_compact_and_normal_sizes() {
         for size in [

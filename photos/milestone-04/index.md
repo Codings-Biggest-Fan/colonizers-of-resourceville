@@ -71,3 +71,15 @@ Source: M04 working tree after 67e7026, committed together with these frames. Us
 | [044-graphic-hud-compact.png](044-graphic-hud-compact.png) | 2026-10-16 | 480×420 / 720×630 | Final compact setup: all portraits and controls fit; board targets remain outside HUD. |
 | [045-graphic-hud-scaled.png](045-graphic-hud-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final egui zoom 1.5: graphic controls/portraits readable, no panel overlap. |
 | [046-graphic-hud-error.png](046-graphic-hud-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final rejected action: error visibly fits beneath graphic actions; no state change. |
+
+## 2026-10-16 card/piece count follow-up
+
+Source: M04 working tree after 1274e0b, committed together with these images. Existing HUD frame-only permission; actual wgpu output, synthetic seats. Native scale 1.5; egui zoom 1 except 049/051 at 1.5 (effective 2.25). Before is 043. All five captures inspected; 047/050/051 are final evidence. No hidden card types or private points displayed.
+
+| Image | Date | Viewport / image | Inspection |
+| --- | --- | --- | --- |
+| [047 card counts](047-card-counts.png) | 2026-10-16 | 1000×680 / 1500×1020 | Public resource totals, unavailable development-card slot and real active-player piece stock readable. |
+| [048 compact spacing](048-card-counts-compact.png) | 2026-10-16 | 480×420 / 720×630 | Before spacing adjustment: counters readable, fit/reset lower edge tight. Superseded by 050. |
+| [049 scaled spacing](049-card-counts-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | EgUI zoom 1.5; first count spacing, superseded by 051. |
+| [050 compact fit](050-card-counts-compact-fit.png) | 2026-10-16 | 480×420 / 720×630 | Final compact rows: card slots, portraits and fit/reset fully visible; board remains separate. |
+| [051 scaled fit](051-card-counts-scaled-fit.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final egui zoom 1.5; counters/icons fit with preserved dock and no panel overlap. |

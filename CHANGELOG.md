@@ -1,5 +1,10 @@
 # Changelog
 
+## M04 public HUD counts — 2026-10-16
+
+- Added requested public resource-card totals and remaining road/settlement/city stock to the graphic HUD. Development-card totals are explicitly unavailable until M05, not fabricated zeros.
+- Seven desktop tests and formatting/Clippy passed; native count/spacing captures inspected. Beta/stable/main unchanged.
+
 ## M04 graphic HUD — 2026-10-16
 
 - Replaced the floating window with an icon-first player sidebar and bottom action dock, reserving board space.

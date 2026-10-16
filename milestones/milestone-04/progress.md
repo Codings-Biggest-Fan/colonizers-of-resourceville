@@ -62,3 +62,12 @@ This is the user's scoped visual correction, not an indefinite Polish mode or ap
 - [x] Inspect default, compact, scaled and rejected-action frames; pass formatting, Clippy and six desktop regressions.
 
 [006 — Graphic HUD](reports/006-polish-graphic-hud.md). Current evidence: frames 043–046. This request supersedes earlier no-bars design guidance within M04, without approving promotion or starting M05.
+
+## HUD count follow-up — 2026-10-16
+
+- [x] Show each player's public resource-card total with graphical resource/dev-card slots.
+- [x] Mark the development-card count unavailable (M05), preserving unknown versus zero.
+- [x] Show authoritative remaining road/settlement/city stock on build icons.
+- [x] Pass seven desktop regressions and formatting/Clippy; inspect default/compact/scaled output.
+
+The user's latest request reintroduces these specific functional counts while preserving the graphic-first layout. [Report 007](reports/007-polish-card-and-piece-counts.md); final frames 047/050/051. No beta/stable promotion or M05 implementation.
