@@ -1,6 +1,6 @@
 # Building
 
-M01 provides a five-crate Rust workspace, a native foundation preview, and a liveness-only server. There are no playable games yet. Review builds are unsigned; no milestone release has been published.
+The five-crate Rust workspace includes M03’s native board preview and a liveness-only server. There are no playable games yet. Review builds are unsigned; no milestone release has been published.
 
 ## Prerequisites and channels
 
@@ -17,7 +17,7 @@ pwsh -NoProfile -File ./scripts/test.ps1
 pwsh -NoProfile -File ./scripts/dev.ps1
 ```
 
-The pinned toolchain must already be installed: rustup may otherwise download it. Commands stop on errors; check the exit status before continuing. Cargo restores dependencies from Cargo.lock. nightly is latest development work; beta is the approved implementation baseline; stable is approved and polished; main mirrors stable. The M02 review branch is milestone-02/rules-contract. It adds rules/protocol contracts and tests without changing the native foundation screen. Record `git rev-parse HEAD` when reporting results.
+The pinned toolchain must already be installed: rustup may otherwise download it. Commands stop on errors; check the exit status before continuing. Cargo restores dependencies from Cargo.lock. nightly is latest development work; beta is the approved implementation baseline; stable is approved and polished; main mirrors stable. M03 uses milestone-03/board-preview and adds a reproducible board with native camera/inspection controls. Record `git rev-parse HEAD` when reporting results.
 
 ## Native preview and server
 

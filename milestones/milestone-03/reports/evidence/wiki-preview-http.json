@@ -1,0 +1,22 @@
+[
+  {
+    "testing_preview": true,
+    "page": "Home",
+    "status": 200
+  },
+  {
+    "testing_preview": true,
+    "page": "Building",
+    "status": 200
+  },
+  {
+    "testing_preview": true,
+    "page": "Game-Instructions",
+    "status": 200
+  },
+  {
+    "testing_preview": true,
+    "page": "docs-board-preview",
+    "status": 200
+  }
+]

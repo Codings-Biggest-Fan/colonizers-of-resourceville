@@ -8,7 +8,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** M02 is approved and merged through [PR #8](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/8). M03 is in development: [seeded board generation and native preview](docs/board-preview.md), original cartoon terrain/harbors, wheel zoom and right-drag pan. The image above is an inspected native development frame. M03 still needs its remaining delivery gates and approval; there is no playable game or published release.
+**Current status:** M02 is approved and merged through [PR #8](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/8). M03 is approved for beta/stable promotion: [seeded board generation and native preview](docs/board-preview.md), original cartoon terrain/harbors, wheel zoom and right-drag pan. The image above is an inspected native development frame. [Beta PR #9](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/9) and [stable PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10) track promotion; there is no playable game or published release.
 
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
@@ -19,7 +19,7 @@ Offline solo play and private online rooms come first. The roadmap then grows fr
 | 0 | Project setup, plans, wiki, and approval workflow | Merged; no release recorded |
 | 1 | Native Rust foundation | Complete |
 | 2 | Rules/configuration contracts | Complete |
-| 3 | Board and preview | In progress |
+| 3 | Board and preview | Complete |
 | 4–6 | Complete base rules, bots, and offline save/resume | Planned |
 | 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |
 | 11–14 | Citadels & Sentinels, Open Seas, combined scenarios, and up to eight players | Planned |

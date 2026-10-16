@@ -4,12 +4,12 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; active development on the dedicated milestone branch and nightly.
-- **Active milestone:** [03 — Board and preview](milestones/milestone-03/plan.md), In progress by user request on 2026-10-15.
-- **Predecessor:** M02 approved implementation/polish merged through PRs #7/#8; stable/main at 861b8c6. [Promotion record](milestones/milestone-02/reports/003-polish-approval-and-stable-promotion.md).
-- **Current phase:** deterministic board and interactive native preview implemented; final cartoon artwork and graphic ports, native verification and delivery gates in progress. M03 is unapproved.
-- **Next task:** finish only M03, then leave its beta PR for user testing. M04 awaits a new request.
+- **Active milestone:** [03 — Board and preview](milestones/milestone-03/plan.md), Complete; user approved implementation and polish on 2026-10-15.
+- **Current phase:** implementation 4ccbf26 passed local formatting, Clippy, 20 tests, optimized build/package and all six GitHub target builds. All six artifacts and 3,894 package file hashes verified; acceptance evidence archived.
+- **Promotion:** [beta PR #9](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/9) and [stable PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), from the same milestone branch. M02 was promoted through PR #8.
+- **Next milestone:** M04 Base turn engine remains Planned; wait for the next user request.
 - **Release cadence:** no releases/tags for M00–M05; first release due M06 after acceptance and approved stable promotion.
-- **Verification:** [M02 progress](milestones/milestone-02/progress.md). Interactive native evidence remains M01 Windows; builds do not prove runtime behavior on other platforms.
+- **Verification:** [M03 progress](milestones/milestone-03/progress.md), [native evidence](photos/milestone-03/index.md), and [CI](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38856644491). Windows rendered frames and egui input regressions passed; nonlocal interactive runtime is unverified.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
 
@@ -22,7 +22,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | 00 | v0.0.0 — Initial setup | Verifying | None | [Plan](milestones/milestone-00/plan.md) · [Progress](milestones/milestone-00/progress.md) · [Reports](milestones/milestone-00/reports/) · [Photos](photos/milestone-00/index.md) | Records/wiki/helpers/CI and approved merges recorded; no release required before M06. |
 | 01 | v0.0.1 — Foundation | Complete | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
 | 02 | v0.0.2 — Rules and configuration contract | Complete | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
-| 03 | v0.0.3 — Board and preview | In progress | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
+| 03 | v0.0.3 — Board and preview | Complete | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
 | 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
 | 05 | v0.0.5 — Complete base rules | Planned | M04 | [Plan](milestones/milestone-05/plan.md) · [Progress](milestones/milestone-05/progress.md) · [Reports](milestones/milestone-05/reports/) · [Photos](photos/milestone-05/index.md) | Base games finish correctly; mechanic and private-information edge cases have regression coverage. |
 | 06 | v0.1.0 — Offline playable | Planned | M05 | [Plan](milestones/milestone-06/plan.md) · [Progress](milestones/milestone-06/progress.md) · [Reports](milestones/milestone-06/reports/) · [Photos](photos/milestone-06/index.md) | A person can complete and resume an offline game at every supported seat count. |
