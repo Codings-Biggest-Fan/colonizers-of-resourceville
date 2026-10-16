@@ -1,32 +1,9 @@
 # Development
 
-**Current phase:** M00 initial setup. Documentation CI is provided; Cargo workspace, native UI, native-build CI, and runtime helpers remain pending in [M01](../milestones/milestone-01/progress.md).
+M01 introduces the five-crate native workspace. Read [Building](building.md) for toolchain, launch, check, test, package, capture, and GitHub matrix instructions. The foundation window is a preview; no gameplay or cloud integration is implemented.
 
-## Prerequisites
+Read AGENTS.md, ROADMAP.md, and the active plan/progress first. Preserve unrelated edits. Refine the plan, implement only the active scope, run relevant checks, inspect actual native output, and append a numbered report. A record/link check does not certify a build or runtime result.
 
-Windows-first Rust/MSVC development requires Rust tools and the compatible Microsoft C++ linker/build prerequisites. Check using scripts/bootstrap.ps1. The helper does not install anything; missing tools return a nonzero status with guidance. Pin exact versions when scaffolding.
+Rules remain pure. M02 defines game/configuration/protocol contracts. Bots receive permitted observations only. The server currently offers process liveness, with no game-state or database endpoints. No cloud resources are required.
 
-No build, test, application, or Docker command is advertised as runnable until its implementation exists.
-
-## Available structure checks
-
-```powershell
-& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -All
-& 'C:\path\to\colonizers-of-resourceville\scripts\milestone.ps1' -Number 1
-```
-
-The checker validates record structure/local Markdown links and optional Complete status. It cannot prove test outcomes, screenshot contents, or runtime correctness.
-
-## Implementation workflow
-
-Read AGENTS.md, ROADMAP.md, and the active plan/progress. Refine the active plan against actual code. Keep changes scoped, preserve unrelated edits, run meaningful checks, inspect native UI, and append a numbered report.
-
-Future helper contracts are listed in [scripts/README.md](../scripts/README.md). Screenshots use [photos conventions](../photos/README.md). Report failures honestly.
-
-## Polish workflow
-
-Explicit Polish mode pauses milestone advancement. Maintain the user's flaw checklist, fix underlying causes, inspect before/after output when visual, and append a polish report. Resume roadmap implementation only when requested. [Full rules](../AGENTS.md#polish-mode).
-
-## Build, review, and player documentation
-
-Use [Building](building.md) for channel selection and guarded future Cargo commands. [GitHub workflow](github-workflow.md) requires one milestone branch/PR, nightly/beta alignment, and user approval before stable/release updates. [Game Instructions](game-instructions/README.md) is the player-guide source folder published in the wiki. Generate preview docs with scripts/wiki.ps1; publication is separate and explicit.
+Explicit Polish mode pauses milestone advancement until the user resumes it. Keep a flaw checklist and record before/after evidence for visual corrections where possible. Never promote development work without the implementation and polish approvals described in the [workflow](github-workflow.md).

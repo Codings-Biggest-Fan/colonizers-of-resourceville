@@ -1,0 +1,64 @@
+[
+  {
+    "target": "x86_64-apple-darwin",
+    "artifact_id": 12017032523,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "2550c2cce2dae988209d9cedc425f7264ae621d1bf1d7fe9133c1a967cadb184",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "0755",
+    "container": "N/A"
+  },
+  {
+    "target": "x86_64-unknown-linux-gnu",
+    "artifact_id": 12016622507,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "3ca74d3eb30234766a1a4f75862b7f56e51c7c62b80d83bf4586226389464389",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "0755",
+    "container": "PASS SHA256, Linux architecture, nonroot user, entrypoint",
+    "container_sha256": "5f058809a50d4da4ea2e9f963898c10d9cbf60da8e6ccc8ad3ba90e5f1b2b638"
+  },
+  {
+    "target": "x86_64-pc-windows-msvc",
+    "artifact_id": 12016567640,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "b469c023331e7a1c994442e7b6170370341319de92d3f14240f0ccd305c5b7da",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "N/A",
+    "container": "N/A"
+  },
+  {
+    "target": "aarch64-apple-darwin",
+    "artifact_id": 12016543607,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "ca48f2d2698561e3e3801752901dee6a5a6be503684356ac649a007a43701ff1",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "0755",
+    "container": "N/A"
+  },
+  {
+    "target": "aarch64-pc-windows-msvc",
+    "artifact_id": 12016153263,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "9a65c585974b1bf9499aa86f44e245b8ceb5b6a4b85ab6987e8ef76fa3e494cb",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "N/A",
+    "container": "N/A"
+  },
+  {
+    "target": "aarch64-unknown-linux-gnu",
+    "artifact_id": 12016078509,
+    "source": "c2459eba09ab0c59338fb4c1ff53f2b4c463d59e",
+    "native_sha256": "a42e63cc0bb1adcc5f56901d100e1b2b2617646f3d49ed5131dbd7329c73783f",
+    "verified_files": 649,
+    "native_architecture": "PASS",
+    "unix_mode": "0755",
+    "container": "PASS SHA256, Linux architecture, nonroot user, entrypoint",
+    "container_sha256": "cf36778e225a071477e747332e560b34cf5bdfa1fc7c66f85b316e8a3091d4ee"
+  }
+]

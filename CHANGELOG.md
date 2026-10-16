@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — Milestone 01 foundation
+
+### Added — 2026-10-15
+
+- Five-crate native Rust workspace with pinned toolchain/lockfile, original wgpu preview, and loopback Axum/Tokio liveness server.
+- PowerShell development, lint, test, rendered-frame capture, and package helpers.
+- GitHub builds/packages for Windows/Linux/macOS x86-64 and ARM64; local testing remains Windows-first.
+- Standing Catppuccin, settings, low-setup friend-play, privacy, copy, and Impeccable design rules; README main image below the title and five-image screenshot grid.
+- Building/game-guide/workflow updates and inspected native-window evidence. No gameplay or milestone release is claimed.
+- Corrected Unix ZIP executable permissions after inspecting a real GitHub-built artifact; all six actual GitHub artifacts passed independent hash/architecture/permission checks.
+
 ## Unreleased — Milestone 00 initial setup awaiting review
 
 ### Added — 2026-10-15

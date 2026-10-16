@@ -1,0 +1,8 @@
+Source: 066b4401fec1d17ad0f19e1537a3fcd9804167f0
+Target: x86_64-pc-windows-msvc
+ZIP bytes: 6715998
+ZIP SHA256: c074d23d930a79e4061a3cc84ccf24c547035c81cb3a713d7ae9f4c624455fd9
+PASS: sidecar archive SHA256 matches.
+PASS: all 649 extracted files match SHA256SUMS.txt.
+PASS: repeat packaging returns exit 1 and preserves existing output.
+Testing package only; official releases must use GitHub-built artifacts.

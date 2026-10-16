@@ -1,12 +1,14 @@
 # The Colonizers of Resourceville
 
+![Milestone 01 native window](photos/milestone-01/009-clean-native-window.jpg)
+
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
 The planned experience starts with gathering resources, negotiating trades, building roads and settlements, and competing for victory points. Later releases expand into seafaring, city development, defense, caravans, exploration, and scenario objectives. Hosts will be able to choose maps, rules, player counts, and human/bot seats before each game.
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** Milestone 0 initial setup was merged through [PR #1](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/1). The expanded README and documentation polish are [open for testing in PR #2](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/2). There is no playable game, Cargo workspace, or native download yet.
+**Current status:** Milestone 01 native foundation is under verification in [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) on milestone-01/foundation. The five-crate Rust workspace includes a native wgpu preview and a liveness-only server. There is no playable game or approved native release yet.
 
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
@@ -14,8 +16,9 @@ Offline solo play and private online rooms come first. The roadmap then grows fr
 
 | Milestones | What they deliver | Status |
 | --- | --- | --- |
-| 0 | Project setup, plans, wiki, and approval workflow | Ready for user review |
-| 1–3 | Native Rust foundation, rules/configuration contracts, and board preview | Planned |
+| 0 | Project setup, plans, wiki, and approval workflow | Merged; no release recorded |
+| 1 | Native Rust foundation | Verifying |
+| 2–3 | Rules/configuration contracts and board preview | Planned |
 | 4–6 | Complete base rules, bots, and offline save/resume | Planned |
 | 7–10 | Online identity, private rooms, reliable multiplayer, and pregame options | Planned |
 | 11–14 | Citadels & Sentinels, Open Seas, combined scenarios, and up to eight players | Planned |
@@ -26,33 +29,37 @@ Follow the [current roadmap](ROADMAP.md) for individual releases, acceptance gat
 
 ## Screenshots
 
-These are real **documentation previews**, not gameplay screenshots. Native game images will be added when the application exists.
+These are actual native wgpu frames from the M01 foundation preview. Gameplay arrives in later milestones.
 
-![Project wiki preview](photos/milestone-00/004-resourceville-wiki.jpg)
+| Native window | Maximized window |
+| :---: | :---: |
+| ![Native window with original icon](photos/milestone-01/009-clean-native-window.jpg) | ![Maximized native window](photos/milestone-01/010-clean-native-maximized.jpg) |
+| Rendered preview<br>![Rendered foundation preview](photos/milestone-01/004-native-foundation-contrast.png) | Compact layout<br>![Compact native layout](photos/milestone-01/007-native-compact-responsive.png) |
+| High zoom<br>![Native layout at increased zoom](photos/milestone-01/008-native-zoom-responsive.png) | [Capture metadata, before/after images, and full archive](photos/milestone-01/index.md) |
 
-[View full wiki screenshot](photos/milestone-00/004-resourceville-wiki.jpg) · [Building guide screenshot](photos/milestone-00/005-resourceville-building.jpg) · [Game Instructions screenshot](photos/milestone-00/006-resourceville-game-instructions.jpg) · [Capture details and archive](photos/milestone-00/index.md)
+[M00 documentation previews](photos/milestone-00/index.md)
 
 ## Building and checking the project
 
-For the current setup revision, install Git and PowerShell 7, then clone and check the review branch:
+Install the pinned Rust/MSVC prerequisites, then use the current development branch:
 
 ```powershell
 git clone https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville.git
 Set-Location colonizers-of-resourceville
-git switch beta
-pwsh -NoProfile -File ./scripts/milestone.ps1 -All
+git switch nightly
 pwsh -NoProfile -File ./scripts/bootstrap.ps1
+pwsh -NoProfile -File ./scripts/check.ps1 -Release
+pwsh -NoProfile -File ./scripts/test.ps1
+pwsh -NoProfile -File ./scripts/dev.ps1
 ```
 
-The first helper checks project records and local documentation links. The second checks prerequisites without installing anything; missing Rust/MSVC tools are reported as errors.
-
-Native builds begin in Milestone 1. They will require Rust through rustup, rustfmt, Clippy, and the Microsoft C++ Build Tools/Windows SDK. **Cargo build/run commands do not work on this setup-only revision.** The [Building guide](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Building) covers prerequisites, future build commands, and troubleshooting.
+The [Building guide](docs/building.md) covers prerequisites, native launch, server liveness, captures, packaging, and troubleshooting. GitHub builds cover Windows, Linux, and macOS on x86-64 and ARM64; nonlocal builds do not prove interactive runtime behavior.
 
 ### Development channels
 
-- **stable:** the latest approved and merged PR; currently Milestone 0 initial setup.
-- **beta:** the current unapproved milestone PR, ready for testing.
-- **nightly:** the latest pushed milestone work, which may be unfinished.
-- **main:** a compatibility mirror of approved stable.
+- **nightly:** latest pushed development work, possibly unfinished.
+- **beta:** latest user-approved implementation before polish.
+- **stable:** approved implementation and approved polish; default branch.
+- **main:** compatibility mirror of polished stable.
 
 See the [contribution and release workflow](docs/github-workflow.md) and [agent instructions](AGENTS.md) before making changes. The project license has not been selected; asset sources are recorded in [attribution](assets/ATTRIBUTION.md).

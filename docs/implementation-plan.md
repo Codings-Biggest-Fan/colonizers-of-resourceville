@@ -12,7 +12,7 @@ Offline saves use explicit versions and atomic replacement. Online commands are 
 
 ## Gameplay and pregame contract
 
-Cover base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, and Voyagers & Corsairs with pinned core scenarios and officially documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional material, historical editions, browser builds, and non-Windows release packages are excluded.
+Cover base rules, Citadels & Sentinels, Open Seas, their supported combinations, Caravans & Raiders, and Voyagers & Corsairs with pinned core scenarios and officially documented combinations. Do not imply arbitrary mixtures are compatible. Standalone games, promotional material, historical editions, browser builds, and nonlocal package builds now cover Windows/Linux/macOS x86-64 and ARM64 by user request on 2026-10-15; local runtime testing remains Windows-first.
 
 One versioned GameConfig drives pregame controls, server validation, presets, and saves. Gameplay changes clear readiness; starting freezes configuration. Include room/seat settings, rules/scenarios/maps, generation and preview, victory/dice/robber/discard/trade policy, timing/turn order, expansion settings, audience/recovery policy, and saved/shared presets. See [pregame catalogue](pregame-options.md).
 
@@ -22,7 +22,7 @@ Selectable controls must change real behavior. Reject invalid combinations with 
 
 M00 separates repository/plans/docs/wiki/helpers and GitHub workflow from the original 20 implementation milestones. It targets source/docs-only v0.0.0 after user PR testing/approval. M01 remains native Rust foundation. [M00 plan](../milestones/milestone-00/plan.md).
 
-Every milestone uses a dedicated branch and PR against stable. nightly is latest work, beta is the active unapproved PR head, and stable is the most recent approved/merged PR. Wait for explicit user approval before merging, publishing its GitHub Release, or advancing. [Workflow](github-workflow.md).
+Implementation PRs target beta, which advances only after explicit implementation approval. Polish PRs target stable, which advances only after explicit polish approval. nightly is latest pushed development work; main mirrors approved polished stable. Wait for explicit user approval before merging, publishing its GitHub Release, or advancing. [Workflow](github-workflow.md).
 
 ## Release sequence
 
@@ -66,3 +66,4 @@ No release dates are promised. Confirm actual organization/hosting costs before 
 ## Public documentation
 
 Publish PR-reviewed source to the GitHub Wiki with clearly labeled unapproved previews, then republish approved docs from stable after approval. Include [Building](building.md) and the [Game Instructions folder](game-instructions/README.md), linked from README. Keep source records and photo evidence versioned.
+

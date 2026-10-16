@@ -1,0 +1,9 @@
+.git
+.local
+target
+dist
+photos
+milestones
+*.log
+.env
+.env.*
