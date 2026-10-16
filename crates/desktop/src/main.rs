@@ -2,6 +2,7 @@
 #![forbid(unsafe_code)]
 
 mod board_view;
+mod pieces;
 use eframe::egui;
 use resourceville_protocol::PRODUCT_NAME;
 
@@ -25,6 +26,7 @@ fn main() -> eframe::Result {
             let mut visuals = egui::Visuals::dark();
             visuals.override_text_color = Some(egui::Color32::from_rgb(205, 214, 244));
             visuals.panel_fill = board_view::BASE;
+            visuals.window_fill = board_view::BASE;
             visuals.extreme_bg_color = egui::Color32::from_rgb(24, 24, 37);
             visuals.selection.bg_fill = egui::Color32::from_rgb(137, 180, 250);
             visuals.selection.stroke = egui::Stroke::new(1.0, board_view::BASE);
@@ -144,6 +146,12 @@ impl eframe::App for BoardApp {
                 "Timed out waiting for native screenshot"
             );
             ctx.request_repaint_after(std::time::Duration::from_millis(20));
+        }
+        #[cfg(feature = "capture")]
+        if self.capture_frames == 1
+            && let Ok(scenario) = std::env::var("RESOURCEVILLE_CAPTURE_SCENARIO")
+        {
+            self.preview.capture_scenario(&scenario);
         }
         self.preview.show(ctx);
     }

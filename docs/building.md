@@ -49,3 +49,7 @@ For clean-checkout verification, clone the review branch into a fresh folder and
 - wgpu initialization error: check graphics drivers and adapter support; keep the actual error when reporting. No browser fallback exists.
 - Address already in use: choose an unused RESOURCEVILLE_BIND address; the server returns a nonzero error.
 - No gameplay: M01 is a native foundation preview. Follow the [roadmap](../ROADMAP.md).
+
+## M04 turn testing
+
+The native client now includes the [base turn-engine harness](base-turn-engine.md). F4 opens it without permanent board bars. Capture helpers additionally accept `-Scenario layout|setup|production|rejection|contrast|zoomed-out`; scenarios replay real rules transitions, except `contrast`, which is explicitly a renderer fixture, not a legal game. Captures are real native wgpu frames, not mockups. No game save/network payload format is available yet.

@@ -4,12 +4,12 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 
 - **Current shipped release:** none.
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; active development on the dedicated milestone branch and nightly.
-- **Active milestone:** [03 — Board and preview](milestones/milestone-03/plan.md), Complete; user approved implementation and polish on 2026-10-15.
-- **Current phase:** implementation 4ccbf26 passed local formatting, Clippy, 20 tests, optimized build/package and all six GitHub target builds. All six artifacts and 3,894 package file hashes verified; acceptance evidence archived.
-- **Promotion:** [beta PR #9](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/9) and [stable PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), from the same milestone branch. M02 was promoted through PR #8.
-- **Next milestone:** M04 Base turn engine remains Planned; its [plan](milestones/milestone-04/plan.md#board-visual-requirements--requested-2026-10-15) includes flat 2D port ships, question-mark graphics for generic 3:1 ports, and stronger house/road contrast. Wait for the next implementation request.
+- **Active milestone:** [04 — Base turn engine](milestones/milestone-04/plan.md), Verifying; requested 2026-10-15.
+- **Current phase:** deterministic setup/production/building implemented with native testing controls and requested board graphics; local checks and native frame evidence recorded in [M04 progress](milestones/milestone-04/progress.md). Cross-platform CI/package review pending.
+- **Promotion:** M03 merged into stable through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), stable 7a0f859. M04 remains unapproved on milestone-04/base-turn-engine and nightly; no beta/stable/main promotion.
+- **Next milestone:** M05 complete base rules remains Planned; do not start without the next request.
 - **Release cadence:** no releases/tags for M00–M05; first release due M06 after acceptance and approved stable promotion.
-- **Verification:** [M03 progress](milestones/milestone-03/progress.md), [native evidence](photos/milestone-03/index.md), and [CI](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/actions/runs/38856644491). Windows rendered frames and egui input regressions passed; nonlocal interactive runtime is unverified.
+- **Verification:** [M04 progress](milestones/milestone-04/progress.md) and [native evidence](photos/milestone-04/index.md): 28 tests, formatting, Clippy and optimized build passed. Cross-platform CI/package review and full human input walkthrough remain pending; nonlocal interactive runtime is unverified.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
 
@@ -23,7 +23,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 | 01 | v0.0.1 — Foundation | Complete | M00 | [Plan](milestones/milestone-01/plan.md) · [Progress](milestones/milestone-01/progress.md) · [Reports](milestones/milestone-01/reports/) · [Photos](photos/milestone-01/index.md) | Clean checkout builds and launches; script entry points and documentation links validate; inspected native-window evidence is archived. |
 | 02 | v0.0.2 — Rules and configuration contract | Complete | M01 | [Plan](milestones/milestone-02/plan.md) · [Progress](milestones/milestone-02/progress.md) · [Reports](milestones/milestone-02/reports/) · [Photos](photos/milestone-02/index.md) | Every observed setting has a disposition and release assignment; source-backed rules/scenario inventories and shared contracts are checked. |
 | 03 | v0.0.3 — Board and preview | Complete | M02 | [Plan](milestones/milestone-03/plan.md) · [Progress](milestones/milestone-03/progress.md) · [Reports](milestones/milestone-03/reports/) · [Photos](photos/milestone-03/index.md) | Topology and generation tests pass; screenshots demonstrate correct geometry and usable targets. |
-| 04 | v0.0.4 — Base turn engine | Planned | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
+| 04 | v0.0.4 — Base turn engine | Verifying | M03 | [Plan](milestones/milestone-04/plan.md) · [Progress](milestones/milestone-04/progress.md) · [Reports](milestones/milestone-04/reports/) · [Photos](photos/milestone-04/index.md) | Deterministic setup and ordinary-turn tests pass; rejected actions are atomic. |
 | 05 | v0.0.5 — Complete base rules | Planned | M04 | [Plan](milestones/milestone-05/plan.md) · [Progress](milestones/milestone-05/progress.md) · [Reports](milestones/milestone-05/reports/) · [Photos](photos/milestone-05/index.md) | Base games finish correctly; mechanic and private-information edge cases have regression coverage. |
 | 06 | v0.1.0 — Offline playable | Planned | M05 | [Plan](milestones/milestone-06/plan.md) · [Progress](milestones/milestone-06/progress.md) · [Reports](milestones/milestone-06/reports/) · [Photos](photos/milestone-06/index.md) | A person can complete and resume an offline game at every supported seat count. |
 | 07 | v0.1.1 — Supabase foundation | Planned | M06 | [Plan](milestones/milestone-07/plan.md) · [Progress](milestones/milestone-07/progress.md) · [Reports](milestones/milestone-07/reports/) · [Photos](photos/milestone-07/index.md) | Authentication, migrations, persistence smoke checks, and permission tests pass. |
@@ -46,7 +46,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 
 - M00 permanent records and documentation remain intact.
 - M01 local/native and all six GitHub target/artifact checks passed at c2459eb; user merged implementation and polish. M02 adds contract-only validation, research inventories and synthetic privacy fixtures; no gameplay is enabled.
-- Native preview and process-liveness server exist; gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
+- Native board and an M04 setup/production/building test harness exist; complete gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
 - No Supabase organization/project has been created. New-organization access and actual cost confirmation are prerequisites at M07.
 - No milestone release has been published. CI builds are distinct from tested interactive platform support.
 
@@ -61,3 +61,5 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 [Wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
 Implementation PRs target beta; only explicit approval advances its implementation baseline. Polish PRs target stable and require separate explicit approval. nightly follows current pushed development; main mirrors polished stable. Releases use GitHub-built artifacts from the approved polished stable revision. See AGENTS.md and the workflow for the full policy.
+
+

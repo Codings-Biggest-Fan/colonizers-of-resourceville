@@ -21,3 +21,7 @@ Sample settlements use original miniature geometry with a front gable, receding 
 ## Verification
 
 Inspect default, compact, wide, scaling stress and zoom/pan captures. Earlier flat/painterly images are before evidence, not the final visual standard. Capture only the game window. Record actual scaling; egui zoom is not proof of switching Windows DPI.
+
+## M04 native expansion
+
+The board remains the dominant surface. A closable, draggable native Turn engine test window owns actual phase/actions and public resource counts; no permanent top/bottom bars. F4/context menu opens it. Selected-target actions validate through the rules engine; errors stay in the panel and input is preserved. Explicit supplied dice identify this as a test harness. Private hands never render. Flat side-view port ships use geometric cargo icons; generic ports use a drawn question mark. Roads/houses use cream outer separation, dark outlines and player color. Ownership is also available in text inspection and numbered settlements. Appearance preferences remain future scope.
