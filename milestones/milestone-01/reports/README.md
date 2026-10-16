@@ -8,4 +8,7 @@
 
 - [004 — Clean native acceptance and Unix package correction](004-native-acceptance-and-unix-packages.md)
 
+- [005 — Six-target build and actual artifact acceptance](005-six-target-build-and-artifact-acceptance.md)
+- [006 — Standing design rules and README screenshot layout](006-design-rules-and-readme.md)
+
 Append actual numbered implementation reports. M00's historical setup reports remain in [its own archive](../../milestone-00/reports/).

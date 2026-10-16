@@ -6,9 +6,9 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; planning structure published on main.
 - **Active milestone:** [01 — Foundation](milestones/milestone-01/plan.md), Verifying by explicit user request on 2026-10-15.
 - **M00 history:** initial setup and polish merged through PRs #1/#2; stable was fetched at 49bd2c0. No release publication is inferred.
-- **Current phase:** native Rust foundation implementation and verification; M02 remains planned.
+- **Current phase:** M01 native implementation/package acceptance passed; documentation refresh and explicit user review/release approvals remain. M02 stays planned.
 - **Execution mode:** roadmap resumed by user request. Preserve original branding.
-- **Next task:** complete M01 checks/evidence, push milestone-01/foundation and nightly, open an implementation PR targeting beta; stop for explicit approval before promotion.
+- **Next task:** test and explicitly approve [implementation PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) after final documentation checks; beta promotion requires that approval. Stable/release additionally require separate polish approval.
 - **Verification:** see [M01 progress](milestones/milestone-01/progress.md) for executed and pending checks. GitHub builds cover six OS/architecture targets; actual runtime evidence is recorded separately.
 
 [Accepted implementation plan](docs/implementation-plan.md) · [Milestone conventions](milestones/README.md) · [Photo conventions](photos/README.md) · [Changelog](CHANGELOG.md)
@@ -44,7 +44,7 @@ Implement one milestone at a time. Dependencies below are sequential release gat
 ## Verified capabilities and current limitations
 
 - M00 permanent records and documentation remain intact.
-- M01 clean Windows formatting, Clippy, tests, optimized build/package checks, and native launch/icon/resize/close inspection passed; final GitHub matrix/archive validation is tracked in its progress record.
+- M01 clean Windows formatting, Clippy, tests, optimized build/package checks, and native launch/icon/resize/close inspection passed; all six GitHub targets and actual archives passed at c2459eb. Final documentation checks and user approvals remain.
 - Native preview and process-liveness server exist; gameplay, bots, saves, online rooms, and cloud persistence remain later scope.
 - No Supabase organization/project has been created. New-organization access and actual cost confirmation are prerequisites at M07.
 - No milestone release has been published. CI builds are distinct from tested interactive platform support.
