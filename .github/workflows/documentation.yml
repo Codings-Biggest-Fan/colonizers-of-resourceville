@@ -8,6 +8,9 @@ on:
 
 permissions:
   contents: read
+concurrency:
+  group: documentation-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   documentation:

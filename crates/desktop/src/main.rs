@@ -19,7 +19,7 @@ fn main() -> eframe::Result {
         PRODUCT_NAME,
         options,
         Box::new(|cc| {
-            cc.egui_ctx.set_visuals(egui::Visuals::dark());
+            cc.egui_ctx.set_theme(egui::Theme::Dark);
             if cfg!(feature = "capture") {
                 let scale = capture_dimension("RESOURCEVILLE_CAPTURE_SCALE", 1.0);
                 cc.egui_ctx.set_zoom_factor(scale);
@@ -96,15 +96,34 @@ impl eframe::App for Foundation {
             );
             ctx.request_repaint_after(std::time::Duration::from_millis(20));
         }
+        egui::TopBottomPanel::bottom("preview-footer")
+            .frame(
+                egui::Frame::new()
+                    .fill(egui::Color32::from_rgb(18, 32, 37))
+                    .inner_margin(16.0),
+            )
+            .show(ctx, |ui| {
+                ui.horizontal_wrapped(|ui| {
+                    if ui.button("Close preview").clicked() {
+                        ctx.send_viewport_cmd(egui::ViewportCommand::Close);
+                    }
+                    ui.label(format!(
+                        "Version {} · Native Rust · wgpu",
+                        env!("CARGO_PKG_VERSION")
+                    ));
+                });
+            });
         egui::CentralPanel::default()
             .frame(egui::Frame::new().fill(egui::Color32::from_rgb(18, 32, 37)).inner_margin(28.0))
             .show(ctx, |ui| {
                 egui::ScrollArea::vertical().show(ui, |ui| {
-                    ui.add_space(24.0);
+                    let compact = ui.available_width() < 650.0 || ui.available_height() < 500.0;
+                    ui.add_space(if compact { 4.0 } else { 24.0 });
                     ui.label(egui::RichText::new("RESOURCEVILLE").size(14.0).color(egui::Color32::from_rgb(227, 183, 103)));
-                    ui.add_space(16.0);
-                    ui.label(egui::RichText::new(PRODUCT_NAME).size(34.0).strong());
+                    ui.add_space(if compact { 8.0 } else { 16.0 });
+                    ui.label(egui::RichText::new(PRODUCT_NAME).size(if compact { 28.0 } else { 34.0 }).strong());
                     ui.add_space(12.0);
+                    if !compact {
                     ui.label(egui::RichText::new("An island. A foothold. A world of possibilities.").size(19.0));
                     ui.add_space(32.0);
                     // Original decorative island emblem, with no board/topology claim.
@@ -116,14 +135,9 @@ impl eframe::App for Foundation {
                     }).collect();
                     ui.painter().add(egui::Shape::convex_polygon(points, egui::Color32::from_rgb(60, 102, 88), egui::Stroke::new(2.0, egui::Color32::from_rgb(227, 183, 103))));
                     ui.add_space(24.0);
+                    }
                     ui.heading("Foundation preview");
                     ui.label("The native window is ready. Games, bots, and online rooms arrive in later milestones.");
-                    ui.add_space(16.0);
-                    ui.label(format!("Version {} · Native Rust · wgpu", env!("CARGO_PKG_VERSION")));
-                    ui.add_space(20.0);
-                    if ui.button("Close preview").clicked() {
-                        ctx.send_viewport_cmd(egui::ViewportCommand::Close);
-                    }
                 });
             });
     }

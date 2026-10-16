@@ -6,7 +6,7 @@ try {
     Push-Location $RepoRoot
     try {
         Invoke-Cargo @('fmt', '--all', '--', '--check')
-        Invoke-Cargo @('clippy', '--workspace', '--all-targets', '--locked', '--', '-D', 'warnings')
+        Invoke-Cargo @('clippy', '--workspace', '--all-targets', '--all-features', '--locked', '--', '-D', 'warnings')
         if ($Release) { Invoke-Cargo @('build', '--workspace', '--release', '--locked') }
     } finally { Pop-Location }
 } catch { Write-Error $_ -ErrorAction Continue; exit 1 }

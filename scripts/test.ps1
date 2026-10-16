@@ -5,7 +5,7 @@ try {
     . "$PSScriptRoot/common.ps1"
     Push-Location $RepoRoot
     try {
-        $arguments = @('test', '--locked')
+        $arguments = @('test', '--locked', '--all-features')
         if ($Suite -eq 'All') { $arguments += '--workspace' }
         else { $arguments += @('-p', "resourceville-$($Suite.ToLowerInvariant())") }
         Invoke-Cargo $arguments
