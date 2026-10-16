@@ -54,4 +54,3 @@
 Added M00, nightly/beta/stable branch policy, per-milestone PR approval and GitHub Releases, wiki publication, building guide, and a Game Instructions source folder. Original setup reports moved to M00 with historical content preserved.
 
 No v0.0.0 or v0.0.1 release has shipped. Rust implementation, CI, runtime screenshots, and release verification are pending.
-

@@ -170,4 +170,3 @@ Preserve unrelated edits. Re-read shared files before editing. Use focused chang
 Ask the user before accessing or interacting with their computer/window UI, including native visual testing. Keep permission scoped to the described check. A physical Escape stop ends UI input immediately; ask again before a later access session. Non-UI source inspection, shell builds/tests, and GitHub checks can continue independently.
 
 Current work may be documentation-only at the user's request. Finish that scope first; do not install tools or begin native implementation merely to make planning records look complete.
-

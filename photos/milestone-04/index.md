@@ -2,7 +2,7 @@
 
 [Plan](../../milestones/milestone-04/plan.md) · [Progress](../../milestones/milestone-04/progress.md) · [Report](../../milestones/milestone-04/reports/002-engine-implementation.md)
 
-Captured 2026-10-15 (America/Los_Angeles), from the M04 working tree based on merge 7a0f859; source changes are committed together with these frames. Native eframe/wgpu output only. Native display scale was 1.5 pixels/point; all captures use egui zoom 1 except 006/013/017/020, which use zoom 1.5 (effective 2.25). No claim of changing Windows DPI. Logical viewport 1000×680 produces 1500×1020 pixels; compact 480×420 produces 720×630.
+Captured 2026-10-15 (America/Los_Angeles), from the M04 working tree committed with these frames as d8441e7; approved M03 stable 7a0f859 is included. Native eframe/wgpu output only. Native display scale was 1.5 pixels/point; all captures use egui zoom 1 except 006/013/017/020, which use zoom 1.5 (effective 2.25). No claim of changing Windows DPI. Logical viewport 1000×680 produces 1500×1020 pixels; compact 480×420 produces 720×630.
 
 Setup, production and rejection scenarios replay actual engine actions with synthetic seats. Contrast scenarios deliberately place sample pieces over all terrains and are not legal game positions. No private hands render. Runtime frames are not evidence of a full human input walkthrough. The user permitted game-window testing/captures. Only engine-rendered frames are stored here.
 

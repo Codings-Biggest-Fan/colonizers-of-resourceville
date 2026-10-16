@@ -23,7 +23,7 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 
 ## Remaining checks
 
-- Six-target GitHub build/package validation, final package integrity and PR handoff.
+- Six-target GitHub build/package review remains pending. Local Windows package CRC/sidecar/all 649 hashes passed; [draft beta PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11) is open and attached. See [handoff report](reports/003-testing-handoff.md).
 - Full human/native input walkthrough, including panel drag/collapse at compact size and keyboard-only placement, remains unverified. Existing headless camera input and native bridge tests do not establish human usability.
 - Multiple-people/screens privacy and non-Windows interactive runtime remain unverified. No online functionality or complete-game claim.
 
@@ -39,3 +39,5 @@ No source implementation blocker. Finish evidence/CI review, hand off the unmerg
 
 [001 — Requested visual work](reports/001-visual-follow-up-requirements.md) · [002 — Engine implementation and checks](reports/002-engine-implementation.md)
 
+
+[003 — Testing handoff](reports/003-testing-handoff.md).

@@ -36,5 +36,3 @@ try {
         }
     } finally { Pop-Location }
 } catch { Write-Error $_ -ErrorAction Continue; exit 1 }
-
-

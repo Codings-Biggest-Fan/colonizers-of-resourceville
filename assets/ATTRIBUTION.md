@@ -16,5 +16,3 @@ Generated art is not a runtime screenshot. Development evidence stays in photos/
 The desktop uses eframe/egui's bundled default fonts and native wgpu renderer. Cargo.lock pins third-party dependencies. Packaging includes dependency license metadata and available license/notice files (including font notices) under third-party/. Dependencies retain their respective licenses; no license is inferred for project-authored code/art.
 
 M04 flat ships, cargo icons, question marks, outlined roads and houses are original procedural geometry in crates/desktop/src/pieces.rs; no external artwork. The terrain atlas remains embedded.
-
-

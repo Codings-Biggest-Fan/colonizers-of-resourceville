@@ -6,7 +6,7 @@ Last updated: 2026-10-15 (America/Los_Angeles).
 - **Source repository:** [Codings-Biggest-Fan/colonizers-of-resourceville](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville), public; active development on the dedicated milestone branch and nightly.
 - **Active milestone:** [04 — Base turn engine](milestones/milestone-04/plan.md), Verifying; requested 2026-10-15.
 - **Current phase:** deterministic setup/production/building implemented with native testing controls and requested board graphics; local checks and native frame evidence recorded in [M04 progress](milestones/milestone-04/progress.md). Cross-platform CI/package review pending.
-- **Promotion:** M03 merged into stable through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), stable 7a0f859. M04 remains unapproved on milestone-04/base-turn-engine and nightly; no beta/stable/main promotion.
+- **Promotion:** M03 merged into stable through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10), stable 7a0f859. M04 [draft beta PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11) remains unapproved on milestone-04/base-turn-engine and nightly; no beta/stable/main promotion.
 - **Next milestone:** M05 complete base rules remains Planned; do not start without the next request.
 - **Release cadence:** no releases/tags for M00–M05; first release due M06 after acceptance and approved stable promotion.
 - **Verification:** [M04 progress](milestones/milestone-04/progress.md) and [native evidence](photos/milestone-04/index.md): 28 tests, formatting, Clippy and optimized build passed. Cross-platform CI/package review and full human input walkthrough remain pending; nonlocal interactive runtime is unverified.
@@ -61,5 +61,3 @@ Status vocabulary: Planned → In progress → Verifying → Complete. Use Block
 [Wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Building](docs/building.md) · [Game Instructions](docs/game-instructions/README.md) · [Workflow](docs/github-workflow.md)
 
 Implementation PRs target beta; only explicit approval advances its implementation baseline. Polish PRs target stable and require separate explicit approval. nightly follows current pushed development; main mirrors polished stable. Releases use GitHub-built artifacts from the approved polished stable revision. See AGENTS.md and the workflow for the full policy.
-
-

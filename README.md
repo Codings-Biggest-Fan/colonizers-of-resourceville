@@ -8,7 +8,7 @@ The planned experience starts with gathering resources, negotiating trades, buil
 
 Offline solo play and private online rooms come first. The roadmap then grows from 2–4 to 2–8 players, followed by public casual play and ranked queues. The desktop client and authoritative game server will both use Rust; online identity and persistence will use Supabase.
 
-**Current status:** M03 is approved and merged through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10). M04 is an unapproved testing preview with deterministic setup, production and ordinary building turns, plus flat port graphics and contrasting pieces. Press F4 or use the board context menu to open the [turn-engine test](docs/base-turn-engine.md). Dice outcomes are supplied for testing; complete games, bots and saves arrive later. No release has been published.
+**Current status:** M03 is approved and merged through [PR #10](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/10). M04 ([draft PR #11](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/11)) is an unapproved testing preview with deterministic setup, production and ordinary building turns, plus flat port graphics and contrasting pieces. Press F4 or use the board context menu to open the [turn-engine test](docs/base-turn-engine.md). Dice outcomes are supplied for testing; complete games, bots and saves arrive later. No release has been published.
 [Documentation wiki](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki) · [Game Instructions](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/wiki/Game-Instructions) · [Releases](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/releases)
 
 ## Roadmap
@@ -64,4 +64,3 @@ The [Building guide](docs/building.md) covers prerequisites, native launch, serv
 - **main:** compatibility mirror of polished stable.
 
 See the [contribution and release workflow](docs/github-workflow.md) and [agent instructions](AGENTS.md) before making changes. The project license has not been selected; asset sources are recorded in [attribution](assets/ATTRIBUTION.md).
-
