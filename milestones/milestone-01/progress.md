@@ -25,7 +25,7 @@ Last updated: 2026-10-15 (America/Los_Angeles)
 - [x] Native rendered-frame inspection, resize, Close preview, native close, and Windows 150% scaling; final icon/window pass pending.
 - [x] Helpers exercised from outside repository; missing Cargo, duplicate capture, and invalid suite failures verified. Clean package passed, including archive and 649 extracted file checksums.
 - [ ] GitHub six-target build/package jobs and Linux container checks.
-- [ ] Testing PR and wiki preview published.
+- [x] Draft PR #3 and labeled TESTING PREVIEW wiki published; Home/Building/Game Instructions HTTP and source identity verified.
 - [ ] Explicit implementation approval, then requested polish and explicit polish approval.
 - [ ] Approved stable release using GitHub-built artifacts.
 
@@ -43,4 +43,4 @@ M00 polish was resumed into roadmap work by the user's M01 request. No new polis
 
 ## Evidence
 
-[Implementation and local verification](reports/001-native-foundation.md) records actual passes, failures, and corrections. [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) is a draft against beta. [Clean package verification](reports/002-clean-package-and-review-gates.md) passed. Final-head six-target CI, clean native launch/icon inspection, and review publication remain pending.
+[Implementation and local verification](reports/001-native-foundation.md) records actual passes, failures, and corrections. [PR #3](https://github.com/Codings-Biggest-Fan/colonizers-of-resourceville/pull/3) is a draft against beta. [Clean package verification](reports/002-clean-package-and-review-gates.md) passed. Final-head six-target CI, clean native launch/icon inspection, remain pending. [Draft PR and wiki publication](reports/003-draft-pr-and-wiki-preview.md) is complete.
