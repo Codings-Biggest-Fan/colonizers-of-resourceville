@@ -1,6 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 #![forbid(unsafe_code)]
 
+mod board_view;
 use eframe::egui;
 use resourceville_protocol::PRODUCT_NAME;
 
@@ -21,6 +22,27 @@ fn main() -> eframe::Result {
         options,
         Box::new(|cc| {
             cc.egui_ctx.set_theme(egui::Theme::Dark);
+            let mut visuals = egui::Visuals::dark();
+            visuals.override_text_color = Some(egui::Color32::from_rgb(205, 214, 244));
+            visuals.panel_fill = board_view::BASE;
+            visuals.extreme_bg_color = egui::Color32::from_rgb(24, 24, 37);
+            visuals.selection.bg_fill = egui::Color32::from_rgb(137, 180, 250);
+            visuals.selection.stroke = egui::Stroke::new(1.0, board_view::BASE);
+            for widget in [
+                &mut visuals.widgets.noninteractive,
+                &mut visuals.widgets.inactive,
+                &mut visuals.widgets.hovered,
+                &mut visuals.widgets.active,
+                &mut visuals.widgets.open,
+            ] {
+                widget.fg_stroke.color = egui::Color32::from_rgb(205, 214, 244);
+                widget.bg_fill = egui::Color32::from_rgb(49, 50, 68);
+                widget.weak_bg_fill = egui::Color32::from_rgb(49, 50, 68);
+            }
+            visuals.widgets.hovered.bg_stroke =
+                egui::Stroke::new(1.5, egui::Color32::from_rgb(137, 180, 250));
+            visuals.widgets.active.bg_stroke = visuals.widgets.hovered.bg_stroke;
+            cc.egui_ctx.set_visuals(visuals);
             if cfg!(feature = "capture") {
                 let scale = capture_dimension("RESOURCEVILLE_CAPTURE_SCALE", 1.0);
                 cc.egui_ctx.set_zoom_factor(scale);
@@ -29,7 +51,7 @@ fn main() -> eframe::Result {
                     cc.egui_ctx.native_pixels_per_point()
                 );
             }
-            Ok(Box::new(Foundation::default()))
+            Ok(Box::new(BoardApp::default()))
         }),
     )
 }
@@ -72,12 +94,13 @@ fn capture_dimension(name: &str, default: f32) -> f32 {
 }
 
 #[derive(Default)]
-struct Foundation {
+struct BoardApp {
+    preview: board_view::Preview,
     #[cfg(feature = "capture")]
     capture_frames: u32,
 }
 
-impl eframe::App for Foundation {
+impl eframe::App for BoardApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         #[cfg(feature = "capture")]
         if let Ok(path) = std::env::var("RESOURCEVILLE_CAPTURE_TO") {
@@ -122,49 +145,6 @@ impl eframe::App for Foundation {
             );
             ctx.request_repaint_after(std::time::Duration::from_millis(20));
         }
-        egui::TopBottomPanel::bottom("preview-footer")
-            .frame(
-                egui::Frame::new()
-                    .fill(egui::Color32::from_rgb(18, 32, 37))
-                    .inner_margin(16.0),
-            )
-            .show(ctx, |ui| {
-                ui.horizontal_wrapped(|ui| {
-                    if ui.button("Close preview").clicked() {
-                        ctx.send_viewport_cmd(egui::ViewportCommand::Close);
-                    }
-                    ui.label(format!(
-                        "Version {} · Native Rust · wgpu",
-                        env!("CARGO_PKG_VERSION")
-                    ));
-                });
-            });
-        egui::CentralPanel::default()
-            .frame(egui::Frame::new().fill(egui::Color32::from_rgb(18, 32, 37)).inner_margin(28.0))
-            .show(ctx, |ui| {
-                egui::ScrollArea::vertical().show(ui, |ui| {
-                    let compact = ui.available_width() < 650.0 || ui.available_height() < 500.0;
-                    ui.add_space(if compact { 4.0 } else { 24.0 });
-                    ui.label(egui::RichText::new("RESOURCEVILLE").size(14.0).color(egui::Color32::from_rgb(227, 183, 103)));
-                    ui.add_space(if compact { 8.0 } else { 16.0 });
-                    ui.label(egui::RichText::new(PRODUCT_NAME).size(if compact { 28.0 } else { 34.0 }).strong());
-                    ui.add_space(12.0);
-                    if !compact {
-                    ui.label(egui::RichText::new("An island. A foothold. A world of possibilities.").size(19.0));
-                    ui.add_space(32.0);
-                    // Original decorative island emblem, with no board/topology claim.
-                    let (rect, _) = ui.allocate_exact_size(egui::vec2(ui.available_width(), 150.0), egui::Sense::hover());
-                    let center = rect.center();
-                    let points = (0..6).map(|i| {
-                        let angle = std::f32::consts::TAU * i as f32 / 6.0;
-                        center + egui::vec2(angle.cos(), angle.sin()) * 65.0
-                    }).collect();
-                    ui.painter().add(egui::Shape::convex_polygon(points, egui::Color32::from_rgb(60, 102, 88), egui::Stroke::new(2.0, egui::Color32::from_rgb(227, 183, 103))));
-                    ui.add_space(24.0);
-                    }
-                    ui.heading("Foundation preview");
-                    ui.label("The native window is ready. Games, bots, and online rooms arrive in later milestones.");
-                });
-            });
+        self.preview.show(ctx);
     }
 }

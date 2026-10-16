@@ -13,13 +13,8 @@ pub const PRODUCT_NAME: &str = "The Colonizers of Resourceville";
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct SeatId(pub u8);
-// Topology IDs are assigned by the board model at M03, never screen coordinates.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub struct VertexId(pub u32);
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub struct EdgeId(pub u32);
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
-pub struct HexId(pub u32);
+// One shared topology identity, independent of screen coordinates.
+pub use resourceville_rules::{EdgeId, HexId, VertexId};
 
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
