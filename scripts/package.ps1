@@ -1,7 +1,10 @@
 <#! Package current-host release binaries. CI calls this on all six OS/architecture runners.
 No signing, installer, release publication, or tool installation occurs. #>
-[CmdletBinding()]
-param([switch] $SkipBuild)
+[CmdletBinding(DefaultParameterSetName = 'Native')]
+param(
+    [Parameter(ParameterSetName = 'Native')] [switch] $SkipBuild,
+    [Parameter(ParameterSetName = 'Container', Mandatory)] [switch] $ServerContainer
+)
 try {
     . "$PSScriptRoot/common.ps1"
     Push-Location $RepoRoot
@@ -13,9 +16,31 @@ try {
         if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect Cargo host.' }
         $hostTriple = ($rustInfo | Select-String '^host: (.+)$').Matches.Groups[1].Value
         if (-not $hostTriple) { throw 'Cannot determine Rust host triple.' }
-        if (-not $SkipBuild) { Invoke-Cargo @('build', '--workspace', '--release', '--locked') }
+        if (-not $SkipBuild -and -not $ServerContainer) { Invoke-Cargo @('build', '--workspace', '--release', '--locked') }
         $revision = git rev-parse HEAD
         if ($LASTEXITCODE -ne 0) { throw 'Cannot identify source revision.' }
+        if ($ServerContainer) {
+            if (-not $IsLinux) { throw 'Server container bundles require Linux and Docker. Use the GitHub Linux x86-64/ARM64 jobs.' }
+            if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { throw 'Docker is required for server container packaging. No tools are installed by this helper.' }
+            $containerBase = Join-Path $RepoRoot "dist/resourceville-server-$hostTriple-$($revision.Substring(0, 7))"
+            if ((Test-Path -LiteralPath "$containerBase.tar") -or (Test-Path -LiteralPath "$containerBase.tar.gz")) { throw 'Container output exists; preserve it and use a fresh checkout/output.' }
+            $null = New-Item -ItemType Directory -Path (Split-Path -Parent $containerBase) -Force
+            & docker build -f crates/server/Dockerfile -t resourceville-server:testing .
+            if ($LASTEXITCODE -ne 0) { throw 'Server container build failed.' }
+            & docker save --output "$containerBase.tar" resourceville-server:testing
+            if ($LASTEXITCODE -ne 0) { throw 'Server container export failed.' }
+            $inputTar = [IO.File]::OpenRead("$containerBase.tar")
+            try {
+                $outputGzip = [IO.File]::Open("$containerBase.tar.gz", [IO.FileMode]::CreateNew)
+                try {
+                    $compressor = [IO.Compression.GZipStream]::new($outputGzip, [IO.Compression.CompressionLevel]::Optimal)
+                    try { $inputTar.CopyTo($compressor) } finally { $compressor.Dispose() }
+                } finally { $outputGzip.Dispose() }
+            } finally { $inputTar.Dispose() }
+            Get-FileHash -LiteralPath "$containerBase.tar.gz" -Algorithm SHA256 | ForEach-Object { "$($_.Hash.ToLowerInvariant())  $([IO.Path]::GetFileName($_.Path))" } | Set-Content "$containerBase.tar.gz.sha256"
+            Write-Host "Packaged $containerBase.tar.gz. This is a liveness-only testing image; nothing was pushed to a registry."
+            return
+        }
         $bundle = Join-Path $RepoRoot "dist/resourceville-$hostTriple-$($revision.Substring(0, 7))"
         if (Test-Path -LiteralPath $bundle) { throw "Bundle already exists: $bundle. Choose a fresh checkout/output; existing artifacts are preserved." }
         $null = New-Item -ItemType Directory -Path $bundle

@@ -9,7 +9,7 @@ All entry points resolve the repository from PSScriptRoot and work from another 
 | test.ps1 | -Suite All (default), Rules, Bots, or Server. Rules/bots have no gameplay tests yet. |
 | dev.ps1 | -App Desktop (default) or Server; optional -Release. Use two terminals for both. |
 | capture.ps1 | Required -Name NNN-description.png, -Milestone 1; optional -Width 1000 -Height 680 -Zoom 1. Captures only a fresh game frame and exits; never overwrites evidence. |
-| package.ps1 | Build/package host binaries, dependency notices, and checksums under dist/. -SkipBuild is for CI after a successful release build. Existing bundles cause an error. |
+| package.ps1 | Build/package host binaries, dependency notices, and checksums under dist/. -SkipBuild is for CI after a successful release build. -ServerContainer builds/exports the Linux server Docker image with a SHA256 sidecar. Existing bundles cause an error. |
 | milestone.ps1 | -All or -Number 1; optional -RequireComplete checks records/status only, not evidence truth. |
 | wiki.ps1 | Generate TESTING PREVIEW pages under .local. -PullRequestUrl identifies review. -Approved requires clean stable and prior explicit approval. |
 

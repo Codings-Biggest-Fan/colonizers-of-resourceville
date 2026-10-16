@@ -34,7 +34,7 @@ In a separate terminal, `./scripts/dev.ps1 -App Server` starts the Axum/Tokio pr
 
 Capture starts a real window, saves only its rendered frame, and exits. It refuses to overwrite evidence. -Width/-Height specify logical window points; -Zoom changes egui zoom for a layout stress check, not Windows display scaling. Inspect images and record actual metadata. Package creates a host-specific ZIP, binary/source identity, dependency notices, and SHA256 checksums in ignored dist/. Existing bundle directories are preserved and cause an error. Package output is a testing artifact, not an approved release or signed installer.
 
-The server container can be built with Docker (not installed by helpers): `docker build -f crates/server/Dockerfile -t resourceville-server:testing .`. It runs as a nonroot user and only serves liveness in M01.
+The server container can be built with Docker (not installed by helpers): `docker build -f crates/server/Dockerfile -t resourceville-server:testing .`. It runs as a nonroot user and only serves liveness in M01. On Linux, `./scripts/package.ps1 -ServerContainer` builds and exports it as a .tar.gz with a SHA256 sidecar; the GitHub Linux x86-64 and ARM64 jobs retain those image bundles. No image is pushed to a registry. Container export on a Windows host is explicitly rejected; use the GitHub Linux jobs.
 
 ## GitHub builds and clean checkout
 
