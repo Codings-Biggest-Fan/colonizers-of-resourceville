@@ -58,11 +58,11 @@ Milestone 00 is Initial setup: structure, documentation/wiki, contributor rules,
 
 ### Channel meanings — user clarification
 
-- **nightly** is the current development commit, including unapproved and unfinished changes. Update it with the latest pushed work from the active milestone or polish branch.
+- **nightly** is the current development commit, including unapproved and unfinished changes. Update it with the latest pushed work from the active milestone branch.
 - **beta** is the latest user-approved PR before polish. It is an approved implementation baseline, not the unapproved PR/testing branch. Never move beta merely because a development commit or new PR exists.
 - **stable** contains user-approved, polished PRs. Both approval of the implementation and approval of its polish are required before promotion to stable. It is the default branch.
 - **main** mirrors approved, polished stable for compatibility; advance it only when stable is promoted or for an explicitly authorized rules-only update.
-- Dedicated milestone-NN/description and polish branches hold work under review. They may match nightly; they must not automatically update beta or stable.
+- Use one dedicated milestone-NN/description branch for both implementation and polish. For M01 this is milestone-01/foundation. Do not create a separate polish branch: beta already preserves the approved, unpolished baseline while polish continues on the same milestone branch and nightly. The milestone branch may match nightly; it must not automatically update beta or stable.
 
 These meanings supersede older text elsewhere that calls beta an unapproved PR head or requires milestone/nightly/beta to move together. Update older supporting documents when they are next in scope. A rules-only documentation commit does not approve or promote the implementation already on a branch.
 
@@ -70,14 +70,14 @@ These meanings supersede older text elsewhere that calls beta an unapproved PR h
 
 1. Implement on the dedicated milestone branch and push current work to nightly. Open/attach the implementation PR targeting beta when it is ready for user testing; include the exact commit, changes, actual checks, manual steps, limitations, wiki, and evidence.
 2. Stop for explicit user approval. Only after approval merge the tested implementation into beta; beta is then the approved, unpolished baseline.
-3. Perform requested polish on the milestone or a dedicated polish branch, updating nightly with each pushed revision. Keep beta at its approved baseline while polish is unapproved.
-4. Open/attach the polished PR targeting stable. Stop for the user's explicit approval of that polished revision. Approval of the implementation alone is not polish approval.
+3. Perform requested polish on that same milestone branch, updating nightly with each pushed revision. Keep beta at its approved, unpolished baseline while polish is unapproved. Do not split implementation and polish into separate branches.
+4. If a polished PR targeting stable is requested, use the same milestone branch as its source. Stop for the user's explicit approval of that polished revision and respect their choice to perform the stable merge themselves. Approval of the implementation alone is not polish approval.
 5. Only after polished approval and applicable gates merge into stable, fast-forward main to stable, and publish a GitHub Release from that stable commit when due under the release cadence below. Respect any user-reserved manual promotion. A request to create a PR, finish work, or update nightly is not approval.
 6. Existing PRs remain unmerged unless the user approves them; this channel clarification does not authorize merging, retargeting, closing, or releasing them automatically.
 
-**Current M01 handoff — user clarification on 2026-10-15:** the user merged implementation PR #3 into beta and authorized this AGENTS.md update to be merged into beta. Finish that rules-only update and stop. The user will merge beta into stable themselves; do not merge into stable, advance main, or require an additional assistant-managed polish PR for this handoff. This scoped direction supersedes the normal promotion steps above for the current handoff and does not authorize starting M02.
+**Current M01 handoff — user clarification on 2026-10-15:** the user merged implementation PR #3 into beta and subsequently merged PR #4 into stable. They corrected the workflow to use one combined implementation/polish branch, milestone-01/foundation, and authorized this AGENTS.md correction locally and on beta, nightly, and that combined milestone branch. Preserve all commits while consolidating the former milestone-01/polish branch into milestone-01/foundation, then retire the separate polish branch. This rules-only update does not promote additional implementation or authorize changing stable/main, publishing a release, or starting M02. Future stable promotion remains subject to explicit user direction.
 
-Do not force-push, rewrite published history, move refs backward, or promote unrelated work. Inspect divergence and preserve branch-specific changes. In the normal workflow, unapproved corrections stay on the development/polish branch and nightly. Stop after the milestone and any release due under the cadence below; do not begin the next milestone without the next request.
+Do not force-push, rewrite published history, move refs backward, or promote unrelated work. Inspect divergence and preserve branch-specific changes. In the normal workflow, unapproved corrections stay on the combined milestone branch and nightly. Stop after the milestone and any release due under the cadence below; do not begin the next milestone without the next request.
 
 ### Releases and rules-only exception
 
