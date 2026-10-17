@@ -63,3 +63,7 @@ Use one milestone-04/base-turn-engine branch for implementation and polish. nigh
 The user requested M04 implementation. Reuse `Board` stable IDs and `GameConfig` without changing their existing wire formats. Add engine version 1 as an in-memory authoritative state, explicit controlled dice, actor validation, public projection and seat-scoped hands. No save or network state format is introduced. Accept only the standard Heartland subset and casual two-seat setup; reject unsupported runtime options. A seven enters a pending robber phase and cannot be skipped; M05 owns its resolution, trading, cards, awards and victory. Native controls are explicitly a turn-engine test, not a shared-device game mode. Keep private hands off the board and out of diagnostic output.
 
 Branch: `milestone-04/base-turn-engine`, incorporating approved M03 stable and subsequent M03/M04 planning records. Source and automated checks proceed independently of permission-gated native window checks.
+
+## Requested screenshot-led presentation — 2026-10-16
+
+The user's supplied screenshot now guides the M04 composition: top-left native tools; full-height right activity/chat/bank/player area; bottom hand/build dock. Use newly generated reference-led terrain art and repository-authored ships/pieces. Include only actual counts or explicit unavailable states. Desert remains non-producing terrain. Private hand reveal must be intentional and cover on focus loss or turn change. This presentation refinement does not implement M05 cards/trades/scores/awards or online chat.

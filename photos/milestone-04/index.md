@@ -96,3 +96,35 @@ Source: M04 working tree after b57d806, committed with these frames. Actual game
 | [055 rejected action](055-light-reference-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Dark red actionable error fits in light dock. |
 | [056 compact corrected](056-light-reference-compact-fit.png) | 2026-10-16 | 480×420 / 720×630 | Dice, player rows, counts and controls fit; board remains unobstructed. |
 | [057 scaled corrected](057-light-reference-scaled-fit.png) | 2026-10-16 | 1000×680 / 1500×1020 | EgUI zoom 1.5; all HUD content fits; no board overlap. |
+
+## 2026-10-16 screenshot-led composition, artwork and toolbar
+
+Source: M04 working tree after 2ef2771, committed with these frames. Actual game-rendered frames, synthetic seats, existing frame-only permission. Native scale 1.5; egui zoom 1 except filenames containing scaled at 1.5 (effective 2.25). Before: 052/056/057. Private hands stay covered. Earlier work frames are retained, with final evidence 078–082. Intermediate 073–077 exposed edge-tight ships; camera fit corrected afterward.
+
+| Image | Date | Viewport / image | Inspection |
+| --- | --- | --- | --- |
+| [058-full-layout](058-full-layout.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [059-full-layout-compact](059-full-layout-compact.png) | 2026-10-16 | 480×420 / 720×630 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [060-full-layout-scaled](060-full-layout-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [061-reference-composition](061-reference-composition.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [062-reference-composition-compact](062-reference-composition-compact.png) | 2026-10-16 | 480×420 / 720×630 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [063-reference-composition-scaled](063-reference-composition-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [064-reference-final](064-reference-final.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [065-reference-final-compact](065-reference-final-compact.png) | 2026-10-16 | 480×420 / 720×630 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [066-reference-final-scaled](066-reference-final-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [067-reference-final-error](067-reference-final-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [068-classic-ui](068-classic-ui.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [069-classic-ui-compact](069-classic-ui-compact.png) | 2026-10-16 | 480×420 / 720×630 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [070-classic-ui-scaled](070-classic-ui-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [071-classic-ui-error](071-classic-ui-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [072-classic-ui-wide](072-classic-ui-wide.png) | 2026-10-16 | 1440×820 / 2160×1230 | Intermediate composition/art iteration; superseded, not final acceptance evidence. |
+| [073-reference-game](073-reference-game.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate: top or left ships too close to the board edge; superseded by fit correction. |
+| [074-reference-game-compact](074-reference-game-compact.png) | 2026-10-16 | 480×420 / 720×630 | Inspected intermediate: top or left ships too close to the board edge; superseded by fit correction. |
+| [075-reference-game-scaled](075-reference-game-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate: top or left ships too close to the board edge; superseded by fit correction. |
+| [076-reference-game-error](076-reference-game-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected intermediate: top or left ships too close to the board edge; superseded by fit correction. |
+| [077-reference-game-wide](077-reference-game-wide.png) | 2026-10-16 | 1440×820 / 2160×1230 | Inspected intermediate: top or left ships too close to the board edge; superseded by fit correction. |
+| [078-reference-fit](078-reference-fit.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected final: left toolbar, bank/roster, covered hand and original reference-led artwork fit. |
+| [079-reference-fit-compact](079-reference-fit-compact.png) | 2026-10-16 | 480×420 / 720×630 | Inspected compact: full island/ships visible; bank has five resource types and separate dev deck. |
+| [080-reference-fit-scaled](080-reference-fit-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected egui zoom 1.5: toolbar, card slots, actions and full ports fit. |
+| [081-reference-fit-error](081-reference-fit-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected rejection: error readable; no clipping of actions or island. |
+| [082-reference-fit-wide](082-reference-fit-wide.png) | 2026-10-16 | 1440×820 / 2160×1230 | Inspected wide: full board/ships, proportional right panel, complete roster and action dock. |

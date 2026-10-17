@@ -80,3 +80,12 @@ The user's latest request reintroduces these specific functional counts while pr
 - [x] Inspect normal/error/compact/scaled native frames and pass eight desktop tests plus formatting/Clippy.
 
 [Report 008](reports/008-polish-light-reference-layout.md). Final evidence: 052/055/056/057; intermediate 053/054 clipping corrected. No channel promotion or M05 implementation.
+
+## Screenshot-led layout follow-up — 2026-10-16
+
+- [x] Match supplied composition: activity/chat region, bank, opponent rows, active seat, bottom cards/build actions and left tools.
+- [x] Replace interim flat glyphs with generated reference-led terrain art and curved-sail harbor ships; preserve non-producing desert.
+- [x] Add intentional hand reveal with automatic covering, truthful unavailable feature states and native guide/options.
+- [x] Pass nine desktop tests and formatting/Clippy; inspect normal, compact, scaled, error and wide native frames.
+
+[Report 009](reports/009-polish-screenshot-layout-and-art.md). Final frames 078–082; intermediate 058–077 preserved. This supersedes report 008's arrangement. M04 remains Verifying, with no promotion or roadmap advancement.

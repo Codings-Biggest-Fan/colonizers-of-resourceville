@@ -1,5 +1,10 @@
 # Changelog
 
+## M04 screenshot-led layout and graphics — 2026-10-16
+
+- Rebuilt the full HUD composition around the supplied screenshot, including bank inventory, remaining player piece stock, private-hand cover and left tools.
+- New generated terrain art and curved-sail ships; desert remains non-producing terrain, never a resource. Nine desktop tests and lint passed; final frames 078–082 inspected. See M04 report 009. No channel promotion. 
+
 ## M04 light HUD — 2026-10-16
 
 - Rebuilt the HUD with light Catppuccin Latte surfaces, horizontal player rows, a shorter action bar and bounded public activity.

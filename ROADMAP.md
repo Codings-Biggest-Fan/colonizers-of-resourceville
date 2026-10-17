@@ -69,3 +69,5 @@ M04 HUD refinement (2026-10-16): graphic-first right rail and bottom action dock
 Requested HUD count follow-up: live public resource totals and remaining piece stock; dev-card count unavailable until M05. Seven desktop tests and local lint checks pass; [report 007](milestones/milestone-04/reports/007-polish-card-and-piece-counts.md).
 
 Light HUD follow-up (2026-10-16): Catppuccin Latte, horizontal player rows, shorter action bar and bounded public activity; eight desktop tests and local lint pass. Final frames 052/055/056/057 inspected. [Report 008](milestones/milestone-04/reports/008-polish-light-reference-layout.md).
+
+Screenshot-led HUD and artwork follow-up (2026-10-16): full-height right activity/bank/roster, active seat last, bottom hand/build area, left tools and generated terrain v5. Nine desktop tests and lint pass; native frames 078–082 inspected. [Report 009](milestones/milestone-04/reports/009-polish-screenshot-layout-and-art.md). M04 remains Verifying; no promotion.
