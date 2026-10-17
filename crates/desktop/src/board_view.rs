@@ -4,10 +4,11 @@ use resourceville_rules::{
     Action, Board, Building, EdgeId, Game, GameConfig, Outcome, Phase, PlayerId, Terrain, VertexId,
 };
 
-pub const BASE: Color32 = Color32::from_rgb(30, 30, 46);
-const TEXT: Color32 = Color32::from_rgb(205, 214, 244);
-const SUBTEXT: Color32 = Color32::from_rgb(186, 194, 222);
-const ACCENT: Color32 = Color32::from_rgb(137, 180, 250);
+pub const BASE: Color32 = Color32::from_rgb(239, 241, 245);
+pub const SURFACE: Color32 = Color32::from_rgb(255, 255, 255);
+pub const TEXT: Color32 = Color32::from_rgb(76, 79, 105);
+const SUBTEXT: Color32 = Color32::from_rgb(92, 95, 119);
+pub const ACCENT: Color32 = Color32::from_rgb(30, 102, 245);
 const INK: Color32 = Color32::from_rgb(37, 33, 39);
 const CREAM: Color32 = Color32::from_rgb(249, 237, 207);
 
@@ -153,6 +154,7 @@ pub struct Preview {
     texture: Option<egui::TextureHandle>,
     game: Option<Game>,
     test_open: bool,
+    activity: std::collections::VecDeque<String>,
     dice: [u8; 2],
     pub board: Board,
     pub camera: Camera,
@@ -169,6 +171,7 @@ impl Default for Preview {
             texture: None,
             game: None,
             test_open: true,
+            activity: std::collections::VecDeque::new(),
             dice: [1, 1],
             board: Board::base(42),
             camera: Camera::default(),
@@ -229,6 +232,7 @@ impl Preview {
                 self.error = None;
                 self.selected = None;
                 self.game = None;
+                self.activity.clear();
             }
             Err(_) => {
                 self.error = Some("Enter a whole seed from 0 to 18446744073709551615.".into())
@@ -344,10 +348,24 @@ impl Preview {
     fn submit(&mut self, action: Action, outcome: Outcome) {
         if let Some(game) = &mut self.game {
             let actor = game.view().active;
-            self.error = game
-                .apply(actor, action, outcome)
-                .err()
-                .map(|e| e.to_string());
+            match game.apply(actor, action, outcome) {
+                Ok(_) => {
+                    self.error = None;
+                    let verb = match action {
+                        Action::Settlement(_) => "placed a settlement",
+                        Action::Road(_) => "built a road",
+                        Action::City(_) => "built a city",
+                        Action::Roll => "rolled the dice",
+                        Action::EndTurn => "finished their turn",
+                    };
+                    self.activity
+                        .push_back(format!("{} {verb}", Self::player_name(actor.0)));
+                    if self.activity.len() > 12 {
+                        self.activity.pop_front();
+                    }
+                }
+                Err(error) => self.error = Some(error.to_string()),
+            }
         }
     }
     fn start_test(&mut self) {
@@ -358,6 +376,7 @@ impl Preview {
         match Game::new(config, (0..4).map(PlayerId).collect()) {
             Ok(game) => {
                 self.game = Some(game);
+                self.activity.clear();
                 self.selected = None;
                 self.error = None;
             }
@@ -374,11 +393,11 @@ impl Preview {
         egui::TopBottomPanel::bottom("turn_actions")
             .resizable(false)
             .exact_height(if self.error.is_some() {
-                118.
+                106.
             } else if compact {
-                94.
+                82.
             } else {
-                98.
+                78.
             })
             .frame(
                 egui::Frame::new()
@@ -401,11 +420,11 @@ impl Preview {
                 } else {
                     None
                 };
-                let size = if compact { 48. } else { 58. };
+                let size = if compact { 44. } else { 48. };
                 let count = if view.is_some() { 6. } else { 7. };
                 ui.horizontal(|ui| {
                     ui.spacing_mut().item_spacing.x = 6.;
-                    ui.add_space(((ui.available_width() - count * (size + 6.)) / 2.).max(0.));
+                    ui.add_space((ui.available_width() - count * (size + 6.)).max(0.));
                     if view.is_none()
                         && self
                             .hud_button(ui, "Start turn test", true, 6, color, size)
@@ -496,15 +515,15 @@ impl Preview {
                     }
                 });
                 if let Some(error) = &self.error {
-                    ui.colored_label(Color32::from_rgb(243, 139, 168), error);
+                    ui.colored_label(Color32::from_rgb(188, 37, 50), error);
                 }
             });
         egui::SidePanel::right("turn_sidebar")
             .resizable(false)
-            .exact_width(if compact { 100. } else { 112. })
+            .exact_width(if compact { 148. } else { 216. })
             .frame(
                 egui::Frame::new()
-                    .fill(Color32::from_rgb(24, 24, 37))
+                    .fill(SURFACE)
                     .inner_margin(8),
             )
             .show(ctx, |ui| {
@@ -512,74 +531,42 @@ impl Preview {
                 egui::ScrollArea::vertical()
                     .id_salt("hud_rail")
                     .show(ui, |ui| {
-                        if let Some(view) = &view {
-                            ui.label(egui::RichText::new("Turn test").size(11.).color(SUBTEXT));
-                            if let Some(dice) = view.last_dice {
-                                ui.horizontal(|ui| {
-                                    ui.spacing_mut().item_spacing.x = 2.;
-                                    for die in dice {
-                                        Self::die(ui, die);
-                                    }
-                                });
-                            }
-                            for seat in 0..view.resource_counts.len() {
-                                let (rect, response) = ui.allocate_exact_size(
-                                    egui::vec2(
-                                        ui.available_width(),
-                                        if compact { 50. } else { 68. },
-                                    ),
-                                    egui::Sense::hover(),
-                                );
-                                let p = ui.painter();
-                                let color = pieces::player(seat as u8);
-                                if seat == view.active.0 as usize {
-                                    p.rect_filled(
-                                        rect,
-                                        10.,
-                                        Color32::from_rgba_unmultiplied(
-                                            color.r(),
-                                            color.g(),
-                                            color.b(),
-                                            30,
-                                        ),
-                                    );
-                                    p.rect_stroke(
-                                        rect.shrink(1.),
-                                        10.,
-                                        Stroke::new(2., color),
-                                        egui::StrokeKind::Inside,
-                                    );
+                        if compact {
+                            ui.label(egui::RichText::new("Heartland").size(16.).strong().color(TEXT));
+                            ui.horizontal(|ui| {
+                                if let Some(dice)=view.as_ref().and_then(|v|v.last_dice) {for value in dice {Self::die(ui,value);}}
+                            });
+                        } else { ui.horizontal(|ui| {
+                            ui.label(egui::RichText::new("Heartland").size(16.).strong().color(TEXT));
+                            if let Some(dice)=view.as_ref().and_then(|v|v.last_dice) {for value in dice {Self::die(ui,value);}}
+                        }); }
+                        if let Some(view)=&view {
+                            for (seat,count) in view.resource_counts.iter().enumerate() {
+                                let (rect,response)=ui.allocate_exact_size(egui::vec2(ui.available_width(),48.),egui::Sense::hover());
+                                let p=ui.painter();let color=pieces::player(seat as u8);
+                                if seat==view.active.0 as usize {
+                                    p.rect_filled(rect,4.,Color32::from_rgba_unmultiplied(color.r(),color.g(),color.b(),18));
+                                    p.rect_stroke(rect.shrink(0.5),4.,Stroke::new(1.5,color),egui::StrokeKind::Inside);
                                 }
-                                pieces::house(
-                                    p,
-                                    egui::pos2(rect.center().x,rect.top()+if compact {17.}else{22.}),
-                                    if compact { 11. } else { 14. },
-                                    color,
-                                    false,
-                                );
-                                let y=rect.bottom()-11.;let x=rect.center().x-30.;
-                                Self::card_counter(p,egui::pos2(x,y),Some(view.resource_counts[seat]),false);
-                                Self::card_counter(p,egui::pos2(x+37.,y),None,true);
+                                pieces::house(p,rect.left_center()+egui::vec2(18.,3.),11.,color,false);
                                 let name=Self::player_name(seat as u8);
-                                let description=format!("{name}: {} resource cards. Development-card count unavailable until M05.",view.resource_counts[seat]);
+                                p.text(rect.left_top()+egui::vec2(38.,12.),Align2::LEFT_CENTER,name,FontId::proportional(13.),TEXT);
+                                Self::card_counter(p,rect.left_top()+egui::vec2(43.,33.),Some(*count),false);
+                                Self::card_counter(p,rect.left_top()+egui::vec2(82.,33.),None,true);
+                                let description=format!("{name}: {count} resource cards. Development cards unavailable until M05.");
                                 response.widget_info(||egui::WidgetInfo::labeled(egui::WidgetType::Label,true,&description));
                                 response.on_hover_text(description);
-
+                            }
+                            if !compact {
+                                ui.add_space(8.);
+                                ui.separator();
+                                ui.label(egui::RichText::new("Activity").size(11.).color(SUBTEXT));
+                                for entry in self.activity.iter().rev().take(5).rev() {ui.label(egui::RichText::new(entry).size(12.).color(TEXT));}
                             }
                         } else {
-                            let (r, response) = ui.allocate_exact_size(
-                                egui::vec2(ui.available_width(), 64.),
-                                egui::Sense::hover(),
-                            );
-                            pieces::house(
-                                ui.painter(),
-                                r.center() + egui::vec2(0., 6.),
-                                20.,
-                                ACCENT,
-                                false,
-                            );
-                            response
-                                .on_hover_text("The Colonizers of Resourceville · Board preview");
+                            let (r,response)=ui.allocate_exact_size(egui::vec2(ui.available_width(),100.),egui::Sense::hover());
+                            pieces::house(ui.painter(),r.center(),25.,ACCENT,false);
+                            response.on_hover_text("Board preview. Start the turn test with the play control.");
                         }
                         ui.add_space(6.);
                         ui.horizontal(|ui| {
@@ -621,7 +608,7 @@ impl Preview {
             },
         );
         if development {
-            p.circle_stroke(at, 2.5, Stroke::new(1., BASE));
+            p.circle_stroke(at, 2.5, Stroke::new(1., TEXT));
         } else {
             p.line_segment(
                 [at - egui::vec2(2.5, 0.), at + egui::vec2(2.5, 0.)],
@@ -672,7 +659,9 @@ impl Preview {
         let response = ui.add_enabled(
             enabled,
             egui::Button::new("")
-                .corner_radius(10)
+                .fill(SURFACE)
+                .stroke(Stroke::new(1., Color32::from_rgb(188, 192, 204)))
+                .corner_radius(5)
                 .min_size(egui::vec2(size, size)),
         );
         response
@@ -684,12 +673,12 @@ impl Preview {
         let color = if enabled {
             color
         } else {
-            Color32::from_rgb(88, 91, 112)
+            Color32::from_rgb(156, 160, 176)
         };
         let ink = if enabled {
-            CREAM
+            TEXT
         } else {
-            Color32::from_rgb(108, 112, 134)
+            Color32::from_rgb(140, 143, 161)
         };
         let xy = |x: f32, y: f32| c + egui::vec2(x * s, y * s);
         match kind {
@@ -790,7 +779,13 @@ impl Preview {
     fn die(ui: &mut egui::Ui, value: u8) {
         let (r, response) = ui.allocate_exact_size(egui::vec2(28., 28.), egui::Sense::hover());
         let p = ui.painter();
-        p.rect_filled(r.shrink(1.), 6., CREAM);
+        p.rect_filled(r.shrink(1.), 4., SURFACE);
+        p.rect_stroke(
+            r.shrink(1.),
+            4.,
+            Stroke::new(1., Color32::from_rgb(172, 176, 190)),
+            egui::StrokeKind::Inside,
+        );
         let offsets: &[(f32, f32)] = match value {
             1 => &[(0., 0.)],
             2 => &[(-1., -1.), (1., 1.)],
@@ -1017,6 +1012,27 @@ impl Preview {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn activity_logs_only_accepted_moves_and_bounds_history() {
+        let mut p = Preview::default();
+        p.start_test();
+        p.submit(Action::Road(EdgeId(u32::MAX)), Outcome::None);
+        assert!(p.activity.is_empty());
+        while matches!(
+            p.game.as_ref().unwrap().view().phase,
+            Phase::SetupSettlement { .. } | Phase::SetupRoad { .. }
+        ) {
+            let game = p.game.as_ref().unwrap();
+            let action = game.legal_actions(game.view().active)[0];
+            p.submit(action, Outcome::None);
+        }
+        assert_eq!(p.activity.len(), 12);
+        let before = p.activity.clone();
+        p.submit(Action::EndTurn, Outcome::None);
+        assert_eq!(p.activity, before);
+        p.start_test();
+        assert!(p.activity.is_empty());
+    }
     #[test]
     fn hud_piece_stock_tracks_real_setup_and_active_player() {
         let mut p = Preview::default();

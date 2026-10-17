@@ -1,6 +1,6 @@
 # The Colonizers of Resourceville
 
-![M04 native graphic sidebar and action dock](photos/milestone-04/047-card-counts.png)
+![M04 native graphic sidebar and action dock](photos/milestone-04/052-light-reference-layout.png)
 
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
@@ -34,9 +34,9 @@ These are real M04 native wgpu frames from synthetic engine test scenarios; the 
 
 | Turn-engine test | Compact test |
 | :---: | :---: |
-| ![Current terrain and houses](photos/milestone-04/047-card-counts.png) | ![Compact terrain](photos/milestone-04/050-card-counts-compact-fit.png) |
+| ![Current terrain and houses](photos/milestone-04/052-light-reference-layout.png) | ![Compact terrain](photos/milestone-04/056-light-reference-compact-fit.png) |
 | Earlier setup targets, before terrain refinement<br>![Setup rings](photos/milestone-04/002-setup-targets.png) | Contrast fixture<br>![Piece contrast test](photos/milestone-04/023-soft-contrast.png) |
-| Scaling stress<br>![Scaled native controls](photos/milestone-04/051-card-counts-scaled-fit.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
+| Scaling stress<br>![Scaled native controls](photos/milestone-04/057-light-reference-scaled-fit.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
 
 [M03 archive and before evidence](photos/milestone-03/index.md) · [M01 evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
 

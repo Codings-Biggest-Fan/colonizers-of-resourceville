@@ -1,5 +1,10 @@
 # Changelog
 
+## M04 light HUD — 2026-10-16
+
+- Rebuilt the HUD with light Catppuccin Latte surfaces, horizontal player rows, a shorter action bar and bounded public activity.
+- Eight desktop tests and formatting/Clippy passed; normal, compact, scaled and error frames inspected. See M04 report 008. No beta/stable/main promotion.
+
 ## M04 public HUD counts — 2026-10-16
 
 - Added requested public resource-card totals and remaining road/settlement/city stock to the graphic HUD. Development-card totals are explicitly unavailable until M05, not fabricated zeros.

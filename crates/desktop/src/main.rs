@@ -22,14 +22,14 @@ fn main() -> eframe::Result {
         PRODUCT_NAME,
         options,
         Box::new(|cc| {
-            cc.egui_ctx.set_theme(egui::Theme::Dark);
-            let mut visuals = egui::Visuals::dark();
-            visuals.override_text_color = Some(egui::Color32::from_rgb(205, 214, 244));
+            cc.egui_ctx.set_theme(egui::Theme::Light);
+            let mut visuals = egui::Visuals::light();
+            visuals.override_text_color = Some(board_view::TEXT);
             visuals.panel_fill = board_view::BASE;
             visuals.window_fill = board_view::BASE;
-            visuals.extreme_bg_color = egui::Color32::from_rgb(24, 24, 37);
-            visuals.selection.bg_fill = egui::Color32::from_rgb(137, 180, 250);
-            visuals.selection.stroke = egui::Stroke::new(1.0, board_view::BASE);
+            visuals.extreme_bg_color = board_view::SURFACE;
+            visuals.selection.bg_fill = board_view::ACCENT;
+            visuals.selection.stroke = egui::Stroke::new(1.0, board_view::TEXT);
             for widget in [
                 &mut visuals.widgets.noninteractive,
                 &mut visuals.widgets.inactive,
@@ -37,12 +37,11 @@ fn main() -> eframe::Result {
                 &mut visuals.widgets.active,
                 &mut visuals.widgets.open,
             ] {
-                widget.fg_stroke.color = egui::Color32::from_rgb(205, 214, 244);
-                widget.bg_fill = egui::Color32::from_rgb(49, 50, 68);
-                widget.weak_bg_fill = egui::Color32::from_rgb(49, 50, 68);
+                widget.fg_stroke.color = board_view::TEXT;
+                widget.bg_fill = board_view::SURFACE;
+                widget.weak_bg_fill = board_view::SURFACE;
             }
-            visuals.widgets.hovered.bg_stroke =
-                egui::Stroke::new(1.5, egui::Color32::from_rgb(137, 180, 250));
+            visuals.widgets.hovered.bg_stroke = egui::Stroke::new(1.5, board_view::ACCENT);
             visuals.widgets.active.bg_stroke = visuals.widgets.hovered.bg_stroke;
             cc.egui_ctx.set_visuals(visuals);
             if cfg!(feature = "capture") {

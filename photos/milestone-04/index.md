@@ -83,3 +83,16 @@ Source: M04 working tree after 1274e0b, committed together with these images. Ex
 | [049 scaled spacing](049-card-counts-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | EgUI zoom 1.5; first count spacing, superseded by 051. |
 | [050 compact fit](050-card-counts-compact-fit.png) | 2026-10-16 | 480×420 / 720×630 | Final compact rows: card slots, portraits and fit/reset fully visible; board remains separate. |
 | [051 scaled fit](051-card-counts-scaled-fit.png) | 2026-10-16 | 1000×680 / 1500×1020 | Final egui zoom 1.5; counters/icons fit with preserved dock and no panel overlap. |
+
+## 2026-10-16 light HUD follow-up
+
+Source: M04 working tree after b57d806, committed with these frames. Actual game-rendered output, synthetic seats, existing frame-only permission. Native scale 1.5; egui zoom 1 except 054/057 at 1.5 (effective 2.25). Before: 047/050/051. All six inspected; final evidence 052/055/056/057.
+
+| Image | Date | Viewport / image | Inspection |
+| --- | --- | --- | --- |
+| [052 normal light HUD](052-light-reference-layout.png) | 2026-10-16 | 1000×680 / 1500×1020 | Horizontal player rows, public counts/activity and short action bar readable. |
+| [053 compact before correction](053-light-reference-compact.png) | 2026-10-16 | 480×420 / 720×630 | Dice row clips at right; superseded by 056. |
+| [054 scaled before correction](054-light-reference-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | EgUI zoom 1.5; dice row clips; superseded by 057. |
+| [055 rejected action](055-light-reference-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Dark red actionable error fits in light dock. |
+| [056 compact corrected](056-light-reference-compact-fit.png) | 2026-10-16 | 480×420 / 720×630 | Dice, player rows, counts and controls fit; board remains unobstructed. |
+| [057 scaled corrected](057-light-reference-scaled-fit.png) | 2026-10-16 | 1000×680 / 1500×1020 | EgUI zoom 1.5; all HUD content fits; no board overlap. |

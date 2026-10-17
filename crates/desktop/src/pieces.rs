@@ -4,10 +4,10 @@ const INK: Color32 = Color32::from_rgb(30, 30, 46);
 const LIGHT: Color32 = Color32::from_rgb(255, 248, 224);
 pub fn player(seat: u8) -> Color32 {
     [
-        Color32::from_rgb(137, 180, 250),
-        Color32::from_rgb(250, 179, 135),
-        Color32::from_rgb(166, 227, 161),
-        Color32::from_rgb(203, 166, 247),
+        Color32::from_rgb(30, 102, 245),
+        Color32::from_rgb(254, 100, 11),
+        Color32::from_rgb(64, 160, 43),
+        Color32::from_rgb(136, 57, 239),
     ][seat as usize % 4]
 }
 pub fn road(p: &egui::Painter, ends: [Pos2; 2], scale: f32, color: Color32) {

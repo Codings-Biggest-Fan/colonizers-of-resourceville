@@ -71,3 +71,12 @@ This is the user's scoped visual correction, not an indefinite Polish mode or ap
 - [x] Pass seven desktop regressions and formatting/Clippy; inspect default/compact/scaled output.
 
 The user's latest request reintroduces these specific functional counts while preserving the graphic-first layout. [Report 007](reports/007-polish-card-and-piece-counts.md); final frames 047/050/051. No beta/stable promotion or M05 implementation.
+
+## Light HUD follow-up — 2026-10-16
+
+- [x] Apply Catppuccin Latte surfaces and compact horizontal player rows.
+- [x] Shorten the bottom action dock; retain requested card/piece counts and truthful disabled controls.
+- [x] Add bounded public accepted-action history without private details.
+- [x] Inspect normal/error/compact/scaled native frames and pass eight desktop tests plus formatting/Clippy.
+
+[Report 008](reports/008-polish-light-reference-layout.md). Final evidence: 052/055/056/057; intermediate 053/054 clipping corrected. No channel promotion or M05 implementation.
