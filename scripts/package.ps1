@@ -55,6 +55,9 @@ try {
         $metadata = ($metadataText -join "`n") | ConvertFrom-Json
         $licenseRoot = Join-Path $bundle 'third-party'
         $null = New-Item -ItemType Directory -Path $licenseRoot
+        $fontLicenseRoot = Join-Path $licenseRoot 'resourceville-fonts'
+        $null = New-Item -ItemType Directory -Path $fontLicenseRoot
+        Copy-Item -LiteralPath assets/fonts/OpenSans-OFL.txt, assets/fonts/LilitaOne-OFL.txt -Destination $fontLicenseRoot
         $inventory = @()
         foreach ($dependency in $metadata.packages | Where-Object { $null -ne $_.source }) {
             $inventory += "$($dependency.name) $($dependency.version): $($dependency.license)"

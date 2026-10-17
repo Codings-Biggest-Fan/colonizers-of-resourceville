@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "5197083b0b6e20b930a1de465454bce0e7da395cebb44f5d1184e9bc928bd4e6",
+  "candidate_sha256": "469f705c88b02301ed0e4793067fc7880c11cb04a52a6f28f54ae95f2d3a06be",
+  "candidate": "098-neutral-canonical.png",
+  "dimensions": [
+    2000,
+    1135
+  ],
+  "method": "RGB absolute difference, no alignment, scaling, exclusions or image edits",
+  "limitation": "Includes scene-state differences. Equality measures pixels, not rules or interaction correctness.",
+  "whole_frame": {
+    "exact_equal_pixels": 648163,
+    "total_pixels": 2270000,
+    "exact_equal_fraction": 0.2855343612334802,
+    "mean_absolute_channel_difference": 29.320894860499266,
+    "exact_match": false
+  },
+  "regions": {
+    "board": {
+      "exact_equal_pixels": 620522,
+      "total_pixels": 1587725,
+      "exact_equal_fraction": 0.3908246075359398,
+      "mean_absolute_channel_difference": 32.82333779464328,
+      "exact_match": false
+    },
+    "sidebar": {
+      "exact_equal_pixels": 23910,
+      "total_pixels": 511885,
+      "exact_equal_fraction": 0.04670971018881194,
+      "mean_absolute_channel_difference": 18.048036831189297,
+      "exact_match": false
+    },
+    "bottom": {
+      "exact_equal_pixels": 3731,
+      "total_pixels": 170390,
+      "exact_equal_fraction": 0.021896824931040552,
+      "mean_absolute_channel_difference": 30.550372674452728,
+      "exact_match": false
+    },
+    "left_tools": {
+      "exact_equal_pixels": 13827,
+      "total_pixels": 24800,
+      "exact_equal_fraction": 0.5575403225806451,
+      "mean_absolute_channel_difference": 18.747083333333332,
+      "exact_match": false
+    },
+    "activity": {
+      "exact_equal_pixels": 5099,
+      "total_pixels": 126280,
+      "exact_equal_fraction": 0.04037852391510928,
+      "mean_absolute_channel_difference": 16.130912786400593,
+      "exact_match": false
+    },
+    "chat": {
+      "exact_equal_pixels": 13829,
+      "total_pixels": 101024,
+      "exact_equal_fraction": 0.13688826417484953,
+      "mean_absolute_channel_difference": 4.415534922394679,
+      "exact_match": false
+    }
+  }
+}

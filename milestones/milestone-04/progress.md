@@ -89,3 +89,15 @@ The user's latest request reintroduces these specific functional counts while pr
 - [x] Pass nine desktop tests and formatting/Clippy; inspect normal, compact, scaled, error and wide native frames.
 
 [Report 009](reports/009-polish-screenshot-layout-and-art.md). Final frames 078–082; intermediate 058–077 preserved. This supersedes report 008's arrangement. M04 remains Verifying, with no promotion or roadmap advancement.
+
+## Exact-reference goal checkpoint — 2026-10-17
+
+- [x] Measure the supplied 2000 × 1135 reference and implement its desktop panel geometry, palette and control placement.
+- [x] Add licensed font files/notices, physical-pixel captures, neutral-pointer evidence and strict read-only pixel comparison.
+- [x] Render the already downloaded official wool SVG natively; preserve attribution and provenance.
+- [x] Pass eleven desktop tests and local formatting/Clippy; inspect 098–101.
+- [ ] Acquire remaining artwork after the full-pack browser download denial is resolved; never bypass it.
+- [ ] Match remaining glyphs, typography, borders, gradients, scene and state details.
+- [ ] Prove the complete one-to-one visual requirement. Current strict pixel identity is false.
+
+[Report 010](reports/010-measured-reference-layout.md). The full goal remains active; this is not exact-match acceptance or milestone completion.

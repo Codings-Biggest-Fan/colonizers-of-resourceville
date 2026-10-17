@@ -14,3 +14,5 @@ wgpu = { version = "=25.0.2", default-features = false, features = ["dx12", "met
 resourceville-protocol.workspace = true
 resourceville-rules.workspace = true
 image = { version = "=0.25.10", default-features = false, features = ["png"] }
+
+resvg = { version = "=0.45.1", default-features = false, features = ["text"] }

@@ -1,3 +1,4 @@
+mod reference_hud;
 use crate::pieces;
 use eframe::egui::{self, Align2, Color32, FontId, Pos2, Rect, Stroke, Vec2};
 use resourceville_rules::{
@@ -34,18 +35,22 @@ impl Default for Camera {
 }
 impl Camera {
     pub fn scale(self, r: Rect) -> f32 {
-        (r.width() / 11.2).min(r.height() / 11.2).max(1.) * self.zoom
+        if r.width() >= 500. {
+            (r.width() / 12.8).min(r.height() / 10.68).max(1.) * self.zoom
+        } else {
+            (r.width() / 11.2).min(r.height() / 11.2).max(1.) * self.zoom
+        }
     }
     pub fn project(self, r: Rect, p: Vec2) -> Pos2 {
-        r.center() + self.pan + p * self.scale(r)
+        r.center() - egui::vec2(r.width() * 0.00226, 0.) + self.pan + p * self.scale(r)
     }
     pub fn unproject(self, r: Rect, p: Pos2) -> Vec2 {
-        (p - r.center() - self.pan) / self.scale(r)
+        (p - r.center() + egui::vec2(r.width() * 0.00226, 0.) - self.pan) / self.scale(r)
     }
     fn zoom_at(&mut self, r: Rect, p: Pos2, f: f32) {
         let w = self.unproject(r, p);
         self.zoom = (self.zoom * f).clamp(0.7, 3.5);
-        self.pan = p - r.center() - w * self.scale(r);
+        self.pan = p - r.center() + egui::vec2(r.width() * 0.00226, 0.) - w * self.scale(r);
         self.bound(r);
     }
     fn bound(&mut self, r: Rect) {
@@ -152,6 +157,7 @@ fn textured_hex(
 }
 pub struct Preview {
     texture: Option<egui::TextureHandle>,
+    wool_texture: Option<egui::TextureHandle>,
     game: Option<Game>,
     test_open: bool,
     reveal_hand: bool,
@@ -172,6 +178,7 @@ impl Default for Preview {
     fn default() -> Self {
         Self {
             texture: None,
+            wool_texture: None,
             game: None,
             test_open: true,
             reveal_hand: false,
@@ -315,6 +322,9 @@ impl Preview {
                 egui::TextureOptions::LINEAR,
             ));
         }
+        if self.wool_texture.is_none() {
+            self.wool_texture = Some(crate::reference_art::wool(ctx));
+        }
         self.turn_controls(ctx);
         if self.guide_open {
             egui::Window::new("Game guide")
@@ -353,6 +363,17 @@ impl Preview {
                     }
                     if ui.button("Fit island").clicked() {
                         self.camera = Camera::default();
+                    }
+                    if self.game.is_some() {
+                        ui.label("Supplied test dice");
+                        ui.horizontal(|ui| {
+                            for die in &mut self.dice {
+                                ui.add(egui::DragValue::new(die).range(1..=6));
+                            }
+                        });
+                        if ui.button("Reset turn test").clicked() {
+                            self.start_test();
+                        }
                     }
                     if let Some(error) = &self.error {
                         ui.colored_label(Color32::from_rgb(188, 37, 50), error);
@@ -442,6 +463,14 @@ impl Preview {
     }
 
     fn turn_controls(&mut self, ctx: &egui::Context) {
+        if ctx.screen_rect().width() >= 700. {
+            self.reference_controls(ctx);
+        } else {
+            self.compact_controls(ctx);
+        }
+    }
+
+    fn compact_controls(&mut self, ctx: &egui::Context) {
         if !self.test_open {
             return;
         }
@@ -676,11 +705,7 @@ impl Preview {
         egui::SidePanel::left("board_tools")
             .resizable(false)
             .exact_width(42.)
-            .frame(
-                egui::Frame::new()
-                    .fill(Color32::from_rgb(126, 199, 223))
-                    .inner_margin(3),
-            )
+            .frame(egui::Frame::new().fill(reference_hud::SEA).inner_margin(3))
             .show(ctx, |ui| {
                 if self
                     .hud_button(
@@ -840,14 +865,12 @@ impl Preview {
         let response = ui.add_enabled(
             enabled,
             egui::Button::new("")
-                .fill(if kind >= 10 {
+                .fill(if !(6..10).contains(&kind) {
                     Color32::TRANSPARENT
-                } else if kind < 6 {
-                    Color32::from_rgb(182, 225, 231)
                 } else {
                     SURFACE
                 })
-                .stroke(if kind >= 10 {
+                .stroke(if !(6..10).contains(&kind) {
                     Stroke::NONE
                 } else {
                     Stroke::new(1., Color32::from_rgb(148, 181, 193))
@@ -861,19 +884,56 @@ impl Preview {
         let r = response.rect;
         let c = r.center();
         let s = size / 58.;
+        if kind < 6 {
+            let top = if response.is_pointer_button_down_on() {
+                Color32::from_rgb(65, 166, 186)
+            } else if response.hovered() {
+                Color32::from_rgb(148, 224, 230)
+            } else {
+                Color32::from_rgb(114, 201, 214)
+            };
+            reference_hud::paint_surface(
+                p,
+                r,
+                top,
+                Color32::from_rgb(57, 147, 171),
+                Color32::WHITE,
+                size * 0.11,
+                size * 0.028,
+            );
+            p.rect_stroke(
+                r.shrink(size * 0.045),
+                size * 0.075,
+                Stroke::new(size * 0.018, Color32::from_rgb(115, 166, 181)),
+                egui::StrokeKind::Inside,
+            );
+        }
+
         let color = if enabled {
             color
         } else {
-            Color32::from_rgb(156, 160, 176)
+            Color32::from_rgb(174, 193, 170)
         };
         let ink = if enabled {
             TEXT
         } else {
-            Color32::from_rgb(140, 143, 161)
+            Color32::from_rgb(104, 157, 166)
         };
         let xy = |x: f32, y: f32| c + egui::vec2(x * s, y * s);
         match kind {
-            0 => pieces::road(p, [xy(-15., 6.), xy(15., -6.)], size * 0.8, color),
+            0 => {
+                p.rect_filled(
+                    Rect::from_center_size(c, egui::vec2(8., 34.) * s),
+                    2. * s,
+                    color,
+                );
+                p.rect_stroke(
+                    Rect::from_center_size(c, egui::vec2(8., 34.) * s),
+                    2. * s,
+                    Stroke::new(1.5 * s, ink),
+                    egui::StrokeKind::Inside,
+                );
+            }
             1 | 2 => pieces::house(p, xy(0., 5.), size * 0.22, color, kind == 2),
             3 => {
                 p.rect_filled(
@@ -903,10 +963,33 @@ impl Preview {
                 }
             }
             5 => {
-                p.line_segment([xy(-15., 0.), xy(15., 0.)], Stroke::new(4. * s, ink));
+                for y in [-17., 17.] {
+                    p.line_segment([xy(-13., y), xy(13., y)], Stroke::new(3. * s, ink));
+                }
                 p.add(egui::Shape::line(
-                    vec![xy(4., -11.), xy(15., 0.), xy(4., 11.)],
-                    Stroke::new(4. * s, ink),
+                    vec![
+                        xy(-10., -14.),
+                        xy(-8., -6.),
+                        xy(0., 0.),
+                        xy(-8., 6.),
+                        xy(-10., 14.),
+                    ],
+                    Stroke::new(2. * s, ink),
+                ));
+                p.add(egui::Shape::line(
+                    vec![
+                        xy(10., -14.),
+                        xy(8., -6.),
+                        xy(0., 0.),
+                        xy(8., 6.),
+                        xy(10., 14.),
+                    ],
+                    Stroke::new(2. * s, ink),
+                ));
+                p.add(egui::Shape::convex_polygon(
+                    vec![xy(-7., 12.), xy(0., 4.), xy(7., 12.)],
+                    color,
+                    Stroke::NONE,
                 ));
             }
             6 => {
@@ -942,64 +1025,99 @@ impl Preview {
                 ));
             }
             10 => {
-                p.add(egui::Shape::line(
-                    vec![xy(8., -16.), xy(-8., 0.), xy(8., 16.)],
-                    Stroke::new(5. * s, ink),
+                p.add(egui::Shape::convex_polygon(
+                    vec![
+                        xy(-15., 0.),
+                        xy(10., -25.),
+                        xy(18., -18.),
+                        xy(1., 0.),
+                        xy(18., 18.),
+                        xy(10., 25.),
+                    ],
+                    Color32::from_rgb(201, 242, 255),
+                    Stroke::new(2. * s, Color32::from_rgb(54, 83, 101)),
                 ));
             }
             11 => {
                 for sign in [-1., 1.] {
                     p.add(egui::Shape::convex_polygon(
                         vec![
-                            xy(0., -11.),
-                            xy(17. * sign, -14.),
-                            xy(17. * sign, 12.),
-                            xy(0., 15.),
+                            xy(sign * 20., -15.),
+                            xy(sign * 2., -12.),
+                            xy(sign * 2., 15.),
+                            xy(sign * 20., 12.),
                         ],
-                        CREAM,
-                        Stroke::new(2. * s, ink),
+                        Color32::from_rgb(210, 243, 252),
+                        Stroke::new(1.5 * s, Color32::from_rgb(54, 83, 101)),
                     ));
                 }
-                p.line_segment([xy(0., -11.), xy(0., 15.)], Stroke::new(2. * s, ink));
+                p.line_segment(
+                    [xy(0., -12.), xy(0., 15.)],
+                    Stroke::new(1.5 * s, Color32::from_rgb(54, 83, 101)),
+                );
             }
             12 => {
+                let fill = Color32::from_rgb(194, 232, 241);
+                let outline = Color32::from_rgb(54, 83, 101);
                 p.add(egui::Shape::convex_polygon(
                     vec![
-                        xy(-16., -7.),
-                        xy(-8., -7.),
-                        xy(3., -16.),
-                        xy(3., 16.),
-                        xy(-8., 7.),
-                        xy(-16., 7.),
+                        xy(-22., -10.),
+                        xy(-13., -10.),
+                        xy(-2., -20.),
+                        xy(-2., 20.),
+                        xy(-13., 10.),
+                        xy(-22., 10.),
                     ],
-                    ink,
-                    Stroke::NONE,
+                    fill,
+                    Stroke::new(1.5 * s, outline),
                 ));
-                for y in [-12., 0., 12.] {
-                    p.line_segment([xy(10., y * 0.7), xy(18., y)], Stroke::new(3. * s, ink));
+                for y in [-17., 0., 17.] {
+                    p.line_segment([xy(9., y * 0.72), xy(20., y)], Stroke::new(5. * s, outline));
+                    p.line_segment([xy(9., y * 0.72), xy(20., y)], Stroke::new(3. * s, fill));
                 }
             }
             13 => {
+                let fill = Color32::from_rgb(201, 242, 255);
+                let outline = Color32::from_rgb(54, 83, 101);
                 for i in 0..8 {
                     let angle = i as f32 * std::f32::consts::TAU / 8.;
                     let v = egui::vec2(angle.cos(), angle.sin());
-                    p.line_segment([c + v * 11. * s, c + v * 19. * s], Stroke::new(5. * s, ink));
+                    let tangent = egui::vec2(-v.y, v.x);
+                    p.add(egui::Shape::convex_polygon(
+                        vec![
+                            c + (v * 14. - tangent * 4.) * s,
+                            c + (v * 22. - tangent * 4.) * s,
+                            c + (v * 22. + tangent * 4.) * s,
+                            c + (v * 14. + tangent * 4.) * s,
+                        ],
+                        fill,
+                        Stroke::new(1.5 * s, outline),
+                    ));
                 }
-                p.circle_stroke(c, 11. * s, Stroke::new(4. * s, ink));
+                p.circle_filled(c, 17. * s, fill);
+                p.circle_stroke(c, 17. * s, Stroke::new(1.5 * s, outline));
+                p.circle_filled(c, 10. * s, Color32::from_rgb(144, 205, 227));
+                p.circle_stroke(c, 10. * s, Stroke::new(1.5 * s, outline));
             }
             14 => {
-                let pts = (0..=20)
+                let fill = Color32::from_rgb(194, 232, 241);
+                let outline = Color32::from_rgb(54, 83, 101);
+                let pts: Vec<_> = (0..=24)
                     .map(|i| {
-                        let a = std::f32::consts::PI + i as f32 * std::f32::consts::PI / 20.;
-                        xy(a.cos() * 17., a.sin() * 17.)
+                        let a = std::f32::consts::PI + i as f32 * std::f32::consts::PI / 24.;
+                        xy(a.cos() * 20., a.sin() * 20.)
                     })
                     .collect();
-                p.add(egui::Shape::line(pts, Stroke::new(3. * s, ink)));
+                p.add(egui::Shape::line(pts.clone(), Stroke::new(7. * s, outline)));
+                p.add(egui::Shape::line(pts, Stroke::new(4. * s, fill)));
                 for sign in [-1., 1.] {
-                    p.rect_filled(
-                        Rect::from_center_size(xy(sign * 16., 5.), egui::vec2(7., 18.) * s),
-                        3.,
-                        ink,
+                    let r = Rect::from_center_size(xy(sign * 18., 7.), egui::vec2(9., 22.) * s);
+                    p.rect_filled(r, 4. * s, fill);
+                    p.rect_stroke(
+                        r,
+                        4. * s,
+                        Stroke::new(1.5 * s, outline),
+                        egui::StrokeKind::Inside,
                     );
                 }
             }
@@ -1011,14 +1129,14 @@ impl Preview {
             }
         }
         let tooltip = if let Some(stock) = self.remaining_pieces(kind) {
-            let at = r.right_bottom() - egui::vec2(11., 10.);
-            p.rect_filled(Rect::from_center_size(at, egui::vec2(20., 16.)), 4., BASE);
+            let at = r.right_top() + egui::vec2(-size * 0.18, size * 0.18);
+            p.circle_filled(at, size * 0.145, Color32::from_rgb(155, 190, 174));
             p.text(
                 at,
                 Align2::CENTER_CENTER,
                 stock.to_string(),
-                FontId::proportional(12.),
-                TEXT,
+                FontId::proportional(size * 0.19),
+                Color32::WHITE,
             );
             format!("{label}; {stock} pieces remaining")
         } else {
@@ -1065,7 +1183,24 @@ impl Preview {
         let scale = camera.scale(rect);
         let point =
             |v: VertexId| camera.project(rect, lattice(self.board.vertices[v.0 as usize].lattice));
-        painter.rect_filled(rect, 0., Color32::from_rgb(126, 199, 223));
+        painter.rect_filled(rect, 0., reference_hud::SEA);
+        for q in -3i16..=3 {
+            for row in -3i16..=3 {
+                if (q + row).abs() <= 3 {
+                    let c = camera.project(rect, center([q, row]));
+                    let points = (0..6)
+                        .map(|i| {
+                            let angle = (30. + 60. * i as f32).to_radians();
+                            c + egui::vec2(angle.cos(), angle.sin()) * scale
+                        })
+                        .collect();
+                    painter.add(egui::Shape::closed_line(
+                        points,
+                        Stroke::new(1., Color32::from_rgba_unmultiplied(149, 188, 189, 75)),
+                    ));
+                }
+            }
+        }
         // Follow shared coastal endpoints into one closed surf line, avoiding gaps at joins.
         let mut coastal: Vec<_> = self
             .board
@@ -1104,14 +1239,23 @@ impl Preview {
         for tile in &self.board.tiles {
             let points: Vec<_> = tile.vertices.iter().map(|&v| point(v)).collect();
             let c = camera.project(rect, center(tile.axial));
-            textured_hex(
-                &painter,
-                self.texture.as_ref().expect("loaded atlas").id(),
-                &points,
-                c,
-                scale,
-                tile.terrain,
-            );
+            if tile.terrain == Terrain::Pasture {
+                painter.image(
+                    self.wool_texture.as_ref().expect("loaded wool SVG").id(),
+                    Rect::from_center_size(c, egui::vec2(3f32.sqrt(), 2.) * scale),
+                    Rect::from_min_max(Pos2::ZERO, egui::pos2(1., 1.)),
+                    Color32::WHITE,
+                );
+            } else {
+                textured_hex(
+                    &painter,
+                    self.texture.as_ref().expect("loaded atlas").id(),
+                    &points,
+                    c,
+                    scale,
+                    tile.terrain,
+                );
+            }
             let selected = self.selected == Some(Target::Tile(tile.id.0 as usize));
             let active = hover == Some(Target::Tile(tile.id.0 as usize));
             let mut outline = points.clone();
@@ -1130,22 +1274,25 @@ impl Preview {
                 ),
             ));
             if let Some(n) = tile.number {
-                let c = c + egui::vec2(0., scale * 0.32);
+                let c = c + egui::vec2(0., scale * 0.27);
                 painter.rect_filled(
-                    Rect::from_center_size(c, egui::vec2(0.56, 0.65) * scale),
+                    Rect::from_center_size(c, egui::vec2(0.6, 0.6) * scale),
                     scale * 0.07,
                     Color32::from_rgb(245, 243, 232),
                 );
                 let ink = if n == 6 || n == 8 {
-                    Color32::from_rgb(190, 25, 35)
+                    Color32::from_rgb(205, 4, 4)
                 } else {
-                    INK
+                    Color32::from_rgb(0, 63, 12)
                 };
                 painter.text(
                     c - egui::vec2(0., scale * 0.025),
                     Align2::CENTER_CENTER,
                     n.to_string(),
-                    FontId::proportional((scale * 0.34).clamp(10., 28.)),
+                    FontId::new(
+                        (scale * 0.4).clamp(10., 42.),
+                        egui::FontFamily::Name("tile-numbers".into()),
+                    ),
                     ink,
                 );
                 let dots = 6 - (7i16 - n as i16).abs();
@@ -1260,6 +1407,12 @@ impl Preview {
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn test_context() -> egui::Context {
+        let ctx = egui::Context::default();
+        crate::configure_fonts(&ctx);
+        ctx
+    }
+
     #[test]
     fn private_hand_is_covered_on_new_test_turn_change_and_focus_loss() {
         let mut preview = Preview::default();
@@ -1273,7 +1426,7 @@ mod tests {
         preview.start_test();
         assert!(!preview.reveal_hand);
         preview.reveal_hand = true;
-        let ctx = egui::Context::default();
+        let ctx = test_context();
         let _ = ctx.run(
             egui::RawInput {
                 focused: false,
@@ -1347,7 +1500,7 @@ mod tests {
             egui::vec2(1000., 680.),
             egui::vec2(666., 453.),
         ] {
-            let ctx = egui::Context::default();
+            let ctx = test_context();
             let mut preview = Preview::default();
             preview.start_test();
             assert!(matches!(
@@ -1390,7 +1543,7 @@ mod tests {
             p.game.as_ref().unwrap().view().phase,
             Phase::SetupRoad { .. }
         ));
-        let ctx = egui::Context::default();
+        let ctx = test_context();
         let _ = ctx.run(
             egui::RawInput {
                 screen_rect: Some(Rect::from_min_size(Pos2::ZERO, egui::vec2(480., 420.))),
@@ -1405,7 +1558,7 @@ mod tests {
     }
     #[test]
     fn right_drag_pans_and_wheel_zooms_without_visible_controls() {
-        let ctx = egui::Context::default();
+        let ctx = test_context();
         let mut preview = Preview::default();
         let mut frame = |events: Vec<egui::Event>| {
             let _ = ctx.run(

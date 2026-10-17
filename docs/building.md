@@ -53,3 +53,9 @@ For clean-checkout verification, clone the review branch into a fresh folder and
 ## M04 turn testing
 
 The native client now includes the [base turn-engine harness](base-turn-engine.md). F4 opens it without permanent board bars. Capture helpers additionally accept `-Scenario layout|setup|production|rejection|contrast|zoomed-out`; scenarios replay real rules transitions, except `contrast`, which is explicitly a renderer fixture, not a legal game. Captures are real native wgpu frames, not mockups. No game save/network payload format is available yet.
+
+## Same-size visual comparison
+
+For already authorized game-frame checks, `./scripts/capture.ps1 -Milestone 4 -Name NNN-description.png -Scenario production -Width 2000 -Height 1135 -PhysicalPixels` requests exact output pixels. `-Zoom 1.5` changes egui zoom; it does not prove a Windows DPI change. Existing captures cannot be overwritten. Canonical capture neutralizes incidental pointer hover.
+
+`scripts/compare-ui.py REFERENCE.png CANDIDATE.png --report NEW.json --require-exact` requires Pillow in the caller's Python environment and installs nothing. It rejects size mismatch and performs no resizing/alignment/image edits. A report without `--require-exact` is analysis, not a passing identity gate; scene-state differences are included.

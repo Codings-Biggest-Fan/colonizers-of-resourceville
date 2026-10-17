@@ -1,5 +1,10 @@
 # Changelog
 
+## M04 exact-reference checkpoint — 2026-10-17
+
+- Replaced approximate desktop geometry with measured reference layout and colors; added licensed fonts, native SVG support and one official wool asset with provenance.
+- Added physical-pixel capture and strict comparison tooling. Eleven desktop tests and lint pass. Exact visual identity is not achieved; remaining pack download was denied. No approved-channel promotion. See M04 report 010.
+
 ## M04 screenshot-led layout and graphics — 2026-10-16
 
 - Rebuilt the full HUD composition around the supplied screenshot, including bank inventory, remaining player piece stock, private-hand cover and left tools.

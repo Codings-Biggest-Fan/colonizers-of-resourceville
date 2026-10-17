@@ -67,3 +67,7 @@ Branch: `milestone-04/base-turn-engine`, incorporating approved M03 stable and s
 ## Requested screenshot-led presentation — 2026-10-16
 
 The user's supplied screenshot now guides the M04 composition: top-left native tools; full-height right activity/chat/bank/player area; bottom hand/build dock. Use newly generated reference-led terrain art and repository-authored ships/pieces. Include only actual counts or explicit unavailable states. Desert remains non-producing terrain. Private hand reveal must be intentional and cover on focus loss or turn change. This presentation refinement does not implement M05 cards/trades/scores/awards or online chat.
+
+## Exact-reference acceptance — 2026-10-17
+
+The user's latest requirement is exact visual identity with the supplied reference, superseding “closer” as acceptance. Use same-size native frames, measured geometry and explicit pixel comparison. Keep actual game state/capability truthful; do not paint the reference screenshot as a working game. Record any scene-state differences and unimplemented functionality. Asset access/download gates remain mandatory. A layout test or successful build does not prove this visual requirement.

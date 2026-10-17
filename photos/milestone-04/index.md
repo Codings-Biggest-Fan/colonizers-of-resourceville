@@ -128,3 +128,31 @@ Source: M04 working tree after 2ef2771, committed with these frames. Actual game
 | [080-reference-fit-scaled](080-reference-fit-scaled.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected egui zoom 1.5: toolbar, card slots, actions and full ports fit. |
 | [081-reference-fit-error](081-reference-fit-error.png) | 2026-10-16 | 1000×680 / 1500×1020 | Inspected rejection: error readable; no clipping of actions or island. |
 | [082-reference-fit-wide](082-reference-fit-wide.png) | 2026-10-16 | 1440×820 / 2160×1230 | Inspected wide: full board/ships, proportional right panel, complete roster and action dock. |
+
+## 2026-10-16–17 measured reference checkpoint
+
+Working tree after a16c9de. Actual native wgpu frames, synthetic engine scenario, covered private hands. Native pixels/point 1.5. Source includes one official Colonist wool SVG from the public press-kit folder; other terrain remains generated. See report 010 and asset provenance. Exact-reference identity is **not achieved**. Native 2000 × 1135 physical-pixel captures allow direct comparison with the supplied reference, without resizing images.
+
+| Image | Capture date | Requested size / actual image | Inspection |
+| --- | --- | --- | --- |
+| [083-measured-layout](083-measured-layout.png) | 2026-10-16 | 2000×1135 physical / 2000×1135 | Inspected first measured layout; board too large and top ships cropped; superseded. EgUI zoom 1; effective 1.5. |
+| [084-measured-surface](084-measured-surface.png) | 2026-10-16 | 2000×1135 physical / 2000×1135 | Inspected corrected board scale and action surfaces; not exact artwork. EgUI zoom 1; effective 1.5. |
+| [085-measured-canonical](085-measured-canonical.png) | 2026-10-16 | 2000×1135 physical / 2000×1135 | Intermediate layout/camera/capture iteration; superseded, not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [086-measured-compact](086-measured-compact.png) | 2026-10-16 | 480×420 logical / 720×630 | Intermediate layout/camera/capture iteration; superseded, not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [087-measured-scaled](087-measured-scaled.png) | 2026-10-16 | 2000×1135 physical / 3000×1703 | Intermediate egui zoom 1.5: physical-size bug produced 3000×1703; superseded by 091/099. EgUI zoom 1.5; effective 2.25. |
+| [088-measured-error](088-measured-error.png) | 2026-10-16 | 2000×1135 physical / 2000×1135 | Intermediate layout/camera/capture iteration; superseded, not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [089-measured-toolbar](089-measured-toolbar.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected closer left-tool shapes; generated terrain still differs. EgUI zoom 1; effective 1.5. |
+| [090-official-wool](090-official-wool.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected official wool integration and reference geometry; superseded by final neutral-pointer series. EgUI zoom 1; effective 1.5. |
+| [091-physical-scaled](091-physical-scaled.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected official wool integration and reference geometry; superseded by final neutral-pointer series. EgUI zoom 1.5; effective 2.25. |
+| [092-native-compact](092-native-compact.png) | 2026-10-17 | 480×420 logical / 720×630 | Inspected official wool integration and reference geometry; superseded by final neutral-pointer series. EgUI zoom 1; effective 1.5. |
+| [093-native-error](093-native-error.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected official wool integration and reference geometry; superseded by final neutral-pointer series. EgUI zoom 1; effective 1.5. |
+| [094-measured-neutral](094-measured-neutral.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Intermediate capture; neutral filename preceded the final neutral-pointer implementation. Not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [095-measured-neutral-scaled](095-measured-neutral-scaled.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Intermediate capture; neutral filename preceded the final neutral-pointer implementation. Not final acceptance evidence. EgUI zoom 1.5; effective 2.25. |
+| [096-measured-neutral-compact](096-measured-neutral-compact.png) | 2026-10-17 | 480×420 logical / 720×630 | Intermediate capture; neutral filename preceded the final neutral-pointer implementation. Not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [097-measured-neutral-error](097-measured-neutral-error.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Intermediate capture; neutral filename preceded the final neutral-pointer implementation. Not final acceptance evidence. EgUI zoom 1; effective 1.5. |
+| [098-neutral-canonical](098-neutral-canonical.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected normal: measured layout, original wool SVG and covered hands; strict identity false. EgUI zoom 1; effective 1.5. |
+| [099-neutral-scaled](099-neutral-scaled.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected egui zoom 1.5 (effective 2.25): correct 2000×1135 output, controls/roster fit. EgUI zoom 1.5; effective 2.25. |
+| [100-neutral-compact](100-neutral-compact.png) | 2026-10-17 | 480×420 logical / 720×630 | Inspected compact: working compact layout retained; all player rows and actions visible. EgUI zoom 1; effective 1.5. |
+| [101-neutral-error](101-neutral-error.png) | 2026-10-17 | 2000×1135 physical / 2000×1135 | Inspected rejection: selected target and error visible; private hand stays covered. EgUI zoom 1; effective 1.5. |
+
+[Initial comparison report](090-reference-comparison.json) · [Final strict comparison report](098-reference-comparison.json). The --require-exact command exits 1. Only 648163 of 2270000 pixels match exactly; this is not a similarity score and includes different scene state. No pixel-identity acceptance is claimed.

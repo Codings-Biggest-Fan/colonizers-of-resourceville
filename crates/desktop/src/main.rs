@@ -3,6 +3,7 @@
 
 mod board_view;
 mod pieces;
+mod reference_art;
 use eframe::egui;
 use resourceville_protocol::PRODUCT_NAME;
 
@@ -22,6 +23,7 @@ fn main() -> eframe::Result {
         PRODUCT_NAME,
         options,
         Box::new(|cc| {
+            configure_fonts(&cc.egui_ctx);
             cc.egui_ctx.set_theme(egui::Theme::Light);
             let mut visuals = egui::Visuals::light();
             visuals.override_text_color = Some(board_view::TEXT);
@@ -55,6 +57,28 @@ fn main() -> eframe::Result {
             Ok(Box::new(BoardApp::default()))
         }),
     )
+}
+
+fn configure_fonts(ctx: &egui::Context) {
+    let mut fonts = egui::FontDefinitions::default();
+    fonts.font_data.insert(
+        "open-sans".into(),
+        egui::FontData::from_static(include_bytes!("../../../assets/fonts/OpenSans.ttf")).into(),
+    );
+    fonts.font_data.insert(
+        "tile-numbers".into(),
+        egui::FontData::from_static(include_bytes!("../../../assets/fonts/LilitaOne.ttf")).into(),
+    );
+    fonts
+        .families
+        .get_mut(&egui::FontFamily::Proportional)
+        .expect("proportional font family")
+        .insert(0, "open-sans".into());
+    fonts.families.insert(
+        egui::FontFamily::Name("tile-numbers".into()),
+        vec!["tile-numbers".into()],
+    );
+    ctx.set_fonts(fonts);
 }
 
 fn window_icon() -> egui::IconData {
@@ -106,6 +130,18 @@ impl eframe::App for BoardApp {
         #[cfg(feature = "capture")]
         if let Ok(path) = std::env::var("RESOURCEVILLE_CAPTURE_TO") {
             self.capture_frames += 1;
+            // Keep canonical evidence independent of the desktop cursor location.
+            ctx.input_mut(|input| input.pointer = Default::default());
+            if self.capture_frames == 1
+                && std::env::var_os("RESOURCEVILLE_CAPTURE_PHYSICAL").is_some()
+            {
+                let pixels_per_point = ctx.pixels_per_point();
+                ctx.send_viewport_cmd(egui::ViewportCommand::InnerSize(egui::vec2(
+                    capture_dimension("RESOURCEVILLE_CAPTURE_WIDTH", 2000.) / pixels_per_point,
+                    capture_dimension("RESOURCEVILLE_CAPTURE_HEIGHT", 1135.) / pixels_per_point,
+                )));
+            }
+
             let captured = ctx.input(|input| {
                 input.events.iter().find_map(|event| {
                     if let egui::Event::Screenshot { image, .. } = event {
@@ -137,7 +173,7 @@ impl eframe::App for BoardApp {
                     ctx.pixels_per_point()
                 );
                 ctx.send_viewport_cmd(egui::ViewportCommand::Close);
-            } else if self.capture_frames == 3 {
+            } else if self.capture_frames == 6 {
                 ctx.send_viewport_cmd(egui::ViewportCommand::Screenshot(Default::default()));
             }
             assert!(

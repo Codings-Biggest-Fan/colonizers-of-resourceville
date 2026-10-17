@@ -1,6 +1,8 @@
 # The Colonizers of Resourceville
 
-![M04 native graphic sidebar and action dock](photos/milestone-04/078-reference-fit.png)
+![M04 native graphic sidebar and action dock](photos/milestone-04/098-neutral-canonical.png)
+
+Development frame; includes [Colonist wool artwork](assets/reference/provenance.json). The requested one-to-one visual match remains in progress.
 
 Build a foothold on a resource-rich island, trade with your neighbors, and turn a small settlement into a thriving network of towns and trade routes. **The Colonizers of Resourceville** is a native Rust strategy game in development for Windows, with original branding and a focus on readable boards, meaningful choices, and games you can play with friends or bots.
 
@@ -34,9 +36,9 @@ These are real M04 native wgpu frames from synthetic engine test scenarios; the 
 
 | Turn-engine test | Compact test |
 | :---: | :---: |
-| ![Current terrain and houses](photos/milestone-04/078-reference-fit.png) | ![Compact terrain](photos/milestone-04/079-reference-fit-compact.png) |
-| Rejected action<br>![Rejected action](photos/milestone-04/081-reference-fit-error.png) | Earlier contrast fixture<br>![Piece contrast test](photos/milestone-04/023-soft-contrast.png) |
-| Scaling stress<br>![Scaled native controls](photos/milestone-04/080-reference-fit-scaled.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
+| ![Current terrain and houses](photos/milestone-04/098-neutral-canonical.png) | ![Compact terrain](photos/milestone-04/100-neutral-compact.png) |
+| Rejected action<br>![Rejected action](photos/milestone-04/101-neutral-error.png) | Earlier contrast fixture<br>![Piece contrast test](photos/milestone-04/023-soft-contrast.png) |
+| Scaling stress<br>![Scaled native controls](photos/milestone-04/099-neutral-scaled.png) | [Capture metadata and full M04 archive](photos/milestone-04/index.md) |
 
 [M03 archive and before evidence](photos/milestone-03/index.md) · [M01 evidence](photos/milestone-01/index.md) · [M00 documentation previews](photos/milestone-00/index.md)
 

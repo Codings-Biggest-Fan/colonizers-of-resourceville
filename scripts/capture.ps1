@@ -1,6 +1,7 @@
 <#! Capture only the game's rendered frame through eframe, never the desktop.
 Starts a fresh native instance which exits after capture. Zoom is egui zoom,
-not proof of changing the operating system's display scaling. #>
+not proof of changing the operating system's display scaling.
+-PhysicalPixels interprets Width/Height as actual output pixels, including with Zoom. #>
 [CmdletBinding()]
 param(
     [ValidateRange(1, 20)] [int] $Milestone = 1,
@@ -8,6 +9,7 @@ param(
     [ValidateRange(480, 2400)] [int] $Width = 1000,
     [ValidateRange(420, 1600)] [int] $Height = 680,
     [ValidateRange(0.75, 2)] [double] $Zoom = 1,
+    [switch] $PhysicalPixels,
     [ValidateSet('layout','setup','production','rejection','contrast','zoomed-out')] [string] $Scenario = 'layout'
 )
 try {
@@ -17,11 +19,12 @@ try {
         $destination = Join-Path $RepoRoot ('photos/milestone-{0:D2}/{1}' -f $Milestone, $Name)
         if (Test-Path -LiteralPath $destination) { throw 'Capture exists; preserve prior evidence and choose a new sequence.' }
         Invoke-Cargo @('build', '--locked', '-p', 'resourceville-desktop', '--features', 'capture')
-        $names = @('RESOURCEVILLE_CAPTURE_TO','RESOURCEVILLE_CAPTURE_WIDTH','RESOURCEVILLE_CAPTURE_HEIGHT','RESOURCEVILLE_CAPTURE_SCALE','RESOURCEVILLE_CAPTURE_SCENARIO')
+        $names = @('RESOURCEVILLE_CAPTURE_TO','RESOURCEVILLE_CAPTURE_WIDTH','RESOURCEVILLE_CAPTURE_HEIGHT','RESOURCEVILLE_CAPTURE_SCALE','RESOURCEVILLE_CAPTURE_SCENARIO','RESOURCEVILLE_CAPTURE_PHYSICAL')
         $previous = @{}
         foreach ($key in $names) { $previous[$key] = [Environment]::GetEnvironmentVariable($key) }
         try {
             $env:RESOURCEVILLE_CAPTURE_TO = $destination
+            if ($PhysicalPixels) { $env:RESOURCEVILLE_CAPTURE_PHYSICAL = "1" } else { Remove-Item Env:RESOURCEVILLE_CAPTURE_PHYSICAL -ErrorAction SilentlyContinue }
             $env:RESOURCEVILLE_CAPTURE_SCENARIO = $Scenario
             $env:RESOURCEVILLE_CAPTURE_WIDTH = "$Width"
             $env:RESOURCEVILLE_CAPTURE_HEIGHT = "$Height"
